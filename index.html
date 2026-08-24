@@ -7,11 +7,7 @@
   <title>DealFaz – Deals & Reselling</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
@@ -21,336 +17,154 @@
     }
 
     header {
-      width: 100%;
-      padding: 22px 7%;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      padding: 28px 7%;
+      font-weight: bold;
+      font-size: 24px;
     }
 
-    .logo {
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: -1px;
-    }
-
-    .logo span {
-      color: #35e6a5;
-    }
-
-    .status {
-      font-size: 13px;
-      padding: 8px 12px;
-      border-radius: 30px;
-      background: rgba(53,230,165,.12);
-      color: #35e6a5;
-      border: 1px solid rgba(53,230,165,.25);
-    }
+    .logo span, .green { color: #38e6c5; }
+    .live { color: #38e6c5; font-size: 14px; }
 
     main {
-      width: 100%;
-    }
-
-    .hero {
-      max-width: 1050px;
-      margin: 0 auto;
-      padding: 90px 24px 55px;
+      max-width: 900px;
+      margin: 110px auto 0;
       text-align: center;
+      padding: 20px;
     }
 
-    .badge {
+    .region {
       display: inline-block;
-      margin-bottom: 22px;
-      padding: 9px 15px;
-      border-radius: 50px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.1);
-      color: #b9c3d5;
-      font-size: 14px;
+      padding: 8px 14px;
+      border: 1px solid #24334d;
+      border-radius: 20px;
+      margin-bottom: 25px;
+      color: #b8c4d8;
     }
 
     h1 {
-      font-size: clamp(42px, 8vw, 78px);
-      line-height: 1;
-      letter-spacing: -3px;
-      margin-bottom: 24px;
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: 1.05;
+      margin-bottom: 25px;
     }
 
-    h1 span {
-      color: #35e6a5;
-    }
-
-    .subtitle {
-      max-width: 700px;
-      margin: 0 auto 35px;
-      font-size: 19px;
+    p {
+      color: #b8c4d8;
       line-height: 1.6;
-      color: #aeb9cc;
+      margin-bottom: 32px;
     }
 
-    .search-box {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 8px;
-      background: white;
-      border-radius: 16px;
+    .search {
       display: flex;
-      box-shadow: 0 20px 70px rgba(0,0,0,.35);
+      background: white;
+      padding: 6px;
+      border-radius: 12px;
+      max-width: 700px;
+      margin: auto;
     }
 
-    .search-box input {
+    input {
       flex: 1;
       border: 0;
       outline: 0;
       padding: 17px;
-      border-radius: 12px;
       font-size: 16px;
-      min-width: 0;
+      border-radius: 9px;
     }
 
-    .search-box button {
+    button {
       border: 0;
+      background: #38e6c5;
+      padding: 0 28px;
+      border-radius: 9px;
+      font-weight: bold;
       cursor: pointer;
-      padding: 0 24px;
+    }
+
+    #results {
+      max-width: 700px;
+      margin: 25px auto;
+      text-align: left;
+    }
+
+    .result {
+      background: #111827;
+      border: 1px solid #263248;
       border-radius: 12px;
-      font-size: 15px;
-      font-weight: 700;
-      background: #35e6a5;
-      color: #06100c;
+      padding: 18px;
     }
 
-    #message {
-      margin-top: 14px;
-      min-height: 20px;
-      color: #8d9bb0;
-      font-size: 14px;
-    }
-
-    .countdown-area {
-      margin-top: 55px;
-    }
-
-    .countdown-title {
-      color: #8490a4;
-      margin-bottom: 15px;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .time {
-      width: 90px;
-      padding: 17px 8px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.08);
-    }
-
-    .time strong {
-      display: block;
-      font-size: 28px;
-      color: #35e6a5;
-    }
-
-    .time span {
-      color: #7f8ba0;
-      font-size: 12px;
-    }
-
-    .features {
-      max-width: 1050px;
-      margin: 0 auto;
-      padding: 35px 24px 90px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      padding: 28px;
-      border-radius: 18px;
-      background: #0d1320;
-      border: 1px solid rgba(255,255,255,.07);
-    }
-
-    .card h2 {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: #8490a4;
-      line-height: 1.6;
-      font-size: 14px;
-    }
-
-    footer {
-      text-align: center;
-      color: #5f6b7d;
-      padding: 25px;
-      border-top: 1px solid rgba(255,255,255,.06);
-      font-size: 13px;
-    }
-
-    @media(max-width: 750px) {
-      header {
-        padding: 18px 20px;
-      }
-
-      .hero {
-        padding-top: 65px;
-      }
-
-      .features {
-        grid-template-columns: 1fr;
-      }
-
-      .search-box {
-        flex-direction: column;
-        background: transparent;
-        gap: 8px;
-      }
-
-      .search-box input,
-      .search-box button {
-        width: 100%;
-        min-height: 55px;
-      }
+    .result a {
+      color: #38e6c5;
+      text-decoration: none;
     }
   </style>
 </head>
 
 <body>
+  <header>
+    <div class="logo">Deal<span>Faz</span></div>
+    <div class="live">● LIVE</div>
+  </header>
 
-<header>
-  <div class="logo">Deal<span>Faz</span></div>
-  <div class="status">● LIVE</div>
-</header>
+  <main>
+    <div class="region">Deutschland · Österreich · Schweiz</div>
 
-<main>
+    <h1>Finde den Deal.<br><span class="green">Mach mehr daraus.</span></h1>
 
-  <section class="hero">
-
-    <div class="badge">Deutschland · Österreich · Schweiz</div>
-
-    <h1>Finde den Deal.<br><span>Mach mehr daraus.</span></h1>
-
-    <p class="subtitle">
+    <p>
       DealFaz bringt Deals und Reselling an einen Ort.
-      Suche nach einem Artikel und entdecke Möglichkeiten zum Kaufen,
-      Vergleichen und Weiterverkaufen.
+      Suche nach einem Artikel und entdecke Möglichkeiten
+      zum Kaufen, Vergleichen und Weiterverkaufen.
     </p>
 
-    <div class="search-box">
-      <input id="search" type="text" placeholder="Artikelname eingeben …">
-      <button onclick="startSearch()">Deal suchen</button>
+    <div class="search">
+      <input id="query" placeholder="Artikelname eingeben">
+      <button onclick="searchDeals()">Deal suchen</button>
     </div>
 
-    <div id="message"></div>
+    <div id="results"></div>
+  </main>
 
-    <div class="countdown-area">
-      <div class="countdown-title">Launch Countdown</div>
+  <script>
+    function searchDeals() {
+      const input = document.getElementById("query");
+      const query = input.value.trim();
+      const results = document.getElementById("results");
 
-      <div class="countdown">
-        <div class="time">
-          <strong id="days">00</strong>
-          <span>Tage</span>
-        </div>
+      if (!query) {
+        results.innerHTML =
+          '<div class="result">Bitte zuerst einen Artikel eingeben.</div>';
+        return;
+      }
 
-        <div class="time">
-          <strong id="hours">00</strong>
-          <span>Stunden</span>
-        </div>
+      const ebay =
+        "https://www.ebay.de/sch/i.html?_nkw=" +
+        encodeURIComponent(query);
 
-        <div class="time">
-          <strong id="minutes">00</strong>
-          <span>Minuten</span>
-        </div>
+      const kleinanzeigen =
+        "https://www.kleinanzeigen.de/s-" +
+        encodeURIComponent(query.replace(/\s+/g, "-")) +
+        "/k0";
 
-        <div class="time">
-          <strong id="seconds">00</strong>
-          <span>Sekunden</span>
-        </div>
-      </div>
-    </div>
-
-  </section>
-
-  <section class="features">
-
-    <div class="card">
-      <h2>Deals entdecken</h2>
-      <p>Produkte schneller finden und interessante Angebote übersichtlich vergleichen.</p>
-    </div>
-
-    <div class="card">
-      <h2>Reselling prüfen</h2>
-      <p>Erkenne interessante Kauf- und Verkaufsmöglichkeiten ohne komplizierte Bedienung.</p>
-    </div>
-
-    <div class="card">
-      <h2>Einfach starten</h2>
-      <p>Artikel eingeben, Ergebnisse ansehen und selbst entscheiden, was sich für dich lohnt.</p>
-    </div>
-
-  </section>
-
-</main>
-
-<footer>
-  © 2026 DealFaz
-</footer>
-
-<script>
-  function startSearch() {
-    const input = document.getElementById("search").value.trim();
-    const message = document.getElementById("message");
-
-    if (!input) {
-      message.textContent = "Bitte zuerst einen Artikel eingeben.";
-      return;
+      results.innerHTML =
+        '<div class="result">' +
+        '<strong>Suche nach: ' + escapeHtml(query) + '</strong><br><br>' +
+        '<a href="' + ebay + '" target="_blank" rel="noopener">→ eBay durchsuchen</a><br><br>' +
+        '<a href="' + kleinanzeigen + '" target="_blank" rel="noopener">→ Kleinanzeigen durchsuchen</a>' +
+        '</div>';
     }
 
-    message.textContent =
-      "Suche für „" + input + "“ vorbereitet – Deal-Suche wird als Nächstes verbunden.";
-  }
-
-  const launch = new Date("2026-09-01T00:00:00+02:00").getTime();
-
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = launch - now;
-
-    if (distance <= 0) {
-      document.querySelector(".countdown-area").innerHTML =
-        "<div class='countdown-title'>DealFaz ist gestartet.</div>";
-      return;
+    function escapeHtml(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
     }
 
-    document.getElementById("days").textContent =
-      String(Math.floor(distance / 86400000)).padStart(2, "0");
-
-    document.getElementById("hours").textContent =
-      String(Math.floor((distance % 86400000) / 3600000)).padStart(2, "0");
-
-    document.getElementById("minutes").textContent =
-      String(Math.floor((distance % 3600000) / 60000)).padStart(2, "0");
-
-    document.getElementById("seconds").textContent =
-      String(Math.floor((distance % 60000) / 1000)).padStart(2, "0");
-  }
-
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-</script>
-
+    document.getElementById("query").addEventListener("keydown", function(e) {
+      if (e.key === "Enter") searchDeals();
+    });
+  </script>
 </body>
 </html>

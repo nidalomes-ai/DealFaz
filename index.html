@@ -239,3 +239,131 @@ document.addEventListener('click', function(event) {
 </body>
 </html>
 </html>
+<script>
+function calculateDealScore(buyPrice, marketPrice, resalePrice, fees = 0) {
+  buyPrice = Number(buyPrice);
+  marketPrice = Number(marketPrice);
+  resalePrice = Number(resalePrice);
+  fees = Number(fees);
+
+  const savings = Math.max(0, marketPrice - buyPrice);
+  const profit = Math.max(0, resalePrice - buyPrice - fees);
+
+  let dealScore = 0;
+  let resellScore = 0;
+
+  if (marketPrice > 0) {
+    const savingsPercent = (savings / marketPrice) * 100;
+    dealScore = Math.min(100, Math.round(savingsPercent * 4));
+  }
+
+  if (buyPrice > 0) {
+    const profitPercent = (profit / buyPrice) * 100;
+    resellScore = Math.min(100, Math.round(profitPercent * 3));
+  }
+
+  function label(score) {
+    if (score >= 90) return "Top-Deal";
+    if (score >= 75) return "Guter Deal";
+    if (score >= 60) return "Fair";
+    if (score >= 40) return "Eher teuer";
+    return "Schlecht";
+  }
+
+  return {
+    savings,
+    profit,
+    dealScore,
+    resellScore,
+    dealLabel: label(dealScore),
+    resellLabel: label(resellScore)
+  };
+}
+
+function renderDealScore(buyPrice, marketPrice, resalePrice, fees = 0) {
+  const result = calculateDealScore(
+    buyPrice,
+    marketPrice,
+    resalePrice,
+    fees
+  );
+
+  let box = document.getElementById("dealfaz-score-box");
+
+  if (!box) {
+    box = document.createElement("div");
+    box.id = "dealfaz-score-box";
+    box.style.marginTop = "20px";
+    box.style.padding = "20px";
+    box.style.borderRadius = "16px";
+    box.style.background = "rgba(255,255,255,0.08)";
+    box.style.backdropFilter = "blur(8px)";
+    box.style.color = "white";
+    box.style.fontFamily = "Arial, sans-serif";
+    document.body.appendChild(box);
+  }
+
+  box.innerHTML = `
+    <div style="font-size:24px;font-weight:700;margin-bottom:14px;">
+      DealFaz Bewertung
+    </div>
+
+    <div style="margin-bottom:10px;">
+      Marktpreis:
+      <strong>${marketPrice.toFixed(2)} €</strong>
+    </div>
+
+    <div style="margin-bottom:10px;">
+      Ersparnis:
+      <strong>${result.savings.toFixed(2)} €</strong>
+    </div>
+
+    <div style="margin-bottom:10px;">
+      Möglicher Gewinn:
+      <strong>${result.profit.toFixed(2)} €</strong>
+    </div>
+
+    <div style="margin-top:18px;">
+      <div style="display:flex;justify-content:space-between;">
+        <span>Deal-Score</span>
+        <strong>${result.dealScore}/100 - ${result.dealLabel}</strong>
+      </div>
+
+      <div style="height:14px;background:#ffffff22;border-radius:20px;overflow:hidden;margin-top:8px;">
+        <div style="
+          width:${result.dealScore}%;
+          height:100%;
+          background:linear-gradient(90deg,#ff4d4d,#ffd84d,#37e27d);
+        "></div>
+      </div>
+    </div>
+
+    <div style="margin-top:18px;">
+      <div style="display:flex;justify-content:space-between;">
+        <span>Resell-Score</span>
+        <strong>${result.resellScore}/100 - ${result.resellLabel}</strong>
+      </div>
+
+      <div style="height:14px;background:#ffffff22;border-radius:20px;overflow:hidden;margin-top:8px;">
+        <div style="
+          width:${result.resellScore}%;
+          height:100%;
+          background:linear-gradient(90deg,#ff4d4d,#ffd84d,#37e27d);
+        "></div>
+      </div>
+    </div>
+
+    <div style="margin-top:14px;font-size:12px;opacity:.7;">
+      Werte sind Schätzungen und keine Garantie für einen tatsächlichen Verkaufspreis.
+    </div>
+  `;
+}
+
+// TESTWERTE
+renderDealScore(
+  620,  // Kaufpreis
+  700,  // Marktpreis
+  730,  // geschätzter Verkaufspreis
+  20    // Gebühren / Versand
+);
+</script>

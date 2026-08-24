@@ -2,368 +2,1154 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="DealFaz – Deals entdecken, vergleichen und clever handeln.">
-  <title>DealFaz – Deals & Reselling</title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <title>DealFaz – Deals finden & clever weiterverkaufen</title>
+
+  <meta
+    name="description"
+    content="DealFaz hilft dir, Produkte schnell auf eBay und Kleinanzeigen zu suchen, Angebote zu vergleichen und Reselling-Chancen zu entdecken."
+  >
+
+  <meta
+    name="robots"
+    content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+  >
+
+  <meta name="theme-color" content="#07111f">
+
+  <meta property="og:title" content="DealFaz – Finde den Deal. Mach mehr daraus.">
+  <meta
+    property="og:description"
+    content="Produkte suchen, Angebote vergleichen und Reselling-Chancen entdecken."
+  >
+  <meta property="og:type" content="website">
 
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-1: #050b14;
+      --bg-2: #07182c;
+      --bg-3: #0b2a52;
+      --card: rgba(255,255,255,0.075);
+      --card-border: rgba(255,255,255,0.13);
+      --text: #ffffff;
+      --muted: #aebed2;
+      --cyan: #53e3f2;
+      --cyan-2: #27c9e3;
+      --blue: #3878ff;
+      --shadow: 0 26px 70px rgba(0,0,0,0.35);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #070b14;
-      color: white;
       min-height: 100vh;
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+      color: var(--text);
+
+      background:
+        radial-gradient(
+          circle at 15% 15%,
+          rgba(36,104,255,0.23),
+          transparent 34%
+        ),
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(33,221,239,0.14),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          var(--bg-1) 0%,
+          var(--bg-2) 48%,
+          var(--bg-3) 100%
+        );
+
+      overflow-x: hidden;
     }
 
-    header {
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          rgba(255,255,255,0.018) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0.018) 1px,
+          transparent 1px
+        );
+
+      background-size: 42px 42px;
+      mask-image: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.55),
+        transparent
+      );
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 34px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      min-height: 78px;
+
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      padding: 28px 7%;
-      font-weight: bold;
-      font-size: 24px;
+
+      gap: 20px;
     }
 
-    .logo span, .green { color: #38e6c5; }
-    .live { color: #38e6c5; font-size: 14px; }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
 
-    main {
-      max-width: 900px;
-      margin: 110px auto 0;
-      text-align: center;
-      padding: 20px;
+      font-weight: 900;
+      font-size: 21px;
+      letter-spacing: -0.7px;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 13px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--cyan),
+          var(--blue)
+        );
+
+      color: #04111d;
+
+      font-size: 18px;
+      font-weight: 1000;
+
+      box-shadow:
+        0 10px 30px rgba(46,207,236,0.25);
     }
 
     .region {
-      display: inline-block;
+      font-size: 13px;
+      color: var(--muted);
+
+      padding: 8px 12px;
+
+      border: 1px solid var(--card-border);
+      border-radius: 999px;
+
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero {
+      min-height: calc(100vh - 135px);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+
+      padding:
+        55px 0
+        75px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      margin-bottom: 22px;
+
       padding: 8px 14px;
-      border: 1px solid #24334d;
-      border-radius: 20px;
-      margin-bottom: 25px;
-      color: #b8c4d8;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      border-radius: 999px;
+
+      background: rgba(75,218,241,0.075);
+      border: 1px solid rgba(83,227,242,0.20);
+
+      color: #bfeff7;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: var(--cyan);
+
+      box-shadow:
+        0 0 18px rgba(83,227,242,0.9);
     }
 
     h1 {
-      font-size: clamp(42px, 7vw, 72px);
-      line-height: 1.05;
-      margin-bottom: 25px;
+      max-width: 850px;
+
+      font-size: clamp(
+        45px,
+        7vw,
+        82px
+      );
+
+      line-height: 0.98;
+      letter-spacing: -4px;
+
+      font-weight: 950;
     }
 
-    p {
-      color: #b8c4d8;
-      line-height: 1.6;
-      margin-bottom: 32px;
+    h1 span {
+      display: block;
+
+      margin-top: 7px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #55e7f2,
+          #34c7e9,
+          #5c8dff
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
     }
 
-    .search {
+    .subtitle {
+      max-width: 690px;
+
+      margin: 26px auto 0;
+
+      color: var(--muted);
+
+      font-size: clamp(
+        15px,
+        2vw,
+        18px
+      );
+
+      line-height: 1.65;
+    }
+
+    .search-card {
+      width: min(790px, 100%);
+
+      margin-top: 35px;
+
+      padding: 11px;
+
       display: flex;
-      background: white;
-      padding: 6px;
-      border-radius: 12px;
-      max-width: 700px;
-      margin: auto;
+      gap: 10px;
+
+      border-radius: 20px;
+
+      background:
+        rgba(255,255,255,0.10);
+
+      border:
+        1px solid rgba(255,255,255,0.16);
+
+      box-shadow: var(--shadow);
+
+      backdrop-filter: blur(18px);
     }
 
-    input {
+    .search-card input {
       flex: 1;
+      min-width: 0;
+
+      height: 58px;
+
       border: 0;
       outline: 0;
-      padding: 17px;
+
+      padding: 0 20px;
+
+      border-radius: 14px;
+
       font-size: 16px;
-      border-radius: 9px;
+
+      color: #0c1724;
+      background: #ffffff;
+
+      box-shadow:
+        inset 0 0 0 1px rgba(0,0,0,0.04);
     }
 
-    button {
+    .search-card input::placeholder {
+      color: #8391a2;
+    }
+
+    .search-card button {
+      min-width: 145px;
+      height: 58px;
+
       border: 0;
-      background: #38e6c5;
-      padding: 0 28px;
-      border-radius: 9px;
-      font-weight: bold;
+      border-radius: 14px;
+
+      padding: 0 20px;
+
       cursor: pointer;
+
+      font-weight: 850;
+      font-size: 14px;
+
+      color: #05121c;
+
+      background:
+        linear-gradient(
+          135deg,
+          #63edf4,
+          #35cde8
+        );
+
+      transition:
+        transform 0.16s ease,
+        box-shadow 0.16s ease,
+        filter 0.16s ease;
     }
 
-    #results {
-      max-width: 700px;
-      margin: 25px auto;
+    .search-card button:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 10px 30px rgba(55,215,238,0.25);
+
+      filter: brightness(1.05);
+    }
+
+    .search-card button:active {
+      transform: translateY(0);
+    }
+
+    .hint {
+      margin-top: 13px;
+
+      color: #8195ad;
+
+      font-size: 12px;
+    }
+
+    .results {
+      width: min(790px, 100%);
+
+      display: none;
+
+      margin-top: 18px;
+
+      padding: 20px;
+
       text-align: left;
+
+      border-radius: 20px;
+
+      background:
+        rgba(255,255,255,0.065);
+
+      border:
+        1px solid rgba(255,255,255,0.12);
+
+      backdrop-filter: blur(14px);
+
+      box-shadow:
+        0 20px 60px rgba(0,0,0,0.20);
     }
 
-    .result {
-      background: #111827;
-      border: 1px solid #263248;
-      border-radius: 12px;
-      padding: 18px;
+    .results.show {
+      display: block;
+      animation: appear 0.22s ease;
     }
 
-    .result a {
-      color: #38e6c5;
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .results-title {
+      font-size: 14px;
+      color: var(--muted);
+
+      margin-bottom: 15px;
+    }
+
+    .results-title strong {
+      color: white;
+    }
+
+    .market-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+      gap: 12px;
+    }
+
+    .market-link {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      min-height: 80px;
+
+      padding: 17px;
+
+      border-radius: 16px;
+
       text-decoration: none;
+
+      border:
+        1px solid rgba(255,255,255,0.10);
+
+      background:
+        rgba(255,255,255,0.055);
+
+      transition:
+        transform .16s ease,
+        background .16s ease,
+        border-color .16s ease;
+    }
+
+    .market-link:hover {
+      transform: translateY(-2px);
+
+      background:
+        rgba(255,255,255,0.095);
+
+      border-color:
+        rgba(83,227,242,0.28);
+    }
+
+    .market-left {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .market-icon {
+      width: 43px;
+      height: 43px;
+
+      display: grid;
+      place-items: center;
+
+      flex: 0 0 auto;
+
+      border-radius: 13px;
+
+      background:
+        rgba(83,227,242,0.10);
+
+      color: var(--cyan);
+
+      font-weight: 950;
+    }
+
+    .market-name {
+      display: block;
+
+      color: white;
+
+      font-size: 15px;
+      font-weight: 850;
+    }
+
+    .market-desc {
+      display: block;
+
+      margin-top: 3px;
+
+      font-size: 12px;
+
+      color: #92a4b8;
+    }
+
+    .arrow {
+      color: var(--cyan);
+      font-size: 21px;
+    }
+
+    .benefits {
+      width: min(790px, 100%);
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0,1fr));
+
+      gap: 10px;
+
+      margin-top: 20px;
+    }
+
+    .benefit {
+      padding: 15px 12px;
+
+      border-radius: 14px;
+
+      border:
+        1px solid rgba(255,255,255,0.08);
+
+      background:
+        rgba(255,255,255,0.035);
+    }
+
+    .benefit strong {
+      display: block;
+
+      font-size: 13px;
+    }
+
+    .benefit span {
+      display: block;
+
+      margin-top: 5px;
+
+      color: #8193a8;
+
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    footer {
+      width: min(900px, calc(100% - 34px));
+
+      margin: 0 auto;
+
+      padding: 25px 0 35px;
+
+      text-align: center;
+
+      color: #71839a;
+
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .toast {
+      position: fixed;
+
+      left: 50%;
+      bottom: 25px;
+
+      transform:
+        translate(-50%, 20px);
+
+      opacity: 0;
+      pointer-events: none;
+
+      padding: 11px 16px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(6,17,31,0.94);
+
+      border:
+        1px solid rgba(255,255,255,0.12);
+
+      color: white;
+
+      font-size: 12px;
+
+      box-shadow:
+        0 15px 50px rgba(0,0,0,0.35);
+
+      transition:
+        opacity .2s ease,
+        transform .2s ease;
+
+      z-index: 999;
+    }
+
+    .toast.show {
+      opacity: 1;
+
+      transform:
+        translate(-50%, 0);
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        width:
+          min(100% - 22px, 1180px);
+      }
+
+      .topbar {
+        min-height: 66px;
+      }
+
+      .brand {
+        font-size: 18px;
+      }
+
+      .brand-mark {
+        width: 34px;
+        height: 34px;
+
+        border-radius: 11px;
+      }
+
+      .region {
+        font-size: 10px;
+        padding: 7px 9px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 60px 0 50px;
+      }
+
+      h1 {
+        letter-spacing: -2.6px;
+      }
+
+      .subtitle {
+        margin-top: 20px;
+      }
+
+      .search-card {
+        flex-direction: column;
+
+        padding: 8px;
+
+        border-radius: 18px;
+      }
+
+      .search-card input,
+      .search-card button {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .search-card input {
+        height: 56px;
+      }
+
+      .search-card button {
+        height: 53px;
+      }
+
+      .market-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .benefits {
+        grid-template-columns: 1fr;
+      }
+
+      .benefit {
+        text-align: left;
+      }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="logo">Deal<span>Faz</span></div>
-    <div class="live">● LIVE</div>
-  </header>
 
-  <main>
-    <div class="region">Deutschland · Österreich · Schweiz</div>
+  <main class="page">
 
-    <h1>Finde den Deal.<br><span class="green">Mach mehr daraus.</span></h1>
+    <header class="topbar">
 
-    <p>
-      DealFaz bringt Deals und Reselling an einen Ort.
-      Suche nach einem Artikel und entdecke Möglichkeiten
-      zum Kaufen, Vergleichen und Weiterverkaufen.
-    </p>
+      <div class="brand">
+        <div class="brand-mark">D</div>
+        <span>DealFaz</span>
+      </div>
 
-    <div class="search">
-      <input id="query" placeholder="Artikelname eingeben">
-      <button onclick="searchDeals()">Deal suchen</button>
-    </div>
+      <div class="region">
+        Deutschland · Österreich · Schweiz
+      </div>
 
-    <div id="results"></div>
+    </header>
+
+
+    <section class="hero">
+
+      <div class="eyebrow">
+        <span class="dot"></span>
+        Deals & Reselling an einem Ort
+      </div>
+
+      <h1>
+        Finde den Deal.
+        <span>Mach mehr daraus.</span>
+      </h1>
+
+      <p class="subtitle">
+        Suche nach einem Artikel und öffne passende Suchen
+        bei eBay und Kleinanzeigen. Schnell vergleichen,
+        Chancen erkennen und selbst entscheiden.
+      </p>
+
+
+      <div class="search-card">
+
+        <input
+          id="query"
+          type="search"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="z. B. iPhone 16, PlayStation 5, MacBook Pro"
+          aria-label="Artikel suchen"
+        >
+
+        <button
+          id="searchButton"
+          type="button"
+        >
+          Deal suchen
+        </button>
+
+      </div>
+
+      <div class="hint">
+        Keine Anmeldung nötig · Suche öffnet den jeweiligen Marktplatz
+      </div>
+
+
+      <section
+        id="results"
+        class="results"
+        aria-live="polite"
+      >
+
+        <div class="results-title">
+          Suche nach:
+          <strong id="searchTerm"></strong>
+        </div>
+
+
+        <div class="market-grid">
+
+          <a
+            id="ebayLink"
+            class="market-link"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <span class="market-left">
+
+              <span class="market-icon">
+                e
+              </span>
+
+              <span>
+                <span class="market-name">
+                  eBay durchsuchen
+                </span>
+
+                <span class="market-desc">
+                  Angebote direkt auf eBay öffnen
+                </span>
+              </span>
+
+            </span>
+
+            <span class="arrow">
+              →
+            </span>
+
+          </a>
+
+
+          <a
+            id="kleinanzeigenLink"
+            class="market-link"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <span class="market-left">
+
+              <span class="market-icon">
+                K
+              </span>
+
+              <span>
+                <span class="market-name">
+                  Kleinanzeigen durchsuchen
+                </span>
+
+                <span class="market-desc">
+                  Lokale und private Angebote ansehen
+                </span>
+              </span>
+
+            </span>
+
+            <span class="arrow">
+              →
+            </span>
+
+          </a>
+
+        </div>
+
+      </section>
+
+
+      <section class="benefits">
+
+        <div class="benefit">
+
+          <strong>
+            Schnell
+          </strong>
+
+          <span>
+            Eine Suche, direkte Wege zu relevanten Marktplätzen.
+          </span>
+
+        </div>
+
+
+        <div class="benefit">
+
+          <strong>
+            Einfach
+          </strong>
+
+          <span>
+            Keine Registrierung und keine komplizierte Bedienung.
+          </span>
+
+        </div>
+
+
+        <div class="benefit">
+
+          <strong>
+            Reselling-Fokus
+          </strong>
+
+          <span>
+            Angebote vergleichen und interessante Chancen entdecken.
+          </span>
+
+        </div>
+
+      </section>
+
+    </section>
+
   </main>
 
-  <script>
-    function searchDeals() {
-      const input = document.getElementById("query");
-      const query = input.value.trim();
-      const results = document.getElementById("results");
 
-      if (!query) {
-        results.innerHTML =
-          '<div class="result">Bitte zuerst einen Artikel eingeben.</div>';
-        return;
+  <footer>
+
+    DealFaz ist eine unabhängige Such- und Vergleichshilfe.
+    Preise, Verfügbarkeit und Angaben stammen von den jeweiligen
+    externen Marktplätzen und können sich ändern.
+
+  </footer>
+
+
+  <div
+    id="toast"
+    class="toast"
+  >
+    Bitte zuerst einen Artikel eingeben.
+  </div>
+
+
+  <script>
+
+    const queryInput =
+      document.getElementById("query");
+
+    const searchButton =
+      document.getElementById("searchButton");
+
+    const results =
+      document.getElementById("results");
+
+    const searchTerm =
+      document.getElementById("searchTerm");
+
+    const ebayLink =
+      document.getElementById("ebayLink");
+
+    const kleinanzeigenLink =
+      document.getElementById("kleinanzeigenLink");
+
+    const toast =
+      document.getElementById("toast");
+
+
+    function trackEvent(
+      eventName,
+      properties = {}
+    ) {
+
+      try {
+
+        if (
+          window.posthog &&
+          typeof window.posthog.capture === "function"
+        ) {
+
+          window.posthog.capture(
+            eventName,
+            properties
+          );
+
+        }
+
+      } catch (error) {
+
+        console.log(
+          "Tracking nicht verfügbar"
+        );
+
       }
 
-      const ebay =
+    }
+
+
+    function showToast() {
+
+      toast.classList.add("show");
+
+      setTimeout(
+        function () {
+
+          toast.classList.remove("show");
+
+        },
+        1800
+      );
+
+    }
+
+
+    function cleanQuery(value) {
+
+      return value
+        .replace(/\s+/g, " ")
+        .trim();
+
+    }
+
+
+    function createKleinanzeigenUrl(
+      query
+    ) {
+
+      const slug =
+        query
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(
+            /[\u0300-\u036f]/g,
+            ""
+          )
+          .replace(
+            /[^a-z0-9äöüß]+/gi,
+            "-"
+          )
+          .replace(
+            /^-+|-+$/g,
+            ""
+          );
+
+      return (
+        "https://www.kleinanzeigen.de/s-" +
+        encodeURIComponent(slug) +
+        "/k0"
+      );
+
+    }
+
+
+    function searchDeals() {
+
+      const query =
+        cleanQuery(
+          queryInput.value
+        );
+
+
+      if (!query) {
+
+        showToast();
+
+        queryInput.focus();
+
+        return;
+
+      }
+
+
+      searchTerm.textContent =
+        query;
+
+
+      ebayLink.href =
         "https://www.ebay.de/sch/i.html?_nkw=" +
         encodeURIComponent(query);
 
-      const kleinanzeigen =
-        "https://www.kleinanzeigen.de/s-" +
-        encodeURIComponent(query.replace(/\s+/g, "-")) +
-        "/k0";
 
-      results.innerHTML =
-        '<div class="result">' +
-        '<strong>Suche nach: ' + escapeHtml(query) + '</strong><br><br>' +
-        '<a href="' + ebay + '" target="_blank" rel="noopener">→ eBay durchsuchen</a><br><br>' +
-        '<a href="' + kleinanzeigen + '" target="_blank" rel="noopener">→ Kleinanzeigen durchsuchen</a>' +
-        '</div>';
+      kleinanzeigenLink.href =
+        createKleinanzeigenUrl(
+          query
+        );
+
+
+      results.classList.add(
+        "show"
+      );
+
+
+      trackEvent(
+        "dealfaz_search",
+        {
+          query: query,
+          page:
+            window.location.pathname
+        }
+      );
+
+
+      results.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+
     }
 
-    function escapeHtml(text) {
-      const div = document.createElement("div");
-      div.textContent = text;
-      return div.innerHTML;
-    }
 
-    document.getElementById("query").addEventListener("keydown", function(e) {
-      if (e.key === "Enter") searchDeals();
-    });
+    searchButton.addEventListener(
+      "click",
+      searchDeals
+    );
+
+
+    queryInput.addEventListener(
+      "keydown",
+      function (event) {
+
+        if (
+          event.key === "Enter"
+        ) {
+
+          event.preventDefault();
+
+          searchDeals();
+
+        }
+
+      }
+    );
+
+
+    ebayLink.addEventListener(
+      "click",
+      function () {
+
+        trackEvent(
+          "dealfaz_click",
+          {
+            marketplace:
+              "ebay",
+
+            query:
+              cleanQuery(
+                queryInput.value
+              ),
+
+            page:
+              window.location.pathname
+          }
+        );
+
+      }
+    );
+
+
+    kleinanzeigenLink.addEventListener(
+      "click",
+      function () {
+
+        trackEvent(
+          "dealfaz_click",
+          {
+            marketplace:
+              "kleinanzeigen",
+
+            query:
+              cleanQuery(
+                queryInput.value
+              ),
+
+            page:
+              window.location.pathname
+          }
+        );
+
+      }
+    );
+
   </script>
-</script>
-</body>
-</html></body><script>
-document.addEventListener('click', function(event) {
-  const target = event.target.closest('button, a');
-  if (!target) return;
-
-  const text = (target.innerText || target.textContent || '').trim();
-
-  if (window.posthog) {
-    posthog.capture('dealfaz_click', {
-      button_text: text,
-      page: window.location.pathname
-    });
-  }
-});
-</script>
-
-<script>
-document.addEventListener('click', function(event) {
-  const target = event.target.closest('button, a');
-  if (!target) return;
-
-  const text = (target.innerText || target.textContent || '').trim();
-
-  if (window.posthog) {
-    posthog.capture('dealfaz_click', {
-      button_text: text,
-      page: window.location.pathname
-    });
-  }
-});
-</script>
-
-</body>
-</html></script>
-
-<script>
-document.addEventListener('click', function(event) {<script>
-document.addEventListener('click', function(event) {
-  const target = event.target.closest('button, a');
-  if (!target) return;
-
-  const text = (target.innerText || target.textContent || '').trim();
-
-  if (window.posthog) {
-    posthog.capture('dealfaz_click', {
-      button_text: text,
-      page: window.location.pathname
-    });
-  }
-});
-</script>
-
-<script>
-document.addEventListener('click', function(event) {
-  const target = event.target.closest('button, a');
-  if (!target) return;
-
-  const text = (target.innerText || target.textContent || '').trim();
-
-  if (window.posthog) {
-    posthog.capture('dealfaz_click', {
-      button_text: text,
-      page: window.location.pathname
-    });
-  }
-});
-</script>
 
 </body>
 </html>
-</html>
-<script>
-function calculateDealScore(buyPrice, marketPrice, resalePrice, fees = 0) {
-  buyPrice = Number(buyPrice);
-  marketPrice = Number(marketPrice);
-  resalePrice = Number(resalePrice);
-  fees = Number(fees);
-
-  const savings = Math.max(0, marketPrice - buyPrice);
-  const profit = Math.max(0, resalePrice - buyPrice - fees);
-
-  let dealScore = 0;
-  let resellScore = 0;
-
-  if (marketPrice > 0) {
-    const savingsPercent = (savings / marketPrice) * 100;
-    dealScore = Math.min(100, Math.round(savingsPercent * 4));
-  }
-
-  if (buyPrice > 0) {
-    const profitPercent = (profit / buyPrice) * 100;
-    resellScore = Math.min(100, Math.round(profitPercent * 3));
-  }
-
-  function label(score) {
-    if (score >= 90) return "Top-Deal";
-    if (score >= 75) return "Guter Deal";
-    if (score >= 60) return "Fair";
-    if (score >= 40) return "Eher teuer";
-    return "Schlecht";
-  }
-
-  return {
-    savings,
-    profit,
-    dealScore,
-    resellScore,
-    dealLabel: label(dealScore),
-    resellLabel: label(resellScore)
-  };
-}
-
-function renderDealScore(buyPrice, marketPrice, resalePrice, fees = 0) {
-  const result = calculateDealScore(
-    buyPrice,
-    marketPrice,
-    resalePrice,
-    fees
-  );
-
-  let box = document.getElementById("dealfaz-score-box");
-
-  if (!box) {
-    box = document.createElement("div");
-    box.id = "dealfaz-score-box";
-    box.style.marginTop = "20px";
-    box.style.padding = "20px";
-    box.style.borderRadius = "16px";
-    box.style.background = "rgba(255,255,255,0.08)";
-    box.style.backdropFilter = "blur(8px)";
-    box.style.color = "white";
-    box.style.fontFamily = "Arial, sans-serif";
-    document.body.appendChild(box);
-  }
-
-  box.innerHTML = `
-    <div style="font-size:24px;font-weight:700;margin-bottom:14px;">
-      DealFaz Bewertung
-    </div>
-
-    <div style="margin-bottom:10px;">
-      Marktpreis:
-      <strong>${marketPrice.toFixed(2)} €</strong>
-    </div>
-
-    <div style="margin-bottom:10px;">
-      Ersparnis:
-      <strong>${result.savings.toFixed(2)} €</strong>
-    </div>
-
-    <div style="margin-bottom:10px;">
-      Möglicher Gewinn:
-      <strong>${result.profit.toFixed(2)} €</strong>
-    </div>
-
-    <div style="margin-top:18px;">
-      <div style="display:flex;justify-content:space-between;">
-        <span>Deal-Score</span>
-        <strong>${result.dealScore}/100 - ${result.dealLabel}</strong>
-      </div>
-
-      <div style="height:14px;background:#ffffff22;border-radius:20px;overflow:hidden;margin-top:8px;">
-        <div style="
-          width:${result.dealScore}%;
-          height:100%;
-          background:linear-gradient(90deg,#ff4d4d,#ffd84d,#37e27d);
-        "></div>
-      </div>
-    </div>
-
-    <div style="margin-top:18px;">
-      <div style="display:flex;justify-content:space-between;">
-        <span>Resell-Score</span>
-        <strong>${result.resellScore}/100 - ${result.resellLabel}</strong>
-      </div>
-
-      <div style="height:14px;background:#ffffff22;border-radius:20px;overflow:hidden;margin-top:8px;">
-        <div style="
-          width:${result.resellScore}%;
-          height:100%;
-          background:linear-gradient(90deg,#ff4d4d,#ffd84d,#37e27d);
-        "></div>
-      </div>
-    </div>
-
-    <div style="margin-top:14px;font-size:12px;opacity:.7;">
-      Werte sind Schätzungen und keine Garantie für einen tatsächlichen Verkaufspreis.
-    </div>
-  `;
-}
-
-// TESTWERTE
-renderDealScore(
-  620,  // Kaufpreis
-  700,  // Marktpreis
-  730,  // geschätzter Verkaufspreis
-  20    // Gebühren / Versand
-);
-</script>

@@ -166,5 +166,76 @@
       if (e.key === "Enter") searchDeals();
     });
   </script>
+</script>
 </body>
+</html></body><script>
+document.addEventListener('click', function(event) {
+  const target = event.target.closest('button, a');
+  if (!target) return;
+
+  const text = (target.innerText || target.textContent || '').trim();
+
+  if (window.posthog) {
+    posthog.capture('dealfaz_click', {
+      button_text: text,
+      page: window.location.pathname
+    });
+  }
+});
+</script>
+
+<script>
+document.addEventListener('click', function(event) {
+  const target = event.target.closest('button, a');
+  if (!target) return;
+
+  const text = (target.innerText || target.textContent || '').trim();
+
+  if (window.posthog) {
+    posthog.capture('dealfaz_click', {
+      button_text: text,
+      page: window.location.pathname
+    });
+  }
+});
+</script>
+
+</body>
+</html></script>
+
+<script>
+document.addEventListener('click', function(event) {<script>
+document.addEventListener('click', function(event) {
+  const target = event.target.closest('button, a');
+  if (!target) return;
+
+  const text = (target.innerText || target.textContent || '').trim();
+
+  if (window.posthog) {
+    posthog.capture('dealfaz_click', {
+      button_text: text,
+      page: window.location.pathname
+    });
+  }
+});
+</script>
+
+<script>
+document.addEventListener('click', function(event) {
+  const target = event.target.closest('button, a');
+  if (!target) return;
+
+  const text = (target.innerText || target.textContent || '').trim();
+
+  if (window.posthog) {
+    posthog.capture('dealfaz_click', {
+      button_text: text,
+      page: window.location.pathname
+    });
+  }
+});
+</script>
+
+</body>
+</html>
 </html>

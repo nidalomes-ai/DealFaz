@@ -5,14 +5,14 @@
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
   >
 
-  <title>DealFaz – Deals finden & clever weiterverkaufen</title>
+  <title>DealFaz – Deals finden & Angebote vergleichen</title>
 
   <meta
     name="description"
-    content="DealFaz hilft dir, Produkte schnell auf eBay und Kleinanzeigen zu suchen, Angebote zu vergleichen und Reselling-Chancen zu entdecken."
+    content="DealFaz hilft dir, Produkte auf mehreren Marktplätzen zu suchen und Angebote schnell zu vergleichen. Ohne Anmeldung."
   >
 
   <meta
@@ -20,14 +20,29 @@
     content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
   >
 
-  <meta name="theme-color" content="#07111f">
+  <meta name="theme-color" content="#06101e">
 
-  <meta property="og:title" content="DealFaz – Finde den Deal. Mach mehr daraus.">
+  <meta property="og:type" content="website">
+  <meta
+    property="og:title"
+    content="DealFaz – Finde den Deal. Mach mehr daraus."
+  >
   <meta
     property="og:description"
-    content="Produkte suchen, Angebote vergleichen und Reselling-Chancen entdecken."
+    content="Eine Suche. Mehrere Marktplätze. Angebote schneller vergleichen."
   >
-  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta
+    name="twitter:title"
+    content="DealFaz – Deals finden"
+  >
+  <meta
+    name="twitter:description"
+    content="Produkte auf mehreren Marktplätzen suchen und vergleichen."
+  >
+
+  <link id="canonicalLink" rel="canonical" href="">
 
   <style>
     * {
@@ -37,17 +52,21 @@
     }
 
     :root {
-      --bg-1: #050b14;
-      --bg-2: #07182c;
-      --bg-3: #0b2a52;
-      --card: rgba(255,255,255,0.075);
-      --card-border: rgba(255,255,255,0.13);
+      --bg1: #040914;
+      --bg2: #07182b;
+      --bg3: #0a2850;
+
       --text: #ffffff;
-      --muted: #aebed2;
-      --cyan: #53e3f2;
-      --cyan-2: #27c9e3;
-      --blue: #3878ff;
-      --shadow: 0 26px 70px rgba(0,0,0,0.35);
+      --muted: #9fb1c7;
+
+      --cyan: #54e6ef;
+      --cyan2: #27cfe3;
+      --blue: #477cff;
+
+      --card: rgba(255,255,255,.065);
+      --border: rgba(255,255,255,.12);
+
+      --shadow: 0 25px 70px rgba(0,0,0,.35);
     }
 
     html {
@@ -56,6 +75,7 @@
 
     body {
       min-height: 100vh;
+
       font-family:
         Inter,
         ui-sans-serif,
@@ -70,20 +90,20 @@
 
       background:
         radial-gradient(
-          circle at 15% 15%,
-          rgba(36,104,255,0.23),
-          transparent 34%
+          circle at 15% 10%,
+          rgba(49,103,255,.24),
+          transparent 32%
         ),
         radial-gradient(
-          circle at 85% 20%,
-          rgba(33,221,239,0.14),
-          transparent 30%
+          circle at 87% 20%,
+          rgba(61,226,241,.14),
+          transparent 28%
         ),
         linear-gradient(
           135deg,
-          var(--bg-1) 0%,
-          var(--bg-2) 48%,
-          var(--bg-3) 100%
+          var(--bg1),
+          var(--bg2) 50%,
+          var(--bg3)
         );
 
       overflow-x: hidden;
@@ -93,38 +113,36 @@
       content: "";
       position: fixed;
       inset: 0;
+
       pointer-events: none;
 
       background:
         linear-gradient(
-          rgba(255,255,255,0.018) 1px,
+          rgba(255,255,255,.018) 1px,
           transparent 1px
         ),
         linear-gradient(
           90deg,
-          rgba(255,255,255,0.018) 1px,
+          rgba(255,255,255,.018) 1px,
           transparent 1px
         );
 
-      background-size: 42px 42px;
-      mask-image: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.55),
-        transparent
-      );
+      background-size: 45px 45px;
     }
 
+    button,
+    input,
     a {
-      color: inherit;
+      font: inherit;
     }
 
     .page {
-      width: min(1180px, calc(100% - 34px));
-      margin: 0 auto;
+      width: min(1160px, calc(100% - 32px));
+      margin: auto;
     }
 
     .topbar {
-      min-height: 78px;
+      min-height: 76px;
 
       display: flex;
       align-items: center;
@@ -138,19 +156,25 @@
       align-items: center;
       gap: 11px;
 
-      font-weight: 900;
       font-size: 21px;
-      letter-spacing: -0.7px;
+      font-weight: 900;
+
+      letter-spacing: -.7px;
     }
 
-    .brand-mark {
+    .logo {
       width: 38px;
       height: 38px;
 
       display: grid;
       place-items: center;
 
-      border-radius: 13px;
+      border-radius: 12px;
+
+      color: #05121c;
+
+      font-size: 18px;
+      font-weight: 1000;
 
       background:
         linear-gradient(
@@ -159,41 +183,35 @@
           var(--blue)
         );
 
-      color: #04111d;
-
-      font-size: 18px;
-      font-weight: 1000;
-
       box-shadow:
-        0 10px 30px rgba(46,207,236,0.25);
+        0 10px 30px rgba(65,214,237,.24);
     }
 
     .region {
-      font-size: 13px;
-      color: var(--muted);
-
       padding: 8px 12px;
 
-      border: 1px solid var(--card-border);
       border-radius: 999px;
 
-      background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+      background: rgba(255,255,255,.035);
     }
 
     .hero {
-      min-height: calc(100vh - 135px);
+      min-height: calc(100vh - 130px);
+
+      padding: 65px 0 70px;
 
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
 
       text-align: center;
-
-      padding:
-        55px 0
-        75px;
     }
 
     .eyebrow {
@@ -201,19 +219,22 @@
       align-items: center;
       gap: 8px;
 
-      margin-bottom: 22px;
-
       padding: 8px 14px;
 
-      font-size: 12px;
-      font-weight: 700;
+      margin-bottom: 23px;
 
       border-radius: 999px;
 
-      background: rgba(75,218,241,0.075);
-      border: 1px solid rgba(83,227,242,0.20);
+      border:
+        1px solid rgba(84,230,239,.20);
 
-      color: #bfeff7;
+      color: #c8f7fa;
+
+      background:
+        rgba(84,230,239,.065);
+
+      font-size: 12px;
+      font-weight: 750;
     }
 
     .dot {
@@ -221,22 +242,21 @@
       height: 7px;
 
       border-radius: 50%;
+
       background: var(--cyan);
 
       box-shadow:
-        0 0 18px rgba(83,227,242,0.9);
+        0 0 17px rgba(84,230,239,.9);
     }
 
     h1 {
-      max-width: 850px;
+      max-width: 900px;
 
-      font-size: clamp(
-        45px,
-        7vw,
-        82px
-      );
+      font-size:
+        clamp(45px, 7vw, 82px);
 
-      line-height: 0.98;
+      line-height: .99;
+
       letter-spacing: -4px;
 
       font-weight: 950;
@@ -245,187 +265,144 @@
     h1 span {
       display: block;
 
-      margin-top: 7px;
+      margin-top: 8px;
+
+      color: transparent;
 
       background:
         linear-gradient(
           90deg,
-          #55e7f2,
-          #34c7e9,
-          #5c8dff
+          #5ceaf2,
+          #31cae8,
+          #648cff
         );
 
       -webkit-background-clip: text;
       background-clip: text;
-
-      color: transparent;
     }
 
     .subtitle {
-      max-width: 690px;
+      max-width: 700px;
 
-      margin: 26px auto 0;
+      margin: 25px auto 0;
 
       color: var(--muted);
 
-      font-size: clamp(
-        15px,
-        2vw,
-        18px
-      );
+      font-size:
+        clamp(15px, 2vw, 18px);
 
       line-height: 1.65;
     }
 
-    .search-card {
-      width: min(790px, 100%);
+    .searchbox {
+      width: min(810px, 100%);
+
+      display: flex;
+
+      gap: 10px;
 
       margin-top: 35px;
 
-      padding: 11px;
-
-      display: flex;
-      gap: 10px;
+      padding: 10px;
 
       border-radius: 20px;
 
-      background:
-        rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,.15);
 
-      border:
-        1px solid rgba(255,255,255,0.16);
-
-      box-shadow: var(--shadow);
+      background: rgba(255,255,255,.08);
 
       backdrop-filter: blur(18px);
+
+      box-shadow: var(--shadow);
     }
 
-    .search-card input {
+    .searchbox input {
       flex: 1;
       min-width: 0;
 
       height: 58px;
 
-      border: 0;
-      outline: 0;
+      border: none;
+      outline: none;
+
+      border-radius: 14px;
 
       padding: 0 20px;
 
-      border-radius: 14px;
+      background: white;
+      color: #0b1724;
 
       font-size: 16px;
-
-      color: #0c1724;
-      background: #ffffff;
-
-      box-shadow:
-        inset 0 0 0 1px rgba(0,0,0,0.04);
     }
 
-    .search-card input::placeholder {
-      color: #8391a2;
+    .searchbox input::placeholder {
+      color: #8290a0;
     }
 
-    .search-card button {
-      min-width: 145px;
+    .searchbox button {
+      min-width: 150px;
+
       height: 58px;
 
-      border: 0;
-      border-radius: 14px;
-
       padding: 0 20px;
+
+      border: none;
+
+      border-radius: 14px;
 
       cursor: pointer;
 
-      font-weight: 850;
-      font-size: 14px;
+      color: #04121c;
 
-      color: #05121c;
+      font-size: 14px;
+      font-weight: 900;
 
       background:
         linear-gradient(
           135deg,
-          #63edf4,
-          #35cde8
+          #65edf3,
+          #31cee6
         );
 
       transition:
-        transform 0.16s ease,
-        box-shadow 0.16s ease,
-        filter 0.16s ease;
+        transform .15s ease,
+        filter .15s ease;
     }
 
-    .search-card button:hover {
+    .searchbox button:hover {
       transform: translateY(-2px);
-
-      box-shadow:
-        0 10px 30px rgba(55,215,238,0.25);
-
-      filter: brightness(1.05);
-    }
-
-    .search-card button:active {
-      transform: translateY(0);
+      filter: brightness(1.06);
     }
 
     .hint {
       margin-top: 13px;
 
-      color: #8195ad;
+      color: #778da5;
 
       font-size: 12px;
     }
 
     .results {
-      width: min(790px, 100%);
+      width: min(900px, 100%);
 
       display: none;
 
-      margin-top: 18px;
-
-      padding: 20px;
-
-      text-align: left;
-
-      border-radius: 20px;
-
-      background:
-        rgba(255,255,255,0.065);
-
-      border:
-        1px solid rgba(255,255,255,0.12);
-
-      backdrop-filter: blur(14px);
-
-      box-shadow:
-        0 20px 60px rgba(0,0,0,0.20);
+      margin-top: 25px;
     }
 
     .results.show {
       display: block;
-      animation: appear 0.22s ease;
     }
 
-    @keyframes appear {
-      from {
-        opacity: 0;
-        transform: translateY(6px);
-      }
+    .result-head {
+      margin-bottom: 14px;
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .results-title {
-      font-size: 14px;
       color: var(--muted);
 
-      margin-bottom: 15px;
+      font-size: 13px;
     }
 
-    .results-title strong {
+    .result-head strong {
       color: white;
     }
 
@@ -433,154 +410,277 @@
       display: grid;
 
       grid-template-columns:
-        repeat(2, minmax(0,1fr));
+        repeat(3, minmax(0,1fr));
 
-      gap: 12px;
+      gap: 11px;
+
+      text-align: left;
     }
 
-    .market-link {
-      position: relative;
+    .market {
+      min-height: 100px;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      gap: 15px;
-
-      min-height: 80px;
+      gap: 12px;
 
       padding: 17px;
 
-      border-radius: 16px;
-
       text-decoration: none;
 
+      border-radius: 17px;
+
+      color: white;
+
       border:
-        1px solid rgba(255,255,255,0.10);
+        1px solid rgba(255,255,255,.105);
 
       background:
-        rgba(255,255,255,0.055);
+        rgba(255,255,255,.052);
+
+      backdrop-filter: blur(12px);
 
       transition:
-        transform .16s ease,
-        background .16s ease,
-        border-color .16s ease;
+        transform .15s ease,
+        border-color .15s ease,
+        background .15s ease;
     }
 
-    .market-link:hover {
+    .market:hover {
       transform: translateY(-2px);
 
-      background:
-        rgba(255,255,255,0.095);
-
       border-color:
-        rgba(83,227,242,0.28);
-    }
-
-    .market-left {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-    }
-
-    .market-icon {
-      width: 43px;
-      height: 43px;
-
-      display: grid;
-      place-items: center;
-
-      flex: 0 0 auto;
-
-      border-radius: 13px;
+        rgba(84,230,239,.32);
 
       background:
-        rgba(83,227,242,0.10);
+        rgba(255,255,255,.085);
+    }
 
-      color: var(--cyan);
-
-      font-weight: 950;
+    .market-main {
+      min-width: 0;
     }
 
     .market-name {
       display: block;
 
-      color: white;
-
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 850;
     }
 
-    .market-desc {
+    .market-description {
       display: block;
 
-      margin-top: 3px;
+      margin-top: 5px;
 
-      font-size: 12px;
+      color: #899db4;
 
-      color: #92a4b8;
+      font-size: 11px;
+      line-height: 1.4;
     }
 
     .arrow {
+      flex: 0 0 auto;
+
       color: var(--cyan);
-      font-size: 21px;
+
+      font-size: 22px;
     }
 
-    .benefits {
-      width: min(790px, 100%);
+    .independent {
+      width: min(900px, 100%);
+
+      margin-top: 17px;
+
+      padding: 13px 16px;
+
+      border-radius: 14px;
+
+      color: #8094aa;
+
+      background:
+        rgba(255,255,255,.025);
+
+      border:
+        1px solid rgba(255,255,255,.065);
+
+      font-size: 11px;
+
+      line-height: 1.55;
+    }
+
+    .features {
+      width: min(810px, 100%);
 
       display: grid;
 
       grid-template-columns:
-        repeat(3, minmax(0,1fr));
+        repeat(3, 1fr);
 
       gap: 10px;
 
-      margin-top: 20px;
+      margin-top: 24px;
     }
 
-    .benefit {
-      padding: 15px 12px;
+    .feature {
+      padding: 15px;
 
       border-radius: 14px;
 
       border:
-        1px solid rgba(255,255,255,0.08);
+        1px solid rgba(255,255,255,.07);
 
       background:
-        rgba(255,255,255,0.035);
+        rgba(255,255,255,.025);
     }
 
-    .benefit strong {
+    .feature strong {
       display: block;
 
       font-size: 13px;
     }
 
-    .benefit span {
+    .feature span {
       display: block;
 
       margin-top: 5px;
 
-      color: #8193a8;
+      color: #8093aa;
 
       font-size: 11px;
+
       line-height: 1.45;
     }
 
     footer {
-      width: min(900px, calc(100% - 34px));
+      width: min(1000px, calc(100% - 32px));
 
-      margin: 0 auto;
+      margin: auto;
 
-      padding: 25px 0 35px;
+      padding: 30px 0 40px;
+
+      border-top:
+        1px solid rgba(255,255,255,.06);
 
       text-align: center;
 
-      color: #71839a;
+      color: #71849a;
 
       font-size: 11px;
-      line-height: 1.6;
+
+      line-height: 1.65;
+    }
+
+    .footer-links {
+      display: flex;
+
+      justify-content: center;
+      flex-wrap: wrap;
+
+      gap: 15px;
+
+      margin-bottom: 13px;
+    }
+
+    .footer-link {
+      border: 0;
+
+      color: #a9bacd;
+
+      cursor: pointer;
+
+      background: transparent;
+
+      text-decoration: underline;
+
+      text-underline-offset: 3px;
+    }
+
+    .modal {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 1000;
+
+      display: none;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+
+      background: rgba(0,0,0,.72);
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-card {
+      position: relative;
+
+      width: min(670px, 100%);
+
+      max-height: 80vh;
+
+      overflow-y: auto;
+
+      padding: 28px;
+
+      border-radius: 20px;
+
+      border:
+        1px solid rgba(255,255,255,.13);
+
+      background: #091725;
+
+      box-shadow:
+        0 25px 80px rgba(0,0,0,.5);
+
+      text-align: left;
+    }
+
+    .modal-card h2 {
+      margin-bottom: 15px;
+
+      font-size: 23px;
+    }
+
+    .modal-card p {
+      margin-bottom: 13px;
+
+      color: #afc0d2;
+
+      line-height: 1.65;
+
+      font-size: 13px;
+    }
+
+    .modal-card strong {
+      color: white;
+    }
+
+    .close {
+      position: absolute;
+
+      top: 15px;
+      right: 15px;
+
+      width: 36px;
+      height: 36px;
+
+      border: 1px solid rgba(255,255,255,.1);
+
+      border-radius: 50%;
+
+      cursor: pointer;
+
+      color: white;
+
+      background:
+        rgba(255,255,255,.05);
     }
 
     .toast {
@@ -589,47 +689,53 @@
       left: 50%;
       bottom: 25px;
 
-      transform:
-        translate(-50%, 20px);
+      z-index: 2000;
 
       opacity: 0;
+
       pointer-events: none;
+
+      transform:
+        translate(-50%, 15px);
 
       padding: 11px 16px;
 
       border-radius: 999px;
 
-      background:
-        rgba(6,17,31,0.94);
-
-      border:
-        1px solid rgba(255,255,255,0.12);
-
       color: white;
 
-      font-size: 12px;
+      border:
+        1px solid rgba(255,255,255,.12);
 
-      box-shadow:
-        0 15px 50px rgba(0,0,0,0.35);
+      background: #081524;
+
+      font-size: 12px;
 
       transition:
         opacity .2s ease,
         transform .2s ease;
-
-      z-index: 999;
     }
 
     .toast.show {
       opacity: 1;
 
       transform:
-        translate(-50%, 0);
+        translate(-50%,0);
     }
 
-    @media (max-width: 700px) {
+    @media(max-width:800px) {
+
+      .market-grid {
+        grid-template-columns:
+          repeat(2, minmax(0,1fr));
+      }
+
+    }
+
+    @media(max-width:620px) {
+
       .page {
-        width:
-          min(100% - 22px, 1180px);
+        width: min(100% - 22px, 1160px);
       }
 
       .topbar {
@@ -640,363 +746,708 @@
         font-size: 18px;
       }
 
-      .brand-mark {
+      .logo {
         width: 34px;
         height: 34px;
-
-        border-radius: 11px;
       }
 
       .region {
-        font-size: 10px;
-        padding: 7px 9px;
+        font-size: 9px;
       }
 
       .hero {
         min-height: auto;
-        padding: 60px 0 50px;
+
+        padding: 58px 0 50px;
       }
 
       h1 {
-        letter-spacing: -2.6px;
+        letter-spacing: -2.5px;
       }
 
-      .subtitle {
-        margin-top: 20px;
-      }
-
-      .search-card {
+      .searchbox {
         flex-direction: column;
 
         padding: 8px;
-
-        border-radius: 18px;
       }
 
-      .search-card input,
-      .search-card button {
+      .searchbox input,
+      .searchbox button {
         width: 100%;
-        min-width: 0;
-      }
-
-      .search-card input {
-        height: 56px;
-      }
-
-      .search-card button {
-        height: 53px;
       }
 
       .market-grid {
         grid-template-columns: 1fr;
       }
 
-      .benefits {
+      .features {
         grid-template-columns: 1fr;
       }
 
-      .benefit {
-        text-align: left;
-      }
     }
   </style>
 </head>
 
 <body>
 
-  <main class="page">
+<main class="page">
 
-    <header class="topbar">
+  <header class="topbar">
 
-      <div class="brand">
-        <div class="brand-mark">D</div>
-        <span>DealFaz</span>
+    <div class="brand">
+
+      <div class="logo">
+        D
       </div>
 
-      <div class="region">
-        Deutschland · Österreich · Schweiz
-      </div>
+      DealFaz
 
-    </header>
+    </div>
 
+    <div class="region">
+      Deutschland · Österreich · Schweiz
+    </div>
 
-    <section class="hero">
-
-      <div class="eyebrow">
-        <span class="dot"></span>
-        Deals & Reselling an einem Ort
-      </div>
-
-      <h1>
-        Finde den Deal.
-        <span>Mach mehr daraus.</span>
-      </h1>
-
-      <p class="subtitle">
-        Suche nach einem Artikel und öffne passende Suchen
-        bei eBay und Kleinanzeigen. Schnell vergleichen,
-        Chancen erkennen und selbst entscheiden.
-      </p>
+  </header>
 
 
-      <div class="search-card">
+  <section class="hero">
 
-        <input
-          id="query"
-          type="search"
-          autocomplete="off"
-          spellcheck="false"
-          placeholder="z. B. iPhone 16, PlayStation 5, MacBook Pro"
-          aria-label="Artikel suchen"
-        >
+    <div class="eyebrow">
 
-        <button
-          id="searchButton"
-          type="button"
-        >
-          Deal suchen
-        </button>
+      <span class="dot"></span>
 
-      </div>
+      Marktplätze schneller durchsuchen
 
-      <div class="hint">
-        Keine Anmeldung nötig · Suche öffnet den jeweiligen Marktplatz
-      </div>
+    </div>
 
 
-      <section
-        id="results"
-        class="results"
-        aria-live="polite"
+    <h1>
+
+      Finde den Deal.
+
+      <span>
+        Mach mehr daraus.
+      </span>
+
+    </h1>
+
+
+    <p class="subtitle">
+
+      Gib einen Artikel ein und öffne passende Suchen
+      auf mehreren Marktplätzen.
+      DealFaz verkauft die Produkte nicht selbst.
+
+    </p>
+
+
+    <div class="searchbox">
+
+      <input
+        id="query"
+        type="search"
+        placeholder="z. B. iPhone 16, PlayStation 5, MacBook Pro"
+        autocomplete="off"
+        spellcheck="false"
+        maxlength="120"
+        aria-label="Artikel suchen"
       >
 
-        <div class="results-title">
-          Suche nach:
-          <strong id="searchTerm"></strong>
-        </div>
+      <button
+        id="searchButton"
+        type="button"
+      >
+        Deal suchen
+      </button>
+
+    </div>
 
 
-        <div class="market-grid">
+    <div class="hint">
 
-          <a
-            id="ebayLink"
-            class="market-link"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+      Keine Anmeldung nötig ·
+      externe Marktplätze öffnen in einem neuen Tab
 
-            <span class="market-left">
-
-              <span class="market-icon">
-                e
-              </span>
-
-              <span>
-                <span class="market-name">
-                  eBay durchsuchen
-                </span>
-
-                <span class="market-desc">
-                  Angebote direkt auf eBay öffnen
-                </span>
-              </span>
-
-            </span>
-
-            <span class="arrow">
-              →
-            </span>
-
-          </a>
+    </div>
 
 
-          <a
-            id="kleinanzeigenLink"
-            class="market-link"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <section
+      id="results"
+      class="results"
+      aria-live="polite"
+    >
 
-            <span class="market-left">
+      <div class="result-head">
 
-              <span class="market-icon">
-                K
-              </span>
+        Suchmöglichkeiten für:
 
-              <span>
-                <span class="market-name">
-                  Kleinanzeigen durchsuchen
-                </span>
+        <strong id="searchTerm"></strong>
 
-                <span class="market-desc">
-                  Lokale und private Angebote ansehen
-                </span>
-              </span>
-
-            </span>
-
-            <span class="arrow">
-              →
-            </span>
-
-          </a>
-
-        </div>
-
-      </section>
+      </div>
 
 
-      <section class="benefits">
-
-        <div class="benefit">
-
-          <strong>
-            Schnell
-          </strong>
-
-          <span>
-            Eine Suche, direkte Wege zu relevanten Marktplätzen.
-          </span>
-
-        </div>
+      <div
+        id="marketGrid"
+        class="market-grid"
+      ></div>
 
 
-        <div class="benefit">
+      <div class="independent">
 
-          <strong>
-            Einfach
-          </strong>
+        DealFaz ist eine unabhängige Suchhilfe.
+        Die genannten Marktplätze sind externe Anbieter.
+        Eine geschäftliche Verbindung oder Partnerschaft
+        wird nur dann angegeben, wenn tatsächlich eine
+        entsprechende Vereinbarung besteht.
+        Preise, Verfügbarkeit und Vertragsbedingungen
+        gelten ausschließlich beim jeweiligen Anbieter.
 
-          <span>
-            Keine Registrierung und keine komplizierte Bedienung.
-          </span>
-
-        </div>
-
-
-        <div class="benefit">
-
-          <strong>
-            Reselling-Fokus
-          </strong>
-
-          <span>
-            Angebote vergleichen und interessante Chancen entdecken.
-          </span>
-
-        </div>
-
-      </section>
+      </div>
 
     </section>
 
-  </main>
+
+    <section class="features">
+
+      <div class="feature">
+
+        <strong>
+          Eine Suche
+        </strong>
+
+        <span>
+          Artikel nur einmal eingeben.
+        </span>
+
+      </div>
 
 
-  <footer>
+      <div class="feature">
 
-    DealFaz ist eine unabhängige Such- und Vergleichshilfe.
-    Preise, Verfügbarkeit und Angaben stammen von den jeweiligen
-    externen Marktplätzen und können sich ändern.
+        <strong>
+          Mehrere Quellen
+        </strong>
 
-  </footer>
+        <span>
+          Angebote bei verschiedenen Anbietern prüfen.
+        </span>
+
+      </div>
 
 
-  <div
-    id="toast"
-    class="toast"
-  >
-    Bitte zuerst einen Artikel eingeben.
+      <div class="feature">
+
+        <strong>
+          Unabhängig
+        </strong>
+
+        <span>
+          DealFaz verkauft keine dargestellten Produkte selbst.
+        </span>
+
+      </div>
+
+    </section>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <div class="footer-links">
+
+    <button
+      class="footer-link"
+      data-modal="aboutModal"
+    >
+      Hinweise
+    </button>
+
+    <button
+      class="footer-link"
+      data-modal="privacyModal"
+    >
+      Datenschutz
+    </button>
+
+    <button
+      class="footer-link"
+      data-modal="imprintModal"
+    >
+      Impressum
+    </button>
+
   </div>
 
 
-  <script>
+  DealFaz ermöglicht ausschließlich die Weiterleitung
+  zu externen Suchergebnissen.
 
-    const queryInput =
-      document.getElementById("query");
+  <br>
 
-    const searchButton =
-      document.getElementById("searchButton");
+  Marken und Unternehmensnamen gehören den jeweiligen
+  Rechteinhabern.
 
-    const results =
-      document.getElementById("results");
-
-    const searchTerm =
-      document.getElementById("searchTerm");
-
-    const ebayLink =
-      document.getElementById("ebayLink");
-
-    const kleinanzeigenLink =
-      document.getElementById("kleinanzeigenLink");
-
-    const toast =
-      document.getElementById("toast");
+</footer>
 
 
-    function trackEvent(
-      eventName,
-      properties = {}
-    ) {
+<div
+  id="toast"
+  class="toast"
+>
+  Bitte zuerst einen Artikel eingeben.
+</div>
 
-      try {
 
-        if (
-          window.posthog &&
-          typeof window.posthog.capture === "function"
-        ) {
+<div
+  id="aboutModal"
+  class="modal"
+  role="dialog"
+  aria-modal="true"
+>
 
-          window.posthog.capture(
-            eventName,
-            properties
-          );
+  <div class="modal-card">
+
+    <button
+      class="close"
+      aria-label="Schließen"
+    >
+      ×
+    </button>
+
+    <h2>
+      Hinweise
+    </h2>
+
+    <p>
+
+      <strong>DealFaz ist eine unabhängige Suchhilfe.</strong>
+
+      Die Website ermöglicht das Öffnen externer
+      Produktsuchen.
+
+    </p>
+
+    <p>
+
+      DealFaz stellt keine Verfügbarkeit,
+      keinen Preis und keinen wirtschaftlichen Erfolg
+      eines Kaufs oder Weiterverkaufs sicher.
+
+    </p>
+
+    <p>
+
+      Käufe und sonstige Verträge kommen ausschließlich
+      zwischen dem Nutzer und dem jeweiligen externen
+      Anbieter zustande.
+
+    </p>
+
+  </div>
+
+</div>
+
+
+<div
+  id="privacyModal"
+  class="modal"
+  role="dialog"
+  aria-modal="true"
+>
+
+  <div class="modal-card">
+
+    <button
+      class="close"
+      aria-label="Schließen"
+    >
+      ×
+    </button>
+
+    <h2>
+      Datenschutz
+    </h2>
+
+    <p>
+
+      DealFaz verwendet eine technisch reduzierte
+      Nutzungsanalyse mit PostHog.
+
+    </p>
+
+    <p>
+
+      Erfasst werden technische Ereignisse wie
+      Seitenaufruf, ausgeführte Suche und das
+      Öffnen eines Marktplatzes.
+
+    </p>
+
+    <p>
+
+      DealFaz übermittelt dabei über den eigenen Code
+      keine Namen, E-Mail-Adressen oder eingegebenen
+      Kontaktdaten an PostHog.
+
+    </p>
+
+    <p>
+
+      Session Recording und automatische
+      Seitenelement-Aufzeichnung sind in dieser
+      Integration deaktiviert.
+      Die Analyse verwendet keine dauerhafte
+      Browser-Persistenz durch DealFaz.
+
+    </p>
+
+    <p>
+
+      Bei Klick auf einen externen Anbieter
+      verlässt der Nutzer DealFaz.
+      Anschließend gelten die Datenschutzbestimmungen
+      des jeweiligen Anbieters.
+
+    </p>
+
+  </div>
+
+</div>
+
+
+<div
+  id="imprintModal"
+  class="modal"
+  role="dialog"
+  aria-modal="true"
+>
+
+  <div class="modal-card">
+
+    <button
+      class="close"
+      aria-label="Schließen"
+    >
+      ×
+    </button>
+
+    <h2>
+      Impressum
+    </h2>
+
+    <p>
+
+      Die gesetzlich erforderlichen Betreiberangaben
+      müssen hier vor einem geschäftsmäßigen Betrieb
+      vollständig eingetragen werden.
+
+    </p>
+
+    <p>
+
+      <strong>
+        Noch nicht veröffentlichungsfertig:
+      </strong>
+
+      Name bzw. Unternehmensname,
+      ladungsfähige Anschrift und eine
+      direkte Kontaktmöglichkeit fehlen noch.
+
+    </p>
+
+  </div>
+
+</div>
+
+
+<script>
+
+  /*
+    ===========================================
+    DEALFAZ POSTHOG
+    ===========================================
+    Datenschutzreduzierte Konfiguration:
+    - kein Autocapture
+    - kein Session Recording
+    - keine dauerhafte Browser-Persistenz
+    - keine Personenprofile für anonyme Besucher
+  */
+
+  !function(t,e){
+
+    var o,n,p,r;
+
+    e.__SV ||
+    (window.posthog && window.posthog.__loaded) ||
+    (
+      window.posthog = e,
+      e._i = [],
+
+      e.init = function(i,s,a){
+
+        function g(t,e){
+
+          var o = e.split(".");
+
+          if (o.length === 2) {
+            t = t[o[0]];
+            e = o[1];
+          }
+
+          t[e] = function(){
+
+            t.push(
+              [e].concat(
+                Array.prototype.slice.call(
+                  arguments,
+                  0
+                )
+              )
+            );
+
+          };
 
         }
 
-      } catch (error) {
 
-        console.log(
-          "Tracking nicht verfügbar"
+        p = t.createElement("script");
+
+        p.type = "text/javascript";
+        p.crossOrigin = "anonymous";
+        p.async = true;
+
+        p.src =
+          s.api_host.replace(
+            ".i.posthog.com",
+            "-assets.i.posthog.com"
+          ) +
+          "/static/array.js";
+
+
+        r =
+          t.getElementsByTagName(
+            "script"
+          )[0];
+
+        r.parentNode.insertBefore(
+          p,
+          r
+        );
+
+
+        var u = e;
+
+        if (a !== undefined) {
+
+          u = e[a] = [];
+
+        } else {
+
+          a = "posthog";
+
+        }
+
+
+        [
+          "init",
+          "capture",
+          "opt_out_capturing",
+          "opt_in_capturing"
+        ].forEach(
+          function(name){
+
+            g(
+              u,
+              name
+            );
+
+          }
+        );
+
+
+        e._i.push(
+          [i,s,a]
+        );
+
+      },
+
+      e.__SV = 1
+    );
+
+  }(
+    document,
+    window.posthog || []
+  );
+
+
+  posthog.init(
+    "phc_rFgxJmxxvwc6zPwq393rpTSYTgJZDKGzsoeLYebFPNxd",
+    {
+
+      api_host:
+        "https://eu.i.posthog.com",
+
+      defaults:
+        "2026-05-30",
+
+      autocapture:
+        false,
+
+      capture_pageview:
+        false,
+
+      capture_pageleave:
+        false,
+
+      disable_session_recording:
+        true,
+
+      persistence:
+        "memory",
+
+      person_profiles:
+        "identified_only",
+
+      mask_all_text:
+        true,
+
+      mask_all_element_attributes:
+        true
+
+    }
+  );
+
+
+  function track(
+    eventName,
+    properties
+  ) {
+
+    try {
+
+      if (
+        window.posthog &&
+        typeof window.posthog.capture
+          === "function"
+      ) {
+
+        window.posthog.capture(
+          eventName,
+          properties || {}
         );
 
       }
 
-    }
+    } catch (error) {
 
-
-    function showToast() {
-
-      toast.classList.add("show");
-
-      setTimeout(
-        function () {
-
-          toast.classList.remove("show");
-
-        },
-        1800
+      console.log(
+        "Analytics unavailable"
       );
 
     }
 
+  }
 
-    function cleanQuery(value) {
 
-      return value
-        .replace(/\s+/g, " ")
-        .trim();
-
+  track(
+    "dealfaz_pageview",
+    {
+      page:
+        window.location.pathname
     }
+  );
 
 
-    function createKleinanzeigenUrl(
-      query
-    ) {
+  /*
+    ===========================================
+    SEO
+    ===========================================
+  */
 
-      const slug =
-        query
+  const canonical =
+    window.location.origin +
+    window.location.pathname;
+
+  document
+    .getElementById("canonicalLink")
+    .href = canonical;
+
+
+  const schema = {
+
+    "@context":
+      "https://schema.org",
+
+    "@type":
+      "WebSite",
+
+    "name":
+      "DealFaz",
+
+    "url":
+      canonical,
+
+    "description":
+      "Unabhängige Suchhilfe für Angebote auf externen Marktplätzen."
+
+  };
+
+
+  const schemaScript =
+    document.createElement(
+      "script"
+    );
+
+  schemaScript.type =
+    "application/ld+json";
+
+  schemaScript.text =
+    JSON.stringify(schema);
+
+  document.head.appendChild(
+    schemaScript
+  );
+
+
+  /*
+    ===========================================
+    MARKTPLÄTZE
+    ===========================================
+  */
+
+  const markets = [
+
+    {
+      id: "ebay",
+      name: "eBay",
+      description:
+        "Angebote auf eBay suchen",
+
+      url: function(q) {
+
+        return (
+          "https://www.ebay.de/sch/i.html?_nkw=" +
+          encodeURIComponent(q)
+        );
+
+      }
+    },
+
+
+    {
+      id: "kleinanzeigen",
+      name: "Kleinanzeigen",
+      description:
+        "Private und lokale Angebote suchen",
+
+      url: function(q) {
+
+        const slug =
+          q
           .toLowerCase()
           .normalize("NFD")
           .replace(
@@ -1012,113 +1463,306 @@
             ""
           );
 
-      return (
-        "https://www.kleinanzeigen.de/s-" +
-        encodeURIComponent(slug) +
-        "/k0"
-      );
-
-    }
-
-
-    function searchDeals() {
-
-      const query =
-        cleanQuery(
-          queryInput.value
+        return (
+          "https://www.kleinanzeigen.de/s-" +
+          encodeURIComponent(slug) +
+          "/k0"
         );
-
-
-      if (!query) {
-
-        showToast();
-
-        queryInput.focus();
-
-        return;
 
       }
+    },
 
 
-      searchTerm.textContent =
-        query;
+    {
+      id: "amazon",
+      name: "Amazon",
+      description:
+        "Produkte auf Amazon suchen",
 
+      url: function(q) {
 
-      ebayLink.href =
-        "https://www.ebay.de/sch/i.html?_nkw=" +
-        encodeURIComponent(query);
-
-
-      kleinanzeigenLink.href =
-        createKleinanzeigenUrl(
-          query
+        return (
+          "https://www.amazon.de/s?k=" +
+          encodeURIComponent(q)
         );
 
-
-      results.classList.add(
-        "show"
-      );
+      }
+    },
 
 
-      trackEvent(
-        "dealfaz_search",
-        {
-          query: query,
-          page:
-            window.location.pathname
-        }
-      );
+    {
+      id: "google-shopping",
+      name: "Google Shopping",
+      description:
+        "Shops und Produkte vergleichen",
+
+      url: function(q) {
+
+        return (
+          "https://www.google.com/search?tbm=shop&q=" +
+          encodeURIComponent(q)
+        );
+
+      }
+    },
 
 
-      results.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest"
-      });
+    {
+      id: "idealo",
+      name: "idealo",
+      description:
+        "Preisvergleich öffnen",
 
+      url: function(q) {
+
+        return (
+          "https://www.idealo.de/preisvergleich/MainSearchProductCategory.html?q=" +
+          encodeURIComponent(q)
+        );
+
+      }
+    },
+
+
+    {
+      id: "geizhals",
+      name: "Geizhals",
+      description:
+        "Preise und Angebote vergleichen",
+
+      url: function(q) {
+
+        return (
+          "https://geizhals.de/?fs=" +
+          encodeURIComponent(q)
+        );
+
+      }
+    },
+
+
+    {
+      id: "kaufland",
+      name: "Kaufland",
+      description:
+        "Marketplace durchsuchen",
+
+      url: function(q) {
+
+        return (
+          "https://www.kaufland.de/product-search/?search_value=" +
+          encodeURIComponent(q)
+        );
+
+      }
+    },
+
+
+    {
+      id: "hood",
+      name: "Hood",
+      description:
+        "Marketplace-Angebote suchen",
+
+      url: function(q) {
+
+        return (
+          "https://www.hood.de/suchergebnisse.htm?q=" +
+          encodeURIComponent(q)
+        );
+
+      }
+    },
+
+
+    {
+      id: "backmarket",
+      name: "Back Market",
+      description:
+        "Refurbished-Technik durchsuchen",
+
+      url: function(q) {
+
+        return (
+          "https://www.backmarket.de/de-de/search?q=" +
+          encodeURIComponent(q)
+        );
+
+      }
     }
 
+  ];
 
-    searchButton.addEventListener(
-      "click",
-      searchDeals
+
+  const input =
+    document.getElementById(
+      "query"
+    );
+
+  const searchButton =
+    document.getElementById(
+      "searchButton"
+    );
+
+  const results =
+    document.getElementById(
+      "results"
+    );
+
+  const grid =
+    document.getElementById(
+      "marketGrid"
+    );
+
+  const searchTerm =
+    document.getElementById(
+      "searchTerm"
+    );
+
+  const toast =
+    document.getElementById(
+      "toast"
     );
 
 
-    queryInput.addEventListener(
-      "keydown",
-      function (event) {
+  function cleanQuery(value) {
 
-        if (
-          event.key === "Enter"
-        ) {
+    return String(value || "")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0,120);
 
-          event.preventDefault();
+  }
 
-          searchDeals();
 
-        }
+  function showToast() {
 
-      }
+    toast.classList.add(
+      "show"
+    );
+
+    setTimeout(
+      function(){
+
+        toast.classList.remove(
+          "show"
+        );
+
+      },
+      1700
+    );
+
+  }
+
+
+  function createMarketCard(
+    market,
+    query
+  ) {
+
+    const link =
+      document.createElement(
+        "a"
+      );
+
+    link.className =
+      "market";
+
+    link.href =
+      market.url(query);
+
+    link.target =
+      "_blank";
+
+    link.rel =
+      "noopener noreferrer external";
+
+    link.setAttribute(
+      "aria-label",
+      market.name +
+      " nach " +
+      query +
+      " durchsuchen"
     );
 
 
-    ebayLink.addEventListener(
-      "click",
-      function () {
+    const main =
+      document.createElement(
+        "span"
+      );
 
-        trackEvent(
+    main.className =
+      "market-main";
+
+
+    const name =
+      document.createElement(
+        "span"
+      );
+
+    name.className =
+      "market-name";
+
+    name.textContent =
+      market.name;
+
+
+    const description =
+      document.createElement(
+        "span"
+      );
+
+    description.className =
+      "market-description";
+
+    description.textContent =
+      market.description;
+
+
+    const arrow =
+      document.createElement(
+        "span"
+      );
+
+    arrow.className =
+      "arrow";
+
+    arrow.textContent =
+      "→";
+
+
+    main.appendChild(
+      name
+    );
+
+    main.appendChild(
+      description
+    );
+
+
+    link.appendChild(
+      main
+    );
+
+    link.appendChild(
+      arrow
+    );
+
+
+    link.addEventListener(
+      "click",
+      function(){
+
+        track(
           "dealfaz_click",
           {
-            marketplace:
-              "ebay",
 
-            query:
-              cleanQuery(
-                queryInput.value
-              ),
+            marketplace:
+              market.id,
 
             page:
               window.location.pathname
+
           }
         );
 
@@ -1126,30 +1770,245 @@
     );
 
 
-    kleinanzeigenLink.addEventListener(
-      "click",
-      function () {
+    return link;
 
-        trackEvent(
-          "dealfaz_click",
-          {
-            marketplace:
-              "kleinanzeigen",
+  }
 
-            query:
-              cleanQuery(
-                queryInput.value
-              ),
 
-            page:
-              window.location.pathname
+  function performSearch() {
+
+    const query =
+      cleanQuery(
+        input.value
+      );
+
+
+    if (!query) {
+
+      showToast();
+
+      input.focus();
+
+      return;
+
+    }
+
+
+    input.value =
+      query;
+
+
+    searchTerm.textContent =
+      query;
+
+
+    grid.replaceChildren();
+
+
+    markets.forEach(
+      function(market){
+
+        grid.appendChild(
+          createMarketCard(
+            market,
+            query
+          )
+        );
+
+      }
+    );
+
+
+    results.classList.add(
+      "show"
+    );
+
+
+    track(
+      "dealfaz_search",
+      {
+
+        page:
+          window.location.pathname,
+
+        marketplace_count:
+          markets.length
+
+      }
+    );
+
+
+    const url =
+      new URL(
+        window.location.href
+      );
+
+    url.searchParams.set(
+      "q",
+      query
+    );
+
+
+    history.replaceState(
+      null,
+      "",
+      url
+    );
+
+
+    results.scrollIntoView({
+      behavior:
+        "smooth",
+
+      block:
+        "nearest"
+    });
+
+  }
+
+
+  searchButton.addEventListener(
+    "click",
+    performSearch
+  );
+
+
+  input.addEventListener(
+    "keydown",
+    function(event){
+
+      if (
+        event.key === "Enter"
+      ) {
+
+        event.preventDefault();
+
+        performSearch();
+
+      }
+
+    }
+  );
+
+
+  /*
+    Vorhandene Suchanfrage aus URL laden.
+  */
+
+  const startQuery =
+    cleanQuery(
+      new URLSearchParams(
+        window.location.search
+      ).get("q")
+    );
+
+
+  if (startQuery) {
+
+    input.value =
+      startQuery;
+
+    performSearch();
+
+  }
+
+
+  /*
+    ===========================================
+    MODALS
+    ===========================================
+  */
+
+  document
+    .querySelectorAll(
+      "[data-modal]"
+    )
+    .forEach(
+      function(button){
+
+        button.addEventListener(
+          "click",
+          function(){
+
+            const modal =
+              document.getElementById(
+                button.dataset.modal
+              );
+
+            if (modal) {
+
+              modal.classList.add(
+                "open"
+              );
+
+            }
+
           }
         );
 
       }
     );
 
-  </script>
+
+  document
+    .querySelectorAll(
+      ".modal"
+    )
+    .forEach(
+      function(modal){
+
+        modal.addEventListener(
+          "click",
+          function(event){
+
+            if (
+              event.target === modal ||
+              event.target.classList.contains(
+                "close"
+              )
+            ) {
+
+              modal.classList.remove(
+                "open"
+              );
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+
+  document.addEventListener(
+    "keydown",
+    function(event){
+
+      if (
+        event.key === "Escape"
+      ) {
+
+        document
+          .querySelectorAll(
+            ".modal.open"
+          )
+          .forEach(
+            function(modal){
+
+              modal.classList.remove(
+                "open"
+              );
+
+            }
+          );
+
+      }
+
+    }
+  );
+
+</script>
 
 </body>
 </html>

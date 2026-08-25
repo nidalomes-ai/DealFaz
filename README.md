@@ -1,5 +1,8 @@
 # DEALFAZ Reselling
 
+[![DEALFAZ Quality](https://github.com/nidalomes-ai/DealFaz/actions/workflows/quality.yml/badge.svg)](https://github.com/nidalomes-ai/DealFaz/actions/workflows/quality.yml)
+[![DEALFAZ Live Health](https://github.com/nidalomes-ai/DealFaz/actions/workflows/live-health.yml/badge.svg)](https://github.com/nidalomes-ai/DealFaz/actions/workflows/live-health.yml)
+
 **DEALFAZ** ist eine kostenlose, browserbasierte Reselling-Prüfung für Deutschland, Österreich und die Schweiz. Ziel ist eine schnelle, nachvollziehbare Entscheidung vor dem Einkauf – ohne Gewinnversprechen und ohne fremde Marktplatzdaten zu kopieren.
 
 ## Öffentliche DEALFAZ-Seite

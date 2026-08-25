@@ -1,52 +1,49 @@
 # DEALFAZ Reselling
 
-[![DEALFAZ Quality](https://github.com/nidalomes-ai/DealFaz/actions/workflows/quality.yml/badge.svg)](https://github.com/nidalomes-ai/DealFaz/actions/workflows/quality.yml)
-[![DEALFAZ Live Health](https://github.com/nidalomes-ai/DealFaz/actions/workflows/live-health.yml/badge.svg)](https://github.com/nidalomes-ai/DealFaz/actions/workflows/live-health.yml)
+**DEALFAZ** ist eine kostenlose browserbasierte Reselling-Prüfung für Deutschland, Österreich und die Schweiz. Der Fokus liegt auf einer schnellen, nachvollziehbaren Entscheidung vor dem Einkauf – ohne Gewinnversprechen und ohne fremde Marktplatzdaten zu kopieren.
 
-**DEALFAZ** ist eine kostenlose, browserbasierte Reselling-Prüfung für Deutschland, Österreich und die Schweiz. Ziel ist eine schnelle, nachvollziehbare Entscheidung vor dem Einkauf – ohne Gewinnversprechen und ohne fremde Marktplatzdaten zu kopieren.
+## Öffentliche Hauptseite
 
-## Öffentliche DEALFAZ-Seite
+**https://dealfaz.vercel.app/**
 
-[**Kostenlose DEALFAZ-Demo öffnen →**](https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-start?utm_source=github&utm_medium=referral&utm_campaign=readme&utm_content=public_demo)
+Die öffentliche Version läuft über HTTPS und benötigt kein Nutzerkonto.
 
-Der kurze DEALFAZ-Einstieg zählt nur den anonymen Klick und leitet sofort auf die funktionierende Vercel-Demo weiter. Die Demo läuft über HTTPS, benötigt kein Nutzerkonto und speichert Deal-Daten lokal im Browser. Rechtliche Hinweise, Datenschutz und Anbieterinformationen sind direkt in der öffentlichen Demo erreichbar.
+## Aktueller Funktionsumfang
 
-## Entwicklungsstand
-
-Im Repository wird bereits die nächste DEALFAZ-Ausbaustufe vorbereitet. Dazu gehören unter anderem:
-
-- DealScore und vorsichtige Kaufentscheidung
-- Gewinn, ROI und maximaler Einkaufspreis
-- Evidenz- und Datenqualitätsprüfung
-- persönliche Kaufregeln
-- lokale Watchlist, Notizen und Exporte
-- Kapitalbindung und Dealvergleich
-- Markt- und Risikokontext
-- Originalquellen statt kopierter Fremdangebote
-- transparente Rechenlogik und Gegenargumente
-
-Diese erweiterten Funktionen werden erst als öffentlicher Hauptweg beworben, wenn sie über eine regulär rendernde Frontend-Domain ausgeliefert werden.
+- 60-Sekunden-Check für einen konkreten Deal
+- DealScore 0–100
+- `KAUFEN`, `VERHANDELN`, `LIEGEN LASSEN` oder `DATEN PRÜFEN`
+- Gewinn, ROI und Marge
+- maximaler Einkaufspreis anhand des Ziel-ROI
+- Worst Case / realistisch / Best Case
+- Sell-through aus selbst beobachteten Verkaufs-/Angebotszahlen
+- separate Datenqualitätsprüfung mit Evidenz-Sperre
+- Risikostufe 1–5
+- persönliche Kaufregeln lokal im Browser
+- lokale Watchlist mit bis zu 50 Deals
+- JSON-Backup, Wiederherstellung und CSV-Export
+- reproduzierbare Share-Links mit den eingegebenen Deal-Werten
+- Originalquellen für eBay verkauft/aktiv, Kleinanzeigen, idealo, Google Shopping und Amazon
+- Impressum, Datenschutz, Nutzungsbedingungen und Haftungshinweise direkt in der Oberfläche
+- installierbare Web-App-Struktur über Manifest und App-Icon
 
 ## Grundprinzipien
 
 - **Keine Gewinn- oder Verkaufsgarantie.** Ergebnisse sind Rechen- und Entscheidungshilfen.
-- **Keine unerlaubten Scrapes.** Fremde Plattformdaten werden nicht durch Umgehung von Logins, Zugangsbeschränkungen oder technischen Schutzmaßnahmen beschafft.
-- **Originalquellen.** Marktplätze und Marken werden nur beschreibend genannt; daraus wird keine Partnerschaft oder Zertifizierung abgeleitet.
-- **Datensparsamkeit.** Watchlist- und Deal-Daten sollen möglichst lokal im Browser bleiben.
-- **Partnerlinks nur transparent.** Affiliate-Links werden erst nach tatsächlicher Freigabe eingesetzt und klar gekennzeichnet.
-- **Kostenlose Kernnutzung.** Die aktuelle öffentliche Demo enthält keinen Checkout und kein Abonnement.
+- **Keine unerlaubten Scrapes.** DEALFAZ umgeht keine Logins, Paywalls, Zugangsbeschränkungen oder technischen Schutzmaßnahmen.
+- **Originalquellen statt kopierter Fremdangebote.** Plattform- und Markennamen werden nur beschreibend verwendet und bedeuten keine Partnerschaft oder Zertifizierung.
+- **Datensparsamkeit.** Kaufregeln, Watchlist und Deal-Daten bleiben in der aktuellen Version lokal im Browser.
+- **Partnerlinks nur nach Freigabe und transparent gekennzeichnet.**
+- **Kostenlose Kernnutzung.** Kein Checkout und kein Abonnement in der aktuellen Version.
 
-## Aktueller öffentlicher Nutzerweg
+## Öffentlicher Nutzerweg
 
-1. DEALFAZ öffnen
-2. Artikel sowie Einkaufs- und Verkaufspreis eingeben
-3. mögliche Kosten ergänzen
-4. Gewinn und ROI prüfen
-5. Deal-Ampel als Orientierung ansehen
-6. Deal lokal im Browser speichern
-
-## Technik
-
-Die öffentliche Demo wird aktuell über Vercel ausgeliefert. Weiterführende Rechen- und Analysebausteine werden parallel entwickelt. Backend- oder Infrastruktur-Endpunkte sind nicht automatisch gleichbedeutend mit einer öffentlichen Nutzeroberfläche.
+1. Produkt und Deal-Zahlen eingeben.
+2. Verkaufte und aktive Vergleichswerte auf Originalquellen prüfen.
+3. Evidenz, Datenqualität und Risiko eintragen.
+4. DealScore, Szenarien und maximalen Einkaufspreis prüfen.
+5. Persönliche Kaufregeln dagegenhalten.
+6. Ergebnis teilen oder lokal in der Watchlist speichern.
+7. Watchlist bei Bedarf als CSV oder JSON sichern.
 
 **DEALFAZ Reselling – erst prüfen, dann entscheiden.**

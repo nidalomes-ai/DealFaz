@@ -46,7 +46,7 @@ jobs:
           grep -Fq 'Keine Garantie' index.html
           grep -Fq 'umgeht keine Logins oder technischen Schutzmaßnahmen' index.html
           grep -Fq 'bedeuten keine Partnerschaft oder Zertifizierung' index.html
-          grep -Fq 'keine Gewinn- oder Verkaufsgarantie' DATA-SOURCES.md
+          grep -Fq 'keine Gewinn-, Preis-, Nachfrage- oder Verkaufsgarantie' DATA-SOURCES.md
 
       - name: No obvious secrets in repository
         shell: bash

@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dealfaz-live.vercel.app/sitemap.xml
+# Aktuelle DEALFAZ-Hauptseite und Sitemap
+Sitemap: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/sitemap.xml

@@ -7,6 +7,9 @@
 **Offizielle Produktseite:**
 https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz/
 
+**Transparenz / Datenquellen / Tracking:**
+https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-transparenz/
+
 **60-Sekunden-Komplettcheck:**
 https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-check/
 
@@ -27,6 +30,7 @@ https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/
 - **Persönliche Kaufregeln ohne Konto**: Mindestgewinn, Ziel-ROI, maximales Risiko und minimale Datenqualität lokal speichern
 - **DealScore 0–100** mit `KAUFEN`, `VERHANDELN` oder `LIEGEN LASSEN`
 - **Transparente DealScore-Formel**: ROI, Nachfrage, Risiko und Marge sind offen erklärt
+- **Transparenzseite**: Datenquellen, lokale Speicherung, Analytics, externe Plattformen, Partnerlinks und Grenzen offen dokumentiert
 - **Evidenz-Check**: Sell-through aus verkauft + aktiv berechnen und die Belastbarkeit der Datengrundlage separat prüfen
 - **Worst Case / realistisch / Best Case** für einen Deal
 - **Gegenargument-Modus** und Sicherheitsabstand zum Break-even
@@ -54,6 +58,7 @@ https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/
 ## Wichtige Links
 
 - Offizielle Produktseite: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz/
+- Transparenz: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-transparenz/
 - 60-Sekunden-Check: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-check/
 - Reselling-Rechner: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-reselling-rechner/
 - Kaufregeln: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-profil/
@@ -71,6 +76,8 @@ https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/
 
 ## Prinzipien
 
-DEALFAZ bleibt bei seinen Kernwerkzeugen kostenlos und ohne Anmeldung nutzbar. Ergebnisse sind Rechen- und Entscheidungshilfen auf Basis von Nutzereingaben und öffentlich prüfbaren Marktinformationen. Persönliche Regeln, Watchlist, Tags, Notizen und Backups bleiben lokal im Browser bzw. auf dem Gerät. DEALFAZ gibt keine Gewinn-, Verkaufs- oder Marktentwicklungsgarantie.
+DEALFAZ bleibt bei seinen Kernwerkzeugen kostenlos und ohne Anmeldung nutzbar. Ergebnisse sind Rechen- und Entscheidungshilfen auf Basis von Nutzereingaben und öffentlich prüfbaren Marktinformationen. Persönliche Regeln, Watchlist, Tags, Notizen und Backups bleiben lokal im Browser bzw. auf dem Gerät. Fremdangebote werden nicht als eigene Marktdatenbank kopiert. Partnerlinks werden erst nach tatsächlicher Freigabe eingesetzt und transparent gekennzeichnet. DEALFAZ gibt keine Gewinn-, Verkaufs- oder Marktentwicklungsgarantie.
+
+**Wichtig:** Die Transparenzseite ersetzt kein gesetzlich erforderliches Impressum und keine vollständige Datenschutzerklärung. Diese müssen mit den tatsächlichen Angaben des Verantwortlichen veröffentlicht werden.
 
 **DEALFAZ Reselling – erst prüfen, dann entscheiden.**

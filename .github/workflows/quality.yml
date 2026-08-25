@@ -20,7 +20,7 @@ jobs:
       - name: DealScore regression tests
         run: node scripts/dealscore-regression.mjs
 
-      - name: Required frontend files
+      - name: Required frontend and governance files
         run: |
           test -f index.html
           test -f manifest.webmanifest
@@ -30,6 +30,8 @@ jobs:
           test -f sitemap.xml
           test -f DATA-SOURCES.md
           test -f PRIVACY-ARCHITECTURE.md
+          test -f RELEASE-CHECKLIST.md
+          test -f SECURITY.md
 
       - name: Frontend metadata checks
         run: |
@@ -47,6 +49,11 @@ jobs:
           grep -Fq 'umgeht keine Logins oder technischen Schutzmaßnahmen' index.html
           grep -Fq 'bedeuten keine Partnerschaft oder Zertifizierung' index.html
           grep -Fq 'keine Gewinn-, Preis-, Nachfrage- oder Verkaufsgarantie' DATA-SOURCES.md
+
+      - name: CSV export injection hardening
+        run: |
+          grep -Fq 'safeText(d.product)' index.html
+          grep -Fq '/^[=+\-@\t\r]/' index.html
 
       - name: No obvious secrets in repository
         shell: bash

@@ -1,83 +1,50 @@
 # DEALFAZ Reselling
 
-**DEALFAZ** ist eine kostenlose, browserbasierte Reselling-Prüfung für Deutschland, Österreich und die Schweiz. Ziel ist nicht, nur einen Preis zu zeigen, sondern einen möglichen Einkauf strukturiert zu prüfen: Markt, Kosten, Marge, ROI, Nachfrage, Risiko, Datenqualität, Kapitalbindung und Gegenargumente.
+**DEALFAZ** ist eine kostenlose, browserbasierte Reselling-Prüfung für Deutschland, Österreich und die Schweiz. Ziel ist eine schnelle, nachvollziehbare Entscheidung vor dem Einkauf – ohne Gewinnversprechen und ohne fremde Marktplatzdaten zu kopieren.
 
-## DEALFAZ direkt öffnen
+## Öffentliche DEALFAZ-Seite
 
-**Offizielle Produktseite:**
-https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz/
+**Aktuell funktionierende öffentliche Demo:**
+https://dealfaz.vercel.app/
 
-**Transparenz / Datenquellen / Tracking:**
-https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-transparenz/
+Die Demo läuft über HTTPS, benötigt kein Nutzerkonto und speichert Deal-Daten lokal im Browser. Rechtliche Hinweise, Datenschutz und Anbieterinformationen sind direkt in der öffentlichen Demo erreichbar.
 
-**60-Sekunden-Komplettcheck:**
-https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-check/
+## Entwicklungsstand
 
-**Kostenloser Reselling-Rechner:**
-https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-reselling-rechner/
+Im Repository wird bereits die nächste DEALFAZ-Ausbaustufe vorbereitet. Dazu gehören unter anderem:
 
-**Persönliche Kaufregeln:**
-https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-profil/
+- DealScore und vorsichtige Kaufentscheidung
+- Gewinn, ROI und maximaler Einkaufspreis
+- Evidenz- und Datenqualitätsprüfung
+- persönliche Kaufregeln
+- lokale Watchlist, Notizen und Exporte
+- Kapitalbindung und Dealvergleich
+- Markt- und Risikokontext
+- Originalquellen statt kopierter Fremdangebote
+- transparente Rechenlogik und Gegenargumente
 
-**Hauptseite / Wissensbereich:**
-https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/
+Diese erweiterten Funktionen werden erst als öffentlicher Hauptweg beworben, wenn sie über eine regulär rendernde Frontend-Domain ausgeliefert werden.
 
-## Was DEALFAZ aktuell bietet
+## Grundprinzipien
 
-- **60-Sekunden Reselling-Check**: Deal-Zahlen, Sell-through, Datenqualität, Risiko, persönliche Kaufregeln und DealScore auf einer Seite
-- **Kombinierter Reselling-Rechner**: Gewinn, Marge, ROI, Break-even und maximaler Einkaufspreis aus denselben Eingaben
-- **Evidenz-Sperre**: Ein rechnerisch starkes Ergebnis wird bei zu schwacher Datengrundlage zu `DATEN PRÜFEN`
-- **Persönliche Kaufregeln ohne Konto**: Mindestgewinn, Ziel-ROI, maximales Risiko und minimale Datenqualität lokal speichern
-- **DealScore 0–100** mit `KAUFEN`, `VERHANDELN` oder `LIEGEN LASSEN`
-- **Transparente DealScore-Formel**: ROI, Nachfrage, Risiko und Marge sind offen erklärt
-- **Transparenzseite**: Datenquellen, lokale Speicherung, Analytics, externe Plattformen, Partnerlinks und Grenzen offen dokumentiert
-- **Evidenz-Check**: Sell-through aus verkauft + aktiv berechnen und die Belastbarkeit der Datengrundlage separat prüfen
-- **Worst Case / realistisch / Best Case** für einen Deal
-- **Gegenargument-Modus** und Sicherheitsabstand zum Break-even
-- **Lokale Watchlist ohne Konto**: bis zu 50 Deals, Tags, Notizen, CSV-Export sowie JSON-Backup/Wiederherstellung
-- **Kapitalbindungs-Vergleich**: zwei gespeicherte Deals direkt aus der lokalen Watchlist laden und nach Gewinn, ROI und ROI pro 30 Tage vergleichen
-- **Marktkontext-Check**: erwartete Verkaufsdauer, Preisentwicklung und Wettbewerbsentwicklung separat berücksichtigen
-- **Produktsuche** über mehrere öffentliche Marktplätze und Preisvergleiche, inklusive direktem Einstieg zu eBay-Verkaufsbelegen
-- **Maximaler Einkaufspreis**, **Break-even** und **Margenrechner** als Einzelwerkzeuge
-- **Plattformvergleich** für eBay, Kleinanzeigen und Vinted
-- **Deal-Report** mit dynamischer Score-Vorschau zum Teilen
-- **10-Punkte-Checkliste** für Reselling-Entscheidungen
-- **Installierbare Web-App**: DEALFAZ kann auf unterstützten Geräten zum Home-Bildschirm hinzugefügt werden und startet direkt im Komplettcheck
+- **Keine Gewinn- oder Verkaufsgarantie.** Ergebnisse sind Rechen- und Entscheidungshilfen.
+- **Keine unerlaubten Scrapes.** Fremde Plattformdaten werden nicht durch Umgehung von Logins, Zugangsbeschränkungen oder technischen Schutzmaßnahmen beschafft.
+- **Originalquellen.** Marktplätze und Marken werden nur beschreibend genannt; daraus wird keine Partnerschaft oder Zertifizierung abgeleitet.
+- **Datensparsamkeit.** Watchlist- und Deal-Daten sollen möglichst lokal im Browser bleiben.
+- **Partnerlinks nur transparent.** Affiliate-Links werden erst nach tatsächlicher Freigabe eingesetzt und klar gekennzeichnet.
+- **Kostenlose Kernnutzung.** Die aktuelle öffentliche Demo enthält keinen Checkout und kein Abonnement.
 
-## Aktueller Nutzerweg
+## Aktueller öffentlicher Nutzerweg
 
-1. Produkt suchen und Marktbelege öffnen
-2. Deal im kombinierten Rechner oder 60-Sekunden-Check prüfen
-3. Datenqualität + Sell-through bewerten
-4. DealScore und persönliche Kaufregeln vergleichen
-5. Marktkontext und Kapitalbindung ergänzen
-6. Report teilen oder Deal lokal mit Notiz/Tag speichern
-7. Watchlist als CSV oder JSON sichern
-8. Empfänger eines Reports kann direkt seinen eigenen Deal prüfen
+1. DEALFAZ öffnen
+2. Artikel sowie Einkaufs- und Verkaufspreis eingeben
+3. mögliche Kosten ergänzen
+4. Gewinn und ROI prüfen
+5. Deal-Ampel als Orientierung ansehen
+6. Deal lokal im Browser speichern
 
-## Wichtige Links
+## Technik
 
-- Offizielle Produktseite: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz/
-- Transparenz: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-transparenz/
-- 60-Sekunden-Check: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-check/
-- Reselling-Rechner: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-reselling-rechner/
-- Kaufregeln: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-profil/
-- Produktsuche: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-suche/
-- DealScore: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-analyse/entscheidung
-- DealScore-Formel: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-formel/
-- Evidenz-Check: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-evidenz/
-- Watchlist: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-watchlist/
-- Kapitalvergleich: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-kapital/
-- Marktkontext: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-marktkontext/
-- Maximaler Einkaufspreis: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-einkaufspreis
-- Margenrechner: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-rechner
-- Break-even: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-rechner/break-even
-- Wo verkaufen?: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-plattform/
-
-## Prinzipien
-
-DEALFAZ bleibt bei seinen Kernwerkzeugen kostenlos und ohne Anmeldung nutzbar. Ergebnisse sind Rechen- und Entscheidungshilfen auf Basis von Nutzereingaben und öffentlich prüfbaren Marktinformationen. Persönliche Regeln, Watchlist, Tags, Notizen und Backups bleiben lokal im Browser bzw. auf dem Gerät. Fremdangebote werden nicht als eigene Marktdatenbank kopiert. Partnerlinks werden erst nach tatsächlicher Freigabe eingesetzt und transparent gekennzeichnet. DEALFAZ gibt keine Gewinn-, Verkaufs- oder Marktentwicklungsgarantie.
-
-**Wichtig:** Die Transparenzseite ersetzt kein gesetzlich erforderliches Impressum und keine vollständige Datenschutzerklärung. Diese müssen mit den tatsächlichen Angaben des Verantwortlichen veröffentlicht werden.
+Die öffentliche Demo wird aktuell über Vercel ausgeliefert. Weiterführende Rechen- und Analysebausteine werden parallel entwickelt. Backend- oder Infrastruktur-Endpunkte sind nicht automatisch gleichbedeutend mit einer öffentlichen Nutzeroberfläche.
 
 **DEALFAZ Reselling – erst prüfen, dann entscheiden.**

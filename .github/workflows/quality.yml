@@ -26,6 +26,8 @@ jobs:
           test -f manifest.webmanifest
           test -f icon.svg
           test -f vercel.json
+          test -f robots.txt
+          test -f sitemap.xml
           test -f DATA-SOURCES.md
           test -f PRIVACY-ARCHITECTURE.md
 
@@ -35,7 +37,9 @@ jobs:
           grep -Fq '<meta property="og:url" content="https://dealfaz.vercel.app/">' index.html
           grep -Fq 'summary_large_image' index.html
           grep -Fq '"start_url":"/"' manifest.webmanifest
-          ! grep -RFn 'nidalomes-ai.github.io/DealFaz' --exclude-dir=.git .
+          grep -Fq 'Sitemap: https://dealfaz.vercel.app/sitemap.xml' robots.txt
+          grep -Fq '<loc>https://dealfaz.vercel.app/</loc>' sitemap.xml
+          ! grep -Fn 'nidalomes-ai.github.io/DealFaz' index.html robots.txt sitemap.xml README.md DATA-SOURCES.md PRIVACY-ARCHITECTURE.md manifest.webmanifest
 
       - name: Legal-safety text checks
         run: |

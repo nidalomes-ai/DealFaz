@@ -15,17 +15,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Prevent spreadsheet formula injection
+        run: node scripts/harden-csv-export.mjs
+      - name: Verify targeted change
         run: |
-          python - <<'PY'
-          from pathlib import Path
-          p=Path('index.html')
-          s=p.read_text(encoding='utf-8')
-          old="$('exportCsv').onclick=()=>{const rows=[['Produkt','Einkauf','Verkauf','Kosten','DealScore','Signal','ROI','Datenqualität'],...getWatch().map(d=>[d.product,d.buy,d.sell,d.cost,d.score,d.verdict,Number(d.roi).toFixed(2),d.quality])],csv='\\ufeff'+rows.map(r=>r.map(v=>'\"'+String(v??'').replaceAll('"','""')+'\"').join(';')).join('\\n'),blob=new Blob([csv],{type:'text/csv;charset=utf-8'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='dealfaz-watchlist.csv';a.click();setTimeout(()=>URL.revokeObjectURL(u),500)};"
-          new="$('exportCsv').onclick=()=>{const safeText=v=>{const s=String(v??'');return /^[=+\\-@\\t\\r]/.test(s)?\"'\"+s:s},rows=[['Produkt','Einkauf','Verkauf','Kosten','DealScore','Signal','ROI','Datenqualität'],...getWatch().map(d=>[safeText(d.product),d.buy,d.sell,d.cost,d.score,d.verdict,Number(d.roi).toFixed(2),d.quality])],csv='\\ufeff'+rows.map(r=>r.map(v=>'\"'+String(v??'').replaceAll('"','""')+'\"').join(';')).join('\\n'),blob=new Blob([csv],{type:'text/csv;charset=utf-8'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='dealfaz-watchlist.csv';a.click();setTimeout(()=>URL.revokeObjectURL(u),500)};"
-          if old not in s:
-              raise SystemExit('Expected CSV export code not found; refusing unsafe broad rewrite')
-          p.write_text(s.replace(old,new),encoding='utf-8')
-          PY
+          grep -Fq 'safeText(d.product)' index.html
+          grep -Fq "^[=+\\-@\\t\\r]" index.html
       - name: Commit hardening
         run: |
           git config user.name "DEALFAZ automation"

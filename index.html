@@ -2,32 +2,124 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>DEALFAZ Reselling – DealScore, Rechner und Marktcheck</title>
-  <meta name="description" content="DEALFAZ ist eine kostenlose Reselling-Prüfung für DACH: Produktsuche, DealScore 0–100, Maximalpreis, Break-even, Evidenz-Check, Kapitalvergleich und Watchlist.">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>DEALFAZ – kostenloser Reselling-Check</title>
+  <meta name="description" content="Kostenloser Reselling-Check für DACH: Gewinn, Marge, ROI, Sell-through, Datenqualität, Risiko, DealScore, Watchlist und Marktquellen – ohne Anmeldung.">
   <meta name="robots" content="index,follow,max-image-preview:large">
-  <link rel="canonical" href="https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/">
+  <meta name="theme-color" content="#111111">
+  <link rel="canonical" href="https://nidalomes-ai.github.io/DealFaz/">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="DEALFAZ Reselling – erst prüfen, dann entscheiden">
-  <meta property="og:description" content="Kostenlose Reselling-Tools für DACH mit DealScore, Marktcheck, Marge, Risiko und Kapitalbindung.">
-  <meta property="og:image" content="https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-social-card">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:site_name" content="DEALFAZ">
+  <meta property="og:title" content="DEALFAZ – erst rechnen, dann entscheiden">
+  <meta property="og:description" content="Reselling-Rechnung, Marktevidenz und DealScore in einer kostenlosen Oberfläche.">
+  <meta property="og:url" content="https://nidalomes-ai.github.io/DealFaz/">
+  <meta name="twitter:card" content="summary">
   <style>
-    *{box-sizing:border-box}body{margin:0;background:#0b1220;color:#fff;font-family:Arial,Helvetica,sans-serif}main{max-width:880px;margin:auto;padding:72px 24px}p{color:#b9c5d6;line-height:1.6;font-size:18px}h1{font-size:clamp(44px,8vw,78px);line-height:1;margin:14px 0 22px}.tag{display:inline-block;padding:8px 12px;border-radius:999px;background:#172238;color:#d8e3f4;font-size:13px;font-weight:800}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:30px 0}.card{background:#121b2d;border:1px solid #283550;border-radius:16px;padding:18px}.card strong{display:block;margin-bottom:6px}.btn{display:inline-block;background:#fff;color:#0b1220;text-decoration:none;padding:14px 18px;border-radius:12px;font-weight:900}@media(max-width:650px){main{padding:44px 18px}.grid{grid-template-columns:1fr}}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f2f3ee;color:#151515;font-family:Arial,Helvetica,sans-serif}main{max-width:1040px;margin:30px auto;background:#fff;padding:36px;border-radius:24px;box-shadow:0 12px 40px #0000000d}a{color:#151515;font-weight:800}.nav{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.nav a{text-decoration:none}.tag{display:inline-block;margin-top:24px;padding:8px 11px;background:#eceee8;border-radius:999px;font-size:13px;font-weight:900;letter-spacing:.05em}h1{font-size:clamp(42px,7vw,72px);line-height:1.01;margin:14px 0 18px}.lead{font-size:20px;line-height:1.55;color:#444;max-width:820px}.hero{background:#151515;color:#fff;padding:24px;border-radius:19px;margin:24px 0}.hero p{color:#ddd;line-height:1.55}.steps{display:flex;gap:8px;flex-wrap:wrap}.steps span{padding:8px 11px;border-radius:999px;background:#2b2b2b;font-size:13px;font-weight:850}.panel{background:#f5f6f1;padding:20px;border-radius:17px;margin:16px 0}.panel h2{margin:0 0 8px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.f{background:#fff;padding:12px;border-radius:11px}label{display:block;font-size:13px;font-weight:900;margin-bottom:7px;color:#444}input,select{width:100%;padding:12px;border:1px solid #d4d7cf;border-radius:9px;font-size:16px;background:#fff}.result{background:#151515;color:#fff;padding:24px;border-radius:19px;margin:18px 0}.toprow{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;flex-wrap:wrap}.score{font-size:58px;font-weight:950}.verdict{font-size:29px;font-weight:950;text-align:right}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:15px}.metric{padding:13px;border-radius:11px;background:#292929}.metric span{display:block;color:#bbb;font-size:11px}.metric strong{display:block;margin-top:5px;font-size:20px}.scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}.scenario{background:#292929;padding:13px;border-radius:11px}.scenario b{display:block;margin-bottom:6px}.evidence{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}.ev{background:#fff;color:#151515;padding:13px;border-radius:11px}.ev strong{display:block;font-size:23px}.gate{background:#fff3d4;color:#4f3b00;padding:13px;border-radius:11px;margin-top:12px;font-weight:800}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}.btn,button{border:0;border-radius:10px;padding:13px 15px;font-weight:900;cursor:pointer;text-decoration:none;background:#151515;color:#fff}.result .btn,.result button{background:#fff;color:#151515}.alt{background:#e6e8e1!important;color:#151515!important}.markets{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.market{background:#fff;border:1px solid #dddeda;border-radius:12px;padding:15px;text-decoration:none}.market strong{display:block;margin-bottom:5px}.market span{font-size:13px;color:#666}.watch-item{background:#fff;border:1px solid #dddeda;border-radius:12px;padding:14px;margin:9px 0}.watch-top{display:flex;justify-content:space-between;gap:12px}.pill{display:inline-block;background:#eceee8;border-radius:999px;padding:6px 8px;font-size:12px;font-weight:800;margin:3px}.legal{background:#fff7dc;border-radius:15px;padding:18px;line-height:1.55}.small{font-size:13px;color:#666;line-height:1.55}.footer{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px;padding-top:18px;border-top:1px solid #e1e2dd}@media(max-width:760px){body{background:#fff}main{margin:0;padding:20px;border-radius:0;box-shadow:none}.grid,.grid4,.metrics,.scenarios,.markets,.evidence{grid-template-columns:1fr}.verdict{text-align:left}.actions .btn,.actions button{width:100%;text-align:center}.watch-top{flex-direction:column}}
   </style>
 </head>
 <body>
 <main>
-  <span class="tag">KOSTENLOS · DACH · OHNE ANMELDUNG</span>
-  <h1>DEALFAZ Reselling</h1>
-  <p>DEALFAZ hilft, einen möglichen Einkauf nicht nur nach dem Preis, sondern nach Marge, ROI, Nachfrage, Risiko, Datenqualität und Kapitalbindung zu prüfen.</p>
-  <div class="grid">
-    <div class="card"><strong>DealScore 0–100</strong>KAUFEN, VERHANDELN oder LIEGEN LASSEN – mit drei Szenarien.</div>
-    <div class="card"><strong>Maximaler Einkaufspreis</strong>Vom Verkaufspreis rückwärts rechnen und das Ergebnis teilen.</div>
-    <div class="card"><strong>Evidenz & Kapitalbindung</strong>Sell-through-Datengrundlage und ROI pro 30 Tage getrennt prüfen.</div>
-    <div class="card"><strong>Watchlist & Deal-Report</strong>Ergebnisse lokal speichern und weitergeben.</div>
-  </div>
-  <a class="btn" href="https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/?utm_source=github&utm_medium=referral&utm_campaign=brand_entry">DEALFAZ öffnen →</a>
+  <div class="nav"><a href="#check">Check</a><a href="#markets">Marktquellen</a><a href="#watchlist">Watchlist</a><a href="#regeln">Kaufregeln</a><a href="#transparenz">Transparenz</a></div>
+  <span class="tag">KOSTENLOS · DE / AT / CH · OHNE ANMELDUNG</span>
+  <h1>Ein Deal.<br>Eine klare Prüfung.</h1>
+  <p class="lead">DEALFAZ trennt Rechenwerte, Marktevidenz und persönliche Kriterien. Du gibst die beobachteten Werte ein – DEALFAZ zeigt Gewinn, ROI, Sell-through, Datenqualität, Risiken und DealScore.</p>
+
+  <section class="hero"><h2>60-Sekunden-Check</h2><p>Keine fremden Angebote werden kopiert. Prüfe Originalquellen, trage deine Werte ein und lass die Rechnung nachvollziehbar zusammenführen.</p><div class="steps"><span>1 · Deal</span><span>2 · Evidenz</span><span>3 · Risiko</span><span>4 · Entscheidung</span></div></section>
+
+  <section class="panel" id="check">
+    <h2>1 · Deal-Zahlen</h2>
+    <div class="grid">
+      <div class="f"><label>Produkt</label><input id="product" maxlength="120" placeholder="z. B. iPhone 15 Pro"></div>
+      <div class="f"><label>Einkauf (€)</label><input id="buy" type="number" min="0" step="0.01" value="50"></div>
+      <div class="f"><label>Realistischer Verkauf (€)</label><input id="sell" type="number" min="0" step="0.01" value="100"></div>
+      <div class="f"><label>Weitere Kosten (€)</label><input id="cost" type="number" min="0" step="0.01" value="20"></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>2 · Marktevidenz</h2>
+    <p class="small">Nutze möglichst vergleichbare Variante/Zustand. Verkaufte und aktive Angebote müssen aus demselben sinnvollen Beobachtungsfenster stammen.</p>
+    <div class="grid4">
+      <div class="f"><label>Verkaufte Vergleiche</label><input id="sold" type="number" min="0" value="10"></div>
+      <div class="f"><label>Aktive Vergleiche</label><input id="active" type="number" min="0" value="20"></div>
+      <div class="f"><label>Brauchbare Preisvergleiche</label><input id="comps" type="number" min="0" value="5"></div>
+      <div class="f"><label>Variante/Zustand eindeutig? 1–5</label><input id="certainty" type="number" min="1" max="5" value="3"></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>3 · Risiko</h2>
+    <div class="grid">
+      <div class="f"><label>Risiko 1–5</label><input id="risk" type="number" min="1" max="5" value="3"></div>
+      <div class="f"><label>Ziel-ROI (%)</label><input id="target" type="number" min="0" value="25"></div>
+    </div>
+  </section>
+
+  <section class="result">
+    <div class="toprow"><div><div>DealScore</div><div class="score"><span id="score">–</span>/100</div></div><div><div>Signal</div><div class="verdict" id="verdict">–</div></div></div>
+    <p id="summary">–</p>
+    <div class="evidence"><div class="ev">Sell-through<strong id="sth">–</strong></div><div class="ev">Datenqualität<strong id="quality">–</strong></div></div>
+    <div id="gate" class="gate" hidden></div>
+    <div class="metrics"><div class="metric"><span>Gewinn</span><strong id="profit">–</strong></div><div class="metric"><span>ROI</span><strong id="roi">–</strong></div><div class="metric"><span>Marge</span><strong id="margin">–</strong></div><div class="metric"><span>Max. Einkauf bei Ziel-ROI</span><strong id="maxbuy">–</strong></div></div>
+    <div class="scenarios"><div class="scenario"><b>Worst Case</b><span id="worst">–</span></div><div class="scenario"><b>Realistisch</b><span id="real">–</span></div><div class="scenario"><b>Best Case</b><span id="bestcase">–</span></div></div>
+    <div class="actions"><button id="share">Ergebnis teilen</button><button id="save">In Watchlist</button><button id="copy" class="alt">Ergebnis kopieren</button></div>
+  </section>
+
+  <section class="panel" id="markets">
+    <h2>Originalquellen prüfen</h2>
+    <p class="small">Die Links öffnen die jeweiligen Originalseiten. DEALFAZ kopiert deren Angebote nicht und behauptet keine Partnerschaft.</p>
+    <div class="markets" id="marketLinks"></div>
+  </section>
+
+  <section class="panel" id="regeln">
+    <h2>Persönliche Kaufregeln</h2>
+    <p class="small">Diese Werte bleiben nur in deinem Browser und verändern die veröffentlichte DealScore-Formel nicht.</p>
+    <div class="grid4"><div class="f"><label>Mindestgewinn (€)</label><input id="ruleProfit" type="number" min="0" value="20"></div><div class="f"><label>Mindest-ROI (%)</label><input id="ruleRoi" type="number" min="0" value="25"></div><div class="f"><label>Max. Risiko</label><input id="ruleRisk" type="number" min="1" max="5" value="3"></div><div class="f"><label>Min. Datenqualität</label><input id="ruleQuality" type="number" min="0" max="100" value="50"></div></div>
+    <div class="actions"><button id="saveRules">Regeln lokal speichern</button></div>
+    <p id="ruleStatus" class="small"></p>
+  </section>
+
+  <section class="panel" id="watchlist">
+    <h2>Lokale Watchlist</h2>
+    <p class="small">Maximal 50 Deals auf diesem Gerät. Keine Anmeldung, kein Upload. Browserdaten können gelöscht werden – exportiere bei Bedarf ein Backup.</p>
+    <div class="actions"><button id="exportJson">JSON-Backup</button><button id="exportCsv" class="alt">CSV exportieren</button><button id="clearWatch" class="alt">Watchlist leeren</button></div>
+    <div id="watch"></div>
+  </section>
+
+  <section class="legal" id="transparenz">
+    <h2>Recht & Transparenz</h2>
+    <p><strong>Keine Garantie:</strong> DealScore, Sell-through, Szenarien, ROI und Maximalpreis sind Rechen- und Entscheidungshilfen. Tatsächliche Preise, Kosten, Nachfrage und Verkaufsdauer können abweichen.</p>
+    <p><strong>Daten:</strong> DEALFAZ erfindet keine Verkaufszahlen und umgeht keine Logins oder technischen Schutzmaßnahmen. Marktwerte stammen aus deinen Eingaben bzw. aus Informationen, die du selbst auf Originalquellen prüfst.</p>
+    <p><strong>Marken:</strong> Namen externer Plattformen werden nur beschreibend verwendet und bedeuten keine Partnerschaft oder Zertifizierung.</p>
+    <p><strong>Lokal:</strong> Kaufregeln und Watchlist liegen in deinem Browser. Externe Plattformen haben eigene Nutzungs-, Datenschutz- und Cookie-Regeln.</p>
+    <p><strong>Hinweis:</strong> Diese technische Transparenz ersetzt kein gesetzlich erforderliches Impressum oder eine vollständige Datenschutzerklärung des tatsächlichen Betreibers.</p>
+  </section>
+
+  <div class="footer"><a href="https://github.com/nidalomes-ai/DealFaz">Öffentliches Repository</a><a href="README.md">Methodik & Projektstand</a></div>
+  <p class="small">DEALFAZ ersetzt keine individuelle Rechts-, Steuer- oder Finanzberatung.</p>
 </main>
+<script>
+const $=id=>document.getElementById(id),cl=(n,a,b)=>Math.max(a,Math.min(b,n)),eur=n=>Number(n).toLocaleString('de-DE',{style:'currency',currency:'EUR'}),WATCH='dealfaz_watchlist_v1',RULES='dealfaz_rules_v1';
+const n=id=>Math.max(0,Number($(id).value)||0);let current={};
+function getRules(){try{return{minProfit:20,targetRoi:25,maxRisk:3,minQuality:50,...JSON.parse(localStorage.getItem(RULES)||'{}')}}catch{return{minProfit:20,targetRoi:25,maxRisk:3,minQuality:50}}}
+function calc(){const p=$('product').value.trim(),b=n('buy'),s=n('sell'),c=n('cost'),sold=n('sold'),active=n('active'),comps=n('comps'),certainty=cl(n('certainty')||1,1,5),risk=cl(n('risk')||1,1,5),target=cl(n('target'),0,500),sample=sold+active,st=sample?sold/sample*100:0;let quality=Math.round(cl(sample/40*45,0,45)+cl(comps/8*30,0,30)+certainty/5*25);if(sample<5)quality=Math.min(quality,45);const profit=s-b-c,roi=b>0?profit/b*100:0,margin=s>0?profit/s*100:0,worstSell=s*.85,worstCost=c*1.15,worst=worstSell-b-worstCost,bestSell=s*1.10,bestCost=c*.95,best=bestSell-b-bestCost;let score=Math.round(cl(cl(roi/50*35,0,35)+cl(st/80*25,0,25)+(6-risk)/5*20+cl(margin/30*20,0,20),0,100));if(profit<=0)score=Math.min(score,35);if(worst<0)score=Math.max(0,score-10);const raw=score>=72&&profit>0&&worst>=0?'KAUFEN':score>=45&&profit>0?'VERHANDELN':'LIEGEN LASSEN',rules=getRules(),verdict=raw==='KAUFEN'&&quality<rules.minQuality?'DATEN PRÜFEN':raw,maxBuy=(s-c)/(1+target/100);$('score').textContent=score;$('verdict').textContent=verdict;$('sth').textContent=st.toFixed(1)+' %';$('quality').textContent=quality+'/100';$('profit').textContent=eur(profit);$('roi').textContent=roi.toFixed(1)+' %';$('margin').textContent=margin.toFixed(1)+' %';$('maxbuy').textContent=eur(Math.max(0,maxBuy));$('worst').textContent=eur(worst)+' · '+(b>0?worst/b*100:0).toFixed(1)+' % ROI';$('real').textContent=eur(profit)+' · '+roi.toFixed(1)+' % ROI';$('bestcase').textContent=eur(best)+' · '+(b>0?best/b*100:0).toFixed(1)+' % ROI';$('summary').textContent=(p?p+' · ':'')+'Datenqualität '+quality+'/100 · Risiko '+risk+'/5';$('gate').hidden=!(raw==='KAUFEN'&&quality<rules.minQuality);if(!$('gate').hidden)$('gate').textContent='Rechnerisch stark, aber deine Mindest-Datenqualität von '+rules.minQuality+'/100 ist noch nicht erreicht.';const reasons=[];if(profit<rules.minProfit)reasons.push('Mindestgewinn nicht erreicht');if(roi<rules.targetRoi)reasons.push('Mindest-ROI nicht erreicht');if(risk>rules.maxRisk)reasons.push('Risiko über deinem Maximum');if(quality<rules.minQuality)reasons.push('Datenqualität unter deinem Minimum');$('ruleStatus').textContent=reasons.length?'Deine Regeln: NICHT ERFÜLLT – '+reasons.join(' · '):'Deine Regeln: ERFÜLLT';current={product:p,buy:b,sell:s,cost:c,sold,active,comps,certainty,risk,target,sth:st,quality,score,verdict,profit,roi,margin,maxBuy};renderMarkets();}
+function renderMarkets(){const q=encodeURIComponent(current.product||'');const arr=[['eBay verkauft',`https://www.ebay.de/sch/i.html?_nkw=${q}&LH_Sold=1&LH_Complete=1`,'Verkaufsbelege auf der Originalplattform'],['eBay aktiv',`https://www.ebay.de/sch/i.html?_nkw=${q}`,'Aktuelle Angebote'],['Kleinanzeigen',`https://www.kleinanzeigen.de/s-suchanfrage.html?keywords=${q}`,'Lokale/private Angebote'],['Amazon',`https://www.amazon.de/s?k=${q}`,'Aktuelle Suche'],['idealo',`https://www.idealo.de/preisvergleich/MainSearchProductCategory.html?q=${q}`,'Preisvergleich'],['Google Shopping',`https://www.google.com/search?tbm=shop&q=${q}`,'Shops vergleichen']];$('marketLinks').innerHTML=arr.map(x=>`<a class="market" target="_blank" rel="nofollow noopener" href="${x[1]}"><strong>${x[0]}</strong><span>${x[2]}</span></a>`).join('')}
+function hydrate(){const u=new URL(location.href),map=['product','buy','sell','cost','sold','active','comps','certainty','risk','target'];map.forEach(k=>{const v=u.searchParams.get(k);if(v!==null&&$(k))$(k).value=v});const r=getRules();$('ruleProfit').value=r.minProfit;$('ruleRoi').value=r.targetRoi;$('ruleRisk').value=r.maxRisk;$('ruleQuality').value=r.minQuality;calc();renderWatch();}
+function shareUrl(){const u=new URL(location.href);u.search='';['product','buy','sell','cost','sold','active','comps','certainty','risk','target'].forEach(k=>u.searchParams.set(k,$(k).value));u.searchParams.set('utm_source','shared_dealfaz');u.searchParams.set('utm_medium','referral');return u.toString()}
+$('share').onclick=async()=>{const url=shareUrl(),text=`DEALFAZ ${current.score}/100 – ${current.verdict}${current.product?' · '+current.product:''}`;try{if(navigator.share)await navigator.share({title:'DEALFAZ Deal-Check',text,url});else{await navigator.clipboard.writeText(url);$('share').textContent='Link kopiert ✓';setTimeout(()=>$('share').textContent='Ergebnis teilen',1200)}}catch{}};
+$('copy').onclick=async()=>{const t=`${current.product||'Deal'} | DealScore ${current.score}/100 | ${current.verdict} | Gewinn ${eur(current.profit)} | ROI ${current.roi.toFixed(1)} % | Datenqualität ${current.quality}/100`;try{await navigator.clipboard.writeText(t);$('copy').textContent='Kopiert ✓';setTimeout(()=>$('copy').textContent='Ergebnis kopieren',1200)}catch{}};
+function getWatch(){try{return JSON.parse(localStorage.getItem(WATCH)||'[]')}catch{return[]}}function setWatch(a){localStorage.setItem(WATCH,JSON.stringify(a.slice(0,50)))}
+$('save').onclick=()=>{calc();if(!current.product||current.sell<=0){alert('Produkt und Verkaufspreis eintragen.');return}const a=getWatch(),sig=[current.product.toLowerCase(),current.buy,current.sell,current.cost].join('|');if(a.some(x=>x.sig===sig)){alert('Deal bereits gespeichert.');return}a.unshift({...current,sig,id:Date.now(),created:Date.now()});setWatch(a);renderWatch();$('save').textContent='Gespeichert ✓';setTimeout(()=>$('save').textContent='In Watchlist',1200)};
+function renderWatch(){const a=getWatch();$('watch').innerHTML=a.length?a.map(d=>`<div class="watch-item"><div class="watch-top"><div><strong>${String(d.product).replace(/[<>]/g,'')}</strong><div><span class="pill">Einkauf ${eur(d.buy)}</span><span class="pill">Verkauf ${eur(d.sell)}</span><span class="pill">ROI ${Number(d.roi).toFixed(1)} %</span></div></div><div><strong>${d.score}/100 · ${d.verdict}</strong></div></div><div class="actions"><button class="alt" data-load="${d.id}">Laden</button><button class="alt" data-del="${d.id}">Entfernen</button></div></div>`).join(''):'<p class="small">Noch keine Deals gespeichert.</p>';document.querySelectorAll('[data-load]').forEach(b=>b.onclick=()=>{const d=getWatch().find(x=>String(x.id)===b.dataset.load);if(!d)return;['product','buy','sell','cost','sold','active','comps','certainty','risk','target'].forEach(k=>{if(d[k]!==undefined&&$(k))$(k).value=d[k]});calc();scrollTo({top:0,behavior:'smooth'})});document.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{setWatch(getWatch().filter(x=>String(x.id)!==b.dataset.del));renderWatch()})}
+$('saveRules').onclick=()=>{const r={minProfit:n('ruleProfit'),targetRoi:n('ruleRoi'),maxRisk:cl(n('ruleRisk')||1,1,5),minQuality:cl(n('ruleQuality'),0,100)};localStorage.setItem(RULES,JSON.stringify(r));calc();$('saveRules').textContent='Gespeichert ✓';setTimeout(()=>$('saveRules').textContent='Regeln lokal speichern',1200)};
+$('exportJson').onclick=()=>{const blob=new Blob([JSON.stringify(getWatch(),null,2)],{type:'application/json'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='dealfaz-watchlist.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),500)};
+$('exportCsv').onclick=()=>{const rows=[['Produkt','Einkauf','Verkauf','Kosten','DealScore','Signal','ROI','Datenqualität'],...getWatch().map(d=>[d.product,d.buy,d.sell,d.cost,d.score,d.verdict,Number(d.roi).toFixed(2),d.quality])],csv='\ufeff'+rows.map(r=>r.map(v=>'"'+String(v??'').replaceAll('"','""')+'"').join(';')).join('\n'),blob=new Blob([csv],{type:'text/csv;charset=utf-8'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='dealfaz-watchlist.csv';a.click();setTimeout(()=>URL.revokeObjectURL(u),500)};
+$('clearWatch').onclick=()=>{if(confirm('Watchlist auf diesem Gerät wirklich leeren?')){localStorage.removeItem(WATCH);renderWatch()}};
+document.querySelectorAll('input').forEach(x=>x.addEventListener('input',calc));hydrate();
+</script>
 </body>
 </html>

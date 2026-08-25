@@ -7,8 +7,12 @@
 **Hauptseite:**
 https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/
 
+**60-Sekunden-Komplettcheck:**
+https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-check/
+
 ## Was DEALFAZ aktuell bietet
 
+- **60-Sekunden Reselling-Check**: Deal-Zahlen, Sell-through, Datenqualität, Risiko und DealScore auf einer Seite
 - **DealScore 0–100** mit `KAUFEN`, `VERHANDELN` oder `LIEGEN LASSEN`
 - **Transparente DealScore-Formel**: ROI, Nachfrage, Risiko und Marge sind offen erklärt
 - **Evidenz-Check**: Sell-through aus verkauft + aktiv berechnen und die Belastbarkeit der Datengrundlage separat prüfen
@@ -26,6 +30,7 @@ https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/
 
 ## Wichtige Links
 
+- 60-Sekunden-Check: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-check/
 - DealScore: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-analyse/entscheidung
 - DealScore-Formel: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-formel/
 - Evidenz-Check: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-evidenz/

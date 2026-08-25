@@ -4,6 +4,9 @@
 
 ## DEALFAZ direkt öffnen
 
+**Offizielle Produktseite:**
+https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz/
+
 **Empfohlener Schnellstart:**
 https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-start
 
@@ -46,6 +49,7 @@ https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/
 
 ## Wichtige Links
 
+- Offizielle Produktseite: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz/
 - Schnellstart: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-start
 - 60-Sekunden-Check: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-check/
 - Produktsuche: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-suche/

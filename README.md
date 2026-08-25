@@ -4,10 +4,9 @@
 
 ## Öffentliche DEALFAZ-Seite
 
-**Aktuell funktionierende öffentliche Demo:**
-https://dealfaz.vercel.app/
+[**Kostenlose DEALFAZ-Demo öffnen →**](https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-start?utm_source=github&utm_medium=referral&utm_campaign=readme&utm_content=public_demo)
 
-Die Demo läuft über HTTPS, benötigt kein Nutzerkonto und speichert Deal-Daten lokal im Browser. Rechtliche Hinweise, Datenschutz und Anbieterinformationen sind direkt in der öffentlichen Demo erreichbar.
+Der kurze DEALFAZ-Einstieg zählt nur den anonymen Klick und leitet sofort auf die funktionierende Vercel-Demo weiter. Die Demo läuft über HTTPS, benötigt kein Nutzerkonto und speichert Deal-Daten lokal im Browser. Rechtliche Hinweise, Datenschutz und Anbieterinformationen sind direkt in der öffentlichen Demo erreichbar.
 
 ## Entwicklungsstand
 

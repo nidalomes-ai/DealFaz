@@ -4,15 +4,21 @@
 
 ## DEALFAZ direkt öffnen
 
-**Hauptseite:**
-https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/
+**Empfohlener Schnellstart:**
+https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-start
+
+Der Schnellstart führt direkt in den aktuellen **60-Sekunden-Komplettcheck**.
 
 **60-Sekunden-Komplettcheck:**
 https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-check/
 
+**Hauptseite / Wissensbereich:**
+https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/
+
 ## Was DEALFAZ aktuell bietet
 
 - **60-Sekunden Reselling-Check**: Deal-Zahlen, Sell-through, Datenqualität, Risiko und DealScore auf einer Seite
+- **Evidenz-Sperre im Komplettcheck**: Eine rechnerisch starke Bewertung wird bei zu schwacher Datengrundlage nicht einfach als KAUFEN ausgegeben, sondern als `DATEN PRÜFEN`
 - **DealScore 0–100** mit `KAUFEN`, `VERHANDELN` oder `LIEGEN LASSEN`
 - **Transparente DealScore-Formel**: ROI, Nachfrage, Risiko und Marge sind offen erklärt
 - **Evidenz-Check**: Sell-through aus verkauft + aktiv berechnen und die Belastbarkeit der Datengrundlage separat prüfen
@@ -28,18 +34,30 @@ https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-check/
 - **Deal-Report** zum Zusammenfassen und Teilen eines Ergebnisses
 - **10-Punkte-Checkliste** für Reselling-Entscheidungen
 
+## Aktueller Nutzerweg
+
+1. Produkt suchen
+2. mehrere Marktquellen öffnen
+3. Deal im 60-Sekunden-Check prüfen
+4. Datenqualität + Sell-through bewerten
+5. DealScore und Szenarien ansehen
+6. Report teilen oder Deal lokal speichern
+7. Empfänger eines Reports kann direkt seinen eigenen Deal prüfen
+
 ## Wichtige Links
 
+- Schnellstart: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-start
 - 60-Sekunden-Check: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-check/
+- Produktsuche: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-suche/
 - DealScore: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-analyse/entscheidung
 - DealScore-Formel: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-formel/
 - Evidenz-Check: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-evidenz/
 - Watchlist: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-watchlist/
 - Kapitalbindung / zwei Deals vergleichen: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-kapital/
-- Produktsuche: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-suche/
-- Maximaler Einkaufspreis: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/maximaler-einkaufspreis-berechnen
-- Break-even beim Reselling: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/break-even-reselling
-- Wo verkaufen?: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/wo-verkaufen
+- Maximaler Einkaufspreis: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-einkaufspreis
+- Margenrechner: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-rechner
+- Break-even: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-rechner/break-even
+- Wo verkaufen?: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-plattform/
 - DealScore-Beispiele: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/dealscore-beispiele
 - 10-Punkte-Check: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/reselling-checkliste
 

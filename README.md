@@ -14,6 +14,7 @@ https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/
 - **Evidenz-Check**: Sell-through aus verkauft + aktiv berechnen und die Belastbarkeit der Datengrundlage separat prüfen
 - **Worst Case / realistisch / Best Case** für einen Deal
 - **Gegenargument-Modus** und Sicherheitsabstand zum Break-even
+- **Lokale Watchlist ohne Konto**: bis zu 30 Deals auf dem aktuellen Gerät speichern und nach DealScore sortieren
 - **Kapitalbindungs-Vergleich**: zwei Deals nach Gewinn, ROI und ROI pro 30 Tage vergleichen
 - **Produktsuche** über mehrere öffentliche Marktplätze und Preisvergleiche
 - **Maximaler Einkaufspreis** aus Verkaufspreis, Kosten und Zielüberschuss
@@ -28,6 +29,7 @@ https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/
 - DealScore: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-analyse/entscheidung
 - DealScore-Formel: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-formel/
 - Evidenz-Check: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-evidenz/
+- Watchlist: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-watchlist/
 - Kapitalbindung / zwei Deals vergleichen: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-kapital/
 - Produktsuche: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-suche/
 - Maximaler Einkaufspreis: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/maximaler-einkaufspreis-berechnen

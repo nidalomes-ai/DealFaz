@@ -1,6 +1,6 @@
 # DEALFAZ Reselling
 
-**DEALFAZ** ist eine kostenlose, browserbasierte Reselling-Prüfung für Deutschland, Österreich und die Schweiz. Ziel ist nicht, nur einen Preis zu zeigen, sondern einen möglichen Einkauf strukturiert zu prüfen: Markt, Kosten, Marge, ROI, Nachfrage, Risiko und Gegenargumente.
+**DEALFAZ** ist eine kostenlose, browserbasierte Reselling-Prüfung für Deutschland, Österreich und die Schweiz. Ziel ist nicht, nur einen Preis zu zeigen, sondern einen möglichen Einkauf strukturiert zu prüfen: Markt, Kosten, Marge, ROI, Nachfrage, Risiko, Kapitalbindung und Gegenargumente.
 
 ## DEALFAZ direkt öffnen
 
@@ -13,6 +13,7 @@ https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/
 - **Transparente DealScore-Formel**: ROI, Nachfrage, Risiko und Marge sind offen erklärt
 - **Worst Case / realistisch / Best Case** für einen Deal
 - **Gegenargument-Modus** und Sicherheitsabstand zum Break-even
+- **Kapitalbindungs-Vergleich**: zwei Deals nach Gewinn, ROI und ROI pro 30 Tage vergleichen
 - **Produktsuche** über mehrere öffentliche Marktplätze und Preisvergleiche
 - **Maximaler Einkaufspreis** aus Verkaufspreis, Kosten und Zielüberschuss
 - **Break-even-Rechner** für den nötigen Mindest-Verkaufspreis
@@ -25,6 +26,7 @@ https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/
 
 - DealScore: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-analyse/entscheidung
 - DealScore-Formel: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-formel/
+- Kapitalbindung / zwei Deals vergleichen: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-kapital/
 - Produktsuche: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-suche/
 - Maximaler Einkaufspreis: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/maximaler-einkaufspreis-berechnen
 - Break-even beim Reselling: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/break-even-reselling

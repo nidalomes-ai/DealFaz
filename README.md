@@ -10,6 +10,7 @@ https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/
 ## Was DEALFAZ aktuell bietet
 
 - **DealScore 0–100** mit `KAUFEN`, `VERHANDELN` oder `LIEGEN LASSEN`
+- **Transparente DealScore-Formel**: ROI, Nachfrage, Risiko und Marge sind offen erklärt
 - **Worst Case / realistisch / Best Case** für einen Deal
 - **Gegenargument-Modus** und Sicherheitsabstand zum Break-even
 - **Produktsuche** über mehrere öffentliche Marktplätze und Preisvergleiche
@@ -23,6 +24,7 @@ https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/
 ## Wichtige Links
 
 - DealScore: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-analyse/entscheidung
+- DealScore-Formel: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-formel/
 - Produktsuche: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-suche/
 - Maximaler Einkaufspreis: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/maximaler-einkaufspreis-berechnen
 - Break-even beim Reselling: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/break-even-reselling

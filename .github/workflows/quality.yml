@@ -1,0 +1,62 @@
+name: DEALFAZ Quality
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: DealScore regression tests
+        run: node scripts/dealscore-regression.mjs
+
+      - name: Required frontend files
+        run: |
+          test -f index.html
+          test -f manifest.webmanifest
+          test -f icon.svg
+          test -f vercel.json
+          test -f DATA-SOURCES.md
+          test -f PRIVACY-ARCHITECTURE.md
+
+      - name: Frontend metadata checks
+        run: |
+          grep -Fq '<link rel="canonical" href="https://dealfaz.vercel.app/">' index.html
+          grep -Fq '<meta property="og:url" content="https://dealfaz.vercel.app/">' index.html
+          grep -Fq 'summary_large_image' index.html
+          grep -Fq '"start_url":"/"' manifest.webmanifest
+          ! grep -RFn 'nidalomes-ai.github.io/DealFaz' --exclude-dir=.git .
+
+      - name: Legal-safety text checks
+        run: |
+          grep -Fq 'Keine Garantie' index.html
+          grep -Fq 'umgeht keine Logins oder technischen Schutzmaßnahmen' index.html
+          grep -Fq 'bedeuten keine Partnerschaft oder Zertifizierung' index.html
+          grep -Fq 'keine Gewinn- oder Verkaufsgarantie' DATA-SOURCES.md
+
+      - name: No obvious secrets in repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          patterns='SUPABASE_SERVICE_ROLE_KEY|sk_live_[A-Za-z0-9]+|ghp_[A-Za-z0-9]+|github_pat_[A-Za-z0-9_]+|AKIA[0-9A-Z]{16}'
+          if grep -RIEq "$patterns" . --exclude-dir=.git --exclude='quality.yml'; then
+            echo 'Potential secret pattern found. Failing without printing matching content.'
+            exit 1
+          fi
+
+      - name: Security headers config
+        run: |
+          grep -Fq 'X-Content-Type-Options' vercel.json
+          grep -Fq 'Referrer-Policy' vercel.json
+          grep -Fq 'Permissions-Policy' vercel.json
+          grep -Fq 'X-Frame-Options' vercel.json

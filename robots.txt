@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-
-# Aktuelle DEALFAZ-Hauptseite und Sitemap
-Sitemap: https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-launch/sitemap.xml
+Sitemap: https://nidalomes-ai.github.io/DealFaz/sitemap.xml

@@ -1,0 +1,37 @@
+name: DEALFAZ Live Health
+
+on:
+  push:
+    branches: ["main"]
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  live-health:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Public Vercel demo is healthy HTML
+        shell: bash
+        run: |
+          set -euo pipefail
+          headers=$(mktemp)
+          body=$(mktemp)
+          code=$(curl --retry 2 --retry-delay 2 -sS -D "$headers" -o "$body" -w '%{http_code}' https://dealfaz.vercel.app/)
+          test "$code" = "200"
+          grep -Eiq '^content-type: text/html' "$headers"
+          grep -Fq 'DEALFAZ' "$body"
+          grep -Fq 'Datenschutz' "$body"
+          grep -Fq 'Impressum' "$body"
+          grep -Fq 'Keine Garantie' "$body"
+
+      - name: Tracked public entry redirects to Vercel
+        shell: bash
+        run: |
+          set -euo pipefail
+          headers=$(mktemp)
+          curl --retry 2 --retry-delay 2 -sS -D "$headers" -o /dev/null 'https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-start?utm_source=internal_selftest&utm_campaign=github_health&utm_content=redirect'
+          grep -Eiq '^location: https://dealfaz\.vercel\.app/' "$headers"

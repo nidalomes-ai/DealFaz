@@ -32,6 +32,9 @@ jobs:
           grep -Fq 'Warum NICHT kaufen?' "$body"
           grep -Fq 'Deal Battle' "$body"
           grep -Fq 'Deine Erwartung vs. tatsächliches Ergebnis' "$body"
+          grep -Fq 'Wissen & Formeln' "$body"
+          grep -Fq 'apple-mobile-web-app-capable' "$body"
+          grep -Fq 'apple-touch-icon.png' "$body"
           grep -Fq 'Datenschutz' "$body"
           grep -Fq 'Impressum' "$body"
           grep -Fq 'Keine Gewinn- oder Verkaufsgarantie' "$body"
@@ -53,6 +56,17 @@ jobs:
           check https://dealfaz.vercel.app/manifest.webmanifest 'application/manifest\+json'
           check https://dealfaz.vercel.app/robots.txt 'text/plain'
           check https://dealfaz.vercel.app/sitemap.xml 'application/xml'
+          check https://dealfaz.vercel.app/apple-touch-icon.png 'image/png'
+          check https://dealfaz.vercel.app/icon-192.png 'image/png'
+          check https://dealfaz.vercel.app/icon-512.png 'image/png'
+
+      - name: IndexNow key is present on public host
+        shell: bash
+        run: |
+          set -euo pipefail
+          key='e6ec43618dca9e6ea85cc60ede8e5831'
+          body=$(curl --retry 2 --retry-delay 2 -fsS "https://dealfaz.vercel.app/${key}.txt")
+          test "$body" = "$key"
 
       - name: SEO knowledge pages are reachable and canonical
         shell: bash

@@ -39,7 +39,9 @@ jobs:
           grep -Fq 'Datenschutz' "$body"
           grep -Fq 'Impressum' "$body"
           grep -Fq 'Keine Gewinn- oder Verkaufsgarantie' "$body"
-          grep -Fq 'Als Amazon-Partner verdiene ich an qualifizierten Verkäufen' "$body"
+          grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' "$body"
+          ! grep -Fq 'Als Amazon-Partner verdiene ich an qualifizierten Verkäufen' "$body"
+          ! grep -Fq 'Der Amazon-Link ist ein Partnerlink' "$body"
           grep -Fq 'summary_large_image' "$body"
           grep -Fq 'dealfaz-social-card' "$body"
 
@@ -62,14 +64,17 @@ jobs:
           check https://dealfaz.vercel.app/sitemap.xml 'application/xml'
           check https://dealfaz.vercel.app/icon.svg 'image/svg\+xml'
 
-      - name: Monetization and CSV safety are live
+      - name: Monetization, sharing and CSV safety are live
         shell: bash
         run: |
           set -euo pipefail
           js=$(curl --retry 2 --retry-delay 2 -fsS https://dealfaz.vercel.app/app.js)
-          printf '%s' "$js" | grep -Fq 'Amazon · Partnerlink'
+          ! printf '%s' "$js" | grep -Fq 'Amazon · Partnerlink'
+          ! printf '%s' "$js" | grep -Fq 'nofollow sponsored noopener'
+          ! printf '%s' "$js" | grep -Fq 'dealfaz-21'
+          ! printf '%s' "$js" | grep -Eq '([?&]|&amp;)tag=|AMAZON_TAG'
           printf '%s' "$js" | grep -Fq 'dealfaz-amazon'
-          printf '%s' "$js" | grep -Fq 'nofollow sponsored noopener'
+          printf '%s' "$js" | grep -Fq "#deal="
           printf '%s' "$js" | grep -Fq 'const safeText=v=>'
           printf '%s' "$js" | grep -Fq '/^[=+\-@\t\r]/.test(s)'
 

@@ -85,9 +85,26 @@ jobs:
             echo 'Sponsored-link marker detected while monetization lock is active.'
             exit 1
           fi
+          if grep -Fq 'dealfaz-amazon#q=' app.js; then
+            echo 'Fragment-based Amazon redirect detected; search term would not reach the server.'
+            exit 1
+          fi
+          grep -Fq "amazon='https://www.amazon.de/s?k='+e" app.js
+          grep -Fq "['Amazon',amazon,'nofollow noopener noreferrer']" app.js
           grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' index.html
           grep -Fq 'derzeit kein Partnerlink' index.html
           grep -Fq 'keine Gewinn-, Preis-, Nachfrage- oder Verkaufsgarantie' DATA-SOURCES.md
+
+      - name: Share privacy checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq "'#deal='+encodeURIComponent(p.toString())" app.js
+          grep -Fq "location.hash.startsWith('#deal=')" app.js
+          if grep -Fq "location.origin+location.pathname+'?'+p.toString()" app.js; then
+            echo 'Share values are still being placed in the request query string.'
+            exit 1
+          fi
 
       - name: CSV export injection hardening
         run: |

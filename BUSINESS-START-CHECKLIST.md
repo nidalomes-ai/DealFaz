@@ -1,0 +1,76 @@
+# DEALFAZ – Gewerbe- und Steuer-Startfreigabe
+
+Diese Checkliste ist ein Release-Gate. Sie ersetzt keine individuelle Steuer- oder Rechtsberatung.
+
+## 1. Gewerbeanmeldung
+
+Zuständige Stelle für den aktuellen Betreiberstandort: Stadt Wahlstedt / Ordnungsamt.
+
+Offizielle Informationsseite:
+https://www.wahlstedt.de/buergerservice-politik/buergerservice/was-erledige-ich-wo/leistung/gewerbe-anmelden-383
+
+Die Stadt Wahlstedt weist darauf hin, dass ein Gewerbe gleichzeitig mit dem Beginn des Gewerbebetriebs anzumelden ist. Online-Anmeldung ist vorgesehen. Bei vollständigen Unterlagen soll eine schriftliche/Online-Empfangsbescheinigung innerhalb von drei Tagen erfolgen.
+
+### Sinnvolle Tätigkeitsbeschreibung für DEALFAZ
+
+Vorschlag zur Prüfung bei der Anmeldung:
+
+> Betrieb einer Online-Plattform für Reselling-Rechen- und Entscheidungshilfen sowie Online-Marketing/Affiliate-Marketing; keine erlaubnispflichtigen Tätigkeiten.
+
+Die Formulierung muss an den tatsächlichen Tätigkeitsumfang angepasst werden. Keine Tätigkeit eintragen, die DEALFAZ tatsächlich nicht ausübt.
+
+### Typische Unterlagen laut Stadt Wahlstedt
+- Gewerbeanmeldung (GewA 1)
+- Identitätsnachweis
+- ggf. weitere Register-/Vertretungsunterlagen nur, wenn tatsächlich einschlägig
+
+## 2. Steuerliche Erfassung
+
+Offizieller ELSTER-Bereich:
+https://www.elster.de/eportal/formulare-leistungen/alleformulare?locale=de_DE
+
+Für einen Einzelunternehmer ist der "Fragebogen zur steuerlichen Erfassung für Einzelunternehmen" der relevante Formulartyp.
+
+ELSTER weist darauf hin, dass die Betriebseröffnung dem Finanzamt grundsätzlich innerhalb eines Monats mit dem elektronischen Fragebogen zur steuerlichen Erfassung mitzuteilen ist (§ 138 AO).
+
+## 3. Entscheidungen, die nicht geraten werden dürfen
+
+Vor Absenden des Fragebogens müssen tatsächliche Angaben verwendet werden. Insbesondere nicht automatisch festlegen:
+- erwarteter Umsatz
+- erwarteter Gewinn
+- Kleinunternehmerregelung / Umsatzsteuerbehandlung
+- Bankverbindung
+- weitere Betriebsstätten
+- Beschäftigte
+- steuerliche Vertretung
+
+Diese Angaben müssen zum realen Geschäftsmodell und zur persönlichen Steuersituation passen.
+
+## 4. Buchhaltung ab Tag 1 der Monetarisierung
+
+Mindestens getrennt dokumentieren:
+- Affiliate-Einnahmen nach Programm und Datum
+- Auszahlungen
+- Gebühren / Betriebsausgaben
+- Hosting-/Domainkosten, falls vorhanden
+- sonstige betrieblich veranlasste Kosten
+- Steuern und Abgaben nicht mit Umsatz verwechseln
+
+Für das interne DEALFAZ-Ziel zählt nicht nur Umsatz, sondern der tatsächlich verbleibende Betrag nach betrieblichen Kosten und den jeweils anfallenden Steuern/Abgaben.
+
+## 5. Monetarisierung darf erst wieder aktiv werden, wenn
+
+- [ ] Hosting erlaubt die konkrete kommerzielle Nutzung.
+- [ ] Gewerbeanmeldung ist erledigt bzw. die rechtliche Notwendigkeit wurde verbindlich anders geklärt.
+- [ ] steuerliche Erfassung wurde fristgerecht erledigt bzw. ist vorbereitet und fristgerecht möglich.
+- [ ] Amazon-Partnerstatus ist gültig und die aktuellen Teilnahmebedingungen sind eingehalten.
+- [ ] eBay-Partnerlinks erst nach bestätigter EPN-Freigabe.
+- [ ] Werbe-/Affiliate-Hinweise stimmen exakt mit den tatsächlich aktiven Links überein.
+- [ ] Datenschutzhinweise stimmen mit dem tatsächlichen Hosting/Tracking überein.
+- [ ] Impressum enthält nur tatsächlich zutreffende Angaben.
+- [ ] Marken-/Namensprüfung ist ausreichend dokumentiert.
+- [ ] `MONETIZATION_DISABLED` wird erst in einem bewussten Release-Commit entfernt.
+
+## 6. Noch nicht erledigt
+
+Solange mindestens einer der obigen Punkte offen ist, bleibt DEALFAZ kostenlos und ohne aktive Affiliate-Monetarisierung.

@@ -1,6 +1,6 @@
 # DEALFAZ – Release-Gate
 
-Diese Checkliste ist die Mindestanforderung für eine neue öffentliche DEALFAZ-Hauptversion. Ein Release gilt nicht als vollständig bereit, solange ein Pflichtpunkt offen ist.
+Diese Checkliste ist die Mindestanforderung für eine neue öffentliche DEALFAZ-Hauptversion. Ein öffentlicher kostenloser Release und ein Monetarisierungs-Release sind bewusst getrennt.
 
 ## 1. Funktion
 
@@ -9,7 +9,7 @@ Diese Checkliste ist die Mindestanforderung für eine neue öffentliche DEALFAZ-
 - [ ] schwache Evidenz kann ein starkes Rechenergebnis zu `DATEN PRÜFEN` begrenzen
 - [ ] Maximaler Einkaufspreis bleibt bei gültigen Eingaben nicht negativ
 - [ ] Watchlist und persönliche Regeln funktionieren lokal ohne Nutzerkonto
-- [ ] Teilen/Kopieren erzeugt keine geheimen oder personenbezogenen Daten im Link
+- [ ] Teilen/Kopieren erzeugt keine geheimen oder unnötigen personenbezogenen Daten im Link
 
 ## 2. Daten & Marktquellen
 
@@ -25,7 +25,7 @@ Diese Checkliste ist die Mindestanforderung für eine neue öffentliche DEALFAZ-
 - [ ] tatsächliches Impressum/Anbieterkennzeichnung auf der Live-Seite vorhanden
 - [ ] vollständige Datenschutzhinweise für die tatsächlich eingesetzten Dienste vorhanden
 - [ ] keine Gewinn-, Verkaufs-, Preis- oder Marktentwicklungsgarantie
-- [ ] Affiliate-/Partnerlinks erst nach tatsächlicher Freigabe und klar gekennzeichnet
+- [ ] Affiliate-/Partnerlinks nur dann aktiv, wenn der Monetarisierungs-Release separat freigegeben ist
 - [ ] keine unnötige zentrale Speicherung von Deal-/Nutzerdaten
 - [ ] lokale Speicherung transparent erklärt
 - [ ] Drittplattformen und deren eigene Regeln transparent erwähnt
@@ -61,14 +61,30 @@ Diese Checkliste ist die Mindestanforderung für eine neue öffentliche DEALFAZ-
 - [ ] externe Links öffnen kontrolliert und mit `noopener`
 - [ ] Nutzer erkennt klar, welche Werte eigene Eingaben/Annahmen sind
 
-## 7. Launch
+## 7. Kostenloser öffentlicher Launch
 
 - [ ] öffentlicher Hauptlink funktioniert vor Veröffentlichung
 - [ ] Social-Posts führen auf eine rendernde HTML-Seite
 - [ ] technische Selbsttests werden nicht als echte Nutzer gezählt
 - [ ] Reichweitenzahlen werden nicht als Unique Visitors ausgegeben, wenn sie nur Events sind
 - [ ] keine Bots/Testaufrufe als Erfolg kommunizieren
+- [ ] `MONETIZATION_DISABLED` bleibt vorhanden, solange die Monetarisierungsfreigabe fehlt
+
+## 8. Zusätzlicher Monetarisierungs-Release
+
+Erst wenn **alle** folgenden Punkte erfüllt sind, darf `MONETIZATION_DISABLED` in einem bewussten Release-Commit entfernt werden:
+
+- [ ] Produktionshosting erlaubt die konkrete kommerzielle Nutzung
+- [ ] Gewerbe-/Betreiberstatus ist rechtlich sauber geklärt und erforderliche Anmeldung erledigt
+- [ ] steuerliche Erfassung ist fristgerecht erledigt bzw. rechtskonform abgeschlossen
+- [ ] Amazon-Partnerstatus ist gültig und aktuelle Teilnahmebedingungen sind eingehalten
+- [ ] eBay-Partnerlinks erst nach bestätigter EPN-Freigabe
+- [ ] Werbe-/Affiliate-Kennzeichnung entspricht exakt den tatsächlich aktiven Links
+- [ ] Datenschutzhinweise entsprechen dem dann tatsächlich aktiven Hosting/Tracking/Affiliate-Datenfluss
+- [ ] Marken-/Namensprüfung ist ausreichend dokumentiert
+- [ ] Affiliate-Tags werden erst nach Entfernen des Monetarisierungs-Locks eingebaut
+- [ ] kompletter Quality- und Live-Health-Check ist grün
 
 ## Aktueller Grundsatz
 
-**Rechtlich vertretbar → technisch stabil → transparent → messbar nützlich → erst dann öffentlich bewerben.**
+**Rechtlich vertretbar → technisch stabil → transparent → messbar nützlich → erst dann öffentlich bewerben. Monetarisierung ist ein eigener, zusätzlicher Release.**

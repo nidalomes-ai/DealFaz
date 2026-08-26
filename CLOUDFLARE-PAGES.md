@@ -6,9 +6,12 @@ Purpose: move the static DEALFAZ frontend away from a hosting plan that is restr
 - Repository: `nidalomes-ai/DealFaz`
 - Production branch: `main`
 - Framework preset: None / static site
-- Build command: none
+- Build command: `exit 0`
 - Build output directory: repository root (`.`)
+- Root directory: repository root / leave blank
 - No environment variables are required for the static frontend.
+
+These settings follow Cloudflare Pages' current Static HTML guidance for a site without a framework or build step.
 
 ## Files that must be served
 - `index.html`

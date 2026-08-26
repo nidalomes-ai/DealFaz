@@ -23,11 +23,17 @@ jobs:
       - name: Required frontend and governance files
         run: |
           test -f index.html
+          test -f app.js
+          test -f style.css
           test -f manifest.webmanifest
           test -f icon.svg
           test -f vercel.json
           test -f robots.txt
           test -f sitemap.xml
+          test -f reselling-rechner/index.html
+          test -f maximaler-einkaufspreis/index.html
+          test -f roi-reselling/index.html
+          test -f sell-through/index.html
           test -f DATA-SOURCES.md
           test -f PRIVACY-ARCHITECTURE.md
           test -f RELEASE-CHECKLIST.md
@@ -37,23 +43,29 @@ jobs:
         run: |
           grep -Fq '<link rel="canonical" href="https://dealfaz.vercel.app/">' index.html
           grep -Fq '<meta property="og:url" content="https://dealfaz.vercel.app/">' index.html
+          grep -Fq '<meta property="og:image"' index.html
           grep -Fq 'summary_large_image' index.html
           grep -Fq '"start_url":"/"' manifest.webmanifest
           grep -Fq 'Sitemap: https://dealfaz.vercel.app/sitemap.xml' robots.txt
           grep -Fq '<loc>https://dealfaz.vercel.app/</loc>' sitemap.xml
           ! grep -Fn 'nidalomes-ai.github.io/DealFaz' index.html robots.txt sitemap.xml README.md DATA-SOURCES.md PRIVACY-ARCHITECTURE.md manifest.webmanifest
 
-      - name: Legal-safety text checks
+      - name: Legal and affiliate safety checks
         run: |
-          grep -Fq 'Keine Garantie' index.html
-          grep -Fq 'umgeht keine Logins oder technischen Schutzmaßnahmen' index.html
-          grep -Fq 'bedeuten keine Partnerschaft oder Zertifizierung' index.html
+          grep -Fq 'Keine Gewinn- oder Verkaufsgarantie' index.html
+          grep -Fq 'umgeht keine Logins, Paywalls oder technischen Schutzmaßnahmen' index.html
+          grep -Fq 'daraus wird keine Partnerschaft oder Zertifizierung abgeleitet' index.html
+          grep -Fq 'Als Amazon-Partner verdiene ich an qualifizierten Verkäufen' index.html
+          grep -Fq 'Amazon · Partnerlink' app.js
+          grep -Fq 'nofollow sponsored noopener' app.js
           grep -Fq 'keine Gewinn-, Preis-, Nachfrage- oder Verkaufsgarantie' DATA-SOURCES.md
 
       - name: CSV export injection hardening
         run: |
-          grep -Fq 'safeText(d.product)' index.html
-          grep -Fq '/^[=+\-@\t\r]/' index.html
+          grep -Fq 'const safeText=v=>' app.js
+          grep -Fq '/^[=+\-@\t\r]/.test(s)' app.js
+          grep -Fq 'rows.map(r=>r.map(csv)' app.js
+          grep -Fq "'\\ufeff'" app.js
 
       - name: No obvious secrets in repository
         shell: bash
@@ -71,3 +83,5 @@ jobs:
           grep -Fq 'Referrer-Policy' vercel.json
           grep -Fq 'Permissions-Policy' vercel.json
           grep -Fq 'X-Frame-Options' vercel.json
+          grep -Fq 'Strict-Transport-Security' vercel.json
+          grep -Fq 'Content-Security-Policy' vercel.json

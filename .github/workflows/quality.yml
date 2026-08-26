@@ -40,6 +40,8 @@ jobs:
           test -f PRIVACY-ARCHITECTURE.md
           test -f RELEASE-CHECKLIST.md
           test -f LEGAL-GUARDRAILS.md
+          test -f MONETIZATION_DISABLED
+          test -f CLOUDFLARE-PAGES.md
           test -f SECURITY.md
 
       - name: Frontend metadata checks
@@ -62,6 +64,7 @@ jobs:
           grep -Fq 'daraus wird keine Partnerschaft oder Zertifizierung abgeleitet' index.html
           grep -Fq 'Affiliate-Links erst nach tatsächlicher Programmfreigabe verwenden' LEGAL-GUARDRAILS.md
           grep -Fq 'Keine versteckte Provision' LEGAL-GUARDRAILS.md
+          grep -Fq 'monetization is intentionally disabled' MONETIZATION_DISABLED
           if grep -Fq 'dealfaz-21' index.html app.js analytics.js; then
             echo 'Affiliate tag detected while monetization lock is active.'
             exit 1

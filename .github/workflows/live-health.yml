@@ -44,6 +44,7 @@ jobs:
           grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' "$body"
           ! grep -Fq 'Als Amazon-Partner verdiene ich an qualifizierten Verkäufen' "$body"
           ! grep -Fq 'Der Amazon-Link ist ein Partnerlink' "$body"
+          ! grep -Fq 'Amazon-Partnerlinks können Affiliate-Zuordnungen enthalten' "$body"
           grep -Fq 'summary_large_image' "$body"
           grep -Fq 'dealfaz-social-card' "$body"
 
@@ -63,6 +64,7 @@ jobs:
             grep -Eiq "^content-type: ${expected}" "$headers"
           }
           check https://dealfaz.vercel.app/app.js 'application/javascript'
+          check https://dealfaz.vercel.app/analytics.js 'application/javascript'
           check https://dealfaz.vercel.app/style.css 'text/css'
           check https://dealfaz.vercel.app/manifest.webmanifest 'application/manifest\+json'
           check https://dealfaz.vercel.app/robots.txt 'text/plain'
@@ -77,6 +79,7 @@ jobs:
         run: |
           set -euo pipefail
           js=$(curl --retry 2 --retry-delay 2 -fsS https://dealfaz.vercel.app/app.js)
+          analytics=$(curl --retry 2 --retry-delay 2 -fsS https://dealfaz.vercel.app/analytics.js)
           ! printf '%s' "$js" | grep -Fq 'Amazon · Partnerlink'
           ! printf '%s' "$js" | grep -Fq 'nofollow sponsored noopener'
           ! printf '%s' "$js" | grep -Fq 'dealfaz-21'
@@ -89,6 +92,8 @@ jobs:
           ! printf '%s' "$js" | grep -Fq "location.origin+location.pathname+'?'+p.toString()"
           printf '%s' "$js" | grep -Fq 'const safeText=v=>'
           printf '%s' "$js" | grep -Fq '/^[=+\-@\t\r]/.test(s)'
+          printf '%s' "$analytics" | grep -Fq 'syncPausedAffiliateState'
+          printf '%s' "$analytics" | grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert'
 
       - name: IndexNow key is present on public host
         id: indexnow
@@ -101,7 +106,7 @@ jobs:
           body=$(curl --retry 2 --retry-delay 2 -fsS "https://dealfaz.vercel.app/${key}.txt")
           test "$body" = "$key"
 
-      - name: SEO knowledge pages are reachable and canonical
+      - name: SEO knowledge pages are reachable canonical and legal-linked
         id: seo
         if: always()
         continue-on-error: true
@@ -116,6 +121,8 @@ jobs:
             test "$code" = "200"
             grep -Fq "<link rel=\"canonical\" href=\"${canonical}\"" "$body"
             grep -Fq 'DEALFAZ' "$body"
+            grep -Fq 'Impressum & Recht' "$body"
+            grep -Fq 'dealfaz-datenschutz' "$body"
           }
           check_page /reselling-rechner/ https://dealfaz.vercel.app/reselling-rechner/
           check_page /maximaler-einkaufspreis/ https://dealfaz.vercel.app/maximaler-einkaufspreis/

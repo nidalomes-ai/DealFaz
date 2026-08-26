@@ -81,6 +81,10 @@ jobs:
             echo 'Stale Amazon commission disclosure detected while monetization lock is active.'
             exit 1
           fi
+          if grep -Fq 'Amazon-Partnerlinks können Affiliate-Zuordnungen enthalten' index.html app.js analytics.js; then
+            echo 'Stale Amazon affiliate privacy wording detected while monetization lock is active.'
+            exit 1
+          fi
           if grep -Eq 'nofollow sponsored|rel="[^"]*sponsored' index.html app.js analytics.js; then
             echo 'Sponsored-link marker detected while monetization lock is active.'
             exit 1
@@ -95,6 +99,15 @@ jobs:
           grep -Fq 'derzeit kein Partnerlink' index.html
           grep -Fq 'keine Gewinn-, Preis-, Nachfrage- oder Verkaufsgarantie' DATA-SOURCES.md
 
+      - name: SEO legal navigation checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          for page in reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html; do
+            grep -Fq 'Impressum & Recht' "$page"
+            grep -Fq 'dealfaz-datenschutz' "$page"
+          done
+
       - name: Share privacy checks
         shell: bash
         run: |
@@ -105,6 +118,13 @@ jobs:
             echo 'Share values are still being placed in the request query string.'
             exit 1
           fi
+
+      - name: Paused monetization UI defense
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'syncPausedAffiliateState' analytics.js
+          grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' analytics.js
 
       - name: CSV export injection hardening
         run: |

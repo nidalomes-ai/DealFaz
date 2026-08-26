@@ -1,0 +1,54 @@
+name: DEALFAZ Legal Text Patch
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/legal-text-patch.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Make live text consistent with monetization lock
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          replacements = {
+            '<p class="mini"><strong>Werbehinweis:</strong> Der Amazon-Link ist ein Partnerlink. Als Amazon-Partner verdiene ich an qualifizierten Verkäufen. Für dich erhöht sich der Preis dadurch nicht.</p>': '<p class="mini"><strong>Hinweis:</strong> Die Amazon-Verlinkung ist derzeit kein Partnerlink. DEALFAZ erhält daraus aktuell keine Provision.</p>',
+            '<p><strong>Affiliate-Transparenz:</strong> Amazon-Verweise können bezahlte Partnerlinks sein und werden dort klar als solche gekennzeichnet. Als Amazon-Partner verdiene ich an qualifizierten Verkäufen. Andere Plattformnamen werden beschreibend verwendet, solange keine bestätigte Partnerschaft vorliegt.</p>': '<p><strong>Monetarisierung:</strong> Affiliate-Monetarisierung ist derzeit deaktiviert. Amazon und andere Plattformen werden nur als externe Originalquellen verlinkt; daraus wird keine Partnerschaft oder Zertifizierung abgeleitet.</p>',
+            'Amazon-Partnerlinks können Affiliate-Zuordnungen enthalten.': 'Die Amazon-Verlinkung ist derzeit kein Partnerlink; DEALFAZ erhält daraus aktuell keine Provision.'
+          }
+          for old, new in replacements.items():
+              if old not in s:
+                  raise SystemExit(f'Expected text not found: {old[:90]}')
+              s = s.replace(old, new)
+          p.write_text(s, encoding='utf-8')
+          PY
+
+      - name: Verify lock text
+        run: |
+          grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' index.html
+          grep -Fq 'Die Amazon-Verlinkung ist derzeit kein Partnerlink' index.html
+          ! grep -Fq 'Als Amazon-Partner verdiene ich an qualifizierten Verkäufen' index.html
+
+      - name: Commit patch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo 'No changes needed.'
+          else
+            git commit -m 'Align live legal text with monetization lock'
+            git push
+          fi

@@ -33,7 +33,23 @@ Für einen Einzelunternehmer ist der "Fragebogen zur steuerlichen Erfassung für
 
 ELSTER weist darauf hin, dass die Betriebseröffnung dem Finanzamt grundsätzlich innerhalb eines Monats mit dem elektronischen Fragebogen zur steuerlichen Erfassung mitzuteilen ist (§ 138 AO).
 
-## 3. Entscheidungen, die nicht geraten werden dürfen
+## 3. Amazon / grenzüberschreitende Umsatzsteuer
+
+Amazon PartnerNet weist für EU-Partner auf Amazon Europe Core S.à r.l. in Luxemburg hin. Dadurch darf die Umsatzsteuerbehandlung von Affiliate-Vergütungen nicht automatisch wie ein rein inländischer Umsatz behandelt werden.
+
+Vor Reaktivierung von Amazon muss verbindlich geklärt sein:
+- ob eine USt-IdNr. benötigt wird;
+- wie die Leistung umsatzsteuerlich einzuordnen ist;
+- ob Reverse-Charge-/Zusammenfassende-Meldung-Pflichten einschlägig sind;
+- wie Rechnungen/Gutschriften von Amazon steuerlich zu verbuchen sind;
+- wie eine eventuell gewählte Kleinunternehmerregelung mit diesen grenzüberschreitenden Leistungen zusammenspielt.
+
+Diese Punkte werden nicht im Code geraten. Im Zweifel Finanzamt oder Steuerberater einbeziehen, bevor Provisionen aktiviert werden.
+
+Amazon-Hilfe zu Umsatzsteuer / Amazon Europe Core:
+https://partnernet.amazon.de/help/node/topic/GDLLSQWWX68YLHEN
+
+## 4. Entscheidungen, die nicht geraten werden dürfen
 
 Vor Absenden des Fragebogens müssen tatsächliche Angaben verwendet werden. Insbesondere nicht automatisch festlegen:
 - erwarteter Umsatz
@@ -46,7 +62,7 @@ Vor Absenden des Fragebogens müssen tatsächliche Angaben verwendet werden. Ins
 
 Diese Angaben müssen zum realen Geschäftsmodell und zur persönlichen Steuersituation passen.
 
-## 4. Buchhaltung ab Tag 1 der Monetarisierung
+## 5. Buchhaltung ab Tag 1 der Monetarisierung
 
 Mindestens getrennt dokumentieren:
 - Affiliate-Einnahmen nach Programm und Datum
@@ -55,14 +71,16 @@ Mindestens getrennt dokumentieren:
 - Hosting-/Domainkosten, falls vorhanden
 - sonstige betrieblich veranlasste Kosten
 - Steuern und Abgaben nicht mit Umsatz verwechseln
+- grenzüberschreitende Affiliate-Leistungen getrennt nachvollziehbar halten
 
 Für das interne DEALFAZ-Ziel zählt nicht nur Umsatz, sondern der tatsächlich verbleibende Betrag nach betrieblichen Kosten und den jeweils anfallenden Steuern/Abgaben.
 
-## 5. Monetarisierung darf erst wieder aktiv werden, wenn
+## 6. Monetarisierung darf erst wieder aktiv werden, wenn
 
 - [ ] Hosting erlaubt die konkrete kommerzielle Nutzung.
 - [ ] Gewerbeanmeldung ist erledigt bzw. die rechtliche Notwendigkeit wurde verbindlich anders geklärt.
 - [ ] steuerliche Erfassung wurde fristgerecht erledigt bzw. ist vorbereitet und fristgerecht möglich.
+- [ ] Umsatzsteuer-/USt-IdNr.-Behandlung der Amazon-Luxemburg-Vergütungen ist geklärt.
 - [ ] Amazon-Partnerstatus ist gültig und die aktuellen Teilnahmebedingungen sind eingehalten.
 - [ ] eBay-Partnerlinks erst nach bestätigter EPN-Freigabe.
 - [ ] Werbe-/Affiliate-Hinweise stimmen exakt mit den tatsächlich aktiven Links überein.
@@ -71,6 +89,6 @@ Für das interne DEALFAZ-Ziel zählt nicht nur Umsatz, sondern der tatsächlich 
 - [ ] Marken-/Namensprüfung ist ausreichend dokumentiert.
 - [ ] `MONETIZATION_DISABLED` wird erst in einem bewussten Release-Commit entfernt.
 
-## 6. Noch nicht erledigt
+## 7. Noch nicht erledigt
 
 Solange mindestens einer der obigen Punkte offen ist, bleibt DEALFAZ kostenlos und ohne aktive Affiliate-Monetarisierung.

@@ -26,6 +26,7 @@ jobs:
           grep -Eiq '^x-content-type-options: nosniff' "$headers"
           grep -Eiq '^x-frame-options: DENY' "$headers"
           grep -Eiq '^referrer-policy: strict-origin-when-cross-origin' "$headers"
+          grep -Eiq '^strict-transport-security:' "$headers"
           grep -Eiq '^content-security-policy:' "$headers"
           grep -Fq 'DEALFAZ' "$body"
           grep -Fq '60‑Sekunden‑Check' "$body"
@@ -34,10 +35,13 @@ jobs:
           grep -Fq 'Deine Erwartung vs. tatsächliches Ergebnis' "$body"
           grep -Fq 'Wissen & Formeln' "$body"
           grep -Fq 'apple-mobile-web-app-capable' "$body"
-          grep -Fq 'apple-touch-icon.png' "$body"
+          grep -Fq '<link rel="apple-touch-icon" href="/icon.svg">' "$body"
           grep -Fq 'Datenschutz' "$body"
           grep -Fq 'Impressum' "$body"
           grep -Fq 'Keine Gewinn- oder Verkaufsgarantie' "$body"
+          grep -Fq 'Als Amazon-Partner verdiene ich an qualifizierten Verkäufen' "$body"
+          grep -Fq 'summary_large_image' "$body"
+          grep -Fq 'dealfaz-social-card' "$body"
 
       - name: Core static assets are reachable
         shell: bash
@@ -56,9 +60,18 @@ jobs:
           check https://dealfaz.vercel.app/manifest.webmanifest 'application/manifest\+json'
           check https://dealfaz.vercel.app/robots.txt 'text/plain'
           check https://dealfaz.vercel.app/sitemap.xml 'application/xml'
-          check https://dealfaz.vercel.app/apple-touch-icon.png 'image/png'
-          check https://dealfaz.vercel.app/icon-192.png 'image/png'
-          check https://dealfaz.vercel.app/icon-512.png 'image/png'
+          check https://dealfaz.vercel.app/icon.svg 'image/svg\+xml'
+
+      - name: Monetization and CSV safety are live
+        shell: bash
+        run: |
+          set -euo pipefail
+          js=$(curl --retry 2 --retry-delay 2 -fsS https://dealfaz.vercel.app/app.js)
+          printf '%s' "$js" | grep -Fq 'Amazon · Partnerlink'
+          printf '%s' "$js" | grep -Fq 'dealfaz-amazon'
+          printf '%s' "$js" | grep -Fq 'nofollow sponsored noopener'
+          printf '%s' "$js" | grep -Fq 'const safeText=v=>'
+          printf '%s' "$js" | grep -Fq '/^[=+\-@\t\r]/.test(s)'
 
       - name: IndexNow key is present on public host
         shell: bash

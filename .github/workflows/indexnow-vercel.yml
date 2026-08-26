@@ -1,0 +1,43 @@
+name: DEALFAZ IndexNow Vercel
+
+on:
+  push:
+    paths:
+      - '.github/workflows/indexnow-vercel.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify IndexNow key
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(curl -fsS https://dealfaz.vercel.app/e6ec43618dca9e6ea85cc60ede8e5831.txt)" = "e6ec43618dca9e6ea85cc60ede8e5831"
+
+      - name: Submit public Vercel URLs to IndexNow
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > payload.json <<'JSON'
+          {
+            "host": "dealfaz.vercel.app",
+            "key": "e6ec43618dca9e6ea85cc60ede8e5831",
+            "keyLocation": "https://dealfaz.vercel.app/e6ec43618dca9e6ea85cc60ede8e5831.txt",
+            "urlList": [
+              "https://dealfaz.vercel.app/",
+              "https://dealfaz.vercel.app/reselling-rechner/",
+              "https://dealfaz.vercel.app/maximaler-einkaufspreis/",
+              "https://dealfaz.vercel.app/roi-reselling/",
+              "https://dealfaz.vercel.app/sell-through/"
+            ]
+          }
+          JSON
+          code=$(curl -sS -o response.txt -w '%{http_code}' -X POST 'https://api.indexnow.org/indexnow' -H 'Content-Type: application/json; charset=utf-8' --data-binary @payload.json)
+          echo "IndexNow HTTP $code"
+          cat response.txt || true
+          test "$code" = "200" -o "$code" = "202"

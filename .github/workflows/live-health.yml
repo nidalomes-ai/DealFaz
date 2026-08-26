@@ -14,7 +14,7 @@ jobs:
   live-health:
     runs-on: ubuntu-latest
     steps:
-      - name: Public Vercel demo is healthy HTML
+      - name: Public Vercel app is healthy HTML
         shell: bash
         run: |
           set -euo pipefail
@@ -23,10 +23,69 @@ jobs:
           code=$(curl --retry 2 --retry-delay 2 -sS -D "$headers" -o "$body" -w '%{http_code}' https://dealfaz.vercel.app/)
           test "$code" = "200"
           grep -Eiq '^content-type: text/html' "$headers"
+          grep -Eiq '^x-content-type-options: nosniff' "$headers"
+          grep -Eiq '^x-frame-options: DENY' "$headers"
+          grep -Eiq '^referrer-policy: strict-origin-when-cross-origin' "$headers"
+          grep -Eiq '^content-security-policy:' "$headers"
           grep -Fq 'DEALFAZ' "$body"
+          grep -Fq '60‑Sekunden‑Check' "$body"
+          grep -Fq 'Warum NICHT kaufen?' "$body"
+          grep -Fq 'Deal Battle' "$body"
+          grep -Fq 'Deine Erwartung vs. tatsächliches Ergebnis' "$body"
           grep -Fq 'Datenschutz' "$body"
           grep -Fq 'Impressum' "$body"
-          grep -Fq 'Keine Garantie' "$body"
+          grep -Fq 'Keine Gewinn- oder Verkaufsgarantie' "$body"
+
+      - name: Core static assets are reachable
+        shell: bash
+        run: |
+          set -euo pipefail
+          check() {
+            url="$1"
+            expected="$2"
+            headers=$(mktemp)
+            code=$(curl --retry 2 --retry-delay 2 -sS -D "$headers" -o /dev/null -w '%{http_code}' "$url")
+            test "$code" = "200"
+            grep -Eiq "^content-type: ${expected}" "$headers"
+          }
+          check https://dealfaz.vercel.app/app.js 'application/javascript'
+          check https://dealfaz.vercel.app/style.css 'text/css'
+          check https://dealfaz.vercel.app/manifest.webmanifest 'application/manifest\+json'
+          check https://dealfaz.vercel.app/robots.txt 'text/plain'
+          check https://dealfaz.vercel.app/sitemap.xml 'application/xml'
+
+      - name: SEO knowledge pages are reachable and canonical
+        shell: bash
+        run: |
+          set -euo pipefail
+          check_page() {
+            path="$1"
+            canonical="$2"
+            body=$(mktemp)
+            code=$(curl --retry 2 --retry-delay 2 -sS -o "$body" -w '%{http_code}' "https://dealfaz.vercel.app${path}")
+            test "$code" = "200"
+            grep -Fq "<link rel=\"canonical\" href=\"${canonical}\"" "$body"
+            grep -Fq 'DEALFAZ' "$body"
+          }
+          check_page /reselling-rechner/ https://dealfaz.vercel.app/reselling-rechner/
+          check_page /maximaler-einkaufspreis/ https://dealfaz.vercel.app/maximaler-einkaufspreis/
+          check_page /roi-reselling/ https://dealfaz.vercel.app/roi-reselling/
+          check_page /sell-through/ https://dealfaz.vercel.app/sell-through/
+
+      - name: Sitemap contains all public pages
+        shell: bash
+        run: |
+          set -euo pipefail
+          sitemap=$(curl --retry 2 --retry-delay 2 -sS https://dealfaz.vercel.app/sitemap.xml)
+          for url in \
+            'https://dealfaz.vercel.app/' \
+            'https://dealfaz.vercel.app/reselling-rechner/' \
+            'https://dealfaz.vercel.app/maximaler-einkaufspreis/' \
+            'https://dealfaz.vercel.app/roi-reselling/' \
+            'https://dealfaz.vercel.app/sell-through/'
+          do
+            printf '%s' "$sitemap" | grep -Fq "<loc>${url}</loc>"
+          done
 
       - name: Tracked public entry redirects to Vercel
         shell: bash

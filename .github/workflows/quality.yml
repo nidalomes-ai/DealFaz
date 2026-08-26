@@ -24,10 +24,12 @@ jobs:
         run: |
           test -f index.html
           test -f app.js
+          test -f analytics.js
           test -f style.css
           test -f manifest.webmanifest
           test -f icon.svg
           test -f vercel.json
+          test -f _headers
           test -f robots.txt
           test -f sitemap.xml
           test -f reselling-rechner/index.html
@@ -37,6 +39,7 @@ jobs:
           test -f DATA-SOURCES.md
           test -f PRIVACY-ARCHITECTURE.md
           test -f RELEASE-CHECKLIST.md
+          test -f LEGAL-GUARDRAILS.md
           test -f SECURITY.md
 
       - name: Frontend metadata checks
@@ -50,14 +53,23 @@ jobs:
           grep -Fq '<loc>https://dealfaz.vercel.app/</loc>' sitemap.xml
           ! grep -Fn 'nidalomes-ai.github.io/DealFaz' index.html robots.txt sitemap.xml README.md DATA-SOURCES.md PRIVACY-ARCHITECTURE.md manifest.webmanifest
 
-      - name: Legal and affiliate safety checks
+      - name: Legal and monetization safety checks
+        shell: bash
         run: |
+          set -euo pipefail
           grep -Fq 'Keine Gewinn- oder Verkaufsgarantie' index.html
           grep -Fq 'umgeht keine Logins, Paywalls oder technischen Schutzmaßnahmen' index.html
           grep -Fq 'daraus wird keine Partnerschaft oder Zertifizierung abgeleitet' index.html
-          grep -Fq 'Als Amazon-Partner verdiene ich an qualifizierten Verkäufen' index.html
-          grep -Fq 'Amazon · Partnerlink' app.js
-          grep -Fq 'nofollow sponsored noopener' app.js
+          grep -Fq 'Affiliate-Links erst nach tatsächlicher Programmfreigabe verwenden' LEGAL-GUARDRAILS.md
+          grep -Fq 'Keine versteckte Provision' LEGAL-GUARDRAILS.md
+          if grep -Fq 'dealfaz-21' index.html app.js analytics.js; then
+            echo 'Affiliate tag detected while monetization lock is active.'
+            exit 1
+          fi
+          if grep -Eq '([?&]|&amp;)tag=|AMAZON_TAG' index.html app.js analytics.js; then
+            echo 'Affiliate URL construction detected while monetization lock is active.'
+            exit 1
+          fi
           grep -Fq 'keine Gewinn-, Preis-, Nachfrage- oder Verkaufsgarantie' DATA-SOURCES.md
 
       - name: CSV export injection hardening
@@ -85,3 +97,9 @@ jobs:
           grep -Fq 'X-Frame-Options' vercel.json
           grep -Fq 'Strict-Transport-Security' vercel.json
           grep -Fq 'Content-Security-Policy' vercel.json
+          grep -Fq 'X-Content-Type-Options' _headers
+          grep -Fq 'Referrer-Policy' _headers
+          grep -Fq 'Permissions-Policy' _headers
+          grep -Fq 'X-Frame-Options' _headers
+          grep -Fq 'Strict-Transport-Security' _headers
+          grep -Fq 'Content-Security-Policy' _headers

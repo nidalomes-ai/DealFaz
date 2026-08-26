@@ -39,6 +39,9 @@ Diese Datei definiert feste Grenzen für neue Funktionen. Ziel ist, Produktentwi
 - Affiliate-Links erst nach tatsächlicher Programmfreigabe verwenden.
 - Partnerlinks klar und verständlich kennzeichnen.
 - Keine versteckte Provision und keine Behauptung einer Partnerschaft ohne tatsächliche Grundlage.
+- Affiliate-Monetarisierung bleibt deaktiviert, solange der verwendete Hosting-Tarif kommerzielle Nutzung nicht ausdrücklich zulässt.
+- Vor Aktivierung planmäßiger Einnahmen müssen Gewerbe-/Betreiberstatus und steuerliche Erfassung geklärt sein.
+- Partnerprogramm-Regeln gehen vor technischen Abkürzungen: keine Linkverschleierung oder Weiterleitung, wenn das Programm direkte Partnerlinks verlangt.
 - Kostenpflichtige Funktionen erst aktivieren, wenn Betreiber-, Vertrags-, Steuer-, Datenschutz- und Zahlungsanforderungen geprüft sind.
 
 ## 6. Betreiber- und Pflichtinformationen
@@ -47,8 +50,15 @@ Diese Datei definiert feste Grenzen für neue Funktionen. Ziel ist, Produktentwi
 - Datenschutzhinweise an die tatsächlich verwendeten Dienste und Verarbeitungen anpassen.
 - Bei Änderungen an Hosting, Tracking, Nutzerkonten, Uploads, E-Mail, Zahlungen oder Drittanbietern muss die Rechts-/Datenschutzseite vor Livegang mitgeprüft werden.
 - Keine erfundenen Register-, Umsatzsteuer-, Unternehmens- oder Kontaktangaben eintragen.
+- Verbraucher- und Streitbeilegungshinweise nur einbauen, wenn sie für den tatsächlichen Betreiberstatus gelten; keine veralteten Hinweise zur früheren EU-OS-Plattform.
 
-## 7. Release Gate für neue Funktionen
+## 7. Marken- und Namensrecht
+
+- DEALFAZ wird nicht als eingetragene Marke dargestellt, solange keine entsprechende Eintragung vorliegt.
+- Vor größerem öffentlichen oder kommerziellem Rollout ist eine Registerrecherche bei DPMA und – bei EU-Ausweitung – EUIPO durchzuführen und zu dokumentieren.
+- Ein fehlender Treffer in allgemeinen Suchmaschinen gilt nicht als Markenfreigabe.
+
+## 8. Release Gate für neue Funktionen
 
 Eine neue Funktion darf erst live gehen, wenn alle zutreffenden Punkte mit **JA** beantwortet werden:
 
@@ -59,11 +69,14 @@ Eine neue Funktion darf erst live gehen, wenn alle zutreffenden Punkte mit **JA*
 5. Ist die Datenspeicherung auf das Notwendige beschränkt?
 6. Sind neue Tracking-/Upload-/Account-/Payment-Funktionen datenschutzrechtlich geprüft?
 7. Bleiben Impressum, Datenschutz, Haftung und Nutzungsbedingungen zum tatsächlichen Produktstand passend?
-8. Wurde die Funktion technisch getestet, bevor sie Production erreicht?
+8. Erlaubt der Hosting-/Dienstleistervertrag die geplante Nutzung einschließlich Monetarisierung?
+9. Sind vor Monetarisierung Gewerbe-/Steuerstatus und Partnerprogrammfreigaben geklärt?
+10. Wurde bei Nutzung von DEALFAZ als Marke die notwendige Registerrecherche dokumentiert?
+11. Wurde die Funktion technisch getestet, bevor sie Production erreicht?
 
-Wenn ein Punkt **NEIN** oder ungeklärt ist, bleibt die Funktion Preview/Entwurf.
+Wenn ein Punkt **NEIN** oder ungeklärt ist, bleibt die Funktion Preview/Entwurf bzw. Monetarisierung deaktiviert.
 
-## 8. Aktuelle Produktlinie
+## 9. Aktuelle Produktlinie
 
 Die aktuelle sichere Kernlinie von DEALFAZ lautet:
 

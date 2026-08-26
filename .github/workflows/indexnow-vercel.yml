@@ -2,8 +2,21 @@ name: DEALFAZ IndexNow Vercel
 
 on:
   push:
+    branches:
+      - main
     paths:
       - '.github/workflows/indexnow-vercel.yml'
+      - 'index.html'
+      - 'app.js'
+      - 'analytics.js'
+      - 'style.css'
+      - 'manifest.webmanifest'
+      - 'robots.txt'
+      - 'sitemap.xml'
+      - 'reselling-rechner/**'
+      - 'maximaler-einkaufspreis/**'
+      - 'roi-reselling/**'
+      - 'sell-through/**'
   workflow_dispatch:
 
 permissions:

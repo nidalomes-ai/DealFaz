@@ -33,6 +33,19 @@ Die öffentliche Version läuft über HTTPS und benötigt kein Nutzerkonto.
 - installierbare Web-App-Struktur über Manifest und App-Icon
 - Security-Header für Content-Type, Framing, Referrer, Berechtigungen und Content Security Policy
 
+## Wissensseiten
+
+- [Reselling-Rechner: Gewinn, ROI & Marge](https://dealfaz.vercel.app/reselling-rechner/)
+- [Maximalen Einkaufspreis berechnen](https://dealfaz.vercel.app/maximaler-einkaufspreis/)
+- [ROI beim Reselling verstehen](https://dealfaz.vercel.app/roi-reselling/)
+- [Sell-through verstehen](https://dealfaz.vercel.app/sell-through/)
+
+## Transparenz & Methodik
+
+- [`docs/DEALSCORE-METHODIK.md`](docs/DEALSCORE-METHODIK.md) – aktuelle Rechenlogik, Grenzen und Gegenproben
+- [`docs/DATENFLUSS-UND-DATENSCHUTZ.md`](docs/DATENFLUSS-UND-DATENSCHUTZ.md) – lokaler Datenfluss und Datenschutzprinzipien
+- [`LEGAL-GUARDRAILS.md`](LEGAL-GUARDRAILS.md) – feste Release-Grenzen für neue Funktionen
+
 ## Rechts- und Datenprinzipien
 
 - **Keine Gewinn- oder Verkaufsgarantie.** Ergebnisse sind Rechen- und Entscheidungshilfen.

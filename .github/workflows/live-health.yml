@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Public Vercel app is healthy HTML
+        id: html
+        continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
@@ -46,6 +48,9 @@ jobs:
           grep -Fq 'dealfaz-social-card' "$body"
 
       - name: Core static assets are reachable
+        id: assets
+        if: always()
+        continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
@@ -65,6 +70,9 @@ jobs:
           check https://dealfaz.vercel.app/icon.svg 'image/svg\+xml'
 
       - name: Monetization, sharing and CSV safety are live
+        id: safety
+        if: always()
+        continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
@@ -73,12 +81,19 @@ jobs:
           ! printf '%s' "$js" | grep -Fq 'nofollow sponsored noopener'
           ! printf '%s' "$js" | grep -Fq 'dealfaz-21'
           ! printf '%s' "$js" | grep -Eq '([?&]|&amp;)tag=|AMAZON_TAG'
-          printf '%s' "$js" | grep -Fq 'dealfaz-amazon'
-          printf '%s' "$js" | grep -Fq "#deal="
+          ! printf '%s' "$js" | grep -Fq 'dealfaz-amazon#q='
+          printf '%s' "$js" | grep -Fq "amazon='https://www.amazon.de/s?k='+e"
+          printf '%s' "$js" | grep -Fq "['Amazon',amazon,'nofollow noopener noreferrer']"
+          printf '%s' "$js" | grep -Fq "'#deal='+encodeURIComponent(p.toString())"
+          printf '%s' "$js" | grep -Fq "location.hash.startsWith('#deal=')"
+          ! printf '%s' "$js" | grep -Fq "location.origin+location.pathname+'?'+p.toString()"
           printf '%s' "$js" | grep -Fq 'const safeText=v=>'
           printf '%s' "$js" | grep -Fq '/^[=+\-@\t\r]/.test(s)'
 
       - name: IndexNow key is present on public host
+        id: indexnow
+        if: always()
+        continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
@@ -87,6 +102,9 @@ jobs:
           test "$body" = "$key"
 
       - name: SEO knowledge pages are reachable and canonical
+        id: seo
+        if: always()
+        continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
@@ -105,6 +123,9 @@ jobs:
           check_page /sell-through/ https://dealfaz.vercel.app/sell-through/
 
       - name: Sitemap contains all public pages
+        id: sitemap
+        if: always()
+        continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
@@ -120,9 +141,33 @@ jobs:
           done
 
       - name: Tracked public entry redirects to Vercel
+        id: redirect
+        if: always()
+        continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
           headers=$(mktemp)
           curl --retry 2 --retry-delay 2 -sS -D "$headers" -o /dev/null 'https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-start?utm_source=internal_selftest&utm_campaign=github_health&utm_content=redirect'
           grep -Eiq '^location: https://dealfaz\.vercel\.app/' "$headers"
+
+      - name: Fail if any live check failed
+        if: always()
+        shell: bash
+        env:
+          HTML: ${{ steps.html.outcome }}
+          ASSETS: ${{ steps.assets.outcome }}
+          SAFETY: ${{ steps.safety.outcome }}
+          INDEXNOW: ${{ steps.indexnow.outcome }}
+          SEO: ${{ steps.seo.outcome }}
+          SITEMAP: ${{ steps.sitemap.outcome }}
+          REDIRECT: ${{ steps.redirect.outcome }}
+        run: |
+          printf 'html=%s assets=%s safety=%s indexnow=%s seo=%s sitemap=%s redirect=%s\n' "$HTML" "$ASSETS" "$SAFETY" "$INDEXNOW" "$SEO" "$SITEMAP" "$REDIRECT"
+          test "$HTML" = success
+          test "$ASSETS" = success
+          test "$SAFETY" = success
+          test "$INDEXNOW" = success
+          test "$SEO" = success
+          test "$SITEMAP" = success
+          test "$REDIRECT" = success

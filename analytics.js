@@ -16,7 +16,24 @@
       img.src=u.toString();
     }catch{}
   }
+  function syncPausedAffiliateState(){
+    const links=[...document.querySelectorAll('#marketLinks a')];
+    const amazon=links.find(a=>(a.textContent||'').toLowerCase().includes('amazon'));
+    if(amazon){
+      const strong=amazon.querySelector('strong');
+      if(strong)strong.textContent='Amazon';
+      amazon.rel='nofollow noopener noreferrer';
+    }
+    const markets=document.getElementById('markets');
+    const notice=markets?.querySelector('.mini');
+    if(notice)notice.innerHTML='<strong>Hinweis:</strong> Affiliate-Monetarisierung ist derzeit deaktiviert. Die Marktlinks dienen ausschließlich der eigenen Recherche.';
+    const legal=document.getElementById('recht');
+    const affiliate=[...legal?.querySelectorAll('p')||[]].find(p=>(p.textContent||'').includes('Affiliate-Transparenz'));
+    if(affiliate)affiliate.innerHTML='<strong>Affiliate-Status:</strong> Affiliate-Monetarisierung ist derzeit deaktiviert. Plattformnamen werden nur beschreibend verwendet; eine Partnerschaft wird nur behauptet, wenn sie tatsächlich besteht.';
+  }
   hit('direct_pageview','home');
+  requestAnimationFrame(syncPausedAffiliateState);
+  setTimeout(syncPausedAffiliateState,100);
   document.addEventListener('click',e=>{
     const a=e.target.closest?.('#marketLinks a');
     if(!a)return;

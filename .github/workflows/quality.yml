@@ -73,6 +73,20 @@ jobs:
             echo 'Affiliate URL construction detected while monetization lock is active.'
             exit 1
           fi
+          if grep -Fq 'Amazon · Partnerlink' index.html app.js analytics.js; then
+            echo 'Stale Amazon partner-link label detected while monetization lock is active.'
+            exit 1
+          fi
+          if grep -Fq 'Als Amazon-Partner verdiene' index.html app.js analytics.js; then
+            echo 'Stale Amazon commission disclosure detected while monetization lock is active.'
+            exit 1
+          fi
+          if grep -Eq 'nofollow sponsored|rel="[^"]*sponsored' index.html app.js analytics.js; then
+            echo 'Sponsored-link marker detected while monetization lock is active.'
+            exit 1
+          fi
+          grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' index.html
+          grep -Fq 'derzeit kein Partnerlink' index.html
           grep -Fq 'keine Gewinn-, Preis-, Nachfrage- oder Verkaufsgarantie' DATA-SOURCES.md
 
       - name: CSV export injection hardening

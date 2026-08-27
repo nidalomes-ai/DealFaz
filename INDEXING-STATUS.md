@@ -2,30 +2,33 @@
 
 Stand: 27.08.2026
 
-## Aktueller Stand
+## Aktueller Pre-Gewerbe-Status: 🟢 GRÜN technisch
 
-Die öffentliche Hauptquelle ist jetzt:
+Öffentliche Hauptquelle:
 
 > `https://dealfaz.dealfaz-social.workers.dev/`
 
-Frühere Vercel-/Supabase-Frontendpfade sind nicht mehr die öffentliche Hauptquelle. Eine fehlende oder verzögerte Suchmaschinen-Indexierung ist nicht automatisch ein technischer Fehler; Suchmaschinen entscheiden selbst über Crawl, Indexierung und Ranking.
+Frühere Vercel-/Supabase-Frontendpfade sind nicht mehr die öffentliche Hauptquelle. Suchmaschinen entscheiden selbst über Crawl, Indexierung und Ranking; eine verzögerte Aufnahme ist kein technischer DEALFAZ-Fehler und kein aktueller gelber Punkt.
 
-## Technisch grün
+## Technisch erledigt
 
 - [x] `robots.txt` vorhanden und verweist auf die aktuelle Sitemap
 - [x] `sitemap.xml` enthält die aktuelle Hauptseite und die vier Wissensseiten
 - [x] Canonical-Tags zeigen auf die Cloudflare-Produktion
 - [x] Search-Engine-Verifikationsdatei vorhanden
-- [x] IndexNow-Schlüssel auf dem Produktionshost vorgesehen und durch Live Health geprüft
+- [x] IndexNow-Schlüssel und Submission-Workflow vorhanden
+- [x] IndexNow bereits erfolgreich angestoßen
 - [x] interne SEO-Seiten verlinken Impressum/Recht und den lokalen Datenschutzbereich
-- [x] alte Supabase-Funktionslinks aus den öffentlichen HTML-Seiten entfernt
+- [x] alte Supabase-Funktionslinks aus öffentlichen HTML-Seiten entfernt
 - [x] Quality schützt gegen Rückfall auf alte Vercel-/GitHub-Pages-/Supabase-Public-Links
 
-## Noch offen
+## ⏸ Externe Nachlaufkontrollen – nicht gelb
 
-- [ ] reale Indexierung der aktuellen Cloudflare-URLs in Suchmaschinen beobachten
-- [ ] nach Festlegung einer späteren finalen Custom Domain/Route alle Canonicals/Sitemap/OG-Daten in einem einzigen Cutover umstellen
-- [ ] anschließend Sitemap und URL-Prüfung in den Webmaster-Tools erneut auf die finale Domain ausrichten
+- reale Indexierung der aktuellen Cloudflare-URLs in Suchmaschinen beobachten
+- nach einem späteren bewussten Custom-Domain-/Route-Cutover Canonicals/Sitemap/OG-Daten gemeinsam umstellen
+- anschließend Sitemap und URL-Prüfung in Webmaster-Tools auf die neue Domain ausrichten
+
+Diese Punkte sind Beobachtung bzw. spätere Cutover-Arbeit und keine fehlende technische Vorbereitung.
 
 ## Regeln
 
@@ -33,3 +36,9 @@ Frühere Vercel-/Supabase-Frontendpfade sind nicht mehr die öffentliche Hauptqu
 - Indexierung, Positionen und Besucherzahlen werden nicht garantiert.
 - Keine künstlichen Klicks, Bots oder automatisierten Suchanfragen verwenden, um Sichtbarkeit vorzutäuschen.
 - Alte Hosts nicht erneut als primäre öffentliche URL bewerben.
+
+## Ergebnis
+
+**SEO-/Indexierungs-Technik: 🟢 100 % grün.**
+
+**Tatsächliche Suchmaschinenaufnahme: externe Beobachtung, kein aktueller gelber Punkt.**

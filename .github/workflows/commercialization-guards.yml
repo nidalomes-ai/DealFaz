@@ -43,7 +43,7 @@ jobs:
           grep -Fq 'Gewerbeanmeldung' BUSINESS-START-CHECKLIST.md
           grep -Fq 'Reverse Charge' BUSINESS-START-CHECKLIST.md
           grep -Fq 'Zusammenfassende Meldung' BUSINESS-START-CHECKLIST.md
-          grep -Fq 'Verbraucherstreitbeilegung' BUSINESS-START-CHECKLIST.md
+          grep -Fq 'Verbraucherschlichtung' BUSINESS-START-CHECKLIST.md
           grep -Fq 'MONETIZATION_DISABLED' AMAZON-ACTIVATION.md
           grep -Fq 'Als Amazon-Partner verdiene ich an qualifizierten Verkäufen.' AMAZON-ACTIVATION.md
           grep -Fq 'keine fiktiven Umsätze oder Gewinne' ELSTER-FIELD-PREP.md

@@ -1,0 +1,46 @@
+name: Cloudflare production cutover
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  cutover:
+    if: github.event.head_commit.message == 'Trigger Cloudflare production cutover'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Replace production URLs and hosting notice
+        shell: bash
+        run: |
+          set -euo pipefail
+          OLD='https://dealfaz.vercel.app'
+          NEW='https://dealfaz.dealfaz-social.workers.dev'
+          grep -RIl --exclude-dir=.git "$OLD" . | while read -r f; do
+            sed -i "s#${OLD}#${NEW}#g" "$f"
+          done
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text()
+          s = s.replace('Beim Aufruf verarbeitet Vercel technisch notwendige Verbindungs-, Sicherheits- und Protokolldaten zur Bereitstellung und Absicherung der Website.', 'Beim Aufruf verarbeitet Cloudflare technisch notwendige Verbindungs-, Sicherheits- und Protokolldaten zur Bereitstellung und Absicherung der Website.')
+          p.write_text(s)
+          PY
+          rm -f .github/workflows/cloudflare-production-cutover.yml
+      - name: Commit production cutover
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m 'Apply Cloudflare production cutover'
+          git push

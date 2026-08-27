@@ -12,9 +12,14 @@ Die eBay-Seite von DEALFAZ ist für die kostenlose Beta sauber vorbereitet. Eine
 - [x] EPN-Kommunikation/Updates im DEALFAZ-Postfach vorhanden
 - [x] unzustellbare Statusanfrage vom 26.08.2026 korrekt dokumentiert
 - [x] daraus weder Ablehnung noch Freigabe abgeleitet
+- [x] am 27.08.2026 neue Statusanfrage an die offizielle EPN-Supportadresse `EPNHelp@ebay.com` gesendet; Account ID 7659808, Projekt DEALFAZ und aktuelle Cloudflare-Website angegeben
 - [x] neutrale eBay-Originalquelle ohne EPN-Tracking als sichere Ersatzroute aktiv
 - [x] keine Partnerbehauptung auf der öffentlichen Beta
 - [x] `MONETIZATION_DISABLED` bleibt aktiv
+
+## Aktueller EPN-Bewerbungsstatus
+
+Die vorhandene EPN-Mail `Application Received` bedeutet nach der offiziellen EPN-Beitrittsbeschreibung, dass die Bewerbung geprüft wird. EPN kündigt eine zweite E-Mail an, die über Annahme oder Ablehnung informiert. Eine solche Annahme-/Ablehnungs-Mail ist im aktuellen DEALFAZ-Postfach noch nicht vorhanden.
 
 ## ⏸ Aktivierung erst nach Gewerbe
 

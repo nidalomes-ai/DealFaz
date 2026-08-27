@@ -10,11 +10,13 @@ Diese Checkliste ist ein Release-Gate und ersetzt keine individuelle Rechts- ode
 - 🟢 Cloudflare-Produktionsversion, Sitemap, robots.txt und Launch-Links: auf dem aktuellen Host ausgerichtet.
 - 🟢 Verbraucherstreitbeilegungs-Hinweis (VSBG-Formulierung): bereits im öffentlichen Rechtstext vorhanden.
 - 🟢 Amazon PartnerNet: erste Teilnahmebestätigung eingegangen.
+- 🟢 eBay Partner Network: Bewerbungseingang dokumentiert; Aktivierungsregeln vorhanden.
 - 🟢 DPMA-Rechercheweg: amtliche Suchstrategie dokumentiert.
 - 🟡 Produktionsdomain für späteren geschäftskritischen/monetarisierten Betrieb: noch nicht final. Aktuell läuft die Seite auf `workers.dev`; Cloudflare empfiehlt für echte Produktions-Worker eine Custom Domain bzw. Route. Es wird dafür jetzt nichts gekauft.
 - 🟡 Gewerbeanmeldung: bewusst noch nicht abgesendet.
 - 🟡 Steuerliche Erfassung / USt-IdNr. / EU-B2B-Behandlung: Vorabklärung läuft.
 - 🟡 Amazon-spezifische Steuer-/Disclosure-Rückfrage: Antwort noch ausstehend.
+- 🟡 eBay Partner Network: ausdrückliche Freigabe/Acceptance ist noch nicht nachgewiesen; Partnerlinks bleiben aus.
 - 🟡 Marken-Kollisionsprüfung: noch nicht abgeschlossen; keine Markenfreigabe behaupten.
 - 🟡 Metricool: kostenloses Monatslimit August erreicht; kein kostenpflichtiges Upgrade.
 - 🔒 Affiliate-Monetarisierung bleibt durch `MONETIZATION_DISABLED` gesperrt.
@@ -82,7 +84,25 @@ Am 24.08.2026 ist die erste PartnerNet-Teilnahmebestätigung eingegangen. Das is
 
 Solange diese und die Gewerbe-/Steuer-Gates offen sind, bleiben Amazon-Links neutral und provisionsfrei.
 
-## 4. Hosting
+## 4. eBay Partner Network
+
+Am 21.08.2026 wurde der Eingang der EPN-Bewerbung bestätigt. Eine ausdrückliche Freigabe/Acceptance ist im aktuellen Postfachstand nicht nachgewiesen.
+
+### Erledigt
+
+- [x] Bewerbungseingang dokumentiert
+- [x] Aktivierungs- und Stop-Regeln in `EBAY-ACTIVATION.md` dokumentiert
+- [x] unzustellbare Statusanfrage vom 26.08.2026 als solche erkannt; daraus weder Freigabe noch Ablehnung abgeleitet
+
+### Offen
+
+- [ ] ausdrückliche EPN-Freigabe nachweisen
+- [ ] aktuellen EPN-Kontostatus vor Aktivierung prüfen
+- [ ] Website/Domain und aktuelle EPN-Regeln beim tatsächlichen Monetarisierungsstart abgleichen
+
+Bis dahin keine EPN-Partnerlinks, keine Trackingparameter und keine Behauptung einer bestätigten eBay-Partnerschaft.
+
+## 5. Hosting
 
 Aktuell öffentlich:
 
@@ -99,11 +119,11 @@ Aktuell öffentlich:
 ### Gelb für spätere Monetarisierung
 
 - [ ] Custom Domain/Route bzw. finalen geschäftskritischen Host festlegen
-- [ ] danach Canonical, Sitemap, Social-Metadaten und PartnerNet-Webseite in einem Cutover angleichen
+- [ ] danach Canonical, Sitemap, Social-Metadaten und Partnerprogramm-Webseiten in einem Cutover angleichen
 
 Keine kostenpflichtige Domain oder kein Upgrade wird automatisch gekauft.
 
-## 5. Rechtstext / Verbraucherstreitbeilegung
+## 6. Rechtstext / Verbraucherstreitbeilegung
 
 Die konservative Formulierung ist bereits öffentlich eingebaut:
 
@@ -112,16 +132,17 @@ Die konservative Formulierung ist bereits öffentlich eingebaut:
 - [x] Formulierung vorbereitet
 - [x] im öffentlichen Rechtstext eingebaut
 
-## 6. Markenstatus
+## 7. Markenstatus
 
 - [x] DPMA-Antwort und amtliche Suchstrategie dokumentiert
+- [x] öffentliche Web-Vorrecherche und konkrete ähnliche Zeichen dokumentiert
 - [ ] DPMAregister-Ähnlichkeitssuche vollständig auswerten
 - [ ] EUIPO/WIPO für relevante Treffer und aktuellen Rechtsstand ergänzen
 - [ ] bei ernsthaftem Konflikttreffer Namensalternative/fachkundige Prüfung vor irreversiblen Branding-Ausgaben
 
 Bis dahin keine Aussage „Marke frei“ oder „rechtlich abgesichert“.
 
-## 7. Buchhaltung ab Tag 1 der Monetarisierung
+## 8. Buchhaltung ab Tag 1 der Monetarisierung
 
 Ab dem ersten tatsächlichen kommerziellen Vorgang getrennt dokumentieren:
 
@@ -132,7 +153,7 @@ Ab dem ersten tatsächlichen kommerziellen Vorgang getrennt dokumentieren:
 - grenzüberschreitende Affiliate-Leistungen
 - Steuern/Abgaben getrennt vom Umsatz
 
-## 8. Monetarisierungsfreigabe
+## 9. Monetarisierungsfreigabe
 
 `MONETIZATION_DISABLED` darf erst in einem bewussten Release entfernt werden, wenn mindestens:
 
@@ -141,11 +162,12 @@ Ab dem ersten tatsächlichen kommerziellen Vorgang getrennt dokumentieren:
 - [ ] USt-IdNr./Reverse-Charge/ZM-Behandlung für Amazon geklärt und eingerichtet
 - [ ] finaler Produktionshost für den kommerziellen Betrieb festgelegt
 - [ ] Amazon-Partnerstatus und Website-Zuordnung aktuell korrekt
+- [ ] eBay-Partnerlinks nur nach nachgewiesener EPN-Freigabe
 - [ ] Affiliate-Werbekennzeichnung exakt zur tatsächlichen Linkstruktur passt
 - [x] VSBG-Hinweis sichtbar
 - [x] Datenschutzhinweise beschreiben den aktuellen Cloudflare-/Local-Storage-Betrieb
 - [x] Impressum ist öffentlich vorhanden
 - [ ] Marken-/Namensprüfung ausreichend abgeschlossen/dokumentiert
-- [ ] Quality und Live Health unmittelbar vor Aktivierung erneut grün
+- [ ] Quality, Live Health und Commercialization Guards unmittelbar vor Aktivierung erneut grün
 
 Offene externe Punkte stoppen nicht die technische Weiterentwicklung; sie stoppen nur die Monetarisierungsfreigabe.

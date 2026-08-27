@@ -40,6 +40,7 @@ jobs:
           test -f ELSTER-FIELD-PREP.md
           test -f AMAZON-ACTIVATION.md
           test -f TRADEMARK-CHECK.md
+          test -f DACH-COMMERCIAL-ROLLOUT.md
           grep -Fq 'Gewerbeanmeldung' BUSINESS-START-CHECKLIST.md
           grep -Fq 'Reverse Charge' BUSINESS-START-CHECKLIST.md
           grep -Fq '§ 18a UStG' BUSINESS-START-CHECKLIST.md
@@ -49,6 +50,26 @@ jobs:
           grep -Fq 'keine fiktiven Umsätze oder Gewinne' ELSTER-FIELD-PREP.md
           grep -Fq 'DEALFA' TRADEMARK-CHECK.md
           grep -Fq 'DEALFAST' TRADEMARK-CHECK.md
+          grep -Fq 'kommerzielle Affiliate-Freigabe erfolgt zuerst für Deutschland' DACH-COMMERCIAL-ROLLOUT.md
+          grep -Fq 'keine Österreich-spezifische bezahlte Kampagne' DACH-COMMERCIAL-ROLLOUT.md
+          grep -Fq 'keine Schweiz-spezifische bezahlte Kampagne' DACH-COMMERCIAL-ROLLOUT.md
+
+      - name: Analytics reporting must stay neutral
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f ANALYTICS-MEASUREMENT.md
+          grep -Fq 'non_bot_or_preview_ua' ANALYTICS-MEASUREMENT.md
+          grep -Fq 'keine eindeutigen Besucher' ANALYTICS-MEASUREMENT.md
+          grep -Fq 'Niemals aus diesen Aggregaten' ANALYTICS-MEASUREMENT.md
+
+      - name: Indexing claims must stay conservative
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f INDEXING-STATUS.md
+          grep -Fq 'Indexierung, Positionen und Besucherzahlen werden nicht garantiert' INDEXING-STATUS.md
+          grep -Fq 'Sauberen kommerziell geeigneten Produktionshost aktivieren' INDEXING-STATUS.md
 
       - name: Cutover must enforce legal notice
         shell: bash

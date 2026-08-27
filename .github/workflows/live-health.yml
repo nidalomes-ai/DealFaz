@@ -46,7 +46,8 @@ jobs:
           ! grep -Fq 'Der Amazon-Link ist ein Partnerlink' "$body"
           ! grep -Fq 'Amazon-Partnerlinks können Affiliate-Zuordnungen enthalten' "$body"
           grep -Fq 'summary_large_image' "$body"
-          grep -Fq 'social-card.svg' "$body"
+          grep -Fq 'social-card.png' "$body"
+          grep -Fq 'image/png' "$body"
           ! grep -Fq 'supabase.co/functions/v1' "$body"
 
       - name: Core static assets are reachable
@@ -71,7 +72,7 @@ jobs:
           check https://dealfaz.dealfaz-social.workers.dev/robots.txt 'text/plain'
           check https://dealfaz.dealfaz-social.workers.dev/sitemap.xml '(application|text)/(xml|xml\+rss)'
           check https://dealfaz.dealfaz-social.workers.dev/icon.svg 'image/svg\+xml'
-          check https://dealfaz.dealfaz-social.workers.dev/social-card.svg 'image/svg\+xml'
+          check https://dealfaz.dealfaz-social.workers.dev/social-card.png 'image/png'
 
       - name: Monetization, sharing and CSV safety are live
         id: safety

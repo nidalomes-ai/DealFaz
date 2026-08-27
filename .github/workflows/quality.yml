@@ -69,7 +69,7 @@ jobs:
           set -euo pipefail
           grep -Fq 'Keine Gewinn- oder Verkaufsgarantie' index.html
           grep -Fq 'umgeht keine Logins, Paywalls oder technischen Schutzmaßnahmen' index.html
-          grep -Fq 'daraus wird keine Partnerschaft oder Zertifizierung abgeleitet' index.html
+          grep -Fq 'Amazon und andere Plattformen werden nur als externe Originalquellen verlinkt' index.html
           grep -Fq 'Affiliate-Links erst nach tatsächlicher Programmfreigabe verwenden' LEGAL-GUARDRAILS.md
           grep -Fq 'Keine versteckte Provision' LEGAL-GUARDRAILS.md
           grep -Fq 'monetization is intentionally disabled' MONETIZATION_DISABLED

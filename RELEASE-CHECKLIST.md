@@ -86,6 +86,7 @@ Details: `MOBILE-QA.md`. Ein zusätzlicher physischer iPhone-Smoke-Test ist sinn
 - [x] Bots/Testaufrufe dürfen nicht als echte Reichweite kommuniziert werden
 - [x] `MONETIZATION_DISABLED` bleibt vorhanden, solange die Monetarisierungsfreigabe fehlt
 - [x] kostenlose Beta bleibt ohne aktive Affiliate-Tags und ohne Partnerprovisionsbehauptungen
+- [x] Quality, Live Health und Commercialization Guards sind für Commit `b03cb96bae3655a53fb214fa4ea629520954e7b8` gemeinsam erfolgreich gelaufen
 
 Post-Launch-Kontrollen wie der tatsächliche Social-Preview-Cache oder die Suchmaschinen-Indexierung werden beobachtet, aber nicht als vorab erzwingbare Release-Anforderung ausgegeben.
 
@@ -109,7 +110,7 @@ Solange diese Punkte offen sind, ist die sichere Alternative bereits aktiv: kost
 
 ## Aktueller Freigabestatus
 
-**Kostenlose öffentliche Beta: GRÜN, sobald der aktuelle Commit erneut alle Quality-, Live-Health- und Commercialization-Guards besteht.**
+**Kostenlose öffentliche Beta: GRÜN / 100 %.** Die technischen, rechtlichen Basis-, Mobile-, SEO- und Sicherheits-Gates für den nicht monetarisierten Beta-Betrieb sind erfüllt; Quality, Live Health und Commercialization Guards wurden gemeinsam erfolgreich bestätigt.
 
 **Monetarisierung: bewusst gesperrt / nicht Teil dieses Beta-Releases.** Externe Gewerbe-, Steuer-, Amazon-, eBay-, Hosting- und Marken-Gates werden nicht übersprungen.
 

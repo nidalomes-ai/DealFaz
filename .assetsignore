@@ -1,0 +1,13 @@
+.git
+.github
+docs
+scripts
+*.md
+MONETIZATION_DISABLED
+firebase.json
+netlify.toml
+render.yaml
+vercel.json
+wrangler.jsonc
+.assetsignore
+.nojekyll

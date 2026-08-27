@@ -6,14 +6,24 @@ Stand: 27.08.2026
 
 **Gelb – amtliche Recherche läuft, keine Markenfreigabe.**
 
-Für das exakte Zeichen `DEALFAZ` wurde in öffentlich auffindbaren Ergebnissen bislang kein belastbarer identischer Treffer festgestellt. Die Ähnlichkeitsprüfung ist aber noch nicht abgeschlossen.
+Für das exakte Zeichen `DEALFAZ` wurde in öffentlich auffindbaren Ergebnissen bislang kein belastbarer identischer Treffer festgestellt. Auch aktuelle Websuchen auf/zu DPMA-, EUIPO- und WIPO-Quellen ergaben keinen belastbaren indexierten Exakttreffer für `DEALFAZ`. Das ersetzt ausdrücklich **keine** vollständige Registersuche, weil amtliche Suchoberflächen dynamisch sein können und Suchmaschinen keine Registervollständigkeit garantieren.
 
 Wichtig: Das DPMA hat am 27.08.2026 ausdrücklich bestätigt, dass es auch im Anmeldeverfahren **nicht prüft**, ob bereits identische oder ähnliche ältere Marken bestehen. Eine eigene Kollisionsrecherche vor Nutzung/Anmeldung ist daher erforderlich.
 
 ## Konkrete ähnliche Zeichen aus der Vorrecherche
 
-- `DEALFA`: reale geschäftliche Nutzung; öffentlich ist außerdem eine EU-Marke `Dealfa` mit der Nummer `018240890` auffindbar. Rechtsstand, Inhaber und Klassen müssen noch direkt in EUIPO/TMview verifiziert werden.
-- `DEALFAST`: realer Unternehmensname bzw. geschäftliche Nutzung. Ein Unternehmensname allein bedeutet nicht automatisch ein entgegenstehendes Markenrecht, ist für die Verwechslungs-/Branchenprüfung aber relevant.
+### `DEALFA`
+
+- öffentlich ist eine EU-Marke `Dealfa` mit der Nummer `018240890` auffindbar;
+- eine externe Marken-Datenquelle führt diese Nummer als registrierte EU-Marke mit Anmeldedatum 19.05.2020 und Registrierung 17.09.2020;
+- die EUIPO-eSearch-Seite selbst ist erreichbar, stellt dem hier verwendeten Web-Crawler die konkreten Datensatzdetails aber nicht zuverlässig im Seitentext bereit;
+- deshalb müssen Rechtsstand, Inhaber, Waren-/Dienstleistungsklassen und Schutzumfang weiterhin direkt in EUIPO/TMview amtlich verifiziert werden.
+
+### `DEALFAST`
+
+- `DEALFAST` wird aktuell geschäftlich für Automatisierung, Digitalisierung, Integrationen und IT-/Workflow-Dienstleistungen verwendet;
+- daneben existiert ein rumänisches Unternehmen `DEALFAST SRL`; öffentliche Unternehmensdaten allein sind kein Nachweis eines Markenrechts;
+- wegen der technischen/geschäftlichen Nähe einzelner Angebote ist dieser Name für die spätere Branchen-/Klassen- und Verwechslungsprüfung relevant, auch wenn daraus noch kein entgegenstehendes Markenrecht abgeleitet werden darf.
 
 Diese Treffer bedeuten **nicht automatisch**, dass `DEALFAZ` unbenutzbar oder nicht anmeldbar ist. Entscheidend sind insbesondere Zeichenähnlichkeit, Kennzeichnungskraft, Gebiet, Priorität und Waren-/Dienstleistungsnähe.
 
@@ -29,16 +39,18 @@ Der DPMA-Kundenservice empfiehlt für `DEALFAZ`:
 6. Zusätzlich die amtlichen Datenbanken von EUIPO und WIPO prüfen, weil das DPMA für EM-/IR-Daten keine Gewähr für Vollständigkeit und aktuellen Rechtsstand übernimmt.
 7. Für das Waren-/Dienstleistungsverzeichnis `TMclass` nutzen und Begriffe anhand der tatsächlich geplanten Leistungen auswählen.
 
-## Noch abzuarbeitende amtliche Suchvarianten
+## Recherchefortschritt
 
-- `DEALFAZ`
-- `DEAL FAZ`
-- `DEALFAS`
-- `DEAL FAS`
-- `DEALFA`
-- `DEALFAST`
-- `DEAL FAST`
-- breitere `Deal?`-Suche mit Wortmarkenfilter und den später festgelegten Klassen
+- [x] DPMA-Kundenservice-Antwort ausgewertet
+- [x] öffentliche Web-Vorrecherche nach `DEALFAZ` und naheliegenden Zeichen durchgeführt
+- [x] `DEALFA` / EUTM-Nummer 018240890 als konkreten Prüfdatensatz festgehalten
+- [x] aktuelle geschäftliche Nutzung von `DEALFAST` als Kollisions-Prüfpunkt festgehalten
+- [ ] `DEALFAZ` direkt in DPMAregister vollständig auswerten
+- [ ] `DEAL FAZ`, `DEALFAS`, `DEAL FAS` direkt in DPMAregister auswerten
+- [ ] `DEALFA`, `DEALFAST`, `DEAL FAST` direkt in den relevanten amtlichen Registern auswerten
+- [ ] breitere `Deal?`-Suche mit Wortmarkenfilter und passenden Klassen durchführen
+- [ ] EUTM 018240890 direkt bei EUIPO/TMview auf Rechtsstand und Klassen verifizieren
+- [ ] WIPO-Treffer für Deutschland/EU-relevante IR-Marken prüfen
 
 ## Relevante Leistungsbereiche von DealFaz
 
@@ -61,8 +73,8 @@ Bis die amtliche Ähnlichkeitsrecherche abgeschlossen ist:
 - sachliche Nutzung des Projektnamens fortsetzen, solange kein konkreter Konflikt festgestellt wird;
 - bei einem belastbaren Konflikttreffer zuerst Namensalternative bzw. fachkundige Markenberatung prüfen.
 
-## Ergebnis des DPMA-Kontakts
+## Ergebnis
 
-**Dokumentationspunkt grün:** Die offizielle Suchstrategie und die Grenzen der DPMA-Auskunft sind jetzt dokumentiert.
+**Dokumentation/Vorrecherche grün:** Offizielle Suchstrategie, bekannte ähnliche Zeichen und konkrete nächste Registerprüfungen sind dokumentiert.
 
-**Markenfreigabe bleibt gelb:** Der DPMA-Kundenservice erteilt keine rechtliche oder strategische Bewertung zu Verwechslungsgefahr oder Eintragungsfähigkeit. Eine vollständige Registerauswertung und gegebenenfalls fachkundige Prüfung bleiben erforderlich.
+**Markenfreigabe bleibt gelb:** Weder Websuche noch DPMA-Kundenservice erteilen eine rechtliche Freigabe. Die direkte amtliche Registerauswertung und gegebenenfalls fachkundige Kollisionsprüfung bleiben erforderlich.

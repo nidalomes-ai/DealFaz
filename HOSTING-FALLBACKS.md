@@ -18,6 +18,10 @@ Für die kostenlose Beta ist **kein Hosting-Fallback erforderlich**.
 
 Vor einem späteren geschäftskritischen/monetarisierten Dauerbetrieb bleibt bewusst separat zu entscheiden, ob eine Custom Domain/Route bzw. finale Produktionsdomain verwendet wird. Dafür wird jetzt nichts gekauft.
 
+## Plan A2 – Cloudflare Pages
+
+**Cloudflare Pages bleibt als statischer kostenloser Fallback dokumentiert.** Das Repository ist als statische Site vorbereitet; ein Pages-Deployment wird aber nicht parallel als zweite öffentliche Hauptquelle beworben. Falls Workers technisch ausfällt und Pages verfügbar ist, gilt vor Umschaltung dasselbe vollständige Cutover-Gate wie für jeden anderen Host.
+
 ## Plan B – Firebase Hosting Spark
 
 **Kostenloser technischer Ersatzweg, falls der aktive Cloudflare-Beta-Host künftig ausfällt.**
@@ -68,4 +72,4 @@ Kein neuer Host wird öffentlich als Produktionshost geschaltet, bevor folgende 
 
 ## Automatische Entscheidungsregel
 
-Aktiver Cloudflare-Host funktioniert → dort bleiben. Bei einem echten technischen Ausfall Plan B prüfen. Wenn Plan B nicht funktioniert, Plan C prüfen. Keine kostenpflichtige Lösung automatisch aktivieren.
+Aktiver Cloudflare-Host funktioniert → dort bleiben. Bei einem echten technischen Ausfall zuerst Cloudflare Pages prüfen. Wenn Pages nicht geeignet/verfügbar ist, Firebase Hosting Spark prüfen. Wenn das nicht funktioniert, Netlify Free prüfen. Keine kostenpflichtige Lösung automatisch aktivieren.

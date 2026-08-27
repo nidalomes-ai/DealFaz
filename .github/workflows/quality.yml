@@ -44,15 +44,23 @@ jobs:
           test -f CLOUDFLARE-PAGES.md
           test -f SECURITY.md
 
-      - name: Frontend metadata checks
+      - name: Production metadata checks
+        shell: bash
         run: |
-          grep -Fq '<link rel="canonical" href="https://dealfaz.vercel.app/">' index.html
-          grep -Fq '<meta property="og:url" content="https://dealfaz.vercel.app/">' index.html
+          set -euo pipefail
+          origin='https://dealfaz.dealfaz-social.workers.dev'
+          grep -Fq "<link rel=\"canonical\" href=\"${origin}/\">" index.html
+          grep -Fq "<meta property=\"og:url\" content=\"${origin}/\">" index.html
           grep -Fq '<meta property="og:image"' index.html
           grep -Fq 'summary_large_image' index.html
           grep -Fq '"start_url":"/"' manifest.webmanifest
-          grep -Fq 'Sitemap: https://dealfaz.vercel.app/sitemap.xml' robots.txt
-          grep -Fq '<loc>https://dealfaz.vercel.app/</loc>' sitemap.xml
+          grep -Fq "Sitemap: ${origin}/sitemap.xml" robots.txt
+          grep -Fq "<loc>${origin}/</loc>" sitemap.xml
+          for page in reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html; do
+            grep -Fq "${origin}/" "$page"
+          done
+          ! grep -Fn 'dealfaz.vercel.app' index.html robots.txt sitemap.xml reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html
+          ! grep -Fn 'Beim Aufruf verarbeitet Vercel' index.html
           ! grep -Fn 'nidalomes-ai.github.io/DealFaz' index.html robots.txt sitemap.xml README.md DATA-SOURCES.md PRIVACY-ARCHITECTURE.md manifest.webmanifest
 
       - name: Legal and monetization safety checks
@@ -98,6 +106,7 @@ jobs:
           grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' index.html
           grep -Fq 'derzeit kein Partnerlink' index.html
           grep -Fq 'keine Gewinn-, Preis-, Nachfrage- oder Verkaufsgarantie' DATA-SOURCES.md
+          grep -Fq 'Beim Aufruf verarbeitet Cloudflare' index.html
 
       - name: SEO legal navigation checks
         shell: bash
@@ -157,3 +166,12 @@ jobs:
           grep -Fq 'X-Frame-Options' _headers
           grep -Fq 'Strict-Transport-Security' _headers
           grep -Fq 'Content-Security-Policy' _headers
+
+      - name: Cloudflare production workflows are aligned
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'dealfaz.dealfaz-social.workers.dev' .github/workflows/live-health.yml
+          grep -Fq 'dealfaz.dealfaz-social.workers.dev' .github/workflows/indexnow-vercel.yml
+          ! grep -Fq 'dealfaz.vercel.app' .github/workflows/live-health.yml
+          ! grep -Fq 'dealfaz.vercel.app' .github/workflows/indexnow-vercel.yml

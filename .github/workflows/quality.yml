@@ -28,6 +28,7 @@ jobs:
           test -f style.css
           test -f manifest.webmanifest
           test -f icon.svg
+          test -f social-card.svg
           test -f vercel.json
           test -f _headers
           test -f robots.txt
@@ -51,7 +52,7 @@ jobs:
           origin='https://dealfaz.dealfaz-social.workers.dev'
           grep -Fq "<link rel=\"canonical\" href=\"${origin}/\">" index.html
           grep -Fq "<meta property=\"og:url\" content=\"${origin}/\">" index.html
-          grep -Fq '<meta property="og:image"' index.html
+          grep -Fq "<meta property=\"og:image\" content=\"${origin}/social-card.svg\">" index.html
           grep -Fq 'summary_large_image' index.html
           grep -Fq '"start_url":"/"' manifest.webmanifest
           grep -Fq "Sitemap: ${origin}/sitemap.xml" robots.txt
@@ -62,6 +63,7 @@ jobs:
           ! grep -Fn 'dealfaz.vercel.app' index.html robots.txt sitemap.xml reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html
           ! grep -Fn 'Beim Aufruf verarbeitet Vercel' index.html
           ! grep -Fn 'nidalomes-ai.github.io/DealFaz' index.html robots.txt sitemap.xml README.md DATA-SOURCES.md PRIVACY-ARCHITECTURE.md manifest.webmanifest
+          ! grep -Fn 'supabase.co/functions/v1' index.html reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html
 
       - name: Legal and monetization safety checks
         shell: bash
@@ -114,7 +116,7 @@ jobs:
           set -euo pipefail
           for page in reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html; do
             grep -Fq 'Impressum & Recht' "$page"
-            grep -Fq 'dealfaz-datenschutz' "$page"
+            grep -Fq 'href="/#privacy"' "$page"
           done
 
       - name: Share privacy checks

@@ -1,32 +1,53 @@
-# DEALFAZ – Hosting-Ausweichplan
+# DEALFAZ – Hosting-Status und Ausweichplan
 
-Ziel: keine technische Sackgasse und kein kommerzieller Betrieb auf einem Tarif, dessen Bedingungen dafür nicht passen.
+Stand: 27.08.2026
 
-## Reihenfolge
+Ziel: kostenloser technischer Betrieb ohne Sackgasse und keine vorschnelle Monetarisierung auf einem ungeprüften Produktions-Setup.
 
-1. Cloudflare Pages – bevorzugter Zielhost, sobald Konto-Deployment verfügbar ist.
-2. Firebase Hosting Spark – bereits mit `firebase.json` vorbereitet; kostenloses Hosting-Kontingent, keine Zahlungsdaten zum Start erforderlich.
-3. Netlify Free – bereits mit `netlify.toml` vorbereitet; als weiterer statischer Git-Host.
-4. Render Static Site – bereits mit `render.yaml` vorbereitet; kostenloser statischer Git-Deploy als weitere Ausweichroute.
+## Aktueller Hauptbetrieb
 
-## Nicht als kommerzieller Zielhost verwenden
+1. **Cloudflare Workers – aktiv**
+   - aktuelle öffentliche Beta: `https://dealfaz.dealfaz-social.workers.dev/`
+   - Quality und Live Health prüfen diesen Host
+   - Canonical, Sitemap, robots.txt und Social-Metadaten zeigen auf diesen Host
+   - öffentliche HTML-Seiten hängen nicht mehr von alten Supabase-Funktionslinks ab
 
-- Vercel Hobby: DEALFAZ bleibt dort nur Übergangs-/Altstand, solange der Tarif nicht zur konkreten kommerziellen Nutzung passt.
-- GitHub Pages: nicht als kostenloser Host für das kommerzielle Online-Geschäft einsetzen; nur Repository/Projektpräsentation bzw. nicht-kommerzielle technische Vorschau.
-- Supabase Edge Functions Shared Domain: nicht als HTML-Frontend-Host verwenden; nur API/Redirect/Backend-Aufgaben.
+2. **Späterer kommerzieller Dauerbetrieb – noch gelb**
+   - vor Monetarisierung wird entschieden, ob eine Custom Domain/Route bzw. andere finale Produktionsdomain eingesetzt wird
+   - kein kostenpflichtiger Domain-/Hostingkauf erfolgt automatisch
+   - ein Domainwechsel wird nur als gemeinsamer Cutover durchgeführt
 
-## Cutover-Regel
+## Kostenlose Ausweichrouten
 
-Ein neuer Host wird erst zur Hauptdomain, wenn alle Punkte geprüft sind:
+Diese Konfigurationen bleiben als technische Fallbacks im Repository, werden aber nicht parallel als öffentliche Hauptquelle beworben:
 
-- Root und alle vier SEO-Seiten HTTP 200 + HTML
-- `app.js`, `style.css`, Manifest, Sitemap, Robots und IndexNow-Key erreichbar
-- Sicherheitsheader aktiv
-- keine alten Amazon-Partnerhinweise bei deaktivierter Monetarisierung
-- Share-Links verwenden Fragment statt Deal-Daten in der Query
-- Canonical, `og:url`, Schema, Sitemap und Robots auf neuen Host umgestellt
-- Datenschutz nennt den tatsächlichen Host
-- Supabase/Social-Redirects zeigen auf den neuen Host
-- Quality und neuer Live-Health-Test sind grün
+1. Cloudflare Pages – statischer Fallback, falls ein Pages-Deployment später sinnvoll wird.
+2. Firebase Hosting Spark – mit `firebase.json` vorbereitet.
+3. Netlify Free – mit `netlify.toml` vorbereitet.
+4. Render Static Site – mit `render.yaml` vorbereitet.
 
-Bis dahin bleibt `MONETIZATION_DISABLED` bestehen.
+Die jeweils aktuellen Tarif-/Nutzungsbedingungen müssen vor einer späteren kommerziellen Nutzung erneut geprüft werden. Ein vorhandener Fallback ist keine automatische Freigabe für Monetarisierung.
+
+## Nicht wieder als primäre öffentliche Quelle verwenden
+
+- alte Vercel-Frontendstände
+- alte GitHub-Pages-Frontendstände
+- alte Supabase-Edge-Function-Frontendlinks
+
+Diese alten Frontends werden nicht erneut in Launch-, SEO-, Canonical- oder Social-Links eingebaut.
+
+## Cutover-Regel für eine spätere finale Domain
+
+Ein neuer Host bzw. eine Custom Domain/Route wird erst zur Hauptquelle, wenn gleichzeitig geprüft ist:
+
+- Root und alle vier SEO-Seiten liefern HTTP 200 + HTML
+- `app.js`, `analytics.js`, `style.css`, Manifest, Social-Card, Sitemap, Robots und IndexNow-Key sind erreichbar
+- Sicherheitsheader sind aktiv
+- keine Affiliate-Tags bei aktivem `MONETIZATION_DISABLED`
+- Share-Links verwenden Fragment statt Deal-Daten im Server-Querystring
+- Canonical, `og:url`, Schema, Sitemap, robots.txt und Social-Card-URL werden gemeinsam umgestellt
+- Datenschutzhinweise nennen den tatsächlichen Host/Provider
+- PartnerNet-Webseite wird erst beim tatsächlichen kommerziellen Cutover aktualisiert
+- Quality, Live Health und Commercialization Guards sind danach grün
+
+Bis dahin bleibt die kostenlose Cloudflare-Beta aktiv und `MONETIZATION_DISABLED` bestehen.

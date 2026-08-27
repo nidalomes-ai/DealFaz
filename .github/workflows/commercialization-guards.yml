@@ -39,6 +39,7 @@ jobs:
           test -f BUSINESS-START-CHECKLIST.md
           test -f ELSTER-FIELD-PREP.md
           test -f AMAZON-ACTIVATION.md
+          test -f EBAY-ACTIVATION.md
           test -f TRADEMARK-CHECK.md
           test -f DACH-COMMERCIAL-ROLLOUT.md
           grep -Fq 'Gewerbeanmeldung' BUSINESS-START-CHECKLIST.md
@@ -47,6 +48,9 @@ jobs:
           grep -Fq 'Verbraucherschlichtung' BUSINESS-START-CHECKLIST.md
           grep -Fq 'MONETIZATION_DISABLED' AMAZON-ACTIVATION.md
           grep -Fq 'Als Amazon-Partner verdiene ich an qualifizierten Verkäufen.' AMAZON-ACTIVATION.md
+          grep -Fq 'ausdrückliche EPN-Freigabe/Acceptance nachweisen' EBAY-ACTIVATION.md
+          grep -Fq 'keine EPN-Partnerlinks aktivieren' EBAY-ACTIVATION.md
+          grep -Fq 'MONETIZATION_DISABLED' EBAY-ACTIVATION.md
           grep -Fq 'keine fiktiven Umsätze oder Gewinne' ELSTER-FIELD-PREP.md
           grep -Fq 'DEALFA' TRADEMARK-CHECK.md
           grep -Fq 'DEALFAST' TRADEMARK-CHECK.md

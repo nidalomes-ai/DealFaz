@@ -2,41 +2,67 @@
 
 Stand: 27.08.2026
 
-## Aktueller Befund
+## Status
 
-Für das exakte Zeichen `DEALFAZ` wurde in öffentlich auffindbaren Ergebnissen weiterhin kein belastbarer identischer Treffer festgestellt.
+**Gelb – amtliche Recherche läuft, keine Markenfreigabe.**
 
-Die Ähnlichkeitsprüfung ist jedoch **nicht grün**: Es bestehen reale ähnliche Kennzeichen/Unternehmensnamen, die vor einer Markenanmeldung oder größerem Branding-Aufwand mit den einschlägigen Waren-/Dienstleistungsklassen verglichen werden müssen.
+Für das exakte Zeichen `DEALFAZ` wurde in öffentlich auffindbaren Ergebnissen bislang kein belastbarer identischer Treffer festgestellt. Die Ähnlichkeitsprüfung ist aber noch nicht abgeschlossen.
 
-### Konkrete ähnliche Zeichen aus der erweiterten Vorrecherche
+Wichtig: Das DPMA hat am 27.08.2026 ausdrücklich bestätigt, dass es auch im Anmeldeverfahren **nicht prüft**, ob bereits identische oder ähnliche ältere Marken bestehen. Eine eigene Kollisionsrecherche vor Nutzung/Anmeldung ist daher erforderlich.
 
-- `DEALFA`: reale geschäftliche Nutzung; eine öffentliche Quelle bezeichnet Dealfa s.r.l. als registrierte Marke. Außerdem ist öffentlich eine EU-Markenregistrierung `Dealfa` mit der Nummer 018240890 auffindbar. Die genaue aktuelle Registerlage und die betroffenen Klassen müssen in EUIPO/TMview verifiziert werden.
-- `DEALFAST`: realer Unternehmensname im Handels-/Vermittlungsumfeld; außerdem weitere geschäftliche Nutzung im IT-/Automationsbereich. Ein Unternehmensname allein bedeutet nicht automatisch ein Markenrecht gegen `DEALFAZ`, ist aber für die Kollisionsprüfung relevant.
+## Konkrete ähnliche Zeichen aus der Vorrecherche
 
-Diese Treffer bedeuten **nicht automatisch**, dass `DEALFAZ` unbenutzbar oder nicht anmeldbar ist. Entscheidend sind insbesondere Zeichenähnlichkeit, Kennzeichnungskraft, Gebiet, Priorität sowie Waren-/Dienstleistungsnähe.
+- `DEALFA`: reale geschäftliche Nutzung; öffentlich ist außerdem eine EU-Marke `Dealfa` mit der Nummer `018240890` auffindbar. Rechtsstand, Inhaber und Klassen müssen noch direkt in EUIPO/TMview verifiziert werden.
+- `DEALFAST`: realer Unternehmensname bzw. geschäftliche Nutzung. Ein Unternehmensname allein bedeutet nicht automatisch ein entgegenstehendes Markenrecht, ist für die Verwechslungs-/Branchenprüfung aber relevant.
 
-## Amtliche Recherche-Route
+Diese Treffer bedeuten **nicht automatisch**, dass `DEALFAZ` unbenutzbar oder nicht anmeldbar ist. Entscheidend sind insbesondere Zeichenähnlichkeit, Kennzeichnungskraft, Gebiet, Priorität und Waren-/Dienstleistungsnähe.
 
-1. DPMAregister: exakt `DEALFAZ`, danach Wortbestandteile/Varianten `DEAL FAZ`, `DEALFA`, `DEALFAS`, `DEALFAST`, `DEAL FAST`, `DEAL*FA*` soweit die jeweilige Suchmaske dies unterstützt.
-2. TMview/EUIPO: identische und ähnliche Zeichen mit Schutzwirkung in Deutschland/EU.
-3. Relevante Treffer nach Zeichen, Priorität, Rechtsstand und Waren-/Dienstleistungsverzeichnis prüfen.
-4. Für DEALFAZ besonders die Bereiche Software/Webanwendung, Online-Marketing/Affiliate-Marketing und geschäftliche Informations-/Vergleichsdienste berücksichtigen; die endgültige Nizza-Klassifizierung nicht raten, sondern anhand der tatsächlich beanspruchten Leistungen festlegen.
-5. Bei einem ernsthaften Treffer vor Anmeldung anwaltlich oder durch fachkundige Markenberatung bewerten lassen.
+## DPMA-Antwort vom 27.08.2026 – verbindliche Recherche-Route
 
-## Externe amtliche Rechercheunterstützung
+Der DPMA-Kundenservice empfiehlt für `DEALFAZ`:
 
-Am 27.08.2026 wurde die DPMA-Datenbankunterstützung per E-Mail um Hinweise zur möglichst breiten Suchstrategie für `DEALFAZ` gebeten. Das DPMA bietet Rechercheunterstützung an, erteilt aber keine Rechtsberatung oder verbindliche Markenfreigabe.
+1. In `DPMAregister` zuerst exakt `DEALFAZ` suchen.
+2. Danach Schreib-/Klangvarianten testen, insbesondere `DEAL FAZ` sowie Austausch von `Z` durch `S`.
+3. Wenn diese Suchen keine oder zu wenige Treffer liefern, breiter mit `Deal?` arbeiten.
+4. Bei zu vielen Treffern über Filter einschränken, z. B. nur Wortmarken und passende Klasse/Branche.
+5. Für Online-Marketing nennt das DPMA beispielhaft Klasse 35; für Online-Dienste können aber mehrere Klassen relevant sein. Die endgültigen Klassen werden erst nach Festlegung der konkreten Leistungen bestimmt.
+6. Zusätzlich die amtlichen Datenbanken von EUIPO und WIPO prüfen, weil das DPMA für EM-/IR-Daten keine Gewähr für Vollständigkeit und aktuellen Rechtsstand übernimmt.
+7. Für das Waren-/Dienstleistungsverzeichnis `TMclass` nutzen und Begriffe anhand der tatsächlich geplanten Leistungen auswählen.
 
-## Verbindlicher Release-Guardrail
+## Noch abzuarbeitende amtliche Suchvarianten
 
-Bis zur abgeschlossenen amtlichen Ähnlichkeitsrecherche gilt:
+- `DEALFAZ`
+- `DEAL FAZ`
+- `DEALFAS`
+- `DEAL FAS`
+- `DEALFA`
+- `DEALFAST`
+- `DEAL FAST`
+- breitere `Deal?`-Suche mit Wortmarkenfilter und den später festgelegten Klassen
 
-- keine Aussage „Marke frei“ oder „rechtlich abgesichert“;
+## Relevante Leistungsbereiche von DealFaz
+
+Für die spätere Klassen-/Kollisionsprüfung besonders berücksichtigen:
+
+- browserbasierte Software/Webanwendung und Online-Rechentools;
+- Reselling-, Preis-, ROI- und Entscheidungsinformationen;
+- Online-Marketing/Affiliate-Marketing;
+- geschäftliche Informations-, Vergleichs- und Vermittlungsdienste, soweit tatsächlich angeboten.
+
+Die endgültige Nizza-Klassifizierung wird nicht geraten, sondern anhand der real angebotenen bzw. konkret geplanten Leistungen mit DPMA/TMclass vorbereitet.
+
+## Release-Guardrail
+
+Bis die amtliche Ähnlichkeitsrecherche abgeschlossen ist:
+
+- keine Aussage „Marke frei“, „rechtlich abgesichert“ oder ähnlich;
 - keine kostenpflichtige Markenanmeldung aus dem Projekt heraus;
 - keine größeren irreversiblen Ausgaben für Branding, Druck oder Merch;
 - sachliche Nutzung des Projektnamens fortsetzen, solange kein konkreter Konflikt festgestellt wird;
-- bei belastbarem Konflikttreffer sofort Namensalternative prüfen, bevor weitere Markeninvestitionen erfolgen.
+- bei einem belastbaren Konflikttreffer zuerst Namensalternative bzw. fachkundige Markenberatung prüfen.
 
-## Hintergrund
+## Ergebnis des DPMA-Kontakts
 
-DPMA und EUIPO weisen ausdrücklich darauf hin, dass ältere identische **oder ähnliche** Rechte Konflikte auslösen können. Das DPMA prüft bei einer Anmeldung nicht von sich aus, ob ältere identische oder ähnliche Marken bestehen. EUIPO empfiehlt deshalb vor einer Anmeldung die Recherche in TMview/eSearch und weist darauf hin, dass selbst eine erfolglose Suche Risiken nicht vollständig ausschließt.
+**Dokumentationspunkt grün:** Die offizielle Suchstrategie und die Grenzen der DPMA-Auskunft sind jetzt dokumentiert.
+
+**Markenfreigabe bleibt gelb:** Der DPMA-Kundenservice erteilt keine rechtliche oder strategische Bewertung zu Verwechslungsgefahr oder Eintragungsfähigkeit. Eine vollständige Registerauswertung und gegebenenfalls fachkundige Prüfung bleiben erforderlich.

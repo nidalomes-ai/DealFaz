@@ -1,4 +1,4 @@
-name: DEALFAZ IndexNow Vercel
+name: DEALFAZ IndexNow Cloudflare
 
 on:
   push:
@@ -26,27 +26,28 @@ jobs:
   submit:
     runs-on: ubuntu-latest
     steps:
-      - name: Verify IndexNow key
+      - name: Verify IndexNow key on production host
         shell: bash
         run: |
           set -euo pipefail
-          test "$(curl -fsS https://dealfaz.vercel.app/e6ec43618dca9e6ea85cc60ede8e5831.txt)" = "e6ec43618dca9e6ea85cc60ede8e5831"
+          key='e6ec43618dca9e6ea85cc60ede8e5831'
+          test "$(curl --retry 2 --retry-delay 2 -fsS https://dealfaz.dealfaz-social.workers.dev/${key}.txt)" = "$key"
 
-      - name: Submit public Vercel URLs to IndexNow
+      - name: Submit production URLs to IndexNow
         shell: bash
         run: |
           set -euo pipefail
           cat > payload.json <<'JSON'
           {
-            "host": "dealfaz.vercel.app",
+            "host": "dealfaz.dealfaz-social.workers.dev",
             "key": "e6ec43618dca9e6ea85cc60ede8e5831",
-            "keyLocation": "https://dealfaz.vercel.app/e6ec43618dca9e6ea85cc60ede8e5831.txt",
+            "keyLocation": "https://dealfaz.dealfaz-social.workers.dev/e6ec43618dca9e6ea85cc60ede8e5831.txt",
             "urlList": [
-              "https://dealfaz.vercel.app/",
-              "https://dealfaz.vercel.app/reselling-rechner/",
-              "https://dealfaz.vercel.app/maximaler-einkaufspreis/",
-              "https://dealfaz.vercel.app/roi-reselling/",
-              "https://dealfaz.vercel.app/sell-through/"
+              "https://dealfaz.dealfaz-social.workers.dev/",
+              "https://dealfaz.dealfaz-social.workers.dev/reselling-rechner/",
+              "https://dealfaz.dealfaz-social.workers.dev/maximaler-einkaufspreis/",
+              "https://dealfaz.dealfaz-social.workers.dev/roi-reselling/",
+              "https://dealfaz.dealfaz-social.workers.dev/sell-through/"
             ]
           }
           JSON

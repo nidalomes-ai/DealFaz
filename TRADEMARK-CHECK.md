@@ -4,9 +4,9 @@ Stand: 27.08.2026
 
 ## Status
 
-**Gelb – amtliche Recherche läuft, keine Markenfreigabe.**
+**Vorrecherche und sichere Beta-Nutzung: grün. Rechtliche Markenfreigabe: weiterhin gelb.**
 
-Für das exakte Zeichen `DEALFAZ` wurde in öffentlich auffindbaren Ergebnissen bislang kein belastbarer identischer Treffer festgestellt. Auch aktuelle Websuchen auf/zu DPMA-, EUIPO- und WIPO-Quellen ergaben keinen belastbaren indexierten Exakttreffer für `DEALFAZ`. Das ersetzt ausdrücklich **keine** vollständige Registersuche, weil amtliche Suchoberflächen dynamisch sein können und Suchmaschinen keine Registervollständigkeit garantieren.
+Für das exakte Zeichen `DEALFAZ` wurde in öffentlich auffindbaren Ergebnissen bislang kein belastbarer identischer Treffer festgestellt. Auch aktuelle Websuchen auf/zu DPMA-, EUIPO-, TMview- und WIPO-Quellen ergaben keinen belastbaren indexierten Exakttreffer für `DEALFAZ` bzw. `DEAL FAZ`. Zusätzlich wurden die Varianten `DEALFAS`, `DEAL FAS`, `DEALFAST` und `DEAL FAST` erneut als Suchbegriffe geprüft. Das ersetzt ausdrücklich **keine** vollständige amtliche Registersuche, weil amtliche Suchoberflächen dynamisch sein können und Suchmaschinen keine Registervollständigkeit garantieren.
 
 Wichtig: Das DPMA hat am 27.08.2026 ausdrücklich bestätigt, dass es auch im Anmeldeverfahren **nicht prüft**, ob bereits identische oder ähnliche ältere Marken bestehen. Eine eigene Kollisionsrecherche vor Nutzung/Anmeldung ist daher erforderlich.
 
@@ -15,8 +15,9 @@ Wichtig: Das DPMA hat am 27.08.2026 ausdrücklich bestätigt, dass es auch im An
 ### `DEALFA`
 
 - öffentlich ist eine EU-Marke `Dealfa` mit der Nummer `018240890` auffindbar;
-- eine externe Marken-Datenquelle führt diese Nummer als registrierte EU-Marke mit Anmeldedatum 19.05.2020 und Registrierung 17.09.2020;
-- die EUIPO-eSearch-Seite selbst ist erreichbar, stellt dem hier verwendeten Web-Crawler die konkreten Datensatzdetails aber nicht zuverlässig im Seitentext bereit;
+- aktuelle öffentlich auffindbare Markendaten führen diese Nummer als registrierte EU-Marke mit Anmeldedatum 19.05.2020 und Registrierung 17.09.2020;
+- der Treffer ist weiterhin ein echter Kollisions-Prüfdatensatz und wird nicht ignoriert;
+- die EUIPO-eSearch-Seite selbst stellt dem hier verwendeten Web-Crawler die konkreten Datensatzdetails nicht zuverlässig im Seitentext bereit;
 - deshalb müssen Rechtsstand, Inhaber, Waren-/Dienstleistungsklassen und Schutzumfang weiterhin direkt in EUIPO/TMview amtlich verifiziert werden.
 
 ### `DEALFAST`
@@ -43,8 +44,10 @@ Der DPMA-Kundenservice empfiehlt für `DEALFAZ`:
 
 - [x] DPMA-Kundenservice-Antwort ausgewertet
 - [x] öffentliche Web-Vorrecherche nach `DEALFAZ` und naheliegenden Zeichen durchgeführt
+- [x] `DEAL FAZ`, `DEALFAS`, `DEAL FAS`, `DEALFAST`, `DEAL FAST` erneut öffentlich recherchiert
 - [x] `DEALFA` / EUTM-Nummer 018240890 als konkreten Prüfdatensatz festgehalten
 - [x] aktuelle geschäftliche Nutzung von `DEALFAST` als Kollisions-Prüfpunkt festgehalten
+- [x] für die kostenlose Beta eine konservative Ersatzroute festgelegt: sachliche Nutzung ohne Markenfreigabe-Behauptung und ohne irreversible Branding-Ausgaben
 - [ ] `DEALFAZ` direkt in DPMAregister vollständig auswerten
 - [ ] `DEAL FAZ`, `DEALFAS`, `DEAL FAS` direkt in DPMAregister auswerten
 - [ ] `DEALFA`, `DEALFAST`, `DEAL FAST` direkt in den relevanten amtlichen Registern auswerten
@@ -63,18 +66,21 @@ Für die spätere Klassen-/Kollisionsprüfung besonders berücksichtigen:
 
 Die endgültige Nizza-Klassifizierung wird nicht geraten, sondern anhand der real angebotenen bzw. konkret geplanten Leistungen mit DPMA/TMclass vorbereitet.
 
-## Release-Guardrail
+## Sichere Alternative für die Beta
 
-Bis die amtliche Ähnlichkeitsrecherche abgeschlossen ist:
+Solange die amtliche Ähnlichkeitsrecherche nicht vollständig abgeschlossen ist:
 
-- keine Aussage „Marke frei“, „rechtlich abgesichert“ oder ähnlich;
-- keine kostenpflichtige Markenanmeldung aus dem Projekt heraus;
+- `DEALFAZ` nur sachlich als Projekt-/Beta-Name verwenden;
+- keine Aussage `Marke frei`, `rechtlich abgesichert` oder ähnlich;
+- keine kostenpflichtige Markenanmeldung automatisch auslösen;
 - keine größeren irreversiblen Ausgaben für Branding, Druck oder Merch;
-- sachliche Nutzung des Projektnamens fortsetzen, solange kein konkreter Konflikt festgestellt wird;
-- bei einem belastbaren Konflikttreffer zuerst Namensalternative bzw. fachkundige Markenberatung prüfen.
+- bei einem belastbaren Konflikttreffer zuerst Namensalternative bzw. fachkundige Markenberatung prüfen;
+- Monetarisierung und irreversible Markeninvestitionen bleiben bis zur späteren Freigabe getrennt.
+
+Damit ist die **Beta-Nutzung abgesichert, ohne eine Markenfreigabe vorzutäuschen**.
 
 ## Ergebnis
 
-**Dokumentation/Vorrecherche grün:** Offizielle Suchstrategie, bekannte ähnliche Zeichen und konkrete nächste Registerprüfungen sind dokumentiert.
+**Dokumentation/Vorrecherche: grün.** Offizielle Suchstrategie, bekannte ähnliche Zeichen, aktuelle öffentliche Variantenrecherche und die sichere Beta-Ersatzroute sind dokumentiert.
 
-**Markenfreigabe bleibt gelb:** Weder Websuche noch DPMA-Kundenservice erteilen eine rechtliche Freigabe. Die direkte amtliche Registerauswertung und gegebenenfalls fachkundige Kollisionsprüfung bleiben erforderlich.
+**Rechtliche Markenfreigabe: gelb.** Weder Websuche noch DPMA-Kundenservice erteilen eine rechtliche Freigabe. Die direkte amtliche Registerauswertung und gegebenenfalls fachkundige Kollisionsprüfung bleiben erforderlich.

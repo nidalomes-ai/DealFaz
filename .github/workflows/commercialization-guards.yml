@@ -54,6 +54,20 @@ jobs:
           grep -Fq 'keine Österreich-spezifische bezahlte Kampagne' DACH-COMMERCIAL-ROLLOUT.md
           grep -Fq 'keine Schweiz-spezifische bezahlte Kampagne' DACH-COMMERCIAL-ROLLOUT.md
 
+      - name: Live legal text must stay conservative
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'Verbraucherstreitbeilegung:' index.html
+          grep -Fq 'nicht freiwillig zur Teilnahme' index.html
+          grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' index.html
+          grep -Fq 'technisch nicht als Bot/Preview erkennbarem Zugriff' index.html
+          grep -Fq 'keine Messung eindeutiger Besucher' index.html
+          if grep -Fq 'wahrscheinlich menschlich' index.html; then
+            echo 'Ambiguous human-visitor wording detected in live legal text.'
+            exit 1
+          fi
+
       - name: Analytics reporting must stay neutral
         shell: bash
         run: |

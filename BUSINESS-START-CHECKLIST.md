@@ -2,171 +2,130 @@
 
 Stand: 27.08.2026
 
-Diese Checkliste trennt den **aktuellen Pre-Gewerbe-Stand** vom späteren kommerziellen Aktivierungszeitpunkt. Externe Freigaben werden nicht erfunden. Punkte, die erst nach der Gewerbeanmeldung sinnvoll oder rechtlich mit echten Betriebsdaten ausführbar sind, stehen als `⏸ nach Gewerbe` und zählen **nicht** als aktueller gelber Punkt.
+Diese Checkliste trennt technische Bereitschaft von der rechtlichen Aufnahme einer gewerblichen Tätigkeit. Externe Freigaben werden nicht erfunden.
+
+## Kritische Grundregel
+
+§ 14 Abs. 1 GewO knüpft die Gewerbeanzeige an den **Beginn des selbständigen Betriebs**, nicht an den ersten Zahlungseingang. Für die Einordnung eines Gewerbes sind insbesondere Selbständigkeit, Dauerhaftigkeit und Gewinnerzielungsabsicht maßgeblich; die Absicht kann genügen, auch wenn tatsächlich noch kein Gewinn erzielt wurde.
+
+DEALFAZ ist auf einen dauerhaften öffentlichen Betrieb und spätere Affiliate-Einnahmen ausgerichtet. Deshalb darf der Projektstatus nicht mehr pauschal so verstanden werden, dass ein öffentlicher Geschäftslaunch ohne Gewerbeanmeldung allein deshalb unproblematisch wäre, weil Affiliate-Links noch deaktiviert sind.
+
+**Konservative Freigaberegel:** Vor einem als geschäftlich/kommerziell betriebenen öffentlichen Launch muss der tatsächliche Betriebsbeginn mit der zuständigen Gewerbebehörde geklärt und eine erforderliche Gewerbeanmeldung spätestens zum Beginn vorgenommen werden. Bis dahin bleibt `MONETIZATION_DISABLED` bestehen.
 
 ## Aktuelle Ampel
 
-- 🟢 Technischer, kostenloser und nicht monetarisierter Betrieb: aktiv.
-- 🟢 Cloudflare-Produktionsversion, Sitemap, robots.txt, Canonicals und Launch-Links: aktuell.
-- 🟢 Rechtstexte / Verbraucherstreitbeilegung: konservativ eingebaut.
-- 🟢 Mobile, Social Preview, SEO-Technik, IndexNow und Sicherheits-Gates: vorbereitet bzw. aktiv.
-- 🟢 Amazon PartnerNet Vorbereitung: Teilnahmebestätigung vorhanden, neutrale Links aktiv, Kennzeichnungsregeln dokumentiert.
-- 🟢 eBay Partner Network Vorbereitung: Bewerbungseingang dokumentiert, sichere neutrale Ersatzroute aktiv.
-- 🟢 Steuer-/ELSTER-Vorbereitung: Formularweg, EU-B2B-Grundlogik, USt-IdNr.- und ZM-Weg dokumentiert; keine fiktiven Angaben.
-- 🟢 Marken-/Namens-Risikosteuerung für die kostenlose Beta: Vorrecherche, ähnliche Zeichen und sichere Nutzungsregeln dokumentiert.
-- 🟢 Hostingentscheidung für den jetzigen Betrieb: Cloudflare Workers bleibt Hauptbetrieb; kostenlose Fallbacks sind vorbereitet.
-- 🟢 Metricool-Limitschutz: maximal 20 Veröffentlichungen pro Monat, kein kostenpflichtiges Upgrade.
-- 🟡 **Gewerbeanmeldung: bewusst noch nicht abgesendet.**
-- 🔒 Affiliate-Monetarisierung bleibt durch `MONETIZATION_DISABLED` gesperrt.
+- 🟢 Technik, Sicherheit, Mobile, SEO, Hosting und kostenlose Rechenfunktion: vorbereitet.
+- 🟢 Live-Impressum und Datenschutzhinweise: für den aktuellen technischen Datenfluss erweitert.
+- 🟢 Affiliate-Links: technisch gesperrt; neutrale Originalquellen aktiv.
+- 🟢 Steuer-/ELSTER-Felder und EU-B2B-Prüfpunkte: vorbereitet, ohne fiktive Angaben.
+- 🟢 Amazon-Vorbereitung: dokumentiert; keine Affiliate-Tags live.
+- 🟢 eBay-Vorbereitung: Bewerbung dokumentiert; keine EPN-Links live.
+- 🟢 Hosting: Cloudflare Workers aktueller Hauptbetrieb.
+- 🟢 Social-Limitschutz: maximal 20 Veröffentlichungen/Monat dokumentiert.
+- 🟡 **Gewerbeanmeldung / tatsächlicher Betriebsbeginn: rechtlich zu klären bzw. auszuführen.**
+- 🔒 Monetarisierung: gesperrt.
 
-**Damit ist Gewerbe der einzige aktuelle gelbe Punkt.** Alles andere ist entweder grün vorbereitet oder bewusst als Ausführungsschritt hinter das Gewerbe-Gate verschoben.
+## 1. Gewerbeanmeldung – KRITISCHER GELBER PUNKT
 
-## 1. Gewerbeanmeldung – EINZIGER GELBER PUNKT
-
-Zuständige Stelle und Ablauf sind vorbereitet.
-
-### 🟢 Vorbereitet
+### Vorbereitet
 
 - [x] zuständige Stelle identifiziert
 - [x] Online-Verfahren identifiziert
 - [x] Tätigkeitsbeschreibung vorbereitet
 - [x] Unterlagen-Grundliste vorbereitet
-- [x] Ordnungsamt am 27.08.2026 um Bestätigung von Tätigkeit, Verfahren, Gebühr und Unterlagen gebeten
+- [x] Behördenanfrage zu Tätigkeit, Verfahren, Gebühr und Unterlagen vorbereitet/versandt
 
 Geplante Tätigkeitsbeschreibung:
 
 > Betrieb einer Online-Plattform für Reselling-Rechen- und Entscheidungshilfen sowie Online-Marketing/Affiliate-Marketing; keine erlaubnispflichtigen Tätigkeiten.
 
-### 🟡 Noch auszuführen
+### Noch auszuführen
 
-- [ ] tatsächlichen Betriebsbeginn festlegen und Gewerbeanmeldung mit realen Betreiberangaben absenden
+- [ ] tatsächlichen Betriebsbeginn anhand des realen Sachverhalts festlegen
+- [ ] erforderliche Gewerbeanmeldung spätestens gleichzeitig mit dem tatsächlichen Beginn absenden
+- [ ] Bestätigung archivieren
 
-Identitätsnachweis und Anmeldebestätigung werden erst im realen Verfahren verwendet bzw. archiviert.
+**Nicht als Regel verwenden:** „Erst wenn die erste Provision eingeht, beginnt das Gewerbe.“ Das ist keine belastbare Rechtsregel.
 
-## 2. Steuerliche Erfassung / ELSTER – 🟢 VORBEREITET
+## 2. Steuerliche Erfassung / ELSTER – 🟢 VORBEREITET, ⏸ ECHTE ÜBERMITTLUNG MIT BETRIEBSDATEN
 
-Der fachliche Vorbereitungsstand ist grün. Der tatsächliche Submit wird nicht künstlich vorgezogen, weil Betriebsbeginn, Umsatz-/Gewinnschätzungen und steuerliche Wahlrechte echte Angaben erfordern.
+- [x] Formulartyp für Einzelunternehmen vorbereitet
+- [x] EU-B2B-Sachverhalt bei ausländischen Partnerunternehmen als eigener Prüfpunkt dokumentiert
+- [x] Reverse Charge als möglicher Umsatzsteuer-Prüfpunkt dokumentiert
+- [x] USt-IdNr.-Antragsweg vorbereitet
+- [x] Behandlung einer Zusammenfassender Meldung als konkreter Prüfpunkt dokumentiert
+- [x] keine fiktiven Umsätze oder Gewinne eingetragen
 
-### 🟢 Erledigt
+Nach Festlegung des echten Betriebsbeginns werden die tatsächlichen Angaben übermittelt. Umsatz-/Gewinnschätzungen und steuerliche Wahlrechte werden nicht erfunden.
 
-- [x] richtigen Formulartyp für Einzelunternehmen identifiziert
-- [x] Amazon-Luxemburg als EU-B2B-Sachverhalt getrennt erfasst
-- [x] Grundregel zu § 3a Abs. 2 UStG / Reverse Charge dokumentiert
-- [x] USt-IdNr.-Antragsweg beim BZSt dokumentiert
-- [x] Grundregel zur Zusammenfassender Meldung nach § 18a UStG dokumentiert
-- [x] Finanzamt am 27.08.2026 vorab zu USt-IdNr., Reverse Charge und Zusammenfassender Meldung angefragt
-- [x] keine fiktiven Umsätze, Gewinne, Bankdaten, Beschäftigtenzahlen oder Steueroptionen eingetragen
+## 3. Amazon PartnerNet – 🟢 VORBEREITET / 🔒 NICHT LIVE MONETARISIERT
 
-### ⏸ Nach Gewerbe
+- neutrale Amazon-Originalquelle ohne Affiliate-Tag aktiv
+- keine Provisionsbehauptung auf der öffentlichen Seite
+- PartnerNet-Unterlagen/Status separat dokumentiert
+- Aktivierung erst mit geklärtem Gewerbe-/Steuerstatus und korrekter Website-Zuordnung
 
-- reale Betriebsdaten in ELSTER eintragen
-- Umsatz-/Gewinnschätzungen festlegen
-- Kleinunternehmerregelung/Regelbesteuerung bewusst anhand der dann realen Situation entscheiden
-- USt-IdNr. beantragen bzw. im vorgesehenen Verfahren mit anstoßen
-- Übermittlungsprotokoll archivieren
+## 4. eBay Partner Network – 🟢 VORBEREITET / ⏸ FREIGABE AUSSTEHEND
 
-Die ausstehende Behördenantwort ist **kein aktueller Pre-Gewerbe-Blocker**. Vor dem ersten tatsächlichen EU-B2B-Umsatz wird die dann konkrete Behandlung nochmals kontrolliert.
+- Bewerbungseingang vom 21.08.2026 dokumentiert
+- Statusanfrage an den offiziellen EPN-Support dokumentiert
+- keine EPN-Partnerlinks aktivieren, solange keine ausdrückliche Freigabe vorliegt
+- neutrale eBay-Originalquelle ohne EPN-Tracking bleibt aktiv
 
-## 3. Amazon PartnerNet – 🟢 VORBEREITET
+## 5. Datenschutz / Cookies – 🟢 FÜR AKTUELLEN DATENFLUSS, NEUPRÜFUNG BEI ÄNDERUNG
 
-- [x] erste PartnerNet-Teilnahmebestätigung vom 24.08.2026 vorhanden
-- [x] Zahlungs-/Steuerbereich wurde eingerichtet bzw. geändert; Bestätigung liegt vor
-- [x] neutrale Amazon-Suche ohne Affiliate-Tag ist technisch vorhanden
-- [x] Amazon-Kennzeichnung für spätere Partnerlinks dokumentiert
-- [x] aktuelle Amazon-Regel dokumentiert: Partnerstatus klar kennzeichnen; Partnerlinks klar als Werbung/vergütete Links offenlegen
-- [x] aktuelles Prüfverfahren dokumentiert: nach mindestens drei qualifizierten Verkäufen innerhalb der vorgesehenen Frist prüft Amazon die angegebenen Seiten
+- aktuelle öffentliche Hauptseite lädt nur `app.js`, kein eigenes Analytics-Skript
+- Watchlist, Regeln, Erwartungen und Ergebnisse werden lokal im Browser gespeichert
+- keine DEALFAZ-Werbe-/Marketing-Cookies auf der aktuellen Hauptseite
+- Cloudflare-Hosting und Supabase-Legacy-Weiterleitungen sind im Datenschutztext beschrieben
+- Art. 6 Abs. 1 lit. f DSGVO, Betroffenenrechte, Empfänger, Speicherkriterien und Beschwerderecht sind beschrieben
+- lokale ausdrücklich gewünschte Funktionen sind als § 25 Abs. 2 TDDDG-Prüfpunkt dokumentiert
 
-### ⏸ Nach Gewerbe
+Bei Aktivierung von Analytics, Affiliate-Tracking, Nutzerkonten, Uploads, Zahlungen oder anderen nicht notwendigen Endgerätezugriffen muss die Datenschutz-/Einwilligungsprüfung **vor** Aktivierung erneut erfolgen.
 
-- tatsächliche Website/Domain im PartnerNet-Konto für den Monetarisierungsstand prüfen/aktualisieren
-- Affiliate-Tag erst im bewussten Monetarisierungsrelease aktivieren
-- spätere Amazon-Prüfung durchlaufen
+## 6. Impressum / DDG – 🟢 AKTUELLER BASISSTAND
 
-Die erste Teilnahmebestätigung wird **nicht** als endgültige dauerhafte Website-Abnahme dargestellt.
+Das Impressum enthält Name, ladungsfähige Anschrift und E-Mail. Register- oder USt-IdNr.-Angaben werden nur aufgenommen, wenn sie tatsächlich existieren und anzugeben sind. Vor bezahlten Diensten, Checkout oder Vertragsschluss wird zusätzlich geprüft, ob ein weiterer schneller und unmittelbarer Kontaktweg erforderlich ist.
 
-## 4. eBay Partner Network – 🟢 VORBEREITET
+## 7. Verbraucherrecht / Verbraucherschlichtung – 🟢 AKTUELLER BASISSTAND
 
-- [x] Bewerbungseingang vom 21.08.2026 dokumentiert
-- [x] EPN-Kommunikation/Updates im Postfach vorhanden
-- [x] unzustellbare Statusanfrage korrekt als unzustellbar dokumentiert
-- [x] sichere Ersatzroute aktiv: neutrale eBay-Originalquelle ohne EPN-Tracking
-- [x] Aktivierungs- und Stop-Regeln dokumentiert
+- keine eigenen Warenverkäufe
+- kein Checkout
+- keine Nutzerzahlungen oder Abos
+- Verbraucherstreitbeilegung-/Verbraucherschlichtung-Hinweis vorhanden
+- keine veraltete EU-OS-Plattform-Verlinkung vorsehen
 
-### ⏸ Nach Gewerbe
+Wenn DEALFAZ später selbst Verträge mit Verbrauchern schließt, müssen Preise, Vertragsinformationen, Widerruf, Zahlungsbedingungen und weitere Fernabsatzpflichten separat geprüft werden.
 
-- ausdrückliche EPN-Freigabe/Acceptance nachweisen
-- aktuellen EPN-Kontostatus vor Aktivierung prüfen
-- Website/Domain und dann aktuelle EPN-Regeln abgleichen
-- tatsächliche EPN-Partnerlinks und Werbekennzeichnung erst nach Freigabe aktivieren
+## 8. Barrierefreiheit / BFSG – 🟢 KEIN AKTUELLER COMPLIANCE-CLAIM / ⏸ NEUPRÜFUNG BEI E-COMMERCE
 
-Bis dahin: **keine EPN-Partnerlinks aktivieren**, keine EPN-Trackingparameter und keine Behauptung einer bestätigten eBay-Partnerschaft.
+Die aktuelle kostenlose Rechenhilfe schließt selbst keinen Verbrauchervertrag. Es wird daher **nicht** behauptet, dass DEALFAZ bereits vollständig BFSG-zertifiziert oder rechtlich abschließend geprüft sei. Vor eigener E-Commerce-Funktion, Checkout oder einer enger auf Vertragsabschluss gerichteten Dienstleistung erfolgt eine neue BFSG-Prüfung.
 
-## 5. Hosting – 🟢 GRÜN
+## 9. Marke DEALFAZ – 🟢 RISIKOSTEUERUNG / 🟡 KEINE ABSOLUTE MARKENFREIGABE
 
-Aktueller Hauptbetrieb:
+- Vorrecherche und ähnliche Zeichen dokumentiert
+- keine Behauptung „Marke frei“ oder „rechtlich abgesichert“
+- vor größeren Branding-Ausgaben oder Markenanmeldung direkte DPMA/EUIPO/WIPO-Kollisionsprüfung vervollständigen
 
-> `https://dealfaz.dealfaz-social.workers.dev/`
+## 10. Monetarisierung – 🔒 NACH GEWERBE-/STEUERGATE
 
-- [x] HTTPS / Live-Seiten funktionieren
-- [x] Sitemap, robots, Canonical und Social-Metadaten zeigen auf den aktuellen Host
-- [x] Quality und Live Health prüfen den aktuellen Host
-- [x] kostenlose Fallbacks sind dokumentiert
-- [x] Entscheidung für Pre-Gewerbe/Beta: Cloudflare Workers bleibt Hauptbetrieb
+Vor Aktivierung:
 
-### ⏸ Nach Gewerbe
-
-Eine Custom Domain/Route ist eine spätere kommerzielle Optimierung und **kein aktueller gelber Punkt**. Ein möglicher Cutover wird dann gemeinsam für Canonical, Sitemap, Social-Metadaten, Datenschutz und Partnerprogramm-Webseiten durchgeführt.
-
-## 6. Rechtstexte / Verbraucherstreitbeilegung – 🟢 GRÜN
-
-- [x] Impressum öffentlich vorhanden
-- [x] Datenschutzhinweise für den aktuellen Cloudflare-/Local-Storage-Betrieb vorhanden
-- [x] konservative Verbraucherstreitbeilegung-/Verbraucherschlichtung-Formulierung eingebaut
-- [x] keine Gewinn-, Verkaufs- oder Preisgarantie
-- [x] Affiliate-Monetarisierung öffentlich als deaktiviert beschrieben
-
-## 7. Markenstatus – 🟢 GRÜN FÜR PRE-GEWERBE/BETA
-
-- [x] DPMA-Antwort und Suchstrategie dokumentiert
-- [x] Variantenrecherche dokumentiert
-- [x] `DEALFA` / EUTM 018240890 als konkreter ähnlicher Prüfdatensatz festgehalten
-- [x] `DEALFAST` als weiterer Ähnlichkeits-/Branchenprüfpunkt dokumentiert
-- [x] kein belastbarer identischer öffentlicher Treffer für `DEALFAZ` festgestellt
-- [x] sichere Nutzungslinie aktiv: keine Behauptung „Marke frei“/„rechtlich abgesichert“, keine irreversible Markeninvestition
-
-### ⏸ Nach Gewerbe bzw. vor größerem Branding-/Monetarisierungsaufwand
-
-- direkte amtliche DPMA/EUIPO/WIPO-Kollisionsauswertung vervollständigen
-- bei belastbarem Konflikt Namensalternative oder fachkundige Markenprüfung nutzen
-
-Damit ist die aktuelle **Risikosteuerung grün**, ohne eine rechtliche Markenfreigabe vorzutäuschen.
-
-## 8. Metricool / Social – 🟢 GRÜN
-
-- [x] Monatslimit von 20 Veröffentlichungen als harte Schutzregel dokumentiert
-- [x] keine neuen Posts bei erreichtem Limit
-- [x] bestehende Altlinks soweit möglich auf Cloudflare umgestellt
-- [x] nicht editierbarer Legacy-Link über aktive Supabase-Redirectroute abgefangen
-- [x] kein kostenpflichtiges Upgrade
-
-## 9. Monetarisierungsrelease – ⏸ KOMPLETT HINTER GEWERBE
-
-`MONETIZATION_DISABLED` bleibt absichtlich bestehen. Die folgenden Schritte sind **keine aktuellen gelben Punkte**, weil sie erst nach der Gewerbeanmeldung ausgeführt werden:
-
-- steuerliche Erfassung mit echten Angaben absenden/einleiten
-- USt-IdNr./EU-B2B/Reverse-Charge/ZM-Behandlung für den tatsächlichen Amazon-Sachverhalt final kontrollieren
-- Amazon-Website-Zuordnung und Affiliate-Linkzustand aktivieren
-- eBay nur nach bestätigter EPN-Freigabe aktivieren
-- Affiliate-Werbekennzeichnung an die dann echten Links anpassen
-- Datenschutz auf tatsächlichen Affiliate-Datenfluss aktualisieren
-- Marken-/Namensprüfung vor irreversibler kommerzieller Markeninvestition finalisieren
-- Quality, Live Health und Commercialization Guards unmittelbar vor Aktivierung erneut grün bestätigen
+- Gewerbe-/Betriebsbeginn geklärt
+- steuerliche Erfassung mit echten Angaben eingeleitet/erledigt
+- USt-IdNr./EU-B2B/Reverse-Charge/ZM für den realen Partner-Sachverhalt geprüft
+- Amazon-Status und Website-Zuordnung korrekt
+- eBay nur nach EPN-Freigabe
+- Affiliate-Werbekennzeichnung an echte Links angepasst
+- Datenschutz an den tatsächlichen Affiliate-Datenfluss angepasst
+- Markenrisiko erneut geprüft
+- Quality, Live Health und Commercialization Guards erneut grün
 - `MONETIZATION_DISABLED` erst zuletzt bewusst entfernen
 
 ## Gesamtstatus
 
-**Pre-Gewerbe / kostenlose Beta: 🟢 100 % grün.**
+**Technische Launch-Bereitschaft: 🟢.**
 
-**Einziger aktueller gelber Punkt: 🟡 Gewerbeanmeldung.**
+**Rechtlicher Geschäftsstart: 🟡 bis Gewerbe/Betriebsbeginn geklärt bzw. erforderliche Gewerbeanmeldung erfolgt ist.**
 
-Alle übrigen noch nicht ausführbaren kommerziellen Schritte sind `⏸ nach Gewerbe` und werden weder als Freigabe erfunden noch als aktueller gelber Punkt gezählt.
+**Monetarisierung: 🔒 deaktiviert.**

@@ -14,7 +14,7 @@ jobs:
   live-health:
     runs-on: ubuntu-latest
     steps:
-      - name: Public Vercel app is healthy HTML
+      - name: Public Cloudflare app is healthy HTML
         id: html
         continue-on-error: true
         shell: bash
@@ -22,7 +22,7 @@ jobs:
           set -euo pipefail
           headers=$(mktemp)
           body=$(mktemp)
-          code=$(curl --retry 2 --retry-delay 2 -sS -D "$headers" -o "$body" -w '%{http_code}' https://dealfaz.vercel.app/)
+          code=$(curl --retry 2 --retry-delay 2 -sS -D "$headers" -o "$body" -w '%{http_code}' https://dealfaz.dealfaz-social.workers.dev/)
           test "$code" = "200"
           grep -Eiq '^content-type: text/html' "$headers"
           grep -Eiq '^x-content-type-options: nosniff' "$headers"
@@ -63,13 +63,13 @@ jobs:
             test "$code" = "200"
             grep -Eiq "^content-type: ${expected}" "$headers"
           }
-          check https://dealfaz.vercel.app/app.js 'application/javascript'
-          check https://dealfaz.vercel.app/analytics.js 'application/javascript'
-          check https://dealfaz.vercel.app/style.css 'text/css'
-          check https://dealfaz.vercel.app/manifest.webmanifest 'application/manifest\+json'
-          check https://dealfaz.vercel.app/robots.txt 'text/plain'
-          check https://dealfaz.vercel.app/sitemap.xml 'application/xml'
-          check https://dealfaz.vercel.app/icon.svg 'image/svg\+xml'
+          check https://dealfaz.dealfaz-social.workers.dev/app.js 'application/javascript'
+          check https://dealfaz.dealfaz-social.workers.dev/analytics.js 'application/javascript'
+          check https://dealfaz.dealfaz-social.workers.dev/style.css 'text/css'
+          check https://dealfaz.dealfaz-social.workers.dev/manifest.webmanifest 'application/manifest\+json'
+          check https://dealfaz.dealfaz-social.workers.dev/robots.txt 'text/plain'
+          check https://dealfaz.dealfaz-social.workers.dev/sitemap.xml 'application/xml'
+          check https://dealfaz.dealfaz-social.workers.dev/icon.svg 'image/svg\+xml'
 
       - name: Monetization, sharing and CSV safety are live
         id: safety
@@ -78,8 +78,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          js=$(curl --retry 2 --retry-delay 2 -fsS https://dealfaz.vercel.app/app.js)
-          analytics=$(curl --retry 2 --retry-delay 2 -fsS https://dealfaz.vercel.app/analytics.js)
+          js=$(curl --retry 2 --retry-delay 2 -fsS https://dealfaz.dealfaz-social.workers.dev/app.js)
+          analytics=$(curl --retry 2 --retry-delay 2 -fsS https://dealfaz.dealfaz-social.workers.dev/analytics.js)
           ! printf '%s' "$js" | grep -Fq 'Amazon · Partnerlink'
           ! printf '%s' "$js" | grep -Fq 'nofollow sponsored noopener'
           ! printf '%s' "$js" | grep -Fq 'dealfaz-21'
@@ -95,7 +95,7 @@ jobs:
           printf '%s' "$analytics" | grep -Fq 'syncPausedAffiliateState'
           printf '%s' "$analytics" | grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert'
 
-      - name: IndexNow key is present on public host
+      - name: IndexNow key is present on production host
         id: indexnow
         if: always()
         continue-on-error: true
@@ -103,7 +103,7 @@ jobs:
         run: |
           set -euo pipefail
           key='e6ec43618dca9e6ea85cc60ede8e5831'
-          body=$(curl --retry 2 --retry-delay 2 -fsS "https://dealfaz.vercel.app/${key}.txt")
+          body=$(curl --retry 2 --retry-delay 2 -fsS "https://dealfaz.dealfaz-social.workers.dev/${key}.txt")
           test "$body" = "$key"
 
       - name: SEO knowledge pages are reachable canonical and legal-linked
@@ -117,17 +117,17 @@ jobs:
             path="$1"
             canonical="$2"
             body=$(mktemp)
-            code=$(curl --retry 2 --retry-delay 2 -sS -o "$body" -w '%{http_code}' "https://dealfaz.vercel.app${path}")
+            code=$(curl --retry 2 --retry-delay 2 -sS -o "$body" -w '%{http_code}' "https://dealfaz.dealfaz-social.workers.dev${path}")
             test "$code" = "200"
             grep -Fq "<link rel=\"canonical\" href=\"${canonical}\"" "$body"
             grep -Fq 'DEALFAZ' "$body"
             grep -Fq 'Impressum & Recht' "$body"
             grep -Fq 'dealfaz-datenschutz' "$body"
           }
-          check_page /reselling-rechner/ https://dealfaz.vercel.app/reselling-rechner/
-          check_page /maximaler-einkaufspreis/ https://dealfaz.vercel.app/maximaler-einkaufspreis/
-          check_page /roi-reselling/ https://dealfaz.vercel.app/roi-reselling/
-          check_page /sell-through/ https://dealfaz.vercel.app/sell-through/
+          check_page /reselling-rechner/ https://dealfaz.dealfaz-social.workers.dev/reselling-rechner/
+          check_page /maximaler-einkaufspreis/ https://dealfaz.dealfaz-social.workers.dev/maximaler-einkaufspreis/
+          check_page /roi-reselling/ https://dealfaz.dealfaz-social.workers.dev/roi-reselling/
+          check_page /sell-through/ https://dealfaz.dealfaz-social.workers.dev/sell-through/
 
       - name: Sitemap contains all public pages
         id: sitemap
@@ -136,18 +136,18 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          sitemap=$(curl --retry 2 --retry-delay 2 -sS https://dealfaz.vercel.app/sitemap.xml)
+          sitemap=$(curl --retry 2 --retry-delay 2 -sS https://dealfaz.dealfaz-social.workers.dev/sitemap.xml)
           for url in \
-            'https://dealfaz.vercel.app/' \
-            'https://dealfaz.vercel.app/reselling-rechner/' \
-            'https://dealfaz.vercel.app/maximaler-einkaufspreis/' \
-            'https://dealfaz.vercel.app/roi-reselling/' \
-            'https://dealfaz.vercel.app/sell-through/'
+            'https://dealfaz.dealfaz-social.workers.dev/' \
+            'https://dealfaz.dealfaz-social.workers.dev/reselling-rechner/' \
+            'https://dealfaz.dealfaz-social.workers.dev/maximaler-einkaufspreis/' \
+            'https://dealfaz.dealfaz-social.workers.dev/roi-reselling/' \
+            'https://dealfaz.dealfaz-social.workers.dev/sell-through/'
           do
             printf '%s' "$sitemap" | grep -Fq "<loc>${url}</loc>"
           done
 
-      - name: Tracked public entry redirects to Vercel
+      - name: Tracked public entry redirects to Cloudflare production
         id: redirect
         if: always()
         continue-on-error: true
@@ -156,7 +156,7 @@ jobs:
           set -euo pipefail
           headers=$(mktemp)
           curl --retry 2 --retry-delay 2 -sS -D "$headers" -o /dev/null 'https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-start?utm_source=internal_selftest&utm_campaign=github_health&utm_content=redirect'
-          grep -Eiq '^location: https://dealfaz\.vercel\.app/' "$headers"
+          grep -Eiq '^location: https://dealfaz\.dealfaz-social\.workers\.dev/' "$headers"
 
       - name: Fail if any live check failed
         if: always()

@@ -28,7 +28,7 @@ jobs:
           test -f style.css
           test -f manifest.webmanifest
           test -f icon.svg
-          test -f social-card.svg
+          test -f social-card.png
           test -f vercel.json
           test -f _headers
           test -f robots.txt
@@ -54,7 +54,9 @@ jobs:
           origin='https://dealfaz.dealfaz-social.workers.dev'
           grep -Fq "<link rel=\"canonical\" href=\"${origin}/\">" index.html
           grep -Fq "<meta property=\"og:url\" content=\"${origin}/\">" index.html
-          grep -Fq "<meta property=\"og:image\" content=\"${origin}/social-card.svg\">" index.html
+          grep -Fq "<meta property=\"og:image\" content=\"${origin}/social-card.png\">" index.html
+          grep -Fq '<meta property="og:image:type" content="image/png">' index.html
+          grep -Fq "<meta name=\"twitter:image\" content=\"${origin}/social-card.png\">" index.html
           grep -Fq 'summary_large_image' index.html
           grep -Fq '"start_url":"/"' manifest.webmanifest
           grep -Fq "Sitemap: ${origin}/sitemap.xml" robots.txt

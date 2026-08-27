@@ -21,7 +21,8 @@ Der Dateiname bleibt aus Kompatibilitätsgründen bestehen. Die frühere Cloudfl
 - `style.css`
 - `manifest.webmanifest`
 - `icon.svg`
-- `social-card.svg`
+- `social-card.png` als primäres Social-Preview-Bild
+- `social-card.svg` darf als lokales Quell-/Fallbackmotiv bestehen bleiben, wird aber nicht mehr als primäres OG-Bild verwendet
 - `robots.txt`
 - `sitemap.xml`
 - `_headers`
@@ -51,13 +52,14 @@ Für den kostenlosen Beta-Betrieb sind gemeinsam auf die Cloudflare-Produktion a
 
 - Canonical
 - OpenGraph-URL
-- Social-Card-URL
+- PNG-Social-Card-URL
 - robots.txt / Sitemap
 - SEO-Seiten
 - Launch-Kit und Release-Dokumentation
 - Live-Health-Checks
+- Supabase-Legacy-Redirect `dealfaz-launch` Version 38
 
-Alte Supabase-Funktionslinks sind aus den öffentlichen HTML-Seiten entfernt.
+Alte Supabase-Funktionslinks sind aus den öffentlichen HTML-Seiten entfernt. Alte externe Links, die noch außerhalb des Repositories existieren, werden soweit vorgesehen auf die Cloudflare-Produktion weitergeleitet.
 
 ## Spätere finale Domain / Route
 

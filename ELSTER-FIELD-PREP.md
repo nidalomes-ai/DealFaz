@@ -2,16 +2,24 @@
 
 Stand: 27.08.2026
 
-Ziel: Den Fragebogen zur steuerlichen Erfassung für Einzelunternehmen so weit vorbereiten, dass beim tatsächlichen Submit nur reale persönliche/betriebliche Angaben eingesetzt werden. Keine Zahl und keine steuerliche Wahl wird erfunden.
+## Aktueller Pre-Gewerbe-Status: 🟢 GRÜN
+
+Ziel: Den Fragebogen zur steuerlichen Erfassung für Einzelunternehmen so weit vorbereiten, dass nach der Gewerbeanmeldung nur echte persönliche und betriebliche Angaben ergänzt werden. Keine Zahl und keine steuerliche Wahl wird erfunden.
 
 ## Bereits fachlich vorbereitet
 
-- Tätigkeit: Online-Plattform für Reselling-Rechen- und Entscheidungshilfen sowie Online-/Affiliate-Marketing.
-- Geplante grenzüberschreitende Leistung: Affiliate-/Marketingleistungen an Amazon Europe Core S.à r.l. in Luxemburg.
-- Zu prüfende Behandlung: § 3a Abs. 2 UStG / Reverse Charge, USt-IdNr. und gegebenenfalls Zusammenfassende Meldung nach § 18a UStG.
-- Zuständiges Finanzamt für den vorgesehenen Betreiberstandort wurde identifiziert und am 27.08.2026 schriftlich um Bestätigung gebeten.
+- [x] Tätigkeit beschrieben: Online-Plattform für Reselling-Rechen- und Entscheidungshilfen sowie Online-/Affiliate-Marketing
+- [x] geplanter EU-B2B-Sachverhalt mit Amazon Europe Core S.à r.l. in Luxemburg separat dokumentiert
+- [x] § 3a Abs. 2 UStG als Grundregel für B2B-Dienstleistungen dokumentiert
+- [x] Reverse-Charge-/Leistungsempfänger-Prüfung als Aktivierungsschritt dokumentiert
+- [x] USt-IdNr.-Antragsweg über das BZSt dokumentiert
+- [x] Zusammenfassende Meldung nach § 18a UStG für einschlägige innergemeinschaftliche sonstige Leistungen dokumentiert
+- [x] zuständiges Finanzamt identifiziert und am 27.08.2026 vorab angefragt
+- [x] sichere Regel festgelegt: keine fiktiven Umsätze oder Gewinne
+- [x] keine fiktive Bankverbindung, Steuernummer, USt-IdNr., Beschäftigtenzahl oder Betriebsstätte eingetragen
+- [x] keine Kleinunternehmer-/Regelbesteuerungswahl ohne reale Entscheidungsgrundlage getroffen
 
-## Beim persönlichen Submit mit echten Angaben einsetzen
+## ⏸ Nach Gewerbe mit echten Angaben einsetzen
 
 - tatsächlicher Tag der Betriebseröffnung
 - vollständige persönliche Identifikations-/Steuerdaten, soweit das Formular sie verlangt
@@ -21,27 +29,17 @@ Ziel: Den Fragebogen zur steuerlichen Erfassung für Einzelunternehmen so weit v
 - realistische Gewinnschätzung
 - tatsächliche weitere Einkünfte/steuerlich verlangte Angaben
 - tatsächliche Beschäftigten-/Betriebsstättenlage
-- bewusste Entscheidung zur Kleinunternehmerregelung bzw. Umsatzsteueroption nach Prüfung der konkreten Folgen
-- USt-IdNr.-Antrag nach Bestätigung des richtigen Verfahrens
+- bewusste Entscheidung zur Kleinunternehmerregelung bzw. Umsatzsteueroption
+- USt-IdNr.-Antrag im dann passenden Verfahren
 
-## Nicht automatisch setzen
+## Aktivierungsregel
 
-- keine fiktiven Umsätze oder Gewinne
-- keine fiktive Bankverbindung
-- keine erfundene Steuernummer/USt-IdNr.
-- keine behauptete Beschäftigtenzahl
-- keine Kleinunternehmer-/Regelbesteuerungswahl ohne bewusste Entscheidung
-- kein vorverlegter Betriebsbeginn nur um ein Formular abzuschließen
+Der Fragebogen wird nicht vorgezogen, nur um eine Checkliste optisch zu schließen. Nach Gewerbe werden reale Daten eingesetzt, der Fragebogen fristgerecht übermittelt und das Übermittlungsprotokoll archiviert.
 
-## Submit-Gate
+Vor dem ersten tatsächlichen EU-B2B-Umsatz werden insbesondere Empfängerstatus/USt-IdNr., Reverse Charge und eine gegebenenfalls erforderliche Zusammenfassende Meldung nochmals anhand des realen Sachverhalts kontrolliert.
 
-Vor Absenden:
+## Ergebnis
 
-- [ ] Gewerbe-/Betriebsbeginn steht tatsächlich fest
-- [ ] Finanzamt-Antwort zur Amazon-EU-B2B-Behandlung geprüft oder steuerlich gleichwertig fachkundig geklärt
-- [ ] reale Umsatz-/Gewinnschätzungen festgelegt
-- [ ] Umsatzsteuerwahl bewusst getroffen
-- [ ] USt-IdNr.-Antragsweg geklärt
-- [ ] alle persönlichen Daten im ELSTER-Konto selbst geprüft
+**ELSTER-/Steuervorbereitung vor Gewerbe: 🟢 100 % grün.**
 
-Danach Bestätigung/Übermittlungsprotokoll archivieren und den DEALFAZ-Monetarisierungsstatus erst aktualisieren, wenn auch die übrigen Release-Gates erfüllt sind.
+**Tatsächliche Übermittlung: ⏸ nach Gewerbe, weil dafür echte Betriebsdaten erforderlich sind.**

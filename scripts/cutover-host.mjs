@@ -3,6 +3,7 @@ import path from 'node:path';
 
 const nextRaw = process.argv[2] || '';
 const oldOrigin = 'https://dealfaz.vercel.app';
+const vsbgNotice = '<p><strong>Verbraucherstreitbeilegung:</strong> DEALFAZ ist nicht freiwillig zur Teilnahme an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle bereit. Soweit im Einzelfall eine gesetzliche Verpflichtung zur Teilnahme besteht, bleibt diese unberührt.</p>';
 
 function normalizeOrigin(value) {
   const u = new URL(value);
@@ -49,8 +50,20 @@ for (const rel of candidates) {
   }
 }
 
+const indexFile = path.resolve('index.html');
+if (!fs.existsSync(indexFile)) throw new Error('index.html is missing');
+let index = fs.readFileSync(indexFile, 'utf8');
+if (!index.includes('Verbraucherstreitbeilegung:')) {
+  const marker = '<div class="legalLinks">';
+  if (!index.includes(marker)) throw new Error('Could not find legalLinks insertion point');
+  index = index.replace(marker, `${vsbgNotice}${marker}`);
+  fs.writeFileSync(indexFile, index);
+  changed += 1;
+  console.log('added conservative VSBG notice to index.html');
+}
+
 if (!changed) {
-  console.error(`No references to ${oldOrigin} were replaced`);
+  console.error(`No cutover change was made from ${oldOrigin}`);
   process.exit(1);
 }
 
@@ -63,6 +76,11 @@ for (const rel of candidates) {
 if (remaining.length) {
   console.error(`Old origin still present in: ${remaining.join(', ')}`);
   process.exit(1);
+}
+
+index = fs.readFileSync(indexFile, 'utf8');
+if (!index.includes('Verbraucherstreitbeilegung:') || !index.includes('nicht freiwillig zur Teilnahme')) {
+  throw new Error('VSBG production notice missing after cutover preparation');
 }
 
 console.log(`Production-origin cutover prepared: ${oldOrigin} -> ${nextOrigin}`);

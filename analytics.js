@@ -1,5 +1,10 @@
 'use strict';
 (()=>{
+  const simple=document.createElement('script');
+  simple.src='/simple-ui.js';
+  simple.defer=true;
+  document.head.appendChild(simple);
+
   const PIXEL='https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-pixel';
   const qs=new URLSearchParams(location.search);
   const source=(qs.get('utm_source')||'direct').slice(0,80);

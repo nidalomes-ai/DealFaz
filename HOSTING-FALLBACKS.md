@@ -2,45 +2,53 @@
 
 Stand: 27.08.2026
 
-Ziel: keine Abhängigkeit von einem einzelnen kostenlosen Anbieter. Monetarisierung bleibt gesperrt, bis ein kommerziell zulässiges Produktionshosting aktiv und der Business-/Steuer-Release freigegeben ist.
+Ziel: keine unnötige Abhängigkeit von einem einzelnen kostenlosen Anbieter. Der kostenlose Beta-Betrieb ist bereits aktiv. Monetarisierung bleibt separat gesperrt, bis Business-/Steuer-/Partner-Gates tatsächlich erfüllt sind.
 
-## Plan A – Cloudflare Pages
+## Aktiver Plan A – Cloudflare Workers
 
-**Bevorzugter Dauerhost.** DEALFAZ ist eine statische Site. Cloudflare dokumentiert für Pages, dass statische Asset-Requests sowohl im Free- als auch im Paid-Plan kostenlos und unbegrenzt sind. GitHub `main`, statisches HTML und `_headers` sind vorbereitet.
+**Status für kostenlose Beta: 🟢 aktiv.**
 
-Aktueller Blocker ist ausschließlich der fehlende ausführbare Cloudflare-Accountzugriff in dieser Chat-Sitzung. Kein Code-Blocker.
+Aktuelle öffentliche Version:
 
-Nach erfolgreichem Deployment: Domain, Canonical, OG, Sitemap, Robots, Datenschutz-Hostingtext und alle Supabase-Redirectziele auf die neue Produktionsdomain umstellen; danach vollständiger Live-Health-Test.
+> `https://dealfaz.dealfaz-social.workers.dev/`
+
+Der frühere Cloudflare-Account-/Deployment-Blocker ist überholt. Der aktuelle Host wird bereits von Quality und Live Health geprüft. Canonical, OpenGraph, Sitemap, robots.txt, Launch-Kit und die öffentlichen SEO-Seiten sind auf diesen Host ausgerichtet.
+
+Für die kostenlose Beta ist **kein Hosting-Fallback erforderlich**.
+
+Vor einem späteren geschäftskritischen/monetarisierten Dauerbetrieb bleibt bewusst separat zu entscheiden, ob eine Custom Domain/Route bzw. finale Produktionsdomain verwendet wird. Dafür wird jetzt nichts gekauft.
 
 ## Plan B – Firebase Hosting Spark
 
-**Aktiver kostenloser Ersatzweg.** Firebase dokumentiert, dass der Spark-Tarif ohne Zahlungsdaten startet, Hosting ein kostenloses Nutzungskontingent enthält und Firebase-Produkte ausdrücklich auch in Produktions-Apps eingesetzt werden können. `firebase.json` ist vorbereitet und veröffentlicht nur Web-Dateien; interne Markdown-Dokumentation, Workflows, Scripts und der Monetarisierungs-Lock werden nicht als Website-Inhalte hochgeladen.
+**Kostenloser technischer Ersatzweg, falls der aktive Cloudflare-Beta-Host künftig ausfällt.**
 
-Vor Umschaltung: Deployment-URL prüfen, danach Canonical/OG/Sitemap/Robots/Datenschutz-Hostingtext anpassen und Live Health vollständig ausführen.
+`firebase.json` ist vorbereitet und veröffentlicht nur Web-Dateien; interne Markdown-Dokumentation, Workflows, Scripts und der Monetarisierungs-Lock werden nicht als Website-Inhalte hochgeladen.
+
+Vor Umschaltung: Deployment-URL prüfen, danach Canonical/OG/Sitemap/robots.txt/Datenschutz-Hostingtext anpassen und Live Health vollständig ausführen.
 
 ## Plan C – Netlify Free
 
-**Zulässiger technischer Ersatzkandidat, aber weniger robust.** `netlify.toml` ist vorbereitet. Der aktuelle Free-Tier erlaubt Git/API-Deploys, Custom Domains und SSL. Gleichzeitig behält Netlify sich im Free Usage Tier vor, Projekte ohne SLA zu deaktivieren oder zu entfernen. Deshalb nur Plan C und nicht primärer Dauerhost.
+**Weiterer technischer Ersatzkandidat.** `netlify.toml` ist vorbereitet. Vor Nutzung werden die dann aktuellen Free-Tier-Bedingungen nochmals geprüft.
 
-Vor Umschaltung: Free-Tier-Bedingungen nochmals prüfen, Repository anbinden, Preview testen, danach vollständigen Cutover ausführen.
+Vor Umschaltung: Repository anbinden, Preview testen, danach vollständigen Cutover ausführen.
 
-## Nicht als kommerzieller Produktions-Fallback verwenden
+## Nicht automatisch als kommerzieller Produktions-Fallback verwenden
 
 ### Render Free
 
-Render dokumentiert selbst, dass Free-Instanzen nicht für Produktionsanwendungen verwendet werden sollen. Static Sites sind zwar kostenlos verfügbar, DEALFAZ behandelt Render Free deshalb nur als Test-/Preview-Weg und nicht als kommerziellen Produktionshost.
+Nur nach erneuter Prüfung der dann geltenden Produktions-/Free-Tier-Bedingungen verwenden.
 
 ### Supabase Edge Functions auf Free-Domain
 
-Nicht als Site-Hosting-Ersatz verwenden. Supabase dokumentiert aktuell, dass HTML-Ausgaben von Edge Functions ohne Custom Domain auf `text/plain` umgeschrieben werden. Eine Custom Domain ist kein 0-Euro-Weg. Supabase bleibt Backend/Analytics/Redirect-Infrastruktur.
+Nicht als Site-Hosting-Ersatz verwenden. Supabase bleibt Backend/Analytics/Legacy-Redirect-Infrastruktur. Die öffentliche Legacy-Funktion `dealfaz-launch` Version 38 leitet alte Social-/Weblinks auf die aktuelle Cloudflare-Produktion weiter.
 
 ### GitHub Pages
 
-Nicht als kommerziellen Shop-/Affiliate-Dauerhost einplanen.
+Nicht als primären kommerziellen Dauerhost einplanen.
 
 ### Vercel Hobby
 
-Bleibt nur nicht-kommerzielle Übergangs-/Testinstanz. Keine Affiliate-Tags oder Partnervergütung auf dieser Instanz.
+Nicht mehr als öffentliche Hauptquelle behandeln. Alte Vercel-Ziele wurden aus der aktuellen öffentlichen Konfiguration entfernt.
 
 ## Umschalt-Gate
 
@@ -53,9 +61,9 @@ Kein neuer Host wird öffentlich als Produktionshost geschaltet, bevor folgende 
 5. Kein Affiliate-Tag, solange `MONETIZATION_DISABLED` existiert.
 6. Datenschutzhinweise nennen den tatsächlich aktiven Hoster.
 7. Sitemap/robots/OG/Canonical zeigen ausschließlich auf die Produktionsdomain.
-8. Supabase-Redirects zeigen ausschließlich auf die Produktionsdomain.
+8. Supabase-Legacy-Redirects zeigen ausschließlich auf die Produktionsdomain.
 9. Live Health ist vollständig grün.
 
 ## Automatische Entscheidungsregel
 
-Wenn Plan A technisch/accountseitig blockiert ist, sofort Plan B versuchen. Wenn Plan B blockiert ist, sofort Plan C versuchen. Keine Wartephase zwischen den Wegen. Render/Supabase/GitHub Pages/Vercel Hobby werden nicht als kommerzieller Produktionsersatz verwendet.
+Aktiver Cloudflare-Host funktioniert → dort bleiben. Bei einem echten technischen Ausfall Plan B prüfen. Wenn Plan B nicht funktioniert, Plan C prüfen. Keine kostenpflichtige Lösung automatisch aktivieren.

@@ -4,7 +4,7 @@
 
 ## Öffentliche Hauptseite
 
-**https://dealfaz.vercel.app/**
+**https://dealfaz.dealfaz-social.workers.dev/**
 
 Die öffentliche Version läuft über HTTPS und benötigt kein Nutzerkonto.
 
@@ -35,10 +35,10 @@ Die öffentliche Version läuft über HTTPS und benötigt kein Nutzerkonto.
 
 ## Wissensseiten
 
-- [Reselling-Rechner: Gewinn, ROI & Marge](https://dealfaz.vercel.app/reselling-rechner/)
-- [Maximalen Einkaufspreis berechnen](https://dealfaz.vercel.app/maximaler-einkaufspreis/)
-- [ROI beim Reselling verstehen](https://dealfaz.vercel.app/roi-reselling/)
-- [Sell-through verstehen](https://dealfaz.vercel.app/sell-through/)
+- [Reselling-Rechner: Gewinn, ROI & Marge](https://dealfaz.dealfaz-social.workers.dev/reselling-rechner/)
+- [Maximalen Einkaufspreis berechnen](https://dealfaz.dealfaz-social.workers.dev/maximaler-einkaufspreis/)
+- [ROI beim Reselling verstehen](https://dealfaz.dealfaz-social.workers.dev/roi-reselling/)
+- [Sell-through verstehen](https://dealfaz.dealfaz-social.workers.dev/sell-through/)
 
 ## Transparenz & Methodik
 

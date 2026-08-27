@@ -34,6 +34,8 @@ Vor Umschaltung: Repository anbinden, Preview testen, danach vollständigen Cuto
 
 ## Nicht automatisch als kommerzieller Produktions-Fallback verwenden
 
+Die folgenden Wege gelten **nicht als kommerzieller Produktionsersatz**, solange ihre dann aktuellen Bedingungen und der konkrete Monetarisierungsbetrieb nicht erneut geprüft wurden.
+
 ### Render Free
 
 Nur nach erneuter Prüfung der dann geltenden Produktions-/Free-Tier-Bedingungen verwenden.

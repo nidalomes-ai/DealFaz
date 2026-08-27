@@ -21,7 +21,7 @@ jobs:
           set -euo pipefail
           OLD='https://dealfaz.vercel.app'
           NEW='https://dealfaz.dealfaz-social.workers.dev'
-          grep -RIl --exclude-dir=.git "$OLD" . | while read -r f; do
+          grep -RIl --exclude-dir=.git --exclude-dir=.github "$OLD" . | while read -r f; do
             sed -i "s#${OLD}#${NEW}#g" "$f"
           done
           python3 - <<'PY'
@@ -31,7 +31,6 @@ jobs:
           s = s.replace('Beim Aufruf verarbeitet Vercel technisch notwendige Verbindungs-, Sicherheits- und Protokolldaten zur Bereitstellung und Absicherung der Website.', 'Beim Aufruf verarbeitet Cloudflare technisch notwendige Verbindungs-, Sicherheits- und Protokolldaten zur Bereitstellung und Absicherung der Website.')
           p.write_text(s)
           PY
-          rm -f .github/workflows/cloudflare-production-cutover.yml
       - name: Commit production cutover
         shell: bash
         run: |

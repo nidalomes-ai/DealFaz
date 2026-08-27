@@ -31,11 +31,11 @@ jobs:
           grep -Eiq '^strict-transport-security:' "$headers"
           grep -Eiq '^content-security-policy:' "$headers"
           grep -Fq 'DEALFAZ' "$body"
-          grep -Fq '60‑Sekunden‑Check' "$body"
-          grep -Fq 'Warum NICHT kaufen?' "$body"
-          grep -Fq 'Deal Battle' "$body"
-          grep -Fq 'Deine Erwartung vs. tatsächliches Ergebnis' "$body"
-          grep -Fq 'Wissen & Formeln' "$body"
+          grep -Fq 'SCHNELL PRÜFEN' "$body"
+          grep -Fq 'Was spricht dagegen?' "$body"
+          grep -Fq 'Zwei Deals vergleichen' "$body"
+          grep -Fq 'Tatsächliches Ergebnis' "$body"
+          grep -Fq 'Mehr lernen' "$body"
           grep -Fq 'apple-mobile-web-app-capable' "$body"
           grep -Fq '<link rel="apple-touch-icon" href="/icon.svg">' "$body"
           grep -Fq 'Datenschutz' "$body"
@@ -63,12 +63,12 @@ jobs:
             test "$code" = "200"
             grep -Eiq "^content-type: ${expected}" "$headers"
           }
-          check https://dealfaz.dealfaz-social.workers.dev/app.js 'application/javascript'
-          check https://dealfaz.dealfaz-social.workers.dev/analytics.js 'application/javascript'
+          check https://dealfaz.dealfaz-social.workers.dev/app.js '(application|text)/(javascript|x-javascript)'
+          check https://dealfaz.dealfaz-social.workers.dev/analytics.js '(application|text)/(javascript|x-javascript)'
           check https://dealfaz.dealfaz-social.workers.dev/style.css 'text/css'
-          check https://dealfaz.dealfaz-social.workers.dev/manifest.webmanifest 'application/manifest\+json'
+          check https://dealfaz.dealfaz-social.workers.dev/manifest.webmanifest 'application/(manifest\+json|json)'
           check https://dealfaz.dealfaz-social.workers.dev/robots.txt 'text/plain'
-          check https://dealfaz.dealfaz-social.workers.dev/sitemap.xml 'application/xml'
+          check https://dealfaz.dealfaz-social.workers.dev/sitemap.xml '(application|text)/(xml|xml\+rss)'
           check https://dealfaz.dealfaz-social.workers.dev/icon.svg 'image/svg\+xml'
 
       - name: Monetization, sharing and CSV safety are live

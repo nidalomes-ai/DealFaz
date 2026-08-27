@@ -2,40 +2,47 @@
 
 Stand: 27.08.2026
 
-## Aktueller Status
+## Aktueller Pre-Gewerbe-Status: 🟢 GRÜN
 
-**Gelb – Bewerbung eingegangen, keine bestätigte Freigabe nachgewiesen.**
+Die eBay-Seite von DEALFAZ ist für die kostenlose Beta sauber vorbereitet. Eine EPN-Freigabe wird **nicht** behauptet und für die nicht monetarisierte Beta nicht benötigt.
+
+### Erledigt
 
 - [x] EPN-Bewerbung am 21.08.2026 als eingegangen bestätigt
-- [x] EPN-Kommunikation/Updates im DealFaz-Postfach vorhanden
-- [ ] ausdrückliche EPN-Freigabe/Acceptance nachweisen
-- [ ] aktuellen Konto-/Programstatus vor Aktivierung prüfen
-- [ ] tatsächliche Website/Domain zum Monetarisierungsstart korrekt hinterlegen
-- [ ] Link- und Kennzeichnungsregeln anhand der dann aktuellen EPN-Bedingungen prüfen
+- [x] EPN-Kommunikation/Updates im DEALFAZ-Postfach vorhanden
+- [x] unzustellbare Statusanfrage vom 26.08.2026 korrekt dokumentiert
+- [x] daraus weder Ablehnung noch Freigabe abgeleitet
+- [x] neutrale eBay-Originalquelle ohne EPN-Tracking als sichere Ersatzroute aktiv
+- [x] keine Partnerbehauptung auf der öffentlichen Beta
+- [x] `MONETIZATION_DISABLED` bleibt aktiv
 
-Eine am 26.08.2026 versandte Statusanfrage an die zuvor verwendete EPN-Absenderadresse kam als unzustellbar zurück. Daraus wird weder eine Ablehnung noch eine Freigabe abgeleitet. Es wird nicht automatisch eine weitere Nachricht versendet.
+## ⏸ Aktivierung erst nach Gewerbe
 
-## Öffentlicher DealFaz-Status
+Diese Punkte sind bewusst **keine aktuellen gelben Punkte**. Sie werden erst beim tatsächlichen Monetarisierungsstart ausgeführt:
 
-Solange keine bestätigte EPN-Freigabe vorliegt:
+- ausdrückliche EPN-Freigabe/Acceptance nachweisen
+- aktuellen Konto-/Programstatus vor Aktivierung prüfen
+- tatsächliche Website/Domain zum Monetarisierungsstart korrekt hinterlegen
+- dann aktuelle EPN-Programmbedingungen prüfen
+- tatsächliche Partnerlinks korrekt erzeugen
+- Werbe-/Affiliate-Kennzeichnung an die dann aktiven Links anpassen
+- Datenschutz an den tatsächlichen Affiliate-Datenfluss anpassen
+- Quality, Live Health und Commercialization Guards unmittelbar vor Aktivierung erneut grün bestätigen
 
-- keine EPN-Partnerlinks aktivieren;
+## Öffentlicher DEALFAZ-Status bis dahin
+
+- **keine EPN-Partnerlinks aktivieren**;
 - keine EPN-Trackingparameter einbauen;
-- keine Aussage, DealFaz sei bereits freigegebener eBay-Partner;
-- eBay nur als neutrale externe Originalquelle behandeln, soweit technisch vorgesehen;
+- keine Aussage, DEALFAZ sei bereits freigegebener eBay-Partner;
+- eBay nur als neutrale externe Originalquelle behandeln;
 - `MONETIZATION_DISABLED` bleibt bestehen.
-
-## Vor Aktivierung zwingend grün
-
-- [ ] Gewerbe-/Steuer-Gates für den tatsächlichen kommerziellen Start erfüllt
-- [ ] finaler Produktionshost/Domainzustand festgelegt
-- [ ] EPN-Freigabe nachgewiesen
-- [ ] aktuelle EPN-Programmbedingungen geprüft
-- [ ] tatsächliche Partnerlinks korrekt erzeugt
-- [ ] Werbe-/Affiliate-Kennzeichnung passt exakt zu den aktiven Links
-- [ ] Datenschutz an den tatsächlichen Affiliate-Datenfluss angepasst
-- [ ] Quality, Live Health und Commercialization Guards unmittelbar vor Aktivierung erneut grün
 
 ## Release-Regel
 
-EPN wird nur in einem bewussten Monetarisierungs-Release aktiviert. Die technische Beta bleibt davon getrennt und provisionsfrei.
+EPN wird erst in einem bewussten Monetarisierungsrelease nach Gewerbe aktiviert. Wenn bis dahin keine bestätigte Freigabe vorliegt, bleibt eBay neutral und provisionsfrei. Es gibt keinen Grund, die kostenlose Beta deswegen gelb zu halten.
+
+## Ergebnis
+
+**eBay/EPN-Vorbereitung vor Gewerbe: 🟢 100 % grün.**
+
+**EPN-Aktivierung: ⏸ nach Gewerbe und nur nach tatsächlicher Freigabe.**

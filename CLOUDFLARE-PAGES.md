@@ -1,25 +1,27 @@
-# DEALFAZ – Cloudflare Pages Migration
+# DEALFAZ – Cloudflare Hosting
 
-Purpose: move the static DEALFAZ frontend away from a hosting plan that is restricted to non-commercial use before monetization is re-enabled.
+Stand: 27.08.2026
 
-## Repository source
+Der Dateiname bleibt aus Kompatibilitätsgründen bestehen. Die frühere Cloudflare-Pages-Migrationsplanung ist inzwischen durch den aktiven Cloudflare-Workers-Betrieb überholt.
+
+## Aktueller Produktionsstand
+
 - Repository: `nidalomes-ai/DealFaz`
-- Production branch: `main`
-- Framework preset: None / static site
-- Build command: `exit 0`
-- Build output directory: repository root (`.`)
-- Root directory: repository root / leave blank
-- No environment variables are required for the static frontend.
+- Produktionsbranch: `main`
+- öffentliche kostenlose Beta: `https://dealfaz.dealfaz-social.workers.dev/`
+- statisches Frontend ohne erforderlichen Build-Schritt
+- keine geheimen Frontend-Umgebungsvariablen für den Kernbetrieb nötig
+- `MONETIZATION_DISABLED` bleibt aktiv
 
-These settings follow Cloudflare Pages' current Static HTML guidance for a site without a framework or build step.
+## Öffentlich benötigte Dateien
 
-## Files that must be served
 - `index.html`
 - `app.js`
 - `analytics.js`
 - `style.css`
 - `manifest.webmanifest`
 - `icon.svg`
+- `social-card.svg`
 - `robots.txt`
 - `sitemap.xml`
 - `_headers`
@@ -27,30 +29,49 @@ These settings follow Cloudflare Pages' current Static HTML guidance for a site 
 - `maximaler-einkaufspreis/`
 - `roi-reselling/`
 - `sell-through/`
-- IndexNow verification text file
+- IndexNow-Verifikationsdatei
 
 ## Security
-Cloudflare Pages must honor `_headers`. Verify after deployment:
+
+Live Health prüft auf dem aktiven Cloudflare-Host unter anderem:
+
 - Content-Security-Policy
 - X-Content-Type-Options: nosniff
 - Referrer-Policy
-- Permissions-Policy
 - X-Frame-Options: DENY
 - Strict-Transport-Security
+- Kernassets und SEO-Seiten
+- Monetarisierungs-/Share-/CSV-Sicherheitsregeln
 
-## Before switching canonical URLs
-Do not change canonical, OpenGraph URL, robots sitemap URL, sitemap loc entries, social links, IndexNow host, or tracking allow-origin until the new public production hostname is known and verified.
+Die statische `_headers`-Datei bleibt zusätzlich als portable Hosting-Konfiguration für kompatible Fallback-Hosts erhalten.
 
-## Before monetization
-`MONETIZATION_DISABLED` must remain present until all legal release gates are complete. Affiliate tags must not be added merely because the hosting migration succeeds.
+## Aktueller Cutover ist abgeschlossen
 
-## Cutover verification
-1. Root returns HTTP 200.
-2. All four SEO pages return HTTP 200.
-3. JS/CSS/manifest/icon return HTTP 200.
-4. Security headers are present.
-5. LocalStorage features still work.
-6. Supabase aggregate pixel is either allowed for the new origin or deliberately disabled until updated.
-7. Privacy notice names the actual production host/provider.
-8. Canonical/OG/sitemap/robots/IndexNow are changed together only after the new production domain is final.
-9. Old host stays non-monetized during transition.
+Für den kostenlosen Beta-Betrieb sind gemeinsam auf die Cloudflare-Produktion ausgerichtet:
+
+- Canonical
+- OpenGraph-URL
+- Social-Card-URL
+- robots.txt / Sitemap
+- SEO-Seiten
+- Launch-Kit und Release-Dokumentation
+- Live-Health-Checks
+
+Alte Supabase-Funktionslinks sind aus den öffentlichen HTML-Seiten entfernt.
+
+## Spätere finale Domain / Route
+
+Vor einem späteren geschäftskritischen oder monetarisierten Dauerbetrieb bleibt ein weiterer Hosting-Punkt offen: Custom Domain/Route bzw. finale Produktionsdomain festlegen. Dafür gilt wieder ein gemeinsamer Cutover statt einzelner manueller Links.
+
+Vor dem Umschalten:
+
+1. Root und alle vier SEO-Seiten auf dem Zielhost HTTP 200 prüfen.
+2. JS/CSS/Manifest/Icon/Social-Card/IndexNow prüfen.
+3. Security-Header prüfen.
+4. LocalStorage-Funktionen praktisch testen.
+5. Datenschutzhinweise an den tatsächlichen Host anpassen.
+6. Canonical/OG/Sitemap/robots.txt/IndexNow gemeinsam umstellen.
+7. PartnerNet-Webseite nur beim tatsächlichen kommerziellen Start passend aktualisieren.
+8. Quality, Live Health und Commercialization Guards erneut grün bekommen.
+
+Eine erfolgreiche Hosting-Migration allein hebt den Monetarisierungs-Lock nicht auf.

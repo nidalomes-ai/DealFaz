@@ -14,7 +14,7 @@ DEALFAZ ist eine kostenlose browserbasierte Reselling-Rechen- und Entscheidungsh
 
 `https://dealfaz.dealfaz-social.workers.dev/reselling-rechner/`
 
-Alte Supabase-/Vercel-Frontendlinks sind keine Launch-Einstiege mehr und sollen nicht weiter beworben werden.
+Alte Supabase-/Vercel-Frontendlinks sind keine Launch-Einstiege mehr und sollen nicht weiter beworben werden. Bestehende externe Legacy-Links auf `dealfaz-launch` werden über die aktive Supabase-Redirect-Funktion Version 38 auf die aktuelle Cloudflare-Produktion weitergeleitet.
 
 ## Launch-Kern
 
@@ -63,12 +63,19 @@ Alte Supabase-/Vercel-Frontendlinks sind keine Launch-Einstiege mehr und sollen 
 - PostHog Error Tracking: keine aktiven Fehler im geprüften 7-Tage-Fenster
 - öffentliche HTML-Seiten enthalten keine alten Supabase-Funktionslinks mehr
 - Canonical, Sitemap, robots.txt und Launch-Kit zeigen auf die aktuelle Cloudflare-Version
+- Social-Preview als 1200×630 PNG eingebaut und in OG-/Twitter-Metadaten aktiviert
+- Mobile-/Touch-Viewport-Prüfung bei 320 px, 375 px und 390 px bestanden; kein horizontales Überlaufen, zentrale Touch-Ziele mindestens 46 px
+- Metricool-Schutzregel: maximal 20 Veröffentlichungen pro Monat; bei erreichtem Limit keine neuen Posts
 
-## Vor dem 01.09. noch offen
+## Bis zum 01.09. nur noch Beobachtung / echte Nutzung
 
-- praktische Mobile-/iPhone-Sichtprüfung
-- praktische Social-Preview-Prüfung auf den tatsächlich genutzten Plattformen
+Keine technische Beta-Freigabe ist mehr wegen Mobile oder Social-Preview offen. Bis zum Launch werden nur noch reale externe Ergebnisse beobachtet:
+
 - echte organische Nutzung und Reichweite beobachten; keine Bots/Testaufrufe als Erfolg zählen
+- tatsächliche Social-Preview-Caches der Plattformen nach realen Posts beobachten
+- Suchmaschinen-Indexierung beobachten; Indexierung/Ranking nicht künstlich erzwingen
+
+Diese Beobachtungspunkte sind keine vorab erzwingbaren technischen Release-Blocker.
 
 ## Separat von der kostenlosen Beta gesperrt
 
@@ -77,7 +84,8 @@ Die folgenden Punkte sind **keine Voraussetzung für die kostenlose technische B
 - Gewerbe-/Betreiberstart
 - steuerliche Erfassung und EU-B2B/USt-IdNr.-Behandlung
 - finale Amazon-Aktivierungsprüfung
+- ausdrückliche eBay-EPN-Freigabe vor EPN-Partnerlinks
 - finaler geschäftskritischer Produktionshost bzw. Custom Domain/Route
-- Marken-/Namens-Kollisionsprüfung
+- vollständige Marken-/Namens-Kollisionsprüfung
 
 Bis diese Punkte erfüllt sind, wird keine Affiliate-Monetarisierung aktiviert.

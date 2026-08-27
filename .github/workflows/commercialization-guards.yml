@@ -43,7 +43,7 @@ jobs:
           test -f DACH-COMMERCIAL-ROLLOUT.md
           grep -Fq 'Gewerbeanmeldung' BUSINESS-START-CHECKLIST.md
           grep -Fq 'Reverse Charge' BUSINESS-START-CHECKLIST.md
-          grep -Fq '§ 18a UStG' BUSINESS-START-CHECKLIST.md
+          grep -Fq 'Zusammenfassender Meldung' BUSINESS-START-CHECKLIST.md
           grep -Fq 'Verbraucherschlichtung' BUSINESS-START-CHECKLIST.md
           grep -Fq 'MONETIZATION_DISABLED' AMAZON-ACTIVATION.md
           grep -Fq 'Als Amazon-Partner verdiene ich an qualifizierten Verkäufen.' AMAZON-ACTIVATION.md
@@ -83,7 +83,8 @@ jobs:
           set -euo pipefail
           test -f INDEXING-STATUS.md
           grep -Fq 'Indexierung, Positionen und Besucherzahlen werden nicht garantiert' INDEXING-STATUS.md
-          grep -Fq 'Sauberen kommerziell geeigneten Produktionshost aktivieren' INDEXING-STATUS.md
+          grep -Fq 'reale Indexierung der aktuellen Cloudflare-URLs' INDEXING-STATUS.md
+          grep -Fq 'Alte Hosts nicht erneut als primäre öffentliche URL bewerben' INDEXING-STATUS.md
 
       - name: Cutover must enforce legal notice
         shell: bash

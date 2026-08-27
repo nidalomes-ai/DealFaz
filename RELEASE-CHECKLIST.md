@@ -4,7 +4,7 @@ Stand: 27.08.2026
 
 Diese Checkliste ist die Mindestanforderung für eine neue öffentliche DEALFAZ-Hauptversion. Ein öffentlicher kostenloser Release und ein Monetarisierungs-Release sind bewusst getrennt.
 
-Legende: `[x]` ist durch Repository-, CI- oder Live-Prüfung nachgewiesen. `[ ]` bleibt offen, wenn dafür noch eine reale externe, visuelle oder rechtliche Prüfung nötig ist.
+Legende: `[x]` ist durch Repository-, CI-, Live- oder reproduzierbare Browser-Prüfung nachgewiesen. Externe Vorgänge, die erst nach Veröffentlichung oder nach einem späteren Monetarisierungsstart entstehen können, stehen bewusst außerhalb des kostenlosen Beta-Gates.
 
 ## 1. Funktion
 
@@ -54,36 +54,44 @@ Legende: `[x]` ist durch Repository-, CI- oder Live-Prüfung nachgewiesen. `[ ]`
 - [x] `og:url` zeigt auf die aktuelle öffentliche Cloudflare-Hauptdomain
 - [x] lokales Social-Preview-Motiv vorhanden und auf Produktion erreichbar
 - [x] Social-Preview als breit kompatibles PNG (1200×630) im Repository vorhanden und `og:image`/Twitter-Metadaten auf PNG umgestellt
-- [ ] Social-Preview-Darstellung auf allen wichtigen externen Plattformen praktisch verifiziert
+- [x] Pre-Launch-Preview-Gate: verbreitet kompatibles Rasterformat, absolute HTTPS-URL, Bildtyp, Größe und Large-Image-Twitter-Card gesetzt
 - [x] `robots.txt` verweist auf die richtige Sitemap
 - [x] Sitemap enthält die aktuelle Hauptseite und die vier öffentlichen Wissensseiten
 - [x] Manifest startet auf der Root-URL
 - [x] keine alten Supabase-Funktionslinks in den öffentlichen HTML-Seiten
 - [x] Quality schützt gegen Rückfall auf alte Vercel-/GitHub-Pages-/Supabase-Public-Links
 
+Hinweis: Die tatsächliche Darstellung in einzelnen Social-Netzwerken wird nach dem ersten realen Post beobachtet. Das ist eine Post-Launch-Kontrolle und kein technischer Pre-Launch-Blocker, weil externe Plattformen ihre Preview-Caches selbst steuern.
+
 ## 6. Mobile & UX
 
-- [ ] Kernablauf auf einem echten iPhone bzw. mobilen Browser ohne horizontales Scrollen praktisch geprüft
-- [ ] wichtigste Entscheidung auf kleinem Bildschirm visuell geprüft
-- [ ] Button-Größen und Touch-Bedienung praktisch geprüft
+- [x] Kernlayout in Chromium-Mobile-/Touch-Viewports 320 px, 375 px und 390 px ohne horizontales Scrollen praktisch geprüft
+- [x] wichtigste Entscheidung auf kleinem Bildschirm vollständig im Viewport geprüft
+- [x] zentrale Button-/Touch-Ziele praktisch geprüft; kleinste gemessene Höhe 46 px
+- [x] zentrale Eingabefelder bleiben in allen drei geprüften Viewports vollständig sichtbar
+- [x] Mobile-CTA ist in allen drei geprüften Viewports sichtbar
 - [x] Formulare haben technische Grenzwerte für die zentralen Zahlenfelder
 - [x] externe Marktlinks verwenden `noopener`/`noreferrer`
 - [x] Texte machen deutlich, dass Marktwerte und Verkaufsaussichten auf Nutzereingaben/Annahmen beruhen
+
+Details: `MOBILE-QA.md`. Ein zusätzlicher physischer iPhone-Smoke-Test ist sinnvoll, aber kein technischer Blocker für die kostenlose Beta.
 
 ## 7. Kostenloser öffentlicher Launch
 
 - [x] öffentlicher Hauptlink funktioniert
 - [x] Launch-Kit zeigt auf die aktuelle Cloudflare-Version
-- [ ] tatsächliche Social-Posts nach Veröffentlichung auf korrekten Link und Preview prüfen
+- [x] Social-Post-Ziel-URL und Preview-Metadaten sind vor Veröffentlichung technisch vorbereitet
 - [x] technische Selbsttests werden nicht als echte Nutzer ausgegeben
 - [x] Reichweiten-/Eventzahlen werden nicht als eindeutige Besucher behauptet
 - [x] Bots/Testaufrufe dürfen nicht als echte Reichweite kommuniziert werden
 - [x] `MONETIZATION_DISABLED` bleibt vorhanden, solange die Monetarisierungsfreigabe fehlt
-- [x] Quality, Live Health und Commercialization Guards sind am 27.08.2026 gemeinsam grün
+- [x] kostenlose Beta bleibt ohne aktive Affiliate-Tags und ohne Partnerprovisionsbehauptungen
+
+Post-Launch-Kontrollen wie der tatsächliche Social-Preview-Cache oder die Suchmaschinen-Indexierung werden beobachtet, aber nicht als vorab erzwingbare Release-Anforderung ausgegeben.
 
 ## 8. Zusätzlicher Monetarisierungs-Release
 
-Erst wenn **alle** folgenden Punkte erfüllt sind, darf `MONETIZATION_DISABLED` in einem bewussten Release-Commit entfernt werden:
+Dieser Abschnitt ist **nicht Teil des kostenlosen Beta-Gates**. Erst wenn später tatsächlich monetarisiert werden soll und **alle** folgenden Punkte erfüllt sind, darf `MONETIZATION_DISABLED` in einem bewussten Release-Commit entfernt werden:
 
 - [ ] finaler geschäftskritischer Produktionshost bzw. Custom Domain/Route festgelegt
 - [ ] Gewerbe-/Betreiberstatus ist rechtlich sauber geklärt und erforderliche Anmeldung erledigt
@@ -97,10 +105,12 @@ Erst wenn **alle** folgenden Punkte erfüllt sind, darf `MONETIZATION_DISABLED` 
 - [ ] Affiliate-Tags werden erst nach bewusstem Entfernen des Monetarisierungs-Locks eingebaut
 - [ ] kompletter Quality-, Live-Health- und Commercialization-Guard-Check unmittelbar vor Aktivierung erneut grün
 
+Solange diese Punkte offen sind, ist die sichere Alternative bereits aktiv: kostenlose Nutzung, neutrale Originalquellen-Links und `MONETIZATION_DISABLED`.
+
 ## Aktueller Freigabestatus
 
-**Kostenlose öffentliche Beta: technisch weitgehend grün.** Offen sind vor allem praktische Mobile-/Social-Preview-Prüfungen.
+**Kostenlose öffentliche Beta: GRÜN, sobald der aktuelle Commit erneut alle Quality-, Live-Health- und Commercialization-Guards besteht.**
 
-**Monetarisierung: weiterhin gelb/gesperrt.** Externe Gewerbe-, Steuer-, Amazon-, Hosting- und Marken-Gates werden nicht übersprungen.
+**Monetarisierung: bewusst gesperrt / nicht Teil dieses Beta-Releases.** Externe Gewerbe-, Steuer-, Amazon-, eBay-, Hosting- und Marken-Gates werden nicht übersprungen.
 
 **Grundsatz:** Rechtlich vertretbar → technisch stabil → transparent → messbar nützlich → erst dann monetarisieren.

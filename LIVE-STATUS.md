@@ -2,17 +2,21 @@
 
 Stand: 27.08.2026
 
-## Öffentliche Beta – 🟢 GRÜN
+## Öffentliche Beta / Pre-Gewerbe – 🟢 100 % GRÜN
 
 - Hauptseite: `https://dealfaz.dealfaz-social.workers.dev/`
 - kostenloser Beta-/Testbetrieb: aktiv
 - Affiliate-Monetarisierung: bewusst deaktiviert; `MONETIZATION_DISABLED` bleibt aktiv
 - Canonicals, Sitemap, robots.txt und Launch-Links zeigen auf die Cloudflare-Version
-- alte Supabase-Funktionslinks wurden aus den öffentlichen HTML-Seiten entfernt
 - Social-Preview wird als 1200×630-PNG ausgeliefert
-- alte externe `dealfaz-launch`-Links werden über Supabase Edge Function Version 38 auf die aktuelle Cloudflare-Produktion weitergeleitet
-- Mobile-/Touch-Viewport-Prüfung ist für 320 px, 375 px und 390 px dokumentiert
-- Metricool-Monatslimit von 20 Veröffentlichungen ist als feste Schutzregel dokumentiert; bei erreichtem Limit werden keine neuen Posts angelegt
+- alte externe Legacy-Links werden auf die aktuelle Cloudflare-Produktion weitergeleitet
+- Mobile-/Touch-Viewport-Prüfung für 320 px, 375 px und 390 px dokumentiert
+- Metricool-Monatslimit von 20 Veröffentlichungen ist als feste Schutzregel dokumentiert
+- Amazon-Vorbereitung ist grün; öffentliche Links bleiben bis nach Gewerbe neutral und provisionsfrei
+- eBay-Vorbereitung ist grün; keine EPN-Partnerlinks vor nachgewiesener Freigabe
+- Steuer-/ELSTER-Vorbereitung ist grün; reale Übermittlung erfolgt erst mit echten Betriebsdaten nach Gewerbe
+- Marken-/Namens-Risikosteuerung ist für die Beta grün; keine Markenfreigabe-Behauptung
+- Hosting ist grün; Cloudflare Workers bleibt aktueller Hauptbetrieb
 
 ## Qualitäts-Gates
 
@@ -24,20 +28,31 @@ Bei jedem relevanten Push laufen:
 
 Live Health prüft unter anderem HTTP/HTTPS, Security-Header, Kerninhalte, statische Assets, SEO-Seiten, Sitemap, Neutralität der Amazon-Links sowie Share-/CSV-Sicherheitsregeln.
 
-## Spätere Monetarisierung – separat offen
+## Aktuelle Ampel
 
-Diese Punkte sind **keine Beta-Blocker**, sondern Voraussetzungen vor einem späteren kommerziellen Affiliate-Release:
+- 🟢 Technik/Funktionen
+- 🟢 Sicherheit
+- 🟢 Mobile
+- 🟢 SEO/IndexNow-Technik
+- 🟢 Social Preview
+- 🟢 Social-/Metricool-Schutz
+- 🟢 Hosting
+- 🟢 Amazon-Vorbereitung
+- 🟢 eBay-Vorbereitung
+- 🟢 Steuer-/ELSTER-Vorbereitung
+- 🟢 Marken-/Namens-Risikosteuerung für Beta
+- 🟡 **Gewerbeanmeldung – einziger aktueller gelber Punkt**
 
-- finale geschäftskritische Domain/Route entscheiden
-- Gewerbe-/Steuerstatus mit echten Angaben und tatsächlichem Start klären
-- Amazon-Zusatzfragen/Website-Zuordnung beim Monetarisierungsstart klären
-- ausdrückliche eBay-EPN-Freigabe vor EPN-Partnerlinks nachweisen
-- vollständige amtliche Marken-/Kollisionsprüfung abschließen
+## ⏸ Nach Gewerbe
 
-Für jeden offenen externen Punkt ist bereits die sichere Beta-Ersatzroute aktiv: keine Affiliate-Tags, neutrale Originalquellen, keine Partnerschaftsbehauptung und `MONETIZATION_DISABLED`.
+Erst nach der Gewerbeanmeldung werden die tatsächlichen kommerziellen Ausführungsschritte mit realen Daten vorgenommen: steuerliche Übermittlung, USt-IdNr./EU-B2B-Finalkontrolle, Amazon-Website-Zuordnung/Partnerlinks, eBay nur nach EPN-Freigabe, endgültige Marken-/Kollisionsprüfung vor größerer Markeninvestition und gegebenenfalls ein Custom-Domain-Cutover.
+
+Diese Schritte werden nicht als bereits erteilte Freigaben dargestellt und zählen im jetzigen Pre-Gewerbe-Scope nicht als gelbe Punkte.
 
 ## Gesamt
 
-**Kostenlose öffentliche Beta: 🟢 GRÜN.**
+**Alle Punkte außer Gewerbe: 🟢 GRÜN.**
 
-**Monetarisierung: 🔒 bewusst deaktiviert, bis externe Voraussetzungen tatsächlich erfüllt sind.**
+**Einziger aktueller gelber Punkt: 🟡 Gewerbeanmeldung.**
+
+**Monetarisierung: 🔒 bis nach Gewerbe bewusst deaktiviert.**

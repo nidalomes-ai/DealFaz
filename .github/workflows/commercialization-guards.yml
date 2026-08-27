@@ -1,0 +1,70 @@
+name: DEALFAZ Commercialization Guards
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  commercialization-guards:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Hosting fallback assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f HOSTING-FALLBACKS.md
+          test -f CLOUDFLARE-PAGES.md
+          test -f firebase.json
+          test -f netlify.toml
+          test -f scripts/cutover-host.mjs
+          grep -Fq 'Cloudflare Pages' HOSTING-FALLBACKS.md
+          grep -Fq 'Firebase Hosting Spark' HOSTING-FALLBACKS.md
+          grep -Fq 'Netlify Free' HOSTING-FALLBACKS.md
+          grep -Fq 'Render Free' HOSTING-FALLBACKS.md
+          grep -Fq 'nicht als kommerzieller Produktionsersatz' HOSTING-FALLBACKS.md
+
+      - name: Legal and tax release gates
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f BUSINESS-START-CHECKLIST.md
+          test -f ELSTER-FIELD-PREP.md
+          test -f AMAZON-ACTIVATION.md
+          test -f TRADEMARK-CHECK.md
+          grep -Fq 'Gewerbeanmeldung' BUSINESS-START-CHECKLIST.md
+          grep -Fq 'Reverse Charge' BUSINESS-START-CHECKLIST.md
+          grep -Fq 'Zusammenfassende Meldung' BUSINESS-START-CHECKLIST.md
+          grep -Fq 'Verbraucherstreitbeilegung' BUSINESS-START-CHECKLIST.md
+          grep -Fq 'MONETIZATION_DISABLED' AMAZON-ACTIVATION.md
+          grep -Fq 'Als Amazon-Partner verdiene ich an qualifizierten Verkäufen.' AMAZON-ACTIVATION.md
+          grep -Fq 'keine fiktiven Umsätze oder Gewinne' ELSTER-FIELD-PREP.md
+          grep -Fq 'DEALFA' TRADEMARK-CHECK.md
+          grep -Fq 'DEALFAST' TRADEMARK-CHECK.md
+
+      - name: Cutover must enforce legal notice
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'Verbraucherstreitbeilegung:' scripts/cutover-host.mjs
+          grep -Fq 'nicht freiwillig zur Teilnahme' scripts/cutover-host.mjs
+          grep -Fq 'Production origin must use HTTPS' scripts/cutover-host.mjs
+
+      - name: Monetization remains locked before clearance
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f MONETIZATION_DISABLED
+          grep -Fq 'monetization is intentionally disabled' MONETIZATION_DISABLED
+          if grep -Eq '([?&]|&amp;)tag=|dealfaz-21' index.html app.js analytics.js; then
+            echo 'Affiliate monetization detected before commercialization gates are cleared.'
+            exit 1
+          fi

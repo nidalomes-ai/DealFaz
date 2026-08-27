@@ -53,7 +53,7 @@ Legende: `[x]` ist durch Repository-, CI- oder Live-Prüfung nachgewiesen. `[ ]`
 - [x] Canonical zeigt auf die aktuelle öffentliche Cloudflare-Hauptdomain
 - [x] `og:url` zeigt auf die aktuelle öffentliche Cloudflare-Hauptdomain
 - [x] lokales Social-Preview-Motiv vorhanden und auf Produktion erreichbar
-- [ ] Social-Preview zusätzlich als breit kompatibles Rasterformat (PNG/JPEG) bereitstellen und `og:image`/Twitter-Metadaten darauf umstellen; aktuelles SVG wird nicht als plattformübergreifend verifiziert behandelt
+- [x] Social-Preview als breit kompatibles PNG (1200×630) im Repository vorhanden und `og:image`/Twitter-Metadaten auf PNG umgestellt
 - [ ] Social-Preview-Darstellung auf allen wichtigen externen Plattformen praktisch verifiziert
 - [x] `robots.txt` verweist auf die richtige Sitemap
 - [x] Sitemap enthält die aktuelle Hauptseite und die vier öffentlichen Wissensseiten
@@ -99,7 +99,7 @@ Erst wenn **alle** folgenden Punkte erfüllt sind, darf `MONETIZATION_DISABLED` 
 
 ## Aktueller Freigabestatus
 
-**Kostenlose öffentliche Beta: technisch weitgehend grün.** Offen sind vor allem praktische Mobile-/Social-Preview-Prüfungen und ein plattformkompatibles Raster-Social-Preview.
+**Kostenlose öffentliche Beta: technisch weitgehend grün.** Offen sind vor allem praktische Mobile-/Social-Preview-Prüfungen.
 
 **Monetarisierung: weiterhin gelb/gesperrt.** Externe Gewerbe-, Steuer-, Amazon-, Hosting- und Marken-Gates werden nicht übersprungen.
 

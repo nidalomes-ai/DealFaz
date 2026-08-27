@@ -2,31 +2,31 @@
 
 Stand: 27.08.2026
 
-Ziel: kostenloser technischer Betrieb ohne Sackgasse und keine vorschnelle Monetarisierung auf einem ungeprüften Produktions-Setup.
+## Aktueller Status: 🟢 GRÜN
 
-## Aktueller Hauptbetrieb
+Der kostenlose Hauptbetrieb ist entschieden und aktiv:
 
-1. **Cloudflare Workers – aktiv**
-   - aktuelle öffentliche Beta: `https://dealfaz.dealfaz-social.workers.dev/`
+1. **Cloudflare Workers – aktiver Hauptbetrieb**
+   - öffentliche Beta: `https://dealfaz.dealfaz-social.workers.dev/`
    - Quality und Live Health prüfen diesen Host
    - Canonical, Sitemap, robots.txt und Social-Metadaten zeigen auf diesen Host
    - öffentliche HTML-Seiten hängen nicht mehr von alten Supabase-Funktionslinks ab
 
-2. **Späterer kommerzieller Dauerbetrieb – noch gelb**
-   - vor Monetarisierung wird entschieden, ob eine Custom Domain/Route bzw. andere finale Produktionsdomain eingesetzt wird
-   - kein kostenpflichtiger Domain-/Hostingkauf erfolgt automatisch
-   - ein Domainwechsel wird nur als gemeinsamer Cutover durchgeführt
+2. **Pre-Gewerbe-Entscheidung**
+   - Cloudflare Workers bleibt Hauptbetrieb
+   - es wird jetzt keine kostenpflichtige Domain gekauft
+   - eine Custom Domain/Route ist keine Voraussetzung für die kostenlose Beta und kein aktueller gelber Punkt
 
 ## Kostenlose Ausweichrouten
 
-Diese Konfigurationen bleiben als technische Fallbacks im Repository, werden aber nicht parallel als öffentliche Hauptquelle beworben:
+Diese Konfigurationen bleiben als technische Fallbacks im Repository:
 
-1. Cloudflare Pages – statischer Fallback, falls ein Pages-Deployment später sinnvoll wird.
+1. Cloudflare Pages – statischer Fallback.
 2. Firebase Hosting Spark – mit `firebase.json` vorbereitet.
 3. Netlify Free – mit `netlify.toml` vorbereitet.
-4. Render Static Site – mit `render.yaml` vorbereitet.
+4. Render Static Site – nur nach erneuter Prüfung der dann aktuellen Nutzungsbedingungen.
 
-Die jeweils aktuellen Tarif-/Nutzungsbedingungen müssen vor einer späteren kommerziellen Nutzung erneut geprüft werden. Ein vorhandener Fallback ist keine automatische Freigabe für Monetarisierung.
+Die jeweils aktuellen Tarif-/Nutzungsbedingungen werden vor einer späteren kommerziellen Nutzung erneut geprüft. Ein technischer Fallback ist keine automatische Monetarisierungsfreigabe.
 
 ## Nicht wieder als primäre öffentliche Quelle verwenden
 
@@ -36,18 +36,22 @@ Die jeweils aktuellen Tarif-/Nutzungsbedingungen müssen vor einer späteren kom
 
 Diese alten Frontends werden nicht erneut in Launch-, SEO-, Canonical- oder Social-Links eingebaut.
 
-## Cutover-Regel für eine spätere finale Domain
+## ⏸ Späterer kommerzieller Cutover nach Gewerbe
 
-Ein neuer Host bzw. eine Custom Domain/Route wird erst zur Hauptquelle, wenn gleichzeitig geprüft ist:
+Wenn später bewusst eine Custom Domain/Route verwendet wird, erfolgt der Wechsel nur gemeinsam für:
 
-- Root und alle vier SEO-Seiten liefern HTTP 200 + HTML
-- `app.js`, `analytics.js`, `style.css`, Manifest, Social-Card, Sitemap, Robots und IndexNow-Key sind erreichbar
-- Sicherheitsheader sind aktiv
-- keine Affiliate-Tags bei aktivem `MONETIZATION_DISABLED`
-- Share-Links verwenden Fragment statt Deal-Daten im Server-Querystring
-- Canonical, `og:url`, Schema, Sitemap, robots.txt und Social-Card-URL werden gemeinsam umgestellt
-- Datenschutzhinweise nennen den tatsächlichen Host/Provider
-- PartnerNet-Webseite wird erst beim tatsächlichen kommerziellen Cutover aktualisiert
-- Quality, Live Health und Commercialization Guards sind danach grün
+- Root und alle vier SEO-Seiten
+- `app.js`, `analytics.js`, `style.css`, Manifest, Social-Card, Sitemap, Robots und IndexNow-Key
+- Sicherheitsheader
+- Canonical, `og:url`, Schema, Sitemap, robots.txt und Social-Card-URL
+- Datenschutzhinweise
+- Partnerprogramm-Webseiten
+- Supabase-Legacy-Redirects
 
-Bis dahin bleibt die kostenlose Cloudflare-Beta aktiv und `MONETIZATION_DISABLED` bestehen.
+Danach müssen Quality, Live Health und Commercialization Guards erneut grün sein.
+
+## Ergebnis
+
+**Hosting für den aktuellen Pre-Gewerbe-/Beta-Betrieb: 🟢 100 % grün.**
+
+**Custom Domain/kommerzieller Cutover: ⏸ nach Gewerbe, nicht aktueller gelber Punkt.**

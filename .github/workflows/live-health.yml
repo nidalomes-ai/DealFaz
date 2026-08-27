@@ -46,7 +46,8 @@ jobs:
           ! grep -Fq 'Der Amazon-Link ist ein Partnerlink' "$body"
           ! grep -Fq 'Amazon-Partnerlinks können Affiliate-Zuordnungen enthalten' "$body"
           grep -Fq 'summary_large_image' "$body"
-          grep -Fq 'dealfaz-social-card' "$body"
+          grep -Fq 'social-card.svg' "$body"
+          ! grep -Fq 'supabase.co/functions/v1' "$body"
 
       - name: Core static assets are reachable
         id: assets
@@ -70,6 +71,7 @@ jobs:
           check https://dealfaz.dealfaz-social.workers.dev/robots.txt 'text/plain'
           check https://dealfaz.dealfaz-social.workers.dev/sitemap.xml '(application|text)/(xml|xml\+rss)'
           check https://dealfaz.dealfaz-social.workers.dev/icon.svg 'image/svg\+xml'
+          check https://dealfaz.dealfaz-social.workers.dev/social-card.svg 'image/svg\+xml'
 
       - name: Monetization, sharing and CSV safety are live
         id: safety
@@ -122,7 +124,8 @@ jobs:
             grep -Fq "<link rel=\"canonical\" href=\"${canonical}\"" "$body"
             grep -Fq 'DEALFAZ' "$body"
             grep -Fq 'Impressum & Recht' "$body"
-            grep -Fq 'dealfaz-datenschutz' "$body"
+            grep -Fq 'href="/#privacy"' "$body"
+            ! grep -Fq 'supabase.co/functions/v1' "$body"
           }
           check_page /reselling-rechner/ https://dealfaz.dealfaz-social.workers.dev/reselling-rechner/
           check_page /maximaler-einkaufspreis/ https://dealfaz.dealfaz-social.workers.dev/maximaler-einkaufspreis/
@@ -147,17 +150,6 @@ jobs:
             printf '%s' "$sitemap" | grep -Fq "<loc>${url}</loc>"
           done
 
-      - name: Tracked public entry redirects to Cloudflare production
-        id: redirect
-        if: always()
-        continue-on-error: true
-        shell: bash
-        run: |
-          set -euo pipefail
-          headers=$(mktemp)
-          curl --retry 2 --retry-delay 2 -sS -D "$headers" -o /dev/null 'https://iosghttnctdaociwltos.supabase.co/functions/v1/dealfaz-start?utm_source=internal_selftest&utm_campaign=github_health&utm_content=redirect'
-          grep -Eiq '^location: https://dealfaz\.dealfaz-social\.workers\.dev/' "$headers"
-
       - name: Fail if any live check failed
         if: always()
         shell: bash
@@ -168,13 +160,11 @@ jobs:
           INDEXNOW: ${{ steps.indexnow.outcome }}
           SEO: ${{ steps.seo.outcome }}
           SITEMAP: ${{ steps.sitemap.outcome }}
-          REDIRECT: ${{ steps.redirect.outcome }}
         run: |
-          printf 'html=%s assets=%s safety=%s indexnow=%s seo=%s sitemap=%s redirect=%s\n' "$HTML" "$ASSETS" "$SAFETY" "$INDEXNOW" "$SEO" "$SITEMAP" "$REDIRECT"
+          printf 'html=%s assets=%s safety=%s indexnow=%s seo=%s sitemap=%s\n' "$HTML" "$ASSETS" "$SAFETY" "$INDEXNOW" "$SEO" "$SITEMAP"
           test "$HTML" = success
           test "$ASSETS" = success
           test "$SAFETY" = success
           test "$INDEXNOW" = success
           test "$SEO" = success
           test "$SITEMAP" = success
-          test "$REDIRECT" = success

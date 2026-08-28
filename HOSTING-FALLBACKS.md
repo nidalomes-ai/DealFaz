@@ -1,4 +1,4 @@
-# DEALFAZ – Hosting-Fallbacks
+# MESIQO – Hosting-Fallbacks
 
 Stand: 27.08.2026
 

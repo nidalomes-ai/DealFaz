@@ -1,4 +1,4 @@
-# DEALFAZ – Rechts- und Launch-Prüfung
+# MESIQO – Rechts- und Launch-Prüfung
 
 Stand: 27.08.2026
 
@@ -6,7 +6,7 @@ Stand: 27.08.2026
 
 ## Ergebnis in einem Satz
 
-**Technisch ist DEALFAZ für die kostenlose Beta startbereit. Ein geschäftlicher öffentlicher Launch ist rechtlich jedoch erst dann als freigegeben zu behandeln, wenn der tatsächliche Gewerbebeginn geklärt und eine erforderliche Gewerbeanmeldung spätestens gleichzeitig mit diesem Beginn erfolgt ist.**
+**Technisch ist MESIQO für die kostenlose Beta startbereit. Ein geschäftlicher öffentlicher Launch ist rechtlich jedoch erst dann als freigegeben zu behandeln, wenn der tatsächliche Gewerbebeginn geklärt und eine erforderliche Gewerbeanmeldung spätestens gleichzeitig mit diesem Beginn erfolgt ist.**
 
 Affiliate-Monetarisierung bleibt bis dahin durch `MONETIZATION_DISABLED` gesperrt.
 
@@ -14,7 +14,7 @@ Affiliate-Monetarisierung bleibt bis dahin durch `MONETIZATION_DISABLED` gesperr
 
 § 14 Abs. 1 GewO verlangt die gleichzeitige Anzeige, wenn der selbständige Betrieb eines stehenden Gewerbes anfängt. Für den Gewerbebegriff sind insbesondere Selbständigkeit, Dauerhaftigkeit und Gewinnerzielungsabsicht relevant; ein tatsächlich bereits erzielter Gewinn ist nicht Voraussetzung.
 
-DEALFAZ ist dauerhaft angelegt und auf spätere Affiliate-Einnahmen ausgerichtet. Deshalb wird nicht mehr mit der Regel gearbeitet, der Gewerbestart beginne erst mit der ersten Provision.
+MESIQO ist dauerhaft angelegt und auf spätere Affiliate-Einnahmen ausgerichtet. Deshalb wird nicht mehr mit der Regel gearbeitet, der Gewerbestart beginne erst mit der ersten Provision.
 
 **Freigaberegel:** Vor einem als Geschäft betriebenen öffentlichen Launch tatsächlichen Beginn klären und erforderliche Gewerbeanmeldung spätestens zum Beginn durchführen.
 
@@ -59,7 +59,7 @@ Die Hauptanwendung verwendet lokalen Browser-Speicher für vom Nutzer aktiv verw
 - vorgemerkte Erwartungen
 - tatsächliche Ergebnisse
 
-Diese Inhalte werden im aktuellen Code nicht als Nutzerprofil an eine zentrale DEALFAZ-Datenbank übertragen. § 25 Abs. 2 TDDDG sieht eine Ausnahme von der Einwilligungspflicht vor, wenn ein Endgerätezugriff unbedingt erforderlich ist, um einen vom Nutzer ausdrücklich gewünschten digitalen Dienst bereitzustellen.
+Diese Inhalte werden im aktuellen Code nicht als Nutzerprofil an eine zentrale MESIQO-Datenbank übertragen. § 25 Abs. 2 TDDDG sieht eine Ausnahme von der Einwilligungspflicht vor, wenn ein Endgerätezugriff unbedingt erforderlich ist, um einen vom Nutzer ausdrücklich gewünschten digitalen Dienst bereitzustellen.
 
 **Aktuelle Produktentscheidung:** kein Werbe-/Marketing-Cookie-Banner, solange keine nicht erforderlichen Tracking-/Marketingzugriffe aktiviert werden. Bei jeder späteren Analytics-, Affiliate-, AdTech- oder sonstigen Tracking-Erweiterung erfolgt vor Aktivierung eine neue TDDDG-/DSGVO-Prüfung.
 
@@ -73,7 +73,7 @@ Die öffentlichen Datenschutzhinweise verschweigen deshalb mögliche internation
 
 ## 6. Externe Marktplätze / fremde Inhalte – 🟢 AKTUELLER MODUS
 
-DEALFAZ:
+MESIQO:
 
 - kopiert keine fremden Angebotsdatenbankbestände als eigene Datenbank
 - umgeht keine Logins, Paywalls oder Schutzmaßnahmen
@@ -81,7 +81,7 @@ DEALFAZ:
 - öffnet Amazon, eBay, Kleinanzeigen, idealo und Google nur als externe Originalquellen
 - ist nicht Vertragspartner eines Kaufs auf diesen Plattformen
 
-Die Marktplatzlinks enthalten im aktuellen Zustand keine DEALFAZ-Affiliate- oder EPN-Trackingparameter.
+Die Marktplatzlinks enthalten im aktuellen Zustand keine MESIQO-Affiliate- oder EPN-Trackingparameter.
 
 ## 7. Affiliate / Werbung / UWG-DDG – 🟢 GESPERRTER SICHERHEITSZUSTAND / ⏸ SPÄTERE AKTIVIERUNG
 
@@ -90,14 +90,14 @@ Aktuell:
 - keine provisionsfähigen Links
 - keine Affiliate-Tags
 - keine EPN-Trackingparameter
-- keine Aussage, dass DEALFAZ bereits bestätigter eBay-Partner sei
+- keine Aussage, dass MESIQO bereits bestätigter eBay-Partner sei
 - Amazon-Link wird als neutral behandelt
 
 Vor späterer Aktivierung müssen kommerzielle Kommunikation und vergütete Links klar als Werbung/Partnerlink erkennbar sein. Partnerprogramm-spezifische Pflichtformulierungen werden erst eingebaut, wenn die entsprechenden Programme tatsächlich aktiv sind.
 
 ## 8. Verbraucherrecht – 🟢 AKTUELLER KOSTENLOSER MODUS
 
-Aktuell gibt es bei DEALFAZ:
+Aktuell gibt es bei MESIQO:
 
 - keinen eigenen Warenverkauf
 - keinen Checkout
@@ -109,11 +109,11 @@ Ein konservativer Verbraucherstreitbeilegungs-/Verbraucherschlichtung-Hinweis is
 
 Die frühere EU-Online-Streitbeilegungsplattform ist nicht als Pflichtlink eingebaut; veraltete ODR-Verlinkungen sollen nicht neu eingeführt werden.
 
-Sobald DEALFAZ selbst kostenpflichtige Leistungen oder Verträge anbietet, müssen insbesondere Preisangaben, Fernabsatzinformationen, Widerruf, Zahlungsbedingungen und Vertragsschluss separat geprüft werden.
+Sobald MESIQO selbst kostenpflichtige Leistungen oder Verträge anbietet, müssen insbesondere Preisangaben, Fernabsatzinformationen, Widerruf, Zahlungsbedingungen und Vertragsschluss separat geprüft werden.
 
 ## 9. Digital Services Act / Plattformpflichten – 🟢 AKTUELL KEINE UGC-PLATTFORMFUNKTION
 
-Die aktuelle Version stellt einen eigenen Rechner und externe Recherchelinks bereit. Nutzerinhalte werden nicht auf einem DEALFAZ-Server gespeichert und öffentlich verbreitet; es gibt keine Konten, öffentlichen Inserate, Kommentare oder Marktplatz-Uploads.
+Die aktuelle Version stellt einen eigenen Rechner und externe Recherchelinks bereit. Nutzerinhalte werden nicht auf einem MESIQO-Server gespeichert und öffentlich verbreitet; es gibt keine Konten, öffentlichen Inserate, Kommentare oder Marktplatz-Uploads.
 
 Deshalb werden aktuell keine Plattform-Moderationsprozesse behauptet oder künstlich eingebaut. Wenn später Nutzerinhalte gespeichert/öffentlich verbreitet oder Händlerangebote direkt gehostet werden, wird der DSA/DDG-Plattformcheck neu geöffnet.
 
@@ -121,7 +121,7 @@ Deshalb werden aktuell keine Plattform-Moderationsprozesse behauptet oder künst
 
 Das BFSG erfasst unter anderem Dienstleistungen im elektronischen Geschäftsverkehr, die auf individuelle Anfrage eines Verbrauchers im Hinblick auf den Abschluss eines Verbrauchervertrags erbracht werden.
 
-DEALFAZ schließt derzeit selbst keinen Verbrauchervertrag und hat keinen Checkout. Es wird daher keine pauschale Aussage „vollständig BFSG-zertifiziert“ gemacht. Mobile Bedienbarkeit, sichtbare Fokuszustände, Labels und große Touch-Ziele werden freiwillig weiter gepflegt.
+MESIQO schließt derzeit selbst keinen Verbrauchervertrag und hat keinen Checkout. Es wird daher keine pauschale Aussage „vollständig BFSG-zertifiziert“ gemacht. Mobile Bedienbarkeit, sichtbare Fokuszustände, Labels und große Touch-Ziele werden freiwillig weiter gepflegt.
 
 Vor eigener E-Commerce-/Checkout-Funktion oder enger auf einen Vertragsschluss gerichteten Diensten erfolgt eine neue BFSG-Prüfung.
 
@@ -129,9 +129,10 @@ Vor eigener E-Commerce-/Checkout-Funktion oder enger auf einen Vertragsschluss g
 
 Dokumentiert sind:
 
-- Suchvarianten für DEALFAZ
-- ähnliches Zeichen `DEALFA` / EUTM 018240890 als Prüfpunkt
-- `DEALFAST` als weiterer Ähnlichkeits-/Branchenprüfpunkt
+- Suchvarianten für MESIQO
+- ähnliches Zeichen `MESI` / EUTM 018205693 als Prüfpunkt
+- `Me.Si.` / EUTM 012638987 als weiterer Ähnlichkeits-/Klassenprüfpunkt
+- `MEDIQO LINE` / EUTM 009326257 und aktive MEDIQO-Unternehmen als internationale Ähnlichkeits-Prüfpunkte
 - keine Behauptung „Marke frei“ oder „rechtlich abgesichert“
 
 Eine Web-/Vorabrecherche ersetzt keine vollständige amtliche Ähnlichkeits- und Klassenprüfung. Vor Markenanmeldung, größerem Werbebudget, Merchandising oder schwer umkehrbaren Branding-Ausgaben direkte DPMA/EUIPO/WIPO-Recherche vervollständigen und bei Zweifel fachkundig prüfen lassen.

@@ -1,4 +1,4 @@
-# DEALFAZ Live-Status
+# MESIQO Live-Status
 
 Stand: 27.08.2026
 
@@ -38,9 +38,9 @@ Nicht der erste Euro Provision ist automatisch der Startpunkt. Bei einer selbst√
 
 Bei relevanten Pushes laufen:
 
-- `DEALFAZ Quality`
-- `DEALFAZ Live Health`
-- `DEALFAZ Commercialization Guards`
+- `MESIQO Quality`
+- `MESIQO Live Health`
+- `MESIQO Commercialization Guards`
 
 ## Launch 01.09.2026
 

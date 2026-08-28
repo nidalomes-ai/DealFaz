@@ -1,4 +1,4 @@
-# DEALFAZ – Release-Gate
+# MESIQO – Release-Gate
 
 Stand: 27.08.2026
 
@@ -103,11 +103,13 @@ Keine EPN-Partnerlinks vor tatsächlicher Freigabe.
 ## 11. Marke / Name – 🟡 RESTRISIKO
 
 - [x] Suchstrategie/Varianten dokumentiert
-- [x] `DEALFA` / EUTM 018240890 als ähnlicher Prüfdatensatz dokumentiert
-- [x] `DEALFAST` als weiterer Ähnlichkeitspunkt dokumentiert
+- [x] exakter amtlicher Registercheck für `MESIQO` ohne Treffer dokumentiert
+- [x] `MESI` / EUTM 018205693 und `Me.Si.` / EUTM 012638987 als Ähnlichkeits-Prüfdatensätze dokumentiert
+- [x] `MEDIQO LINE` / EUTM 009326257 sowie aktive MEDIQO-Firmennutzungen dokumentiert
 - [x] keine Behauptung `Marke frei` oder `rechtlich abgesichert`
 - [x] keine große irreversible Markeninvestition vor finaler Prüfung
-- [ ] direkte amtliche DPMA/EUIPO/WIPO-Kollisionsprüfung vor größerem Branding-/Monetarisierungsaufwand finalisieren
+- [ ] professionelle Ähnlichkeitsprüfung vor größerem Branding-/Monetarisierungsaufwand finalisieren
+- [ ] vor öffentlicher Umbenennung MESIQO-Risiko bewusst bestätigen oder kollisionsärmeren Namen auswählen
 
 Für einen technischen Beta-Test ist die vorsichtige Nutzung dokumentiert; eine absolute Markenfreigabe wird nicht behauptet.
 

@@ -1,10 +1,10 @@
-# DEALFAZ – Datenfluss und Datenschutzprinzipien
+# MESIQO – Datenfluss und Datenschutzprinzipien
 
-Diese Dokumentation beschreibt den technischen Datenfluss der aktuellen öffentlichen DEALFAZ-Version. Sie ist eine technische Transparenzdokumentation und ersetzt keine individuelle Rechtsberatung.
+Diese Dokumentation beschreibt den technischen Datenfluss der aktuellen öffentlichen MESIQO-Version. Sie ist eine technische Transparenzdokumentation und ersetzt keine individuelle Rechtsberatung.
 
 ## Grundsatz
 
-DEALFAZ ist derzeit als browserbasierte Reselling-Rechen- und Entscheidungshilfe ohne Nutzerkonto aufgebaut.
+MESIQO ist derzeit als browserbasierte Reselling-Rechen- und Entscheidungshilfe ohne Nutzerkonto aufgebaut.
 
 ## Lokal gespeicherte Daten
 
@@ -15,7 +15,7 @@ Folgende Funktionen speichern Daten lokal im Browser des Nutzers:
 - vorgemerkte Erwartungen
 - tatsächliche Ergebnis-Historie
 
-Diese Daten werden in der aktuellen Version nicht in eine zentrale DEALFAZ-Nutzerdatenbank hochgeladen.
+Diese Daten werden in der aktuellen Version nicht in eine zentrale MESIQO-Nutzerdatenbank hochgeladen.
 
 Der Nutzer kann lokale Daten über die App-Funktionen oder durch Löschen der Website-/Browserdaten entfernen. Watchlist und Ergebnis-Historie können lokal als JSON bzw. CSV exportiert werden.
 
@@ -29,9 +29,9 @@ Die öffentliche Website wird über Vercel bereitgestellt. Wie bei praktisch jed
 
 ## Externe Originalquellen
 
-DEALFAZ verlinkt auf Originalseiten wie Marktplätze oder Preisvergleichsdienste. Diese Seiten werden erst aufgerufen, wenn der Nutzer den entsprechenden Link öffnet. Dort gelten die Datenschutz-, Cookie- und Nutzungsregeln des jeweiligen Anbieters.
+MESIQO verlinkt auf Originalseiten wie Marktplätze oder Preisvergleichsdienste. Diese Seiten werden erst aufgerufen, wenn der Nutzer den entsprechenden Link öffnet. Dort gelten die Datenschutz-, Cookie- und Nutzungsregeln des jeweiligen Anbieters.
 
-DEALFAZ baut keine kopierte Datenbank dieser fremden Angebote auf.
+MESIQO baut keine kopierte Datenbank dieser fremden Angebote auf.
 
 ## Kein unerlaubtes Scraping
 
@@ -44,7 +44,7 @@ Die aktuelle Produktlinie verfolgt den Grundsatz:
 
 ## Tracking
 
-Die aktuelle öffentliche DEALFAZ-Oberfläche setzt selbst keine Werbe- oder Marketing-Cookies ein. Zusätzliche Analytics- oder Tracking-Funktionen werden nicht ohne erneute technische und rechtliche Prüfung aktiviert.
+Die aktuelle öffentliche MESIQO-Oberfläche setzt selbst keine Werbe- oder Marketing-Cookies ein. Zusätzliche Analytics- oder Tracking-Funktionen werden nicht ohne erneute technische und rechtliche Prüfung aktiviert.
 
 ## Teilen
 

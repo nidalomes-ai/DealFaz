@@ -1,12 +1,19 @@
-# DEALFAZ Reselling
+# MESIQO Reselling
 
-**DEALFAZ** ist eine kostenlose browserbasierte Reselling-Prüfung für Deutschland, Österreich und die Schweiz. Der Fokus liegt auf einer schnellen, nachvollziehbaren Entscheidung vor dem Einkauf – ohne Gewinnversprechen und ohne fremde Marktplatzdaten zu kopieren.
+**MESIQO** ist eine kostenlose browserbasierte Reselling-Prüfung für Deutschland, Österreich und die Schweiz. Der Fokus liegt auf einer schnellen, nachvollziehbaren Entscheidung vor dem Einkauf – ohne Gewinnversprechen und ohne fremde Marktplatzdaten zu kopieren.
 
 ## Öffentliche Hauptseite
 
 **https://dealfaz.dealfaz-social.workers.dev/**
 
-Die öffentliche Version läuft über HTTPS und benötigt kein Nutzerkonto.
+Die öffentliche Version läuft über HTTPS und benötigt kein Nutzerkonto. Die Adresse enthält während der technischen Übergangsphase noch den früheren Namen `dealfaz`; die sichtbare Marke und alle neuen Inhalte heißen **MESIQO**. Alte Links bleiben dadurch funktionsfähig, bis eine MESIQO-Domain erfolgreich registriert und gemeinsam umgestellt wurde.
+
+## Umbenennung
+
+- früherer Projektname: `DealFaz`
+- neuer Marken- und Seitenname: `MESIQO`
+- bestehende lokale Watchlists, Regeln und Ergebnisdaten werden beim ersten Aufruf automatisch in die neuen MESIQO-Speicherschlüssel übernommen
+- die Marken-Vorprüfung ist in [`TRADEMARK-CHECK.md`](TRADEMARK-CHECK.md) dokumentiert
 
 ## Aktueller Funktionsumfang
 
@@ -50,7 +57,7 @@ Die öffentliche Version läuft über HTTPS und benötigt kein Nutzerkonto.
 
 - **Keine Gewinn- oder Verkaufsgarantie.** Ergebnisse sind Rechen- und Entscheidungshilfen.
 - **Keine automatische Marktbehauptung.** Verkaufsdauer, Risiko, Preisannahmen und Vergleichswerte werden vom Nutzer eingegeben.
-- **Keine unerlaubten Scrapes.** DEALFAZ umgeht keine Logins, Paywalls, Zugangsbeschränkungen oder technischen Schutzmaßnahmen.
+- **Keine unerlaubten Scrapes.** MESIQO umgeht keine Logins, Paywalls, Zugangsbeschränkungen oder technischen Schutzmaßnahmen.
 - **Originalquellen statt kopierter Fremdangebote.** Plattform- und Markennamen werden nur beschreibend verwendet und bedeuten keine Partnerschaft oder Zertifizierung.
 - **Datensparsamkeit.** Kaufregeln, Watchlist, Erwartungen und tatsächliche Verkaufsergebnisse bleiben in der aktuellen Version lokal im Browser.
 - **Partnerlinks nur nach tatsächlicher Freigabe und transparent gekennzeichnet.**
@@ -71,4 +78,4 @@ Für neue Funktionen gelten zusätzlich die festen Release-Grenzen in [`LEGAL-GU
 9. Ergebnis teilen oder lokal in der Watchlist speichern.
 10. Watchlist und Ergebnis-Historie bei Bedarf lokal exportieren.
 
-**DEALFAZ Reselling – erst prüfen, dann entscheiden.**
+**MESIQO Reselling – erst prüfen, dann entscheiden.**

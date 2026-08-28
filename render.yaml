@@ -1,9 +1,9 @@
 services:
   - type: web
     runtime: static
-    name: dealfaz
+    name: mesiqo
     branch: main
-    buildCommand: echo "DEALFAZ static site"
+    buildCommand: echo "MESIQO static site"
     staticPublishPath: .
     headers:
       - path: /*

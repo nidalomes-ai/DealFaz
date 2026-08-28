@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
-  <title id="title">DEALFAZ – Deal einfach prüfen</title>
-  <desc id="desc">DEALFAZ Reselling-Rechner: drei Angaben, eine klare Rechnung.</desc>
+  <title id="title">MESIQO – Deal einfach prüfen</title>
+  <desc id="desc">MESIQO Reselling-Rechner: drei Angaben, eine klare Rechnung.</desc>
   <rect width="1200" height="630" rx="32" fill="#09111f"/>
   <rect x="64" y="64" width="1072" height="502" rx="28" fill="#101c2f" stroke="#263750" stroke-width="2"/>
-  <text x="108" y="188" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="68" font-weight="800" letter-spacing="2">DEAL<tspan fill="#86efac">FAZ</tspan></text>
+  <text x="108" y="188" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="68" font-weight="800" letter-spacing="2">MESI<tspan fill="#86efac">QO</tspan></text>
   <text x="108" y="296" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="58" font-weight="700">Lohnt sich der Deal?</text>
   <text x="108" y="378" fill="#cbd5e1" font-family="Arial,Helvetica,sans-serif" font-size="34">Drei Angaben. Eine klare Rechnung.</text>
   <rect x="108" y="438" width="478" height="72" rx="36" fill="#ffffff"/>

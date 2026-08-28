@@ -1,10 +1,10 @@
-# DEALFAZ – Amazon PartnerNet Aktivierungs-Gate
+# MESIQO – Amazon PartnerNet Aktivierungs-Gate
 
 Stand: 27.08.2026
 
 ## Aktueller Pre-Gewerbe-Status: 🟢 GRÜN
 
-Amazon ist für DEALFAZ **vorbereitet**, aber noch nicht monetarisiert. Solange `MONETIZATION_DISABLED` existiert, bleiben öffentliche Amazon-Links neutral und provisionsfrei.
+Amazon ist für MESIQO **vorbereitet**, aber noch nicht monetarisiert. Solange `MONETIZATION_DISABLED` existiert, bleiben öffentliche Amazon-Links neutral und provisionsfrei.
 
 ### Erledigt
 
@@ -39,7 +39,7 @@ Diese Schritte zählen nicht als aktuelle gelbe Punkte. Sie werden erst beim tat
 3. Amazon-Ziel nicht durch eigene Shortener oder verschleiernde Redirects verstecken.
 4. Werbe-/Affiliate-Charakter unmittelbar und verständlich am provisionsfähigen Inhalt kennzeichnen.
 5. Sichtbaren Amazon-Teilnahmehinweis verwenden: `Als Amazon-Partner verdiene ich an qualifizierten Verkäufen.`
-6. Keine Aussage, Amazon sponsere, zertifiziere, unterstütze oder empfehle DEALFAZ.
+6. Keine Aussage, Amazon sponsere, zertifiziere, unterstütze oder empfehle MESIQO.
 7. Partnerkennzeichnung muss exakt dem echten Linkzustand entsprechen.
 
 ## Technische Release-Reihenfolge nach Gewerbe

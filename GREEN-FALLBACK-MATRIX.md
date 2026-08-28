@@ -1,4 +1,4 @@
-# DEALFAZ – Grüne Ersatzrouten
+# MESIQO – Grüne Ersatzrouten
 
 Stand: 27.08.2026
 
@@ -54,18 +54,19 @@ Ein physischer Hardware-Smoke-Test bleibt optionale Zusatzkontrolle.
 
 Tatsächliche Suchmaschinenaufnahme wird beobachtet und nicht künstlich erzwungen.
 
-## 6. Markenname DEALFAZ
+## 6. Markenname MESIQO
 
-**Status: 🟢 GRÜN im Pre-Gewerbe-/Beta-Modus**
+**Status: 🟡 EXAKTCHECK FREI / INTERNATIONALE ÄHNLICHKEITSPRÜFUNG OFFEN**
 
 - öffentliche Vorrecherche und DPMA-Suchstrategie dokumentiert
-- kein belastbarer identischer öffentlicher Treffer für `DEALFAZ` festgestellt
-- `DEALFA`, EUTM 018240890, als konkreter Kollisions-Prüfpunkt dokumentiert
-- `DEALFAST` als weiterer Ähnlichkeits-/Branchenprüfpunkt dokumentiert
+- kein belastbarer identischer öffentlicher Treffer für `MESIQO` festgestellt
+- `MESI`, EUTM 018205693, als konkreter Kollisions-Prüfpunkt dokumentiert
+- `Me.Si.`, EUTM 012638987, als weiterer Ähnlichkeits-/Klassenprüfpunkt dokumentiert
+- `MEDIQO LINE`, EUTM 009326257, sowie aktive MEDIQO-Unternehmen in der Schweiz und Australien dokumentiert
 - keine Aussage `Marke frei` oder `rechtlich abgesichert`
 - keine irreversible Markeninvestition vor finaler Kollisionsprüfung
 
-**⏸ nach Gewerbe / vor größerer Markeninvestition:** amtliche DPMA/EUIPO/WIPO-Auswertung vervollständigen.
+**Vor Live-Umbenennung bzw. größerer Markeninvestition:** MESIQO-Risiko bewusst bestätigen oder einen kollisionsärmeren Namen auswählen; anschließend professionelle Ähnlichkeitsprüfung und Wortmarkenanmeldung vorbereiten.
 
 ## 7. Amazon PartnerNet
 

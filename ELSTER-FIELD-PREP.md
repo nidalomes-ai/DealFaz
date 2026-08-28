@@ -1,4 +1,4 @@
-# DEALFAZ – ELSTER Feldvorbereitung
+# MESIQO – ELSTER Feldvorbereitung
 
 Stand: 27.08.2026
 

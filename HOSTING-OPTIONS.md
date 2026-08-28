@@ -1,4 +1,4 @@
-# DEALFAZ – Hosting-Status und Ausweichplan
+# MESIQO – Hosting-Status und Ausweichplan
 
 Stand: 27.08.2026
 

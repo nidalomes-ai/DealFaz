@@ -1,4 +1,4 @@
-# DEALFAZ – Suchmaschinen-Indexierung
+# MESIQO – Suchmaschinen-Indexierung
 
 Stand: 27.08.2026
 
@@ -8,7 +8,7 @@ Stand: 27.08.2026
 
 > `https://dealfaz.dealfaz-social.workers.dev/`
 
-Frühere Vercel-/Supabase-Frontendpfade sind nicht mehr die öffentliche Hauptquelle. Suchmaschinen entscheiden selbst über Crawl, Indexierung und Ranking; eine verzögerte Aufnahme ist kein technischer DEALFAZ-Fehler und kein aktueller gelber Punkt.
+Frühere Vercel-/Supabase-Frontendpfade sind nicht mehr die öffentliche Hauptquelle. Suchmaschinen entscheiden selbst über Crawl, Indexierung und Ranking; eine verzögerte Aufnahme ist kein technischer MESIQO-Fehler und kein aktueller gelber Punkt.
 
 ## Technisch erledigt
 

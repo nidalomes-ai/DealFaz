@@ -1,4 +1,4 @@
-# DEALFAZ – Social-Publishing-Limit
+# MESIQO – Social-Publishing-Limit
 
 Stand: 27.08.2026
 
@@ -30,4 +30,4 @@ Stand: 27.08.2026
 - Ein einzelner Post am 27.08.2026 um 17:00 Uhr konnte wegen eines Planner-Validierungsfehlers nicht direkt geändert werden.
 - Sichere Alternative aktiv: die bestehende öffentliche Supabase-Funktion `dealfaz-launch` wurde in Version 38 als Legacy-Redirect auf `https://dealfaz.dealfaz-social.workers.dev/` umgestellt.
 - Die Funktion ist im verbundenen Supabase-Projekt als `ACTIVE` bestätigt; bestehende Unterseiten-/UTM-Weiterleitungslogik bleibt erhalten.
-- Damit führt auch der nicht direkt editierbare alte Link auf die aktuelle DEALFAZ-Produktion, ohne einen weiteren Metricool-Post anzulegen.
+- Damit führt auch der nicht direkt editierbare alte Link auf die aktuelle MESIQO-Produktion, ohne einen weiteren Metricool-Post anzulegen.

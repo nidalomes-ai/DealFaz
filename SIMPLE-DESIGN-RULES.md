@@ -1,8 +1,8 @@
-# DEALFAZ – Einfache Designregeln
+# MESIQO – Einfache Designregeln
 
 Stand: 27.08.2026
 
-Ziel: DEALFAZ soll ohne Vorkenntnisse verständlich sein – auch für sehr junge oder technisch unerfahrene Nutzer.
+Ziel: MESIQO soll ohne Vorkenntnisse verständlich sein – auch für sehr junge oder technisch unerfahrene Nutzer.
 
 ## Feste Regeln
 

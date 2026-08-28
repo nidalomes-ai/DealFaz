@@ -37,4 +37,4 @@ const risky=deal({buy:80,sell:130,cost:20,sold:5,active:20,comps:4,certainty:3,r
 assert.ok(risky.score<100);
 assert.ok(risky.maxBuy>=0);
 
-console.log('DEALFAZ DealScore regression tests passed');
+console.log('MESIQO DealScore regression tests passed');

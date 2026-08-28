@@ -1,65 +1,98 @@
-# DEALFAZ – Marken-Vorprüfung
+# MESIQO – Marken-Vorprüfung
 
-Stand: 27.08.2026
+Stand: 28.08.2026
 
-## Aktueller Pre-Gewerbe-Status: 🟢 GRÜN
+## Ergebnis: 🟡 technische Umstellung vorbereitet, internationales Marken-Go offen
 
-Für die kostenlose, nicht monetarisierte Beta ist die Marken-/Namens-Risikosteuerung abgeschlossen. Das bedeutet **nicht**, dass eine rechtliche Markenfreigabe erteilt wurde.
+Für das exakte Zeichen `MESIQO` wurde im dokumentierten amtlichen Schnellcheck kein Treffer gefunden. Die erweiterte internationale Kontrolle hat jedoch ähnlich geschriebene aktive Firmen- und Markenbezeichnungen ergeben. Deshalb wird keine uneingeschränkte internationale Markenfreigabe behauptet.
 
-Aktuelle Linie:
+Aktuelle Schutzlinie:
 
-- `DEALFAZ` wird sachlich als Projekt-/Beta-Name verwendet;
-- keine Aussage `Marke frei`, `rechtlich abgesichert` oder ähnlich;
-- keine kostenpflichtige Markenanmeldung automatisch auslösen;
-- keine größeren irreversiblen Branding-, Druck- oder Merch-Ausgaben vor finaler Kollisionsprüfung;
-- bei belastbarem Konflikttreffer Namensalternative oder fachkundige Markenprüfung nutzen.
+- nur `MESIQO`, nicht `MESIQO®`, verwenden;
+- Domains und Social-Namen möglichst früh sichern;
+- vor größerem Werbebudget, Merchandising oder internationalem Rollout eine professionelle Ähnlichkeitsrecherche durchführen;
+- die Wortmarke für die tatsächlich benötigten Waren und Dienstleistungen anmelden.
 
-Damit ist der **Pre-Gewerbe-Risikozustand grün**, ohne Schutzrechte zu erfinden.
+## Amtlicher Exaktcheck
 
-## Bisherige Recherche
+Am 28.08.2026 wurde `MESIQO` im offiziellen DPMAregister über die ausgewählten Bestände für deutsche Marken, Unionsmarken und internationale Marken mit Wirkung für Deutschland gesucht.
 
-Für das exakte Zeichen `DEALFAZ` wurde in öffentlich auffindbaren Ergebnissen bislang kein belastbarer identischer Treffer festgestellt. Geprüft bzw. dokumentiert wurden außerdem naheliegende Varianten wie `DEAL FAZ`, `DEALFAS`, `DEAL FAS`, `DEALFAST` und `DEAL FAST`.
+**Ergebnis:** Die Abfrage `marke="MESIQO"` lieferte keine Treffer.
 
-Das DPMA hat am 27.08.2026 darauf hingewiesen, dass es im Anmeldeverfahren nicht prüft, ob identische oder ähnliche ältere Marken bestehen. Deshalb bleibt eine eigene Kollisionsrecherche vor einer späteren Markenanmeldung oder größeren Markeninvestition erforderlich.
+Rechercheoberfläche: <https://register.dpma.de/DPMAregister/marke/basis>
 
-## Konkrete ähnliche Zeichen
+## Manuelle Ähnlichkeitskontrolle: `MESI*`
 
-### `DEALFA`
+Zusätzlich wurde die naheliegende Zeichenfamilie `MESI*` geprüft. Dabei wurden 30 Datensätze verschiedener Rechtsstände gefunden. Für MESIQO sind insbesondere diese aktiven Unionsmarken als Prüfdatensätze dokumentiert:
 
-- öffentlich ist eine EU-Marke `Dealfa` mit der Nummer `018240890` auffindbar;
-- öffentlich auffindbare Datensätze führen sie als registrierte EU-Marke mit Anmeldung 19.05.2020 und Registrierung 17.09.2020;
-- dieser Treffer wird als echter Kollisions-Prüfdatensatz dokumentiert und nicht ignoriert;
-- daraus folgt **nicht automatisch**, dass `DEALFAZ` unbenutzbar oder nicht anmeldbar ist.
+### `MESI` – EUTM 018205693
 
-### `DEALFAST`
+- eingetragene Wortmarke;
+- Klasse 14;
+- Warenbereich Schmuck, Edelmetalle und Edelsteine;
+- damit deutlich anderer Warenbereich als die MESIQO-Reselling-Webanwendung.
 
-- `DEALFAST` ist als ähnliches Zeichen und als geschäftlich genutzte Bezeichnung dokumentiert;
-- deshalb bleibt es für die spätere Zeichen-/Branchen-/Klassenprüfung relevant;
-- aus bloßer geschäftlicher Nutzung wird kein nicht nachgewiesenes Markenrecht behauptet.
+Datensatz: <https://register.dpma.de/DPMAregister/marke/registerHABM?AKZ=018205693>
 
-## DPMA-Suchstrategie dokumentiert
+### `Me.Si.` – EUTM 012638987
 
-- [x] exaktes Zeichen `DEALFAZ` als Primärsuche festgelegt
-- [x] Schreib-/Klangvarianten `DEAL FAZ`, `DEALFAS`, `DEAL FAS` dokumentiert
-- [x] ähnliche Zeichen `DEALFA`, `DEALFAST`, `DEAL FAST` festgehalten
-- [x] breitere `Deal?`-Suche als spätere amtliche Ergänzung vorgesehen
-- [x] relevante Leistungsbereiche dokumentiert: Websoftware/Rechentools, Reselling-/Preis-/ROI-Informationen, Online-/Affiliate-Marketing
-- [x] EUIPO/WIPO als zusätzliche amtliche Prüfebene dokumentiert
-- [x] sichere Beta-Nutzung ohne Markenfreigabe-Behauptung festgelegt
+- eingetragene Wortmarke;
+- Klassen 9 und 11;
+- elektrische Überwachungseinrichtungen für thermische Anlagen, zugehörige Software und Heizgeräte;
+- Klasse 9 überschneidet sich formal mit Software, die konkrete Warenbeschreibung liegt jedoch in einem anderen technischen Einsatzgebiet.
 
-## ⏸ Finale Markenfreigabe nach Gewerbe bzw. vor irreversibler Markeninvestition
+Datensatz: <https://register.dpma.de/DPMAregister/marke/registerHABM?AKZ=012638987>
 
-Die folgenden Schritte sind keine aktuellen gelben Punkte der kostenlosen Beta. Sie werden vor einer Markenanmeldung, größeren Branding-Ausgabe oder einem endgültigen kommerziellen Marken-Rollout abgeschlossen:
+Diese Treffer führen beim aktuellen Produktzuschnitt nicht zu einem festgestellten identischen Konflikt. Wegen des gemeinsamen Anfangs `MESI` bleibt ein normales Ähnlichkeits-Rest­risiko bestehen.
 
-- `DEALFAZ` und Varianten direkt in DPMAregister vollständig auswerten
-- `DEALFA`, `DEALFAST`, `DEAL FAST` direkt in relevanten amtlichen Registern auswerten
-- breitere `Deal?`-Suche mit passenden Wortmarken-/Klassenfiltern durchführen
-- EUTM 018240890 direkt bei EUIPO/TMview auf aktuellen Rechtsstand, Inhaber und Klassen verifizieren
-- WIPO-Treffer mit Deutschland-/EU-Wirkung prüfen
-- bei ernsthaftem Konflikt Namensalternative oder fachkundige Kollisionsprüfung nutzen
+## Wichtige ähnliche Bezeichnung: `MEDIQO`
 
-## Ergebnis
+Die erweiterte Kontrolle am 28.08.2026 ergab drei amtliche Treffer für `MEDIQO`. Davon ist insbesondere relevant:
 
-**Pre-Gewerbe/Beta-Nutzung des Namens mit konservativen Schutzregeln: 🟢 100 % grün.**
+### `MEDIQO LINE` – EUTM 009326257
 
-**Rechtliche Markenanmeldung/Kollisionsfreigabe: ⏸ späterer kommerzieller Schritt, nicht als bereits erteilt dargestellt.**
+- aktive eingetragene Unionswortmarke bis 20.08.2030;
+- Klassen 6, 11 und 21;
+- Sanitär-, Hygiene-, Spender- und verwandte Waren;
+- anderer Warenbereich als die MESIQO-Webanwendung, aber nur ein Buchstabe Abstand zwischen `MESIQO` und `MEDIQO`.
+
+Datensatz: <https://register.dpma.de/DPMAregister/marke/registerHABM?AKZ=009326257>
+
+Zusätzlich bestehen aktive geschäftliche Nutzungen:
+
+- `MEDIQO et MediPed SA`, aktive Schweizer Gesellschaft und Betreiberin medizinischer Praxen ([Zefix](https://www.zefix.ch/fr/search/entity/list/firm/115572));
+- `MEDIQO HEALTH PTY LTD`, aktive australische Gesellschaft und Anbieterin von Gesundheitssoftware ([Australian Business Register](https://abr.business.gov.au/ABN/View?abn=12678382100), [Unternehmensseite](https://www.mediqo.health/));
+- öffentlich auffindbare Hinweise auf die Bezeichnung `Mesiqo Control LLC` in den USA; der genaue Register- und Schutzrechtsstand wurde dabei nicht abschließend verifiziert.
+
+Gerade wegen der MEDIQO-Gesundheitssoftware und der aktiven Schweizer Gesellschaft ist `MESIQO` für einen weltweiten Rollout nicht so kollisionsarm, wie es der reine Exaktcheck vermuten lässt.
+
+## Weitere Schnellchecks
+
+- kein amtlicher identischer Markenregistertreffer für `MESIQO` im beschriebenen DE/EU/IR-Exaktcheck;
+- ähnliche aktive Firmen- und Produktbezeichnungen `MEDIQO` in der Schweiz und Australien sowie ein nicht abschließend verifizierter US-Geschäftshinweis `Mesiqo Control LLC`;
+- für `mesiqo.com` und `mesiqo.de` lag beim RDAP-Check kein Registrierungsdatensatz vor;
+- Domainverfügbarkeit kann sich jederzeit ändern und ist erst nach erfolgreicher Registrierung gesichert.
+
+## Relevante Markenklassen
+
+Für den aktuellen MESIQO-Produktumfang sind voraussichtlich besonders relevant:
+
+- **Klasse 9:** herunterladbare Software oder App;
+- **Klasse 35:** Werbung, Affiliate-Marketing, Preisvergleich und Online-Marktplatzdienste;
+- **Klasse 42:** SaaS und Softwarebereitstellung.
+
+Die endgültige Waren-/Dienstleistungsliste muss am realen Geschäftsmodell ausgerichtet werden. Klassen allein entscheiden einen Konflikt nicht.
+
+## Grenzen der Prüfung
+
+Das DPMA weist darauf hin, dass es im Anmeldeverfahren nicht von Amts wegen prüft, ob ältere identische oder ähnliche Marken bestehen. Die kostenlose Register- und Webrecherche ersetzt deshalb keine professionelle Kollisionsrecherche. Für einen weltweiten Rollout sind zusätzlich die jeweiligen Zielstaaten zu prüfen.
+
+Hinweis des DPMA: <https://www.dpma.de/marken/markenrecherche/index.html>
+
+## Freigabestatus
+
+**Technische Umstellung und interner Prüfzweig: 🟢 abgeschlossen.**
+
+**Öffentliche Umbenennung und Deutschland/EU-Nutzung: 🟡 nur mit bewusst akzeptiertem Restrisiko; fachkundige Ähnlichkeitsprüfung empfohlen.**
+
+**Internationales Marken-Go und weltweite Exklusivität: 🔴 nicht erteilt.**

@@ -105,9 +105,11 @@ Keine EPN-Partnerlinks vor tatsächlicher Freigabe.
 - [x] Suchstrategie/Varianten dokumentiert
 - [x] exakter amtlicher Registercheck für `MESIQO` ohne Treffer dokumentiert
 - [x] `MESI` / EUTM 018205693 und `Me.Si.` / EUTM 012638987 als Ähnlichkeits-Prüfdatensätze dokumentiert
+- [x] `MEDIQO LINE` / EUTM 009326257 sowie aktive MEDIQO-Firmennutzungen dokumentiert
 - [x] keine Behauptung `Marke frei` oder `rechtlich abgesichert`
 - [x] keine große irreversible Markeninvestition vor finaler Prüfung
 - [ ] professionelle Ähnlichkeitsprüfung vor größerem Branding-/Monetarisierungsaufwand finalisieren
+- [ ] vor öffentlicher Umbenennung MESIQO-Risiko bewusst bestätigen oder kollisionsärmeren Namen auswählen
 
 Für einen technischen Beta-Test ist die vorsichtige Nutzung dokumentiert; eine absolute Markenfreigabe wird nicht behauptet.
 

@@ -104,6 +104,7 @@ Die aktuelle kostenlose Rechenhilfe schließt selbst keinen Verbrauchervertrag. 
 ## 9. Marke MESIQO – 🟢 RISIKOSTEUERUNG / 🟡 KEINE ABSOLUTE MARKENFREIGABE
 
 - amtlicher Exaktcheck und ähnliche Zeichen dokumentiert
+- internationale Ähnlichkeit zu `MEDIQO` als offenes Namens-Gate dokumentiert
 - keine Behauptung „Marke frei“ oder „rechtlich abgesichert“
 - vor größeren Branding-Ausgaben oder Markenanmeldung direkte DPMA/EUIPO/WIPO-Kollisionsprüfung vervollständigen
 

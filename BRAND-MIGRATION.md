@@ -31,6 +31,12 @@ Diese Schritte benötigen jeweils den betreffenden Anbieter-Account oder eine ko
 4. Partnerprogramme über die Namensänderung informieren und Website-Zuordnungen erst nach dem Domain-Cutover ändern.
 5. Wortmarkenanmeldung für die tatsächlich benötigten Waren und Dienstleistungen vorbereiten; voraussichtlich Klassen 9, 35 und 42 prüfen.
 
+## Offenes Namens-Gate
+
+Die technische Umstellung ist vollständig vorbereitet, aber noch nicht live. Vor der Veröffentlichung muss bewusst entschieden werden, ob das Ähnlichkeitsrisiko zu `MEDIQO` akzeptiert wird. Dokumentiert sind eine aktive Unionsmarke `MEDIQO LINE`, eine aktive Schweizer MEDIQO-Gesellschaft, ein australischer Gesundheitssoftware-Anbieter und ein noch nicht abschließend verifizierter US-Geschäftshinweis `Mesiqo Control LLC`.
+
+Ohne diese Entscheidung wird der Prüfzweig nicht in den öffentlichen Hauptzweig übernommen.
+
 ## Geplanter Domain-Cutover
 
 Nach erfolgreicher Domainregistrierung werden in einem gemeinsamen Schritt aktualisiert:

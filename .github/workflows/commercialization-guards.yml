@@ -54,6 +54,7 @@ jobs:
           grep -Fq 'keine fiktiven Umsätze oder Gewinne' ELSTER-FIELD-PREP.md
           grep -Fq 'MESI' TRADEMARK-CHECK.md
           grep -Fq 'Me.Si.' TRADEMARK-CHECK.md
+          grep -Fq 'MEDIQO LINE' TRADEMARK-CHECK.md
           grep -Fq 'Klasse 35' TRADEMARK-CHECK.md
           grep -Fq 'kommerzielle Affiliate-Freigabe erfolgt zuerst für Deutschland' DACH-COMMERCIAL-ROLLOUT.md
           grep -Fq 'keine Österreich-spezifische bezahlte Kampagne' DACH-COMMERCIAL-ROLLOUT.md

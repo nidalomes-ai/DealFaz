@@ -2,9 +2,9 @@
 
 Stand: 28.08.2026
 
-## Ergebnis: 🟢 vorläufiges Go für Beta und Seitenname
+## Ergebnis: 🟡 technische Umstellung vorbereitet, internationales Marken-Go offen
 
-`MESIQO` kann nach dem dokumentierten Schnellcheck als neuer Projekt- und Seitenname verwendet werden. Diese Vorprüfung ist keine anwaltliche Garantie und keine bereits erteilte Eintragung.
+Für das exakte Zeichen `MESIQO` wurde im dokumentierten amtlichen Schnellcheck kein Treffer gefunden. Die erweiterte internationale Kontrolle hat jedoch ähnlich geschriebene aktive Firmen- und Markenbezeichnungen ergeben. Deshalb wird keine uneingeschränkte internationale Markenfreigabe behauptet.
 
 Aktuelle Schutzlinie:
 
@@ -21,7 +21,7 @@ Am 28.08.2026 wurde `MESIQO` im offiziellen DPMAregister über die ausgewählten
 
 Rechercheoberfläche: <https://register.dpma.de/DPMAregister/marke/basis>
 
-## Manuelle Ähnlichkeitskontrolle
+## Manuelle Ähnlichkeitskontrolle: `MESI*`
 
 Zusätzlich wurde die naheliegende Zeichenfamilie `MESI*` geprüft. Dabei wurden 30 Datensätze verschiedener Rechtsstände gefunden. Für MESIQO sind insbesondere diese aktiven Unionsmarken als Prüfdatensätze dokumentiert:
 
@@ -45,9 +45,31 @@ Datensatz: <https://register.dpma.de/DPMAregister/marke/registerHABM?AKZ=0126389
 
 Diese Treffer führen beim aktuellen Produktzuschnitt nicht zu einem festgestellten identischen Konflikt. Wegen des gemeinsamen Anfangs `MESI` bleibt ein normales Ähnlichkeits-Rest­risiko bestehen.
 
+## Wichtige ähnliche Bezeichnung: `MEDIQO`
+
+Die erweiterte Kontrolle am 28.08.2026 ergab drei amtliche Treffer für `MEDIQO`. Davon ist insbesondere relevant:
+
+### `MEDIQO LINE` – EUTM 009326257
+
+- aktive eingetragene Unionswortmarke bis 20.08.2030;
+- Klassen 6, 11 und 21;
+- Sanitär-, Hygiene-, Spender- und verwandte Waren;
+- anderer Warenbereich als die MESIQO-Webanwendung, aber nur ein Buchstabe Abstand zwischen `MESIQO` und `MEDIQO`.
+
+Datensatz: <https://register.dpma.de/DPMAregister/marke/registerHABM?AKZ=009326257>
+
+Zusätzlich bestehen aktive geschäftliche Nutzungen:
+
+- `MEDIQO et MediPed SA`, aktive Schweizer Gesellschaft und Betreiberin medizinischer Praxen ([Zefix](https://www.zefix.ch/fr/search/entity/list/firm/115572));
+- `MEDIQO HEALTH PTY LTD`, aktive australische Gesellschaft und Anbieterin von Gesundheitssoftware ([Australian Business Register](https://abr.business.gov.au/ABN/View?abn=12678382100), [Unternehmensseite](https://www.mediqo.health/));
+- öffentlich auffindbare Hinweise auf die Bezeichnung `Mesiqo Control LLC` in den USA; der genaue Register- und Schutzrechtsstand wurde dabei nicht abschließend verifiziert.
+
+Gerade wegen der MEDIQO-Gesundheitssoftware und der aktiven Schweizer Gesellschaft ist `MESIQO` für einen weltweiten Rollout nicht so kollisionsarm, wie es der reine Exaktcheck vermuten lässt.
+
 ## Weitere Schnellchecks
 
-- kein belastbarer identischer Firmen-, App- oder Shop-Treffer für `MESIQO` in den durchgeführten Websuchen;
+- kein amtlicher identischer Markenregistertreffer für `MESIQO` im beschriebenen DE/EU/IR-Exaktcheck;
+- ähnliche aktive Firmen- und Produktbezeichnungen `MEDIQO` in der Schweiz und Australien sowie ein nicht abschließend verifizierter US-Geschäftshinweis `Mesiqo Control LLC`;
 - für `mesiqo.com` und `mesiqo.de` lag beim RDAP-Check kein Registrierungsdatensatz vor;
 - Domainverfügbarkeit kann sich jederzeit ändern und ist erst nach erfolgreicher Registrierung gesichert.
 
@@ -69,8 +91,8 @@ Hinweis des DPMA: <https://www.dpma.de/marken/markenrecherche/index.html>
 
 ## Freigabestatus
 
-**Seitenname und kostenlose Beta in Deutschland/EU: 🟢 vorläufig freigegeben.**
+**Technische Umstellung und interner Prüfzweig: 🟢 abgeschlossen.**
 
-**Wortmarkenanmeldung und größere irreversible Markeninvestition: 🟡 professionelle Ähnlichkeitsprüfung und Anmeldung empfohlen.**
+**Öffentliche Umbenennung und Deutschland/EU-Nutzung: 🟡 nur mit bewusst akzeptiertem Restrisiko; fachkundige Ähnlichkeitsprüfung empfohlen.**
 
-**Weltweite Exklusivität: nicht behauptet.**
+**Internationales Marken-Go und weltweite Exklusivität: 🔴 nicht erteilt.**

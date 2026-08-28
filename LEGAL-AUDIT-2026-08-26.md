@@ -132,6 +132,7 @@ Dokumentiert sind:
 - Suchvarianten für MESIQO
 - ähnliches Zeichen `MESI` / EUTM 018205693 als Prüfpunkt
 - `Me.Si.` / EUTM 012638987 als weiterer Ähnlichkeits-/Klassenprüfpunkt
+- `MEDIQO LINE` / EUTM 009326257 und aktive MEDIQO-Unternehmen als internationale Ähnlichkeits-Prüfpunkte
 - keine Behauptung „Marke frei“ oder „rechtlich abgesichert“
 
 Eine Web-/Vorabrecherche ersetzt keine vollständige amtliche Ähnlichkeits- und Klassenprüfung. Vor Markenanmeldung, größerem Werbebudget, Merchandising oder schwer umkehrbaren Branding-Ausgaben direkte DPMA/EUIPO/WIPO-Recherche vervollständigen und bei Zweifel fachkundig prüfen lassen.

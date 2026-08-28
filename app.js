@@ -1,6 +1,20 @@
 'use strict';
 const $=id=>document.getElementById(id),cl=(n,a,b)=>Math.max(a,Math.min(b,n)),eur=n=>Number(n||0).toLocaleString('de-DE',{style:'currency',currency:'EUR'}),num=id=>Math.max(0,Number($(id)?.value)||0);
-const WATCH='dealfaz_watch_v2',RULES='dealfaz_rules_v2',FORECASTS='dealfaz_forecasts_v1',OUTCOMES='dealfaz_outcomes_v1';let c={};
+const WATCH='mesiqo_watch_v2',RULES='mesiqo_rules_v2',FORECASTS='mesiqo_forecasts_v1',OUTCOMES='mesiqo_outcomes_v1';
+const LEGACY_KEYS={
+  [WATCH]:'dealfaz_watch_v2',
+  [RULES]:'dealfaz_rules_v2',
+  [FORECASTS]:'dealfaz_forecasts_v1',
+  [OUTCOMES]:'dealfaz_outcomes_v1'
+};
+try{
+  for(const [current,legacy] of Object.entries(LEGACY_KEYS)){
+    if(localStorage.getItem(current)===null&&localStorage.getItem(legacy)!==null){
+      localStorage.setItem(current,localStorage.getItem(legacy));
+    }
+  }
+}catch{}
+let c={};
 function parseLocal(key,fallback){try{const x=JSON.parse(localStorage.getItem(key)||'null');return x??fallback}catch{return fallback}}
 function getRules(){return{minProfit:20,minRoi:25,maxRisk:3,minQuality:50,...parseLocal(RULES,{})}}
 function getWatch(){const x=parseLocal(WATCH,[]);return Array.isArray(x)?x:[]}
@@ -25,14 +39,14 @@ const csv=v=>'"'+safeText(v).replaceAll('"','""')+'"';
 document.querySelectorAll('input').forEach(x=>x.addEventListener('input',()=>{if(!['actualSell','actualCost','actualDays'].includes(x.id))calc()}));
 $('saveRules').onclick=()=>{localStorage.setItem(RULES,JSON.stringify({minProfit:num('ruleProfit'),minRoi:num('ruleRoi'),maxRisk:cl(num('ruleRisk'),1,5),minQuality:cl(num('ruleQuality'),0,100)}));calc()};
 $('save').onclick=()=>{let w=getWatch();w.unshift({...c});setWatch(w)};
-$('copy').onclick=async()=>{let t='DEALFAZ '+(c.product||'Deal')+': '+c.score+'/100 · '+c.verdict+' · Gewinn '+eur(c.profit)+' · ROI '+c.roi.toFixed(1)+'%';try{await navigator.clipboard.writeText(t)}catch{}};
-$('share').onclick=async()=>{let p=new URLSearchParams({product:c.product,buy:c.buy,sell:c.sell,cost:c.cost,sold:c.sold,active:c.active,comps:c.comps,certainty:c.certainty,risk:c.risk,target:c.target,days:c.days}),url=location.origin+location.pathname+'#deal='+encodeURIComponent(p.toString()),text='DEALFAZ '+(c.product||'Deal')+': '+c.score+'/100 · '+c.verdict;if(navigator.share)try{await navigator.share({title:'DEALFAZ DealCheck',text,url})}catch{}else try{await navigator.clipboard.writeText(url)}catch{}};
-$('exportJson').onclick=()=>dl('dealfaz-watchlist.json',JSON.stringify(getWatch(),null,2),'application/json');
-$('exportCsv').onclick=()=>{let w=getWatch(),rows=[['Produkt','Einkauf','Verkauf','Kosten','Score','Signal','ROI','Datenqualität'],...w.map(d=>[d.product,d.buy,d.sell,d.cost,d.score,d.verdict,Number(d.roi||0).toFixed(1),d.quality])];dl('dealfaz-watchlist.csv','\ufeff'+rows.map(r=>r.map(csv).join(';')).join('\n'),'text/csv;charset=utf-8')};
+$('copy').onclick=async()=>{let t='MESIQO '+(c.product||'Deal')+': '+c.score+'/100 · '+c.verdict+' · Gewinn '+eur(c.profit)+' · ROI '+c.roi.toFixed(1)+'%';try{await navigator.clipboard.writeText(t)}catch{}};
+$('share').onclick=async()=>{let p=new URLSearchParams({product:c.product,buy:c.buy,sell:c.sell,cost:c.cost,sold:c.sold,active:c.active,comps:c.comps,certainty:c.certainty,risk:c.risk,target:c.target,days:c.days}),url=location.origin+location.pathname+'#deal='+encodeURIComponent(p.toString()),text='MESIQO '+(c.product||'Deal')+': '+c.score+'/100 · '+c.verdict;if(navigator.share)try{await navigator.share({title:'MESIQO DealCheck',text,url})}catch{}else try{await navigator.clipboard.writeText(url)}catch{}};
+$('exportJson').onclick=()=>dl('mesiqo-watchlist.json',JSON.stringify(getWatch(),null,2),'application/json');
+$('exportCsv').onclick=()=>{let w=getWatch(),rows=[['Produkt','Einkauf','Verkauf','Kosten','Score','Signal','ROI','Datenqualität'],...w.map(d=>[d.product,d.buy,d.sell,d.cost,d.score,d.verdict,Number(d.roi||0).toFixed(1),d.quality])];dl('mesiqo-watchlist.csv','\ufeff'+rows.map(r=>r.map(csv).join(';')).join('\n'),'text/csv;charset=utf-8')};
 $('importJson').onclick=()=>$('importFile').click();$('importFile').onchange=async e=>{try{let x=JSON.parse(await e.target.files[0].text());if(Array.isArray(x))setWatch(x)}catch{alert('Backup konnte nicht gelesen werden.')}};$('clearWatch').onclick=()=>{if(confirm('Lokale Watchlist wirklich leeren?'))setWatch([])};
 $('saveForecast').onclick=()=>{const fs=getForecasts(),f={...c,id:'f_'+Date.now(),savedAt:Date.now()};fs.unshift(f);setForecasts(fs);$('outcomeHint').textContent='Erwartung lokal vorgemerkt: '+(f.product||'Deal')};
 $('saveOutcome').onclick=()=>{const id=$('selectedForecast').value,fs=getForecasts(),f=fs.find(x=>x.id===id);if(!f){$('outcomeHint').textContent='Bitte zuerst eine vorgemerkte Erwartung auswählen.';return}const actualSell=num('actualSell'),actualCost=num('actualCost'),actualDays=num('actualDays');if(actualDays<1){$('outcomeHint').textContent='Bitte tatsächliche Verkaufstage eintragen.';return}const actualProfit=actualSell-f.buy-actualCost,actualRoi=f.buy?actualProfit/f.buy*100:0,o={id:'o_'+Date.now(),forecastId:f.id,product:f.product,buy:f.buy,expectedSell:f.sell,expectedCost:f.cost,expectedProfit:f.profit,expectedRoi:f.roi,expectedDays:f.days,actualSell,actualCost,actualProfit,actualRoi,actualDays,savedAt:Date.now()};const os=getOutcomes();os.unshift(o);setOutcomes(os);$('outcomeHint').textContent='Tatsächliches Ergebnis wurde nur lokal gespeichert.'};
-$('exportOutcomes').onclick=()=>{const os=getOutcomes(),rows=[['Produkt','Erwarteter Verkauf','Tatsächlicher Verkauf','Erwarteter Gewinn','Tatsächlicher Gewinn','Erwartete Tage','Tatsächliche Tage'],...os.map(o=>[o.product,o.expectedSell,o.actualSell,o.expectedProfit,o.actualProfit,o.expectedDays,o.actualDays])];dl('dealfaz-ergebnisse.csv','\ufeff'+rows.map(r=>r.map(csv).join(';')).join('\n'),'text/csv;charset=utf-8')};
+$('exportOutcomes').onclick=()=>{const os=getOutcomes(),rows=[['Produkt','Erwarteter Verkauf','Tatsächlicher Verkauf','Erwarteter Gewinn','Tatsächlicher Gewinn','Erwartete Tage','Tatsächliche Tage'],...os.map(o=>[o.product,o.expectedSell,o.actualSell,o.expectedProfit,o.actualProfit,o.expectedDays,o.actualDays])];dl('mesiqo-ergebnisse.csv','\ufeff'+rows.map(r=>r.map(csv).join(';')).join('\n'),'text/csv;charset=utf-8')};
 document.querySelectorAll('[data-legal]').forEach(b=>b.onclick=()=>document.querySelectorAll('.legalPage').forEach(x=>x.classList.toggle('open',x.id===b.dataset.legal)));
 const qs=new URLSearchParams(location.search);let shared=new URLSearchParams();if(location.hash.startsWith('#deal=')){try{shared=new URLSearchParams(decodeURIComponent(location.hash.slice(6)))}catch{}}const incoming=shared.size?shared:qs;['product','buy','sell','cost','sold','active','comps','certainty','risk','target','days'].forEach(k=>{if(incoming.has(k)&&$(k))$(k).value=incoming.get(k)});const r=getRules();$('ruleProfit').value=r.minProfit;$('ruleRoi').value=r.minRoi;$('ruleRisk').value=r.maxRisk;$('ruleQuality').value=r.minQuality;renderWatch();renderForecasts();renderOutcomes();calc();
 (()=>{const s=document.createElement('script');s.src='/analytics.js';s.defer=true;document.head.appendChild(s)})();

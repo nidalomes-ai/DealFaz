@@ -1,12 +1,12 @@
-# DEALFAZ Launch Candidate – 01.09.2026
+# MESIQO Launch Candidate – 01.09.2026
 
 Stand: 27.08.2026
 
-DEALFAZ ist eine kostenlose browserbasierte Reselling-Rechen- und Entscheidungshilfe für Deutschland, Österreich und die Schweiz.
+MESIQO ist eine kostenlose browserbasierte Reselling-Rechen- und Entscheidungshilfe für Deutschland, Österreich und die Schweiz.
 
 ## Haupt-Einstieg
 
-**DEALFAZ Hauptseite / Schnellcheck:**
+**MESIQO Hauptseite / Schnellcheck:**
 
 `https://dealfaz.dealfaz-social.workers.dev/`
 
@@ -47,9 +47,9 @@ Alte Supabase-/Vercel-Frontendlinks sind keine Launch-Einstiege mehr. Bestehende
 ## Technischer Status – 🟢
 
 - Cloudflare-Produktion erreichbar
-- `DEALFAZ Quality`: grün
-- `DEALFAZ Live Health`: grün
-- `DEALFAZ Commercialization Guards`: grün
+- `MESIQO Quality`: grün
+- `MESIQO Live Health`: grün
+- `MESIQO Commercialization Guards`: grün
 - PostHog Error Tracking zuletzt ohne aktive Fehler im geprüften 7-Tage-Fenster
 - öffentliche HTML-Seiten ohne alte Supabase-Funktionslinks
 - Canonical, Sitemap, robots.txt und Launch-Kit auf Cloudflare
@@ -93,6 +93,6 @@ Steuerliche Übermittlung mit echten Betriebsdaten, Amazon-Partnerlinks, eBay nu
 
 ## Ergebnis
 
-**Kostenlose DEALFAZ-Beta: 🟢 100 % grün.**
+**Kostenlose MESIQO-Beta: 🟢 100 % grün.**
 
 **Einziger aktueller gelber Punkt: 🟡 Gewerbe.**

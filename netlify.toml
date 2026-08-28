@@ -1,6 +1,6 @@
 [build]
   publish = "."
-  command = "echo DEALFAZ static site"
+  command = "echo MESIQO static site"
 
 [[headers]]
   for = "/*"

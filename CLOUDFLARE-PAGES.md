@@ -1,4 +1,4 @@
-# DEALFAZ – Cloudflare Hosting
+# MESIQO – Cloudflare Hosting
 
 Stand: 27.08.2026
 
@@ -9,6 +9,7 @@ Der Dateiname bleibt aus Kompatibilitätsgründen bestehen. Die frühere Cloudfl
 - Repository: `nidalomes-ai/DealFaz`
 - Produktionsbranch: `main`
 - öffentliche kostenlose Beta: `https://dealfaz.dealfaz-social.workers.dev/`
+- sichtbare Marke seit 28.08.2026: `MESIQO`; Repository- und Hostnamen bleiben bis zum koordinierten technischen Cutover als Legacy-Bezeichnungen bestehen
 - statisches Frontend ohne erforderlichen Build-Schritt
 - keine geheimen Frontend-Umgebungsvariablen für den Kernbetrieb nötig
 - `MONETIZATION_DISABLED` bleibt aktiv

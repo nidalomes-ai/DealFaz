@@ -1,4 +1,4 @@
-# DEALFAZ – Mobile QA
+# MESIQO – Mobile QA
 
 Stand: 27.08.2026
 

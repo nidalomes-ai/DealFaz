@@ -1,6 +1,6 @@
-# DEALFAZ DealScore – Methodik
+# MESIQO DealScore – Methodik
 
-Diese Seite dokumentiert die aktuelle Rechenlogik des DEALFAZ DealScore transparent. Der DealScore ist eine **Rechen- und Entscheidungshilfe** und keine Gewinn-, Preis- oder Verkaufsgarantie.
+Diese Seite dokumentiert die aktuelle Rechenlogik des MESIQO DealScore transparent. Der DealScore ist eine **Rechen- und Entscheidungshilfe** und keine Gewinn-, Preis- oder Verkaufsgarantie.
 
 ## Eingaben
 
@@ -17,7 +17,7 @@ Der aktuelle Check verwendet ausschließlich Werte, die der Nutzer selbst eingib
 - Ziel-ROI
 - eigene geschätzte Verkaufsdauer
 
-DEALFAZ kopiert keine fremden Angebotsdaten und umgeht keine Logins, Paywalls oder technischen Schutzmaßnahmen.
+MESIQO kopiert keine fremden Angebotsdaten und umgeht keine Logins, Paywalls oder technischen Schutzmaßnahmen.
 
 ## Grundkennzahlen
 
@@ -67,7 +67,7 @@ Diese Begriffe sind keine persönliche Kaufberatung und keine Prognose. Sie fass
 
 ## Szenarien
 
-DEALFAZ zeigt zusätzlich drei Rechenszenarien:
+MESIQO zeigt zusätzlich drei Rechenszenarien:
 
 - Worst Case
 - Realistisch
@@ -77,7 +77,7 @@ Die Szenarien verändern die vom Nutzer eingegebenen Verkaufspreise und Kosten n
 
 ## Warum NICHT kaufen?
 
-DEALFAZ zeigt bewusst Gegenargumente aus den eigenen Eingaben, zum Beispiel:
+MESIQO zeigt bewusst Gegenargumente aus den eigenen Eingaben, zum Beispiel:
 
 - zu schwache Datenbasis
 - negativer Worst Case
@@ -100,8 +100,8 @@ Der Vergleich verwendet keine automatisch erfundenen Marktdaten.
 
 ## Erwartung gegen tatsächliches Ergebnis
 
-Nutzer können eine eigene Erwartung lokal vormerken und später tatsächlichen Verkaufspreis, tatsächliche weitere Kosten und tatsächliche Verkaufstage eintragen. Die Daten werden in der aktuellen Version lokal im Browser gespeichert und nicht zu einer zentralen DEALFAZ-Nutzerdatenbank hochgeladen.
+Nutzer können eine eigene Erwartung lokal vormerken und später tatsächlichen Verkaufspreis, tatsächliche weitere Kosten und tatsächliche Verkaufstage eintragen. Die Daten werden in der aktuellen Version lokal im Browser gespeichert und nicht zu einer zentralen MESIQO-Nutzerdatenbank hochgeladen.
 
 ## Grenzen
 
-DEALFAZ ersetzt keine individuelle Kauf-, Rechts-, Steuer-, Finanz- oder Unternehmensberatung. Tatsächliche Ergebnisse können erheblich von den eingegebenen Annahmen abweichen.
+MESIQO ersetzt keine individuelle Kauf-, Rechts-, Steuer-, Finanz- oder Unternehmensberatung. Tatsächliche Ergebnisse können erheblich von den eingegebenen Annahmen abweichen.

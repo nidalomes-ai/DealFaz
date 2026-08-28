@@ -1,10 +1,10 @@
-# DEALFAZ – Analytics-Messlogik
+# MESIQO – Analytics-Messlogik
 
 Stand: 27.08.2026
 
 ## Zweck
 
-DEALFAZ misst nur aggregierte Requests/Ereignisse zur technischen und inhaltlichen Auswertung. Diese Zahlen sind **keine eindeutigen Besucher**, keine verifizierten Menschen und keine Reichweitengarantie.
+MESIQO misst nur aggregierte Requests/Ereignisse zur technischen und inhaltlichen Auswertung. Diese Zahlen sind **keine eindeutigen Besucher**, keine verifizierten Menschen und keine Reichweitengarantie.
 
 ## Traffic-Klassen
 

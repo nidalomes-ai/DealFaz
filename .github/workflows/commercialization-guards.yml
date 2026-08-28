@@ -1,4 +1,4 @@
-name: DEALFAZ Commercialization Guards
+name: MESIQO Commercialization Guards
 
 on:
   push:
@@ -52,8 +52,9 @@ jobs:
           grep -Fq 'keine EPN-Partnerlinks aktivieren' EBAY-ACTIVATION.md
           grep -Fq 'MONETIZATION_DISABLED' EBAY-ACTIVATION.md
           grep -Fq 'keine fiktiven Umsätze oder Gewinne' ELSTER-FIELD-PREP.md
-          grep -Fq 'DEALFA' TRADEMARK-CHECK.md
-          grep -Fq 'DEALFAST' TRADEMARK-CHECK.md
+          grep -Fq 'MESI' TRADEMARK-CHECK.md
+          grep -Fq 'Me.Si.' TRADEMARK-CHECK.md
+          grep -Fq 'Klasse 35' TRADEMARK-CHECK.md
           grep -Fq 'kommerzielle Affiliate-Freigabe erfolgt zuerst für Deutschland' DACH-COMMERCIAL-ROLLOUT.md
           grep -Fq 'keine Österreich-spezifische bezahlte Kampagne' DACH-COMMERCIAL-ROLLOUT.md
           grep -Fq 'keine Schweiz-spezifische bezahlte Kampagne' DACH-COMMERCIAL-ROLLOUT.md

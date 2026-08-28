@@ -1,4 +1,4 @@
-# DEALFAZ – Gewerbe- und Steuer-Startfreigabe
+# MESIQO – Gewerbe- und Steuer-Startfreigabe
 
 Stand: 27.08.2026
 
@@ -8,7 +8,7 @@ Diese Checkliste trennt technische Bereitschaft von der rechtlichen Aufnahme ein
 
 § 14 Abs. 1 GewO knüpft die Gewerbeanzeige an den **Beginn des selbständigen Betriebs**, nicht an den ersten Zahlungseingang. Für die Einordnung eines Gewerbes sind insbesondere Selbständigkeit, Dauerhaftigkeit und Gewinnerzielungsabsicht maßgeblich; die Absicht kann genügen, auch wenn tatsächlich noch kein Gewinn erzielt wurde.
 
-DEALFAZ ist auf einen dauerhaften öffentlichen Betrieb und spätere Affiliate-Einnahmen ausgerichtet. Deshalb darf der Projektstatus nicht mehr pauschal so verstanden werden, dass ein öffentlicher Geschäftslaunch ohne Gewerbeanmeldung allein deshalb unproblematisch wäre, weil Affiliate-Links noch deaktiviert sind.
+MESIQO ist auf einen dauerhaften öffentlichen Betrieb und spätere Affiliate-Einnahmen ausgerichtet. Deshalb darf der Projektstatus nicht mehr pauschal so verstanden werden, dass ein öffentlicher Geschäftslaunch ohne Gewerbeanmeldung allein deshalb unproblematisch wäre, weil Affiliate-Links noch deaktiviert sind.
 
 **Konservative Freigaberegel:** Vor einem als geschäftlich/kommerziell betriebenen öffentlichen Launch muss der tatsächliche Betriebsbeginn mit der zuständigen Gewerbebehörde geklärt und eine erforderliche Gewerbeanmeldung spätestens zum Beginn vorgenommen werden. Bis dahin bleibt `MONETIZATION_DISABLED` bestehen.
 
@@ -76,7 +76,7 @@ Nach Festlegung des echten Betriebsbeginns werden die tatsächlichen Angaben üb
 
 - aktuelle öffentliche Hauptseite lädt nur `app.js`, kein eigenes Analytics-Skript
 - Watchlist, Regeln, Erwartungen und Ergebnisse werden lokal im Browser gespeichert
-- keine DEALFAZ-Werbe-/Marketing-Cookies auf der aktuellen Hauptseite
+- keine MESIQO-Werbe-/Marketing-Cookies auf der aktuellen Hauptseite
 - Cloudflare-Hosting und Supabase-Legacy-Weiterleitungen sind im Datenschutztext beschrieben
 - Art. 6 Abs. 1 lit. f DSGVO, Betroffenenrechte, Empfänger, Speicherkriterien und Beschwerderecht sind beschrieben
 - lokale ausdrücklich gewünschte Funktionen sind als § 25 Abs. 2 TDDDG-Prüfpunkt dokumentiert
@@ -95,15 +95,15 @@ Das Impressum enthält Name, ladungsfähige Anschrift und E-Mail. Register- oder
 - Verbraucherstreitbeilegung-/Verbraucherschlichtung-Hinweis vorhanden
 - keine veraltete EU-OS-Plattform-Verlinkung vorsehen
 
-Wenn DEALFAZ später selbst Verträge mit Verbrauchern schließt, müssen Preise, Vertragsinformationen, Widerruf, Zahlungsbedingungen und weitere Fernabsatzpflichten separat geprüft werden.
+Wenn MESIQO später selbst Verträge mit Verbrauchern schließt, müssen Preise, Vertragsinformationen, Widerruf, Zahlungsbedingungen und weitere Fernabsatzpflichten separat geprüft werden.
 
 ## 8. Barrierefreiheit / BFSG – 🟢 KEIN AKTUELLER COMPLIANCE-CLAIM / ⏸ NEUPRÜFUNG BEI E-COMMERCE
 
-Die aktuelle kostenlose Rechenhilfe schließt selbst keinen Verbrauchervertrag. Es wird daher **nicht** behauptet, dass DEALFAZ bereits vollständig BFSG-zertifiziert oder rechtlich abschließend geprüft sei. Vor eigener E-Commerce-Funktion, Checkout oder einer enger auf Vertragsabschluss gerichteten Dienstleistung erfolgt eine neue BFSG-Prüfung.
+Die aktuelle kostenlose Rechenhilfe schließt selbst keinen Verbrauchervertrag. Es wird daher **nicht** behauptet, dass MESIQO bereits vollständig BFSG-zertifiziert oder rechtlich abschließend geprüft sei. Vor eigener E-Commerce-Funktion, Checkout oder einer enger auf Vertragsabschluss gerichteten Dienstleistung erfolgt eine neue BFSG-Prüfung.
 
-## 9. Marke DEALFAZ – 🟢 RISIKOSTEUERUNG / 🟡 KEINE ABSOLUTE MARKENFREIGABE
+## 9. Marke MESIQO – 🟢 RISIKOSTEUERUNG / 🟡 KEINE ABSOLUTE MARKENFREIGABE
 
-- Vorrecherche und ähnliche Zeichen dokumentiert
+- amtlicher Exaktcheck und ähnliche Zeichen dokumentiert
 - keine Behauptung „Marke frei“ oder „rechtlich abgesichert“
 - vor größeren Branding-Ausgaben oder Markenanmeldung direkte DPMA/EUIPO/WIPO-Kollisionsprüfung vervollständigen
 

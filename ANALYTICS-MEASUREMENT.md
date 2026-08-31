@@ -24,7 +24,7 @@ Die frühere Bezeichnung `likely_human` wurde am 27.08.2026 ohne Änderung der R
 ## Verbindliche Reporting-Regeln
 
 - Nur tatsächlich vorhandene Messwerte verwenden.
-- Niemals aus historischen Aggregaten `Unique Visitors`, `echte Besucher` oder `Menschen` ableiten.
+- **Niemals aus diesen Aggregaten** `Unique Visitors`, `echte Besucher` oder `Menschen` ableiten.
 - Niemals nicht gemessene Reichweite schätzen oder als echte Zahl ausgeben.
 - Bot-/Preview-Werte getrennt ausweisen, wenn sie für die Aussage relevant sind.
 - Interne Tests nicht als Erfolg oder organischen Traffic darstellen.

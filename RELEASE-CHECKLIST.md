@@ -1,6 +1,6 @@
 # DEALFAZ – Release-Gate
 
-Stand: 27.08.2026
+Stand: 31.08.2026
 
 Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäftsstart** und **spätere Monetarisierung**. `[x]` bedeutet technisch oder anhand des aktuellen Datenflusses geprüft; es ist keine pauschale anwaltliche Rechtsfreigabe.
 
@@ -27,7 +27,7 @@ Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäf
 - [x] Cloudflare-Hosting beschrieben
 - [x] Supabase-Legacy-Weiterleitungen beschrieben
 - [x] lokale Browser-Speicherung transparent erklärt
-- [x] aktuelle Hauptseite lädt kein eigenes Analytics-Skript
+- [x] aktuelle Hauptseite sendet keine DEALFAZ-eigenen Pageview- oder Marktplatz-Klick-Trackingrequests an einen externen Analytics-Endpunkt
 - [x] keine Werbe-/Marketing-Cookies der aktuellen Hauptseite
 - [x] keine Gewinn-, Verkaufs-, Preis- oder Nachfragegarantie
 - [x] Verbraucherstreitbeilegungs-Hinweis vorhanden
@@ -46,7 +46,10 @@ Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäf
 - [x] Kamera-/Mikrofon-/Standortrechte eingeschränkt
 - [x] Clickjacking-Schutz
 - [x] HSTS/CSP vorhanden
-- [x] Live Health vorhanden
+- [x] CSP für den aktuellen Null-Tracking-Stand gehärtet
+- [x] Live Health vorhanden und am 31.08.2026 erfolgreich
+- [x] Quality am 31.08.2026 erfolgreich
+- [x] Commercialization Guards am 31.08.2026 erfolgreich
 
 ## 5. SEO & Teilen – 🟢
 
@@ -54,7 +57,8 @@ Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäf
 - [x] 1200×630 Social-PNG
 - [x] Sitemap/robots korrekt ausgerichtet
 - [x] vier Wissensseiten in Sitemap
-- [x] IndexNow technisch vorbereitet/ausgeführt
+- [x] IndexNow-Schlüssel auf Produktion erreichbar
+- [x] IndexNow am 31.08.2026 mit HTTP 200 bestätigt
 
 Tatsächliche Indexierung und Social-Caches bleiben externe Beobachtungen.
 
@@ -70,8 +74,7 @@ Tatsächliche Indexierung und Social-Caches bleiben externe Beobachtungen.
 
 - [x] öffentlicher Hauptlink funktioniert
 - [x] Launch-Ziele auf Cloudflare
-- [x] Metricool-Regel: maximal 20 Veröffentlichungen pro Monat
-- [x] keine zusätzlichen Posts bei erreichtem Limit
+- [x] keine künstlich erzeugten Besucherzahlen als reale Reichweite ausweisen
 - [x] Legacy-Link-Weiterleitung vorhanden
 - [x] Bots/Testaufrufe werden nicht als echte Reichweite dargestellt
 
@@ -135,6 +138,8 @@ Vor Entfernung von `MONETIZATION_DISABLED` müssen Gewerbe-/Steuergate, tatsäch
 ## Aktueller Freigabestatus
 
 **Technische kostenlose Beta: 🟢 startbereit.**
+
+**Live-Technik 31.08.2026: 🟢 Quality, Live Health und Commercialization Guards erfolgreich; IndexNow HTTP 200.**
 
 **Vollständiges rechtliches Geschäfts-GO: 🟡 noch nicht – Gewerbebeginn/Gewerbeanmeldung zuerst klären.**
 

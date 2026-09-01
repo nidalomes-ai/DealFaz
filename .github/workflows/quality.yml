@@ -1,4 +1,4 @@
-name: DEALFAZ Quality
+name: DINAVO Quality
 
 on:
   push:
@@ -20,9 +20,16 @@ jobs:
       - name: DealScore regression tests
         run: node scripts/dealscore-regression.mjs
 
+      - name: Local data model regression tests
+        run: |
+          node scripts/data-store-regression.mjs
+          node scripts/data-store-migration-regression.mjs
+          node scripts/frontend-regression.mjs
+
       - name: Required frontend and governance files
         run: |
           test -f index.html
+          test -f data-store.js
           test -f app.js
           test -f analytics.js
           test -f style.css
@@ -68,6 +75,7 @@ jobs:
           ! grep -Fn 'Beim Aufruf verarbeitet Vercel' index.html
           ! grep -Fn 'nidalomes-ai.github.io/DealFaz' index.html robots.txt sitemap.xml README.md DATA-SOURCES.md PRIVACY-ARCHITECTURE.md manifest.webmanifest
           ! grep -Fn 'supabase.co/functions/v1' index.html reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html
+          ! grep -Fn 'PEVRU' index.html manifest.webmanifest icon.svg social-card.svg reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html
 
       - name: Legal and monetization safety checks
         shell: bash
@@ -109,8 +117,7 @@ jobs:
             echo 'Fragment-based Amazon redirect detected; search term would not reach the server.'
             exit 1
           fi
-          grep -Fq "amazon='https://www.amazon.de/s?k='+e" app.js
-          grep -Fq "['Amazon',amazon,'nofollow noopener noreferrer']" app.js
+          grep -Fq 'https://www.amazon.de/s?k=${encoded}' app.js
           grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' index.html
           grep -Fq 'derzeit kein Partnerlink' index.html
           grep -Fq 'keine Gewinn-, Preis-, Nachfrage- oder Verkaufsgarantie' DATA-SOURCES.md
@@ -129,26 +136,29 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          grep -Fq "'#deal='+encodeURIComponent(p.toString())" app.js
+          grep -Fq '#deal=${encodeURIComponent(params.toString())}' app.js
           grep -Fq "location.hash.startsWith('#deal=')" app.js
-          if grep -Fq "location.origin+location.pathname+'?'+p.toString()" app.js; then
+          if grep -Eq 'location\.(origin|pathname).*\?.*(params|p)\.toString' app.js; then
             echo 'Share values are still being placed in the request query string.'
             exit 1
           fi
 
-      - name: Paused monetization UI defense
+      - name: No hidden tracking
         shell: bash
         run: |
           set -euo pipefail
-          grep -Fq 'syncPausedAffiliateState' analytics.js
-          grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' analytics.js
+          ! grep -Fq '/analytics.js' index.html app.js simple-ui.js
+          ! grep -Fq 'dealfaz-pixel' index.html app.js simple-ui.js analytics.js
+          ! grep -Fq 'supabase.co/functions/v1' index.html app.js simple-ui.js analytics.js _headers vercel.json
+          grep -Fq 'DINAVO laedt kein eigenes Analytics-' analytics.js
+          grep -Fq 'lädt kein Analytics-, Werbe- oder Marketing-Skript' index.html
 
       - name: CSV export injection hardening
         run: |
-          grep -Fq 'const safeText=v=>' app.js
-          grep -Fq '/^[=+\-@\t\r]/.test(s)' app.js
-          grep -Fq 'rows.map(r=>r.map(csv)' app.js
-          grep -Fq "'\\ufeff'" app.js
+          grep -Fq 'const safeText = value =>' app.js
+          grep -Fq '/^[=+\-@\t\r]/.test(text)' app.js
+          grep -Fq 'rows.map(row => row.map(csv)' app.js
+          grep -Fq '\ufeff' app.js
 
       - name: No obvious secrets in repository
         shell: bash
@@ -168,12 +178,16 @@ jobs:
           grep -Fq 'X-Frame-Options' vercel.json
           grep -Fq 'Strict-Transport-Security' vercel.json
           grep -Fq 'Content-Security-Policy' vercel.json
+          grep -Fq 'Cross-Origin-Opener-Policy' vercel.json
+          grep -Fq 'X-Permitted-Cross-Domain-Policies' vercel.json
           grep -Fq 'X-Content-Type-Options' _headers
           grep -Fq 'Referrer-Policy' _headers
           grep -Fq 'Permissions-Policy' _headers
           grep -Fq 'X-Frame-Options' _headers
           grep -Fq 'Strict-Transport-Security' _headers
           grep -Fq 'Content-Security-Policy' _headers
+          grep -Fq 'Cross-Origin-Opener-Policy' _headers
+          grep -Fq 'X-Permitted-Cross-Domain-Policies' _headers
 
       - name: Cloudflare production workflows are aligned
         shell: bash

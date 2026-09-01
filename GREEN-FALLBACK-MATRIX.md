@@ -1,6 +1,6 @@
-# DEALFAZ – Grüne Ersatzrouten
+# DINAVO – Grüne Ersatzrouten
 
-Stand: 27.08.2026
+Stand: 01.09.2026
 
 Ziel: Jeder Punkt, der vor der Gewerbeanmeldung technisch, organisatorisch oder durch eine sichere kostenlose Ersatzroute gelöst werden kann, steht grün. Externe Freigaben werden dadurch **nicht vorgetäuscht**. Schritte, die erst beim tatsächlichen kommerziellen Start sinnvoll ausgeführt werden, stehen als `⏸ nach Gewerbe` und zählen nicht als aktueller gelber Punkt.
 
@@ -54,18 +54,18 @@ Ein physischer Hardware-Smoke-Test bleibt optionale Zusatzkontrolle.
 
 Tatsächliche Suchmaschinenaufnahme wird beobachtet und nicht künstlich erzwungen.
 
-## 6. Markenname DEALFAZ
+## 6. Markenname DINAVO
 
-**Status: 🟢 GRÜN im Pre-Gewerbe-/Beta-Modus**
+**Status: 🟢 GRÜN FÜR KOSTENLOSE BETA / ⏸ NEUGATE VOR ANMELDUNG ODER GROSSER INVESTITION**
 
 - öffentliche Vorrecherche und DPMA-Suchstrategie dokumentiert
-- kein belastbarer identischer öffentlicher Treffer für `DEALFAZ` festgestellt
-- `DEALFA`, EUTM 018240890, als konkreter Kollisions-Prüfpunkt dokumentiert
-- `DEALFAST` als weiterer Ähnlichkeits-/Branchenprüfpunkt dokumentiert
+- kein belastbarer identischer öffentlicher Treffer für `DINAVO` festgestellt
+- bestehende Nutzung durch Dinavo AB und die belegte Domain `dinavo.com` dokumentiert
+- keine vollständige amtliche oder anwaltliche Ähnlichkeitsfreigabe behauptet
 - keine Aussage `Marke frei` oder `rechtlich abgesichert`
 - keine irreversible Markeninvestition vor finaler Kollisionsprüfung
 
-**⏸ nach Gewerbe / vor größerer Markeninvestition:** amtliche DPMA/EUIPO/WIPO-Auswertung vervollständigen.
+**Vor größerer Markeninvestition:** professionelle Ähnlichkeitsprüfung und Wortmarkenanmeldung abschließen.
 
 ## 7. Amazon PartnerNet
 
@@ -125,7 +125,7 @@ Der sichere Zustand vor Gewerbe ist damit vollständig hergestellt.
 
 ## 12. Gewerbe
 
-**Status: 🟡 EINZIGER AKTUELLER GELBER PUNKT**
+**Status: 🟡 EXTERNER SCHRITT VOR KOMMERZIELLEM START**
 
 - zuständige Stelle identifiziert
 - Verfahren und Tätigkeitsbeschreibung vorbereitet
@@ -133,8 +133,8 @@ Der sichere Zustand vor Gewerbe ist damit vollständig hergestellt.
 
 ## Gesamtstatus
 
-**Alle Pre-Gewerbe-Punkte außer Gewerbe: 🟢 GRÜN.**
+**Technische kostenlose Beta: 🟢 releasebereit.**
 
-**Einziger aktueller gelber Punkt: 🟡 Gewerbeanmeldung.**
+**Einziger aktiver gelber Schritt:** Gewerbeanmeldung beziehungsweise Klärung des tatsächlichen Betriebsbeginns vor kommerziellem Betrieb.
 
-Spätere Affiliate-, Steuer-, Marken- und Domain-Ausführungsschritte stehen `⏸ nach Gewerbe`; sie werden nicht als bereits erteilte externe Freigaben dargestellt.
+Spätere Affiliate-, Steuer-, Marken- und Domain-Ausführungsschritte stehen `⏸`; sie werden nicht als bereits erteilte externe Freigaben dargestellt und sind keine Freigabe der jeweiligen externen Stelle.

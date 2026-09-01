@@ -1,4 +1,4 @@
-# DEALFAZ – Legal Guardrails
+# DINAVO – Legal Guardrails
 
 Diese Datei definiert feste Grenzen für neue Funktionen. Ziel ist, Produktentwicklung nur dann live zu schalten, wenn sie technisch nützlich und rechtlich vertretbar ist.
 
@@ -6,7 +6,7 @@ Diese Datei definiert feste Grenzen für neue Funktionen. Ziel ist, Produktentwi
 
 - Kein Umgehen von Logins, Paywalls, Rate-Limits oder technischen Schutzmaßnahmen.
 - Kein unerlaubtes Scraping geschützter oder nicht frei zugänglicher Inhalte.
-- Fremde Angebote werden nicht als eigene DEALFAZ-Marktdatenbank kopiert.
+- Fremde Angebote werden nicht als eigene DINAVO-Marktdatenbank kopiert.
 - Bevorzugt werden Originalquellen, offizielle APIs oder Daten, die Nutzer selbst eingeben bzw. bereitstellen.
 - Plattform- und Markennamen werden nur beschreibend verwendet. Eine Partnerschaft, Zertifizierung oder Empfehlung wird nicht behauptet, wenn sie nicht tatsächlich besteht.
 
@@ -54,7 +54,7 @@ Diese Datei definiert feste Grenzen für neue Funktionen. Ziel ist, Produktentwi
 
 ## 7. Marken- und Namensrecht
 
-- DEALFAZ wird nicht als eingetragene Marke dargestellt, solange keine entsprechende Eintragung vorliegt.
+- DINAVO wird nicht als eingetragene Marke dargestellt, solange keine entsprechende Eintragung vorliegt.
 - Vor größerem öffentlichen oder kommerziellem Rollout ist eine Registerrecherche bei DPMA und – bei EU-Ausweitung – EUIPO durchzuführen und zu dokumentieren.
 - Ein fehlender Treffer in allgemeinen Suchmaschinen gilt nicht als Markenfreigabe.
 
@@ -71,14 +71,14 @@ Eine neue Funktion darf erst live gehen, wenn alle zutreffenden Punkte mit **JA*
 7. Bleiben Impressum, Datenschutz, Haftung und Nutzungsbedingungen zum tatsächlichen Produktstand passend?
 8. Erlaubt der Hosting-/Dienstleistervertrag die geplante Nutzung einschließlich Monetarisierung?
 9. Sind vor Monetarisierung Gewerbe-/Steuerstatus und Partnerprogrammfreigaben geklärt?
-10. Wurde bei Nutzung von DEALFAZ als Marke die notwendige Registerrecherche dokumentiert?
+10. Wurde bei Nutzung von DINAVO als Marke die notwendige Registerrecherche dokumentiert?
 11. Wurde die Funktion technisch getestet, bevor sie Production erreicht?
 
 Wenn ein Punkt **NEIN** oder ungeklärt ist, bleibt die Funktion Preview/Entwurf bzw. Monetarisierung deaktiviert.
 
 ## 9. Aktuelle Produktlinie
 
-Die aktuelle sichere Kernlinie von DEALFAZ lautet:
+Die aktuelle sichere Kernlinie von DINAVO lautet:
 
 **Eigene Deal-Zahlen + selbst geprüfte Originalquellen + transparente Rechenlogik + lokale persönliche Daten.**
 

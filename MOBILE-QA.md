@@ -1,6 +1,6 @@
-# DEALFAZ – Mobile QA
+# DINAVO – Mobile QA
 
-Stand: 27.08.2026
+Stand: 01.09.2026
 
 ## Ziel
 
@@ -8,7 +8,7 @@ Der kostenlose Beta-Kernablauf soll auch auf schmalen Smartphone-Viewports ohne 
 
 ## Praktischer Browser-Test
 
-Die aktuelle responsive CSS-Logik wurde in Chromium mit aktivierter Mobile-/Touch-Emulation in folgenden Viewports geprüft:
+Die responsive Basis wurde am 27.08.2026 in Chromium mit aktivierter Mobile-/Touch-Emulation in folgenden Viewports geprüft:
 
 | Profil | Viewport | Horizontaler Overflow | Eingaben außerhalb Viewport | Ergebnis/Entscheidung außerhalb Viewport | Mobile CTA | kleinste zentrale Touch-Höhe |
 |---|---:|---|---|---|---|---:|
@@ -25,9 +25,13 @@ Die aktuelle responsive CSS-Logik wurde in Chromium mit aktivierter Mobile-/Touc
 - [x] Mobile-CTA ist sichtbar
 - [x] kleinste geprüfte zentrale Touch-Höhe beträgt 46 px und liegt damit über 44 px
 - [x] Mehrspaltenbereiche werden im Mobile-Breakpoint auf eine Spalte reduziert
+- [x] neue Plattform-, Gebühren-, Ergebnis- und Einstellungsfelder besitzen sichtbare Labels
+- [x] neue Rechnerfelder fallen unterhalb 680 px automatisch auf eine Spalte zurück
+- [x] die Kostenübersicht nutzt mobil zwei kompakte Spalten und ausschließlich flexible Breiten
+- [x] `frontend-regression.mjs` prüft Breakpoint, Formularbeschriftungen und mobile Grid-Regeln bei jedem Quality-Lauf
 
 ## Einordnung
 
-Dieser Nachweis ist ein praktischer Browser-/Viewport-Test der aktuellen Responsive-Regeln und reicht als technischer Mobile-Gate für die kostenlose Beta. Ein zusätzlicher Smoke-Test auf physischer iPhone-Hardware bleibt sinnvoll, ist aber kein Grund, die nicht monetarisierte Beta technisch zu sperren.
+Der Browser-Nachweis deckt die unveränderte responsive Basis ab; die Felderweiterung vom 01.09.2026 ist zusätzlich durch strukturelle DOM-/CSS-Regressionen abgesichert. Das reicht als technisches Mobile-Gate für die kostenlose Beta. Ein erneuter visueller Live-Smoke-Test nach Veröffentlichung und ein Test auf physischer iPhone-Hardware bleiben sinnvolle Zusatzkontrollen, sind aber kein zweiter gelber Launchpunkt.
 
 Bei späteren größeren Layoutänderungen wird dieser Test erneut durchgeführt.

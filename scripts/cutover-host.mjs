@@ -3,7 +3,7 @@ import path from 'node:path';
 
 const nextRaw = process.argv[2] || '';
 const oldOrigin = 'https://dealfaz.dealfaz-social.workers.dev';
-const vsbgNotice = '<p><strong>Verbraucherstreitbeilegung:</strong> DEALFAZ ist nicht freiwillig zur Teilnahme an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle bereit. Soweit im Einzelfall eine gesetzliche Verpflichtung zur Teilnahme besteht, bleibt diese unberührt.</p>';
+const vsbgNotice = '<p><strong>Verbraucherstreitbeilegung:</strong> DINAVO ist nicht freiwillig zur Teilnahme an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle bereit. Soweit im Einzelfall eine gesetzliche Verpflichtung zur Teilnahme besteht, bleibt diese unberührt.</p>';
 
 function normalizeOrigin(value) {
   const u = new URL(value);

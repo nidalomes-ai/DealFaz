@@ -1,4 +1,4 @@
-name: DEALFAZ Live Health
+name: DINAVO Live Health
 
 on:
   push:
@@ -14,6 +14,19 @@ jobs:
   live-health:
     runs-on: ubuntu-latest
     steps:
+      - name: Wait for DINAVO deployment
+        shell: bash
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 18); do
+            if curl -fsS https://dealfaz.dealfaz-social.workers.dev/ | grep -Fq 'DINAVO'; then
+              exit 0
+            fi
+            sleep 10
+          done
+          echo 'DINAVO deployment was not visible within three minutes.'
+          exit 1
+
       - name: Public Cloudflare app is healthy HTML
         id: html
         continue-on-error: true
@@ -27,10 +40,12 @@ jobs:
           grep -Eiq '^content-type: text/html' "$headers"
           grep -Eiq '^x-content-type-options: nosniff' "$headers"
           grep -Eiq '^x-frame-options: DENY' "$headers"
-          grep -Eiq '^referrer-policy: strict-origin-when-cross-origin' "$headers"
+          grep -Eiq '^referrer-policy: no-referrer' "$headers"
           grep -Eiq '^strict-transport-security:' "$headers"
           grep -Eiq '^content-security-policy:' "$headers"
-          grep -Fq 'DEALFAZ' "$body"
+          grep -Eiq '^cross-origin-opener-policy: same-origin' "$headers"
+          grep -Eiq '^x-permitted-cross-domain-policies: none' "$headers"
+          grep -Fq 'DINAVO' "$body"
           grep -Fq 'SCHNELL PRÜFEN' "$body"
           grep -Fq 'Was spricht dagegen?' "$body"
           grep -Fq 'Zwei Deals vergleichen' "$body"
@@ -66,6 +81,8 @@ jobs:
             grep -Eiq "^content-type: ${expected}" "$headers"
           }
           check https://dealfaz.dealfaz-social.workers.dev/app.js '(application|text)/(javascript|x-javascript)'
+          check https://dealfaz.dealfaz-social.workers.dev/data-store.js '(application|text)/(javascript|x-javascript)'
+          check https://dealfaz.dealfaz-social.workers.dev/simple-ui.js '(application|text)/(javascript|x-javascript)'
           check https://dealfaz.dealfaz-social.workers.dev/analytics.js '(application|text)/(javascript|x-javascript)'
           check https://dealfaz.dealfaz-social.workers.dev/style.css 'text/css'
           check https://dealfaz.dealfaz-social.workers.dev/manifest.webmanifest 'application/(manifest\+json|json)'
@@ -88,15 +105,16 @@ jobs:
           ! printf '%s' "$js" | grep -Fq 'dealfaz-21'
           ! printf '%s' "$js" | grep -Eq '([?&]|&amp;)tag=|AMAZON_TAG'
           ! printf '%s' "$js" | grep -Fq 'dealfaz-amazon#q='
-          printf '%s' "$js" | grep -Fq "amazon='https://www.amazon.de/s?k='+e"
-          printf '%s' "$js" | grep -Fq "['Amazon',amazon,'nofollow noopener noreferrer']"
-          printf '%s' "$js" | grep -Fq "'#deal='+encodeURIComponent(p.toString())"
+          printf '%s' "$js" | grep -Fq 'https://www.amazon.de/s?k=${encoded}'
+          printf '%s' "$js" | grep -Fq '#deal=${encodeURIComponent(params.toString())}'
           printf '%s' "$js" | grep -Fq "location.hash.startsWith('#deal=')"
-          ! printf '%s' "$js" | grep -Fq "location.origin+location.pathname+'?'+p.toString()"
-          printf '%s' "$js" | grep -Fq 'const safeText=v=>'
-          printf '%s' "$js" | grep -Fq '/^[=+\-@\t\r]/.test(s)'
-          printf '%s' "$analytics" | grep -Fq 'syncPausedAffiliateState'
-          printf '%s' "$analytics" | grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert'
+          ! printf '%s' "$js" | grep -Eq 'location\.(origin|pathname).*\?.*(params|p)\.toString'
+          printf '%s' "$js" | grep -Fq 'const safeText = value =>'
+          printf '%s' "$js" | grep -Fq '/^[=+\-@\t\r]/.test(text)'
+          ! printf '%s' "$js" | grep -Fq '/analytics.js'
+          ! printf '%s' "$analytics" | grep -Fq 'dealfaz-pixel'
+          ! printf '%s' "$analytics" | grep -Fq 'supabase.co/functions/v1'
+          printf '%s' "$analytics" | grep -Fq 'DINAVO laedt kein eigenes Analytics-'
 
       - name: IndexNow key is present on production host
         id: indexnow
@@ -123,7 +141,7 @@ jobs:
             code=$(curl --retry 2 --retry-delay 2 -sS -o "$body" -w '%{http_code}' "https://dealfaz.dealfaz-social.workers.dev${path}")
             test "$code" = "200"
             grep -Fq "<link rel=\"canonical\" href=\"${canonical}\"" "$body"
-            grep -Fq 'DEALFAZ' "$body"
+            grep -Fq 'DINAVO' "$body"
             grep -Fq 'Impressum & Recht' "$body"
             grep -Fq 'href="/#privacy"' "$body"
             ! grep -Fq 'supabase.co/functions/v1' "$body"

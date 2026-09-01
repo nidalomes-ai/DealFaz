@@ -1,6 +1,8 @@
-# DEALFAZ Legal-Safety Release Gate
+# DINAVO Legal-Safety Release Gate
 
-Diese Datei ist eine interne Freigabe-Checkliste für neue DEALFAZ-Funktionen. Sie ersetzt keine individuelle Rechtsberatung. Eine Funktion soll erst live gehen, wenn die relevanten Punkte geprüft sind.
+Diese Datei ist eine interne Freigabe-Checkliste für neue DINAVO-Funktionen. Sie ersetzt keine individuelle Rechtsberatung. Eine Funktion soll erst live gehen, wenn die relevanten Punkte geprüft sind.
+
+**Aktueller Stand 01.09.2026:** Die für die kostenlose Beta zutreffenden Punkte wurden im `RELEASE-CHECKLIST.md` geprüft und sind grün. Offene Kästchen in dieser Datei sind verpflichtende Neuprüfungen bei künftigen Funktionen, keine zusätzlichen gelben Punkte. Einzig aktiv gelb bleibt Gewerbebeginn/Gewerbeanmeldung.
 
 ## 1. Pflichtangaben vor öffentlichem geschäftsmäßigem Betrieb
 
@@ -21,7 +23,7 @@ Rechtsgrundlage zur Prüfung: § 25 TDDDG.
 
 ## 3. Analytics
 
-- [ ] DEALFAZ-eigene Analytics möglichst aggregiert und datensparsam halten.
+- [ ] DINAVO-eigene Analytics möglichst aggregiert und datensparsam halten.
 - [ ] Keine Passwörter, E-Mail-Adressen, IBAN, Steuerdaten, exakte Formulareingaben oder hochgeladene Inhalte in Analytics schreiben.
 - [ ] Keine Produkt-Suchbegriffe in die eigene Analytics-Tabelle übernehmen, wenn eine abstrakte Ereignisbezeichnung genügt.
 - [ ] Bot-/Preview-/Healthcheck-Aufrufe von menschlicher Nutzung trennen.
@@ -33,7 +35,7 @@ Rechtsgrundlage zur Prüfung: § 25 TDDDG.
 - [ ] Offizielle APIs, erlaubte Feeds, öffentliche Suchseiten oder vom Nutzer selbst bereitgestellte Daten bevorzugen.
 - [ ] Zugangsbeschränkungen, Login-Barrieren, Rate Limits oder technische Schutzmaßnahmen nicht umgehen.
 - [ ] Verkaufte/beendete Angebote nur über erlaubte Originalquellen oder zugelassene Schnittstellen verwenden.
-- [ ] Quelle und Zeitpunkt von Marktwerten kenntlich machen, wenn DEALFAZ künftig eigene Marktwerte anzeigt.
+- [ ] Quelle und Zeitpunkt von Marktwerten kenntlich machen, wenn DINAVO künftig eigene Marktwerte anzeigt.
 
 ## 5. Marken / Logos / Zugehörigkeit
 
@@ -68,7 +70,7 @@ Vor einer zukünftigen Foto-/Screenshot-Funktion:
 
 ## 9. Verbraucher-, Steuer- und Rechtsfragen
 
-- [ ] DEALFAZ nicht als Rechts-, Steuer- oder Finanzberatung darstellen.
+- [ ] DINAVO nicht als Rechts-, Steuer- oder Finanzberatung darstellen.
 - [ ] Gebühren-/Plattformregeln mit aktuellen offiziellen Quellen prüfen, bevor konkrete Beträge veröffentlicht werden.
 - [ ] Bei privaten/gewerblichen Verkäufen keine pauschale rechtliche Einordnung des Nutzers behaupten.
 - [ ] Steuerliche oder gewerberechtliche Schwellen nicht ohne aktuellen Quellencheck als allgemeingültig darstellen.
@@ -81,6 +83,6 @@ Vor einer zukünftigen Foto-/Screenshot-Funktion:
 
 **GRÜN = deploybar** wenn: Datenquelle erlaubt/nutzerbereitgestellt, Datensparsamkeit gewahrt, Claims transparent, keine Garantien, externe Plattformen klar getrennt und relevante Pflichtinformationen berücksichtigt sind.
 
-## Aktueller DEALFAZ-Grundsatz
+## Aktueller DINAVO-Grundsatz
 
 **Rechtlich vertretbar → kostenlos machbar → technisch stabil → echter Nutzwert → erst dann live.**

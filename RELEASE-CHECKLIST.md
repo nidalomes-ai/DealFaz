@@ -1,6 +1,6 @@
-# DEALFAZ – Release-Gate
+# DINAVO – Release-Gate
 
-Stand: 31.08.2026
+Stand: 01.09.2026
 
 Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäftsstart** und **spätere Monetarisierung**. `[x]` bedeutet technisch oder anhand des aktuellen Datenflusses geprüft; es ist keine pauschale anwaltliche Rechtsfreigabe.
 
@@ -11,6 +11,13 @@ Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäf
 - [x] schwache Evidenz begrenzt positive Signale
 - [x] Maximaler Einkaufspreis bleibt im getesteten gültigen Fall nicht negativ
 - [x] Watchlist und persönliche Regeln lokal ohne Nutzerkonto
+- [x] Gebührenprofile, Kostenaufschlüsselung und unveränderliche Schätz-Snapshots
+- [x] tatsächliche Ergebnisse mit Zeitaufwand, Lernfaktoren, Stundenlohn und Jahresgewinn
+- [x] vollständiger lokaler Import/Export einschließlich Regeln und Einstellungen
+- [x] Migration alter DealFaz-/DINAVO-Daten in den stabilen `dealfaz:v1:*`-Schlüsseln
+- [x] zentrale Konfiguration einschließlich reserviertem Lizenz-Key ohne aktive Pro-Sperre
+- [x] Demo-Deal erscheint nur bei leerem Speicher, leert sich beim ersten Tippen und ist nicht speicherbar
+- [x] Gewinn/ROI als Hauptkennzahlen; Lernartikel direkt an den Kennzahlen verlinkt
 - [x] Teilen legt Dealwerte im URL-Fragment statt Server-Querystring ab
 
 ## 2. Daten & Marktquellen – 🟢
@@ -27,7 +34,7 @@ Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäf
 - [x] Cloudflare-Hosting beschrieben
 - [x] Supabase-Legacy-Weiterleitungen beschrieben
 - [x] lokale Browser-Speicherung transparent erklärt
-- [x] aktuelle Hauptseite sendet keine DEALFAZ-eigenen Pageview- oder Marktplatz-Klick-Trackingrequests an einen externen Analytics-Endpunkt
+- [x] aktuelle Hauptseite lädt kein eigenes Analytics-Skript
 - [x] keine Werbe-/Marketing-Cookies der aktuellen Hauptseite
 - [x] keine Gewinn-, Verkaufs-, Preis- oder Nachfragegarantie
 - [x] Verbraucherstreitbeilegungs-Hinweis vorhanden
@@ -46,10 +53,7 @@ Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäf
 - [x] Kamera-/Mikrofon-/Standortrechte eingeschränkt
 - [x] Clickjacking-Schutz
 - [x] HSTS/CSP vorhanden
-- [x] CSP für den aktuellen Null-Tracking-Stand gehärtet
-- [x] Live Health vorhanden und am 31.08.2026 erfolgreich
-- [x] Quality am 31.08.2026 erfolgreich
-- [x] Commercialization Guards am 31.08.2026 erfolgreich
+- [x] Live Health vorhanden
 
 ## 5. SEO & Teilen – 🟢
 
@@ -57,8 +61,7 @@ Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäf
 - [x] 1200×630 Social-PNG
 - [x] Sitemap/robots korrekt ausgerichtet
 - [x] vier Wissensseiten in Sitemap
-- [x] IndexNow-Schlüssel auf Produktion erreichbar
-- [x] IndexNow am 31.08.2026 mit HTTP 200 bestätigt
+- [x] IndexNow technisch vorbereitet/ausgeführt
 
 Tatsächliche Indexierung und Social-Caches bleiben externe Beobachtungen.
 
@@ -74,7 +77,8 @@ Tatsächliche Indexierung und Social-Caches bleiben externe Beobachtungen.
 
 - [x] öffentlicher Hauptlink funktioniert
 - [x] Launch-Ziele auf Cloudflare
-- [x] keine künstlich erzeugten Besucherzahlen als reale Reichweite ausweisen
+- [x] Metricool-Regel: maximal 20 Veröffentlichungen pro Monat
+- [x] keine zusätzlichen Posts bei erreichtem Limit
 - [x] Legacy-Link-Weiterleitung vorhanden
 - [x] Bots/Testaufrufe werden nicht als echte Reichweite dargestellt
 
@@ -103,14 +107,16 @@ Keine EPN-Partnerlinks vor tatsächlicher Freigabe.
 
 `⏸ nach festgelegtem Betriebsbeginn`: echte Angaben fristgerecht übermitteln.
 
-## 11. Marke / Name – 🟡 RESTRISIKO
+## 11. Marke / Name – 🟢 FÜR KOSTENLOSE BETA / ⏸ NEUGATE VOR MARKENINVESTITION
 
 - [x] Suchstrategie/Varianten dokumentiert
-- [x] `DEALFA` / EUTM 018240890 als ähnlicher Prüfdatensatz dokumentiert
-- [x] `DEALFAST` als weiterer Ähnlichkeitspunkt dokumentiert
+- [x] exakter amtlicher Registercheck für `DINAVO` ohne Treffer dokumentiert
+- [x] `PETRU`-Zeichen als klangliche Ähnlichkeits-Prüfdatensätze dokumentiert
+- [x] `PEVRAE` / EUTM 018739912 als Schreibvarianten-Prüfdatensatz dokumentiert
 - [x] keine Behauptung `Marke frei` oder `rechtlich abgesichert`
 - [x] keine große irreversible Markeninvestition vor finaler Prüfung
-- [ ] direkte amtliche DPMA/EUIPO/WIPO-Kollisionsprüfung vor größerem Branding-/Monetarisierungsaufwand finalisieren
+- [x] professionelle Ähnlichkeitsprüfung als verpflichtendes Neu-Gate vor Anmeldung oder größerem Branding-/Werbebudget dokumentiert
+- [x] DINAVO als Arbeitsname für die öffentliche Beta bestätigt
 
 Für einen technischen Beta-Test ist die vorsichtige Nutzung dokumentiert; eine absolute Markenfreigabe wird nicht behauptet.
 
@@ -139,10 +145,8 @@ Vor Entfernung von `MONETIZATION_DISABLED` müssen Gewerbe-/Steuergate, tatsäch
 
 **Technische kostenlose Beta: 🟢 startbereit.**
 
-**Live-Technik 31.08.2026: 🟢 Quality, Live Health und Commercialization Guards erfolgreich; IndexNow HTTP 200.**
-
 **Vollständiges rechtliches Geschäfts-GO: 🟡 noch nicht – Gewerbebeginn/Gewerbeanmeldung zuerst klären.**
 
-**Markenrecht: 🟡 Restrisiko vor größerer irreversibler Markeninvestition.**
+**Markenname: 🟢 für die vorsichtige kostenlose Beta; ⏸ Neuprüfung vor Anmeldung oder größerer irreversibler Markeninvestition.**
 
 **Monetarisierung: 🔒 deaktiviert.**

@@ -1,6 +1,6 @@
-# DEALFAZ Live-Status
+# DINAVO Live-Status
 
-Stand: 27.08.2026
+Stand: 01.09.2026
 
 ## Technischer Beta-Stand – 🟢 STARTBEREIT
 
@@ -27,7 +27,8 @@ Stand: 27.08.2026
 - 🟢 keine Nutzerkonten, öffentlichen Inserate oder UGC-Hostingfunktionen
 - 🟢 BFSG-Prüfpunkt für spätere E-Commerce-/Checkout-Funktionen dokumentiert
 - 🟡 **Gewerbebeginn/Gewerbeanmeldung: kritisches Geschäfts-Launch-Gate**
-- 🟡 **Markenrecht: Vorrecherche/Risikosteuerung vorhanden, aber keine absolute amtliche Kollisionsfreigabe**
+- 🟢 **Markenname für kostenlose Beta: Vorrecherche und Risikosteuerung dokumentiert; keine Behauptung einer amtlichen Kollisionsfreigabe**
+- ⏸ professionelle Ähnlichkeitsprüfung: Neu-Gate vor Markenanmeldung oder größerem Werbebudget
 - ⏸ eBay EPN-Acceptance und weitere Partner-Endfreigaben: erst für Monetarisierung erforderlich
 
 ## Wichtige Gewerbe-Regel
@@ -38,14 +39,15 @@ Nicht der erste Euro Provision ist automatisch der Startpunkt. Bei einer selbst�
 
 Bei relevanten Pushes laufen:
 
-- `DEALFAZ Quality`
-- `DEALFAZ Live Health`
-- `DEALFAZ Commercialization Guards`
+- `DINAVO Quality`
+- `DINAVO Live Health`
+- `DINAVO Commercialization Guards`
 
 ## Launch 01.09.2026
 
 - **Technisches Beta-GO:** 🟢 JA
 - **Vollständiges rechtliches Geschäfts-GO:** 🟡 NOCH NICHT – Gewerbebeginn/Gewerbeanmeldung zuerst klären
+- **Einziger aktiver gelber Punkt:** Gewerbebeginn/Gewerbeanmeldung
 - **Monetarisierung:** 🔒 NEIN, bis Gewerbe-/Steuer-/Partnergates erfüllt sind
 
 Die ausführliche Prüfung steht in `LEGAL-AUDIT-2026-08-26.md` und `BUSINESS-START-CHECKLIST.md`.

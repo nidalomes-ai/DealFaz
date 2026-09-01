@@ -1,4 +1,4 @@
-# DEALFAZ – ELSTER Feldvorbereitung
+# DINAVO – ELSTER Feldvorbereitung
 
 Stand: 27.08.2026
 

@@ -1,25 +1,25 @@
-# DEALFAZ – eBay Partner Network Aktivierungs-Gate
+# DINAVO – eBay Partner Network Aktivierungs-Gate
 
 Stand: 27.08.2026
 
 ## Aktueller Pre-Gewerbe-Status: 🟢 GRÜN
 
-Die eBay-Seite von DEALFAZ ist für die kostenlose Beta sauber vorbereitet. Eine EPN-Freigabe wird **nicht** behauptet und für die nicht monetarisierte Beta nicht benötigt.
+Die eBay-Seite von DINAVO ist für die kostenlose Beta sauber vorbereitet. Eine EPN-Freigabe wird **nicht** behauptet und für die nicht monetarisierte Beta nicht benötigt.
 
 ### Erledigt
 
 - [x] EPN-Bewerbung am 21.08.2026 als eingegangen bestätigt
-- [x] EPN-Kommunikation/Updates im DEALFAZ-Postfach vorhanden
+- [x] EPN-Kommunikation/Updates im DINAVO-Postfach vorhanden
 - [x] unzustellbare Statusanfrage vom 26.08.2026 korrekt dokumentiert
 - [x] daraus weder Ablehnung noch Freigabe abgeleitet
-- [x] am 27.08.2026 neue Statusanfrage an die offizielle EPN-Supportadresse `EPNHelp@ebay.com` gesendet; Account ID 7659808, Projekt DEALFAZ und aktuelle Cloudflare-Website angegeben
+- [x] am 27.08.2026 neue Statusanfrage an die offizielle EPN-Supportadresse `EPNHelp@ebay.com` gesendet; Account ID 7659808, Projekt DINAVO und aktuelle Cloudflare-Website angegeben
 - [x] neutrale eBay-Originalquelle ohne EPN-Tracking als sichere Ersatzroute aktiv
 - [x] keine Partnerbehauptung auf der öffentlichen Beta
 - [x] `MONETIZATION_DISABLED` bleibt aktiv
 
 ## Aktueller EPN-Bewerbungsstatus
 
-Die vorhandene EPN-Mail `Application Received` bedeutet nach der offiziellen EPN-Beitrittsbeschreibung, dass die Bewerbung geprüft wird. EPN kündigt eine zweite E-Mail an, die über Annahme oder Ablehnung informiert. Eine solche Annahme-/Ablehnungs-Mail ist im aktuellen DEALFAZ-Postfach noch nicht vorhanden.
+Die vorhandene EPN-Mail `Application Received` bedeutet nach der offiziellen EPN-Beitrittsbeschreibung, dass die Bewerbung geprüft wird. EPN kündigt eine zweite E-Mail an, die über Annahme oder Ablehnung informiert. Eine solche Annahme-/Ablehnungs-Mail ist im aktuellen DINAVO-Postfach noch nicht vorhanden.
 
 ## ⏸ Aktivierung erst nach Gewerbe
 
@@ -34,11 +34,11 @@ Diese Punkte sind bewusst **keine aktuellen gelben Punkte**. Sie werden erst bei
 - Datenschutz an den tatsächlichen Affiliate-Datenfluss anpassen
 - Quality, Live Health und Commercialization Guards unmittelbar vor Aktivierung erneut grün bestätigen
 
-## Öffentlicher DEALFAZ-Status bis dahin
+## Öffentlicher DINAVO-Status bis dahin
 
 - **keine EPN-Partnerlinks aktivieren**;
 - keine EPN-Trackingparameter einbauen;
-- keine Aussage, DEALFAZ sei bereits freigegebener eBay-Partner;
+- keine Aussage, DINAVO sei bereits freigegebener eBay-Partner;
 - eBay nur als neutrale externe Originalquelle behandeln;
 - `MONETIZATION_DISABLED` bleibt bestehen.
 

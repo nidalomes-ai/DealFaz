@@ -1,65 +1,57 @@
-# DEALFAZ – Marken-Vorprüfung
+# DINAVO – dokumentierte Marken-Vorprüfung
 
-Stand: 27.08.2026
+Stand: 01.09.2026
 
-## Aktueller Pre-Gewerbe-Status: 🟢 GRÜN
+## Kurzurteil
 
-Für die kostenlose, nicht monetarisierte Beta ist die Marken-/Namens-Risikosteuerung abgeschlossen. Das bedeutet **nicht**, dass eine rechtliche Markenfreigabe erteilt wurde.
+`DINAVO` kann technisch als unregistrierter Arbeitsname der kostenlosen Beta verwendet werden. Eine abschließende markenrechtliche Freigabe oder weltweite Exklusivität wird ausdrücklich nicht behauptet.
 
-Aktuelle Linie:
+Die öffentlich indexierte Exaktsuche vom 01.09.2026 zeigte keinen belastbaren Treffer in den Suchergebnissen von DPMA, EUIPO oder WIPO. Das ist jedoch keine vollständige Register- oder Ähnlichkeitsrecherche. Das DPMA weist selbst darauf hin, dass eine Ähnlichkeitssuche in DPMAregister kaum möglich ist und ältere identische oder ähnliche Marken bei der Anmeldung nicht von Amts wegen geprüft werden.
 
-- `DEALFAZ` wird sachlich als Projekt-/Beta-Name verwendet;
-- keine Aussage `Marke frei`, `rechtlich abgesichert` oder ähnlich;
-- keine kostenpflichtige Markenanmeldung automatisch auslösen;
-- keine größeren irreversiblen Branding-, Druck- oder Merch-Ausgaben vor finaler Kollisionsprüfung;
-- bei belastbarem Konflikttreffer Namensalternative oder fachkundige Markenprüfung nutzen.
+Amtliche Recherchewege:
 
-Damit ist der **Pre-Gewerbe-Risikozustand grün**, ohne Schutzrechte zu erfinden.
+- DPMA: <https://register.dpma.de/DPMAregister/marke/basis>
+- EUIPO: <https://euipo.europa.eu/eSearch/>
+- WIPO: <https://branddb.wipo.int/>
+- DPMA-Hinweise: <https://www.dpma.de/english/trade_marks/trade_mark_search/index.html>
 
-## Bisherige Recherche
+## Bereits vorhandene Namensnutzungen
 
-Für das exakte Zeichen `DEALFAZ` wurde in öffentlich auffindbaren Ergebnissen bislang kein belastbarer identischer Treffer festgestellt. Geprüft bzw. dokumentiert wurden außerdem naheliegende Varianten wie `DEAL FAZ`, `DEALFAS`, `DEAL FAS`, `DEALFAST` und `DEAL FAST`.
+Der Name ist nicht weltweit unbenutzt:
 
-Das DPMA hat am 27.08.2026 darauf hingewiesen, dass es im Anmeldeverfahren nicht prüft, ob identische oder ähnliche ältere Marken bestehen. Deshalb bleibt eine eigene Kollisionsrecherche vor einer späteren Markenanmeldung oder größeren Markeninvestition erforderlich.
+- `Dinavo AB` ist ein aktives schwedisches Unternehmen mit eigener Website und Webshop im Einrichtungsbereich: <https://dinavo.se/>
+- `DINAVO LTD` existierte im Vereinigten Königreich und wurde laut Companies House am 03.02.2026 aufgelöst: <https://find-and-update.company-information.service.gov.uk/company/16375300/filing-history>
+- `dinavo.com` ist bereits belegt und wird als Domain-/Webangebot angeboten: <https://dinavo.com/>
 
-## Konkrete ähnliche Zeichen
+Diese Nutzungen sind nicht identisch mit dem aktuellen Reselling-Rechner, schließen aber eine pauschale Aussage „weltweit frei“ aus. Vor einer Markenanmeldung oder größerem Werbebudget muss deshalb eine fachkundige Identitäts- und Ähnlichkeitsrecherche für die konkreten Waren und Dienstleistungen erfolgen.
 
-### `DEALFA`
+## Produkt und mögliche Klassen
 
-- öffentlich ist eine EU-Marke `Dealfa` mit der Nummer `018240890` auffindbar;
-- öffentlich auffindbare Datensätze führen sie als registrierte EU-Marke mit Anmeldung 19.05.2020 und Registrierung 17.09.2020;
-- dieser Treffer wird als echter Kollisions-Prüfdatensatz dokumentiert und nicht ignoriert;
-- daraus folgt **nicht automatisch**, dass `DEALFAZ` unbenutzbar oder nicht anmeldbar ist.
+DINAVO ist derzeit eine kostenlose browserbasierte Rechen- und Entscheidungshilfe. Es ist kein Marktplatz, kein Zahlungsdienst und kein Vermittler.
 
-### `DEALFAST`
+- Klasse 42: SaaS und Bereitstellung nicht herunterladbarer Software – voraussichtlicher Kernbereich.
+- Klasse 35: Werbung, Affiliate-Marketing, Preisvergleichs- oder Geschäftsinformationen – erst relevant, soweit diese Leistungen tatsächlich kommerziell angeboten werden.
+- Klasse 9: nur bei einer herunterladbaren App oder Software.
 
-- `DEALFAST` ist als ähnliches Zeichen und als geschäftlich genutzte Bezeichnung dokumentiert;
-- deshalb bleibt es für die spätere Zeichen-/Branchen-/Klassenprüfung relevant;
-- aus bloßer geschäftlicher Nutzung wird kein nicht nachgewiesenes Markenrecht behauptet.
+Die endgültigen Begriffe müssen vor Anmeldung in der amtlichen Klassifikationsdatenbank geprüft werden.
 
-## DPMA-Suchstrategie dokumentiert
+## Freigabeampel
 
-- [x] exaktes Zeichen `DEALFAZ` als Primärsuche festgelegt
-- [x] Schreib-/Klangvarianten `DEAL FAZ`, `DEALFAS`, `DEAL FAS` dokumentiert
-- [x] ähnliche Zeichen `DEALFA`, `DEALFAST`, `DEAL FAST` festgehalten
-- [x] breitere `Deal?`-Suche als spätere amtliche Ergänzung vorgesehen
-- [x] relevante Leistungsbereiche dokumentiert: Websoftware/Rechentools, Reselling-/Preis-/ROI-Informationen, Online-/Affiliate-Marketing
-- [x] EUIPO/WIPO als zusätzliche amtliche Prüfebene dokumentiert
-- [x] sichere Beta-Nutzung ohne Markenfreigabe-Behauptung festgelegt
+| Einsatz | Status | Bedingung |
+|---|---|---|
+| Technische Entwicklung und interne Tests | Grün | DINAVO ohne `®` als Arbeitsname |
+| Kostenlose öffentliche Beta | Grün mit dokumentiertem Restrisiko | keine Exklusivitätsbehauptung |
+| Markenanmeldung oder größeres Werbebudget | Gelb | vorher professionelle Identitäts- und Ähnlichkeitsrecherche |
+| EU-/weltweite Exklusivität behaupten | Rot | dafür liegt keine belastbare Grundlage vor |
 
-## ⏸ Finale Markenfreigabe nach Gewerbe bzw. vor irreversibler Markeninvestition
+## Schutzschritte
 
-Die folgenden Schritte sind keine aktuellen gelben Punkte der kostenlosen Beta. Sie werden vor einer Markenanmeldung, größeren Branding-Ausgabe oder einem endgültigen kommerziellen Marken-Rollout abgeschlossen:
+1. Amtliche Exakt- und Ähnlichkeitssuche am Tag einer Anmeldung wiederholen.
+2. Die Dienstleistungsliste fachkundig prüfen lassen.
+3. DINAVO ohne `®` verwenden, solange keine Eintragung besteht.
+4. Eine verfügbare Domain erst nach Live-Prüfung beim Registrar registrieren; `dinavo.com` ist bereits belegt.
+5. Nach einer Anmeldung Widerspruchs- und Überwachungsfristen beachten.
 
-- `DEALFAZ` und Varianten direkt in DPMAregister vollständig auswerten
-- `DEALFA`, `DEALFAST`, `DEAL FAST` direkt in relevanten amtlichen Registern auswerten
-- breitere `Deal?`-Suche mit passenden Wortmarken-/Klassenfiltern durchführen
-- EUTM 018240890 direkt bei EUIPO/TMview auf aktuellen Rechtsstand, Inhaber und Klassen verifizieren
-- WIPO-Treffer mit Deutschland-/EU-Wirkung prüfen
-- bei ernsthaftem Konflikt Namensalternative oder fachkundige Kollisionsprüfung nutzen
+## Schlussfolgerung
 
-## Ergebnis
-
-**Pre-Gewerbe/Beta-Nutzung des Namens mit konservativen Schutzregeln: 🟢 100 % grün.**
-
-**Rechtliche Markenanmeldung/Kollisionsfreigabe: ⏸ späterer kommerzieller Schritt, nicht als bereits erteilt dargestellt.**
+Für die kostenlose Beta ist DINAVO ein vertretbarer Arbeitsname, aber keine rechtlich garantierte oder weltweit freie Marke. Der technische Launch und eine spätere Markenanmeldung sind getrennte Freigaben.

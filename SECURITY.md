@@ -1,16 +1,16 @@
-# DEALFAZ Security Policy
+# DINAVO Security Policy
 
-DEALFAZ soll sicher, datensparsam und transparent betrieben werden.
+DINAVO soll sicher, datensparsam und transparent betrieben werden.
 
 ## Sicherheitsproblem melden
 
 Bitte veröffentliche ausnutzbare Sicherheitsdetails, persönliche Daten, Tokens, Zugangsdaten oder andere sensible Informationen **nicht** in einem öffentlichen GitHub-Issue.
 
-Nutze stattdessen die Kontaktmöglichkeit, die auf der jeweils aktuellen öffentlichen DEALFAZ-Seite im Impressum bzw. in den Datenschutzhinweisen angegeben ist.
+Nutze stattdessen die Kontaktmöglichkeit, die auf der jeweils aktuellen öffentlichen DINAVO-Seite im Impressum bzw. in den Datenschutzhinweisen angegeben ist.
 
 Bitte beschreibe möglichst:
 
-- betroffene DEALFAZ-Version oder URL
+- betroffene DINAVO-Version oder URL
 - beobachtetes Verhalten
 - erwartetes Verhalten
 - reproduzierbare Schritte ohne Zugriff auf fremde Daten
@@ -51,4 +51,4 @@ Das öffentliche Repository enthält automatisierte Qualitätskontrollen unter a
 - offensichtliche Secret-Muster
 - vorbereitete Sicherheitsheader
 
-**Keine Sicherheitsgarantie:** Auch mit diesen Kontrollen können Fehler vorkommen. DEALFAZ wird deshalb schrittweise und mit möglichst geringer Datenspeicherung aufgebaut.
+**Keine Sicherheitsgarantie:** Auch mit diesen Kontrollen können Fehler vorkommen. DINAVO wird deshalb schrittweise und mit möglichst geringer Datenspeicherung aufgebaut.

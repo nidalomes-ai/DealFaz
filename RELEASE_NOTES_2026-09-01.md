@@ -1,12 +1,12 @@
-# DEALFAZ Launch Candidate – 01.09.2026
+# DINAVO Launch Candidate – 01.09.2026
 
-Stand: 27.08.2026
+Stand: 01.09.2026
 
-DEALFAZ ist eine kostenlose browserbasierte Reselling-Rechen- und Entscheidungshilfe für Deutschland, Österreich und die Schweiz.
+DINAVO ist eine kostenlose browserbasierte Reselling-Rechen- und Entscheidungshilfe für Deutschland, Österreich und die Schweiz.
 
 ## Haupt-Einstieg
 
-**DEALFAZ Hauptseite / Schnellcheck:**
+**DINAVO Hauptseite / Schnellcheck:**
 
 `https://dealfaz.dealfaz-social.workers.dev/`
 
@@ -14,7 +14,7 @@ DEALFAZ ist eine kostenlose browserbasierte Reselling-Rechen- und Entscheidungsh
 
 `https://dealfaz.dealfaz-social.workers.dev/reselling-rechner/`
 
-Alte Supabase-/Vercel-Frontendlinks sind keine Launch-Einstiege mehr. Bestehende externe Legacy-Links auf `dealfaz-launch` werden über die aktive Supabase-Redirect-Funktion Version 38 auf die aktuelle Cloudflare-Produktion weitergeleitet.
+Alte Supabase-/Vercel-Frontendlinks sind keine Launch-Einstiege mehr. Die aktuelle Seite und ihre Navigation verwenden ausschließlich die Cloudflare-Produktion.
 
 ## Launch-Kern – 🟢
 
@@ -31,6 +31,14 @@ Alte Supabase-/Vercel-Frontendlinks sind keine Launch-Einstiege mehr. Bestehende
 - lokale Watchlist ohne Nutzerkonto
 - Deal-Vergleich
 - tatsächliches späteres Verkaufsergebnis lokal erfassbar
+- Gebührenprofile mit editierbaren Prozent-, Fix-, Versand- und Zusatzkosten
+- unveränderlicher Schätz-Snapshot je gespeichertem Deal
+- lokales Lernen aus abgeschlossenen Deals einschließlich Median-Faktoren und Stundenlohn
+- Jahresgewinn und Einstellungen in stabilen `dealfaz:v1:*`-Schlüsseln
+- zentrale unveränderliche Konfiguration für Storage, Plattformen, Felder, Kennzahlen und Rechenregeln
+- stabiler reservierter Lizenzschlüssel `dealfaz:v1:license`, ohne aktive Bezahlschranke
+- Beispiel-Deal nur bei leerem Speicher; beim ersten Tippen vollständig entfernt und nie als echter Deal speicherbar
+- Gewinn und ROI als einzige große Hauptkennzahlen mit direkten Lernlinks
 - Teilen mit Dealwerten im URL-Fragment
 - externe Marktplätze als Originalquellen
 
@@ -40,22 +48,20 @@ Alte Supabase-/Vercel-Frontendlinks sind keine Launch-Einstiege mehr. Bestehende
 - Szenarien sind Rechenhilfen und keine Prognosen
 - keine Gewinn-, Preis-, Nachfrage- oder Verkaufsgarantie
 - keine Login-/Paywall-Umgehung und kein unerlaubtes Scraping
-- Bot-/Preview-Zugriffe werden nicht als eindeutige reale Besucher ausgegeben
+- kein eigenes Analytics-, Werbe- oder Marketing-Skript geladen
 - Partner-/Affiliate-Monetarisierung bleibt durch `MONETIZATION_DISABLED` deaktiviert
 - Amazon- und eBay-Verweise bleiben bis zur späteren Aktivierung neutral
 
 ## Technischer Status – 🟢
 
 - Cloudflare-Produktion erreichbar
-- `DEALFAZ Quality`: grün
-- `DEALFAZ Live Health`: grün
-- `DEALFAZ Commercialization Guards`: grün
-- PostHog Error Tracking zuletzt ohne aktive Fehler im geprüften 7-Tage-Fenster
+- lokale `DINAVO Quality`-Prüfungen: grün
+- lokale `DINAVO Commercialization Guards`: grün
+- Live-Health-Prüfung folgt unmittelbar nach der Veröffentlichung
 - öffentliche HTML-Seiten ohne alte Supabase-Funktionslinks
 - Canonical, Sitemap, robots.txt und Launch-Kit auf Cloudflare
 - Social-Preview als 1200×630 PNG eingebaut
-- Mobile-/Touch-Viewport-Prüfung bei 320 px, 375 px und 390 px bestanden
-- Metricool-Schutzregel: maximal 20 Veröffentlichungen pro Monat
+- responsives Layout und große mobile Hauptaktion eingebaut; abschließender Live-Browsertest folgt nach Veröffentlichung
 - SEO-/IndexNow-Technik vollständig vorbereitet
 - Amazon-Vorbereitung grün
 - eBay-Vorbereitung grün
@@ -77,15 +83,16 @@ Diese Punkte sind nicht vorab erzwingbar und keine technischen Release-Blocker.
 
 - 🟢 Technik/Funktion
 - 🟢 Sicherheit/Rechtstexte für Beta
-- 🟢 Mobile
+- 🟢 responsiver Code / Live-Browsertest nach Veröffentlichung
 - 🟢 SEO/IndexNow
 - 🟢 Social/Metricool-Schutz
 - 🟢 Hosting
 - 🟢 Amazon-Vorbereitung
 - 🟢 eBay-Vorbereitung
 - 🟢 Steuer-/ELSTER-Vorbereitung
-- 🟢 Marken-/Namens-Risikosteuerung
-- 🟡 **Gewerbeanmeldung – einziger aktueller gelber Punkt**
+- 🟢 DINAVO als unregistrierter Arbeitsname ohne `®`
+- 🟡 Gewerbeanmeldung vor kommerziellem Betrieb
+- ⏸ professionelle Marken-Ähnlichkeitsrecherche als Neu-Gate vor Anmeldung oder größerem Werbebudget
 
 ## ⏸ Monetarisierung nach Gewerbe
 
@@ -93,6 +100,4 @@ Steuerliche Übermittlung mit echten Betriebsdaten, Amazon-Partnerlinks, eBay nu
 
 ## Ergebnis
 
-**Kostenlose DEALFAZ-Beta: 🟢 100 % grün.**
-
-**Einziger aktueller gelber Punkt: 🟡 Gewerbe.**
+**Technische kostenlose DINAVO-Beta: lokal releasebereit. Einziger aktiver gelber Punkt: Gewerbebeginn/Gewerbeanmeldung.** Externe Rechtsakte wie Markenanmeldung, Domainkauf und Partnerfreigaben bleiben pausiert und werden nicht als bereits erledigt dargestellt.

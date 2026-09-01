@@ -6,34 +6,34 @@
 <meta name="theme-color" content="#09111f">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="DEALFAZ">
-<meta name="description" content="DEALFAZ prüft einen Reselling-Deal mit drei einfachen Angaben – kostenlos, ohne Anmeldung und mit optionalen Details.">
+<meta name="apple-mobile-web-app-title" content="DINAVO">
+<meta name="description" content="DINAVO prüft einen Reselling-Deal mit drei einfachen Angaben – kostenlos, ohne Anmeldung und mit optionalen Details.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://dealfaz.dealfaz-social.workers.dev/">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/icon.svg">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="DEALFAZ">
-<meta property="og:title" content="DEALFAZ – Deal einfach prüfen">
-<meta property="og:description" content="Was ist es? Was zahlst du? Für wie viel kannst du es verkaufen? DEALFAZ rechnet den Rest.">
+<meta property="og:site_name" content="DINAVO">
+<meta property="og:title" content="DINAVO – Deal einfach prüfen">
+<meta property="og:description" content="Was ist es? Was zahlst du? Für wie viel kannst du es verkaufen? DINAVO rechnet den Rest.">
 <meta property="og:url" content="https://dealfaz.dealfaz-social.workers.dev/">
 <meta property="og:image" content="https://dealfaz.dealfaz-social.workers.dev/social-card.png">
 <meta property="og:image:secure_url" content="https://dealfaz.dealfaz-social.workers.dev/social-card.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="DEALFAZ – Deal einfach prüfen">
+<meta property="og:image:alt" content="DINAVO – Deal einfach prüfen">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="DEALFAZ – Deal einfach prüfen">
+<meta name="twitter:title" content="DINAVO – Deal einfach prüfen">
 <meta name="twitter:description" content="Drei Angaben. Eine klare Rechnung.">
 <meta name="twitter:image" content="https://dealfaz.dealfaz-social.workers.dev/social-card.png">
-<title>DEALFAZ – Deal einfach prüfen</title>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"DEALFAZ","url":"https://dealfaz.dealfaz-social.workers.dev/","description":"Kostenlose browserbasierte Reselling-Entscheidungshilfe für Deutschland, Österreich und die Schweiz.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}}</script>
+<title>DINAVO – Deal einfach prüfen</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"DINAVO","url":"https://dealfaz.dealfaz-social.workers.dev/","description":"Kostenlose browserbasierte Reselling-Entscheidungshilfe für Deutschland, Österreich und die Schweiz.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}}</script>
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<header><div class="bar"><a class="brand" href="/" aria-label="DEALFAZ Startseite">DEAL<b>FAZ</b></a><span class="pill">KOSTENLOS · BETA</span></div></header>
+<header><div class="bar"><a class="brand" href="/" aria-label="DINAVO Startseite">DINA<b>VO</b></a><span class="pill">KOSTENLOS · BETA</span></div></header>
 <main>
 <section class="hero simpleHero">
   <div class="eyebrow">SCHNELL PRÜFEN</div>
@@ -52,14 +52,26 @@
   <details class="advancedBox">
     <summary>Genauer prüfen <span>optional</span></summary>
     <div class="advancedGrid">
-      <label class="f" for="cost">Extra-Kosten (€)<input id="cost" type="number" min="0" step="0.01" value="0"></label>
+      <label class="f span2" for="platform">Verkaufsplattform<select id="platform" aria-describedby="platformNote"></select></label>
+      <label class="f financeField" for="feePercent">Plattformgebühr (%)<input id="feePercent" type="number" min="0" max="100" step="0.01" value="0" inputmode="decimal"></label>
+      <label class="f moneyField" for="feeFixed">Fixgebühr (€)<input id="feeFixed" type="number" min="0" step="0.01" value="0" inputmode="decimal"></label>
+      <label class="f moneyField" for="shipping">Versand (€)<input id="shipping" type="number" min="0" step="0.01" value="0" inputmode="decimal"></label>
+      <label class="f moneyField" for="costsExtra">Weitere Kosten (€)<input id="costsExtra" type="number" min="0" step="0.01" value="0" inputmode="decimal"></label>
+      <input id="cost" type="hidden" value="0">
+      <div id="platformNote" class="platformNote span2" role="note"></div>
+      <div class="costSummary span2" aria-live="polite">
+        <div><span>Gebühr</span><strong id="feeAmount" class="moneyValue">0,00 €</strong></div>
+        <div><span>Versand</span><strong id="shippingAmount" class="moneyValue">0,00 €</strong></div>
+        <div><span>Weitere Kosten</span><strong id="extraAmount" class="moneyValue">0,00 €</strong></div>
+        <div><span>Gesamtkosten</span><strong id="costAmount" class="moneyValue">0,00 €</strong></div>
+      </div>
       <label class="f" for="sold">Verkaufte Vergleiche<input id="sold" type="number" min="0" value="0"></label>
       <label class="f" for="active">Aktive Vergleiche<input id="active" type="number" min="0" value="0"></label>
       <label class="f" for="comps">Gute Preisvergleiche<input id="comps" type="number" min="0" value="0"></label>
       <label class="f" for="certainty">Wie ähnlich? 1–5<input id="certainty" type="number" min="1" max="5" value="3"></label>
-      <label class="f" for="risk">Risiko 1–5<input id="risk" type="number" min="1" max="5" value="3"></label>
+      <label class="f" for="risk">Risiko 1–5<input id="risk" type="number" min="1" max="5" value="3" inputmode="numeric"></label>
       <label class="f" for="target">Gewünschter ROI (%)<input id="target" type="number" min="0" max="500" value="25"></label>
-      <label class="f" for="days">Verkauf in Tagen<input id="days" type="number" min="1" value="30"></label>
+      <label class="f" for="days">Verkauf in Tagen<input id="days" type="number" min="1" value="30" inputmode="numeric"></label>
     </div>
   </details>
 </section>
@@ -68,14 +80,18 @@
   <div class="resultLabel">ERGEBNIS</div>
   <div class="bigVerdict" id="verdict">–</div>
   <p id="summary">–</p>
-  <div class="heroNumbers"><div><span>Rechnerischer Gewinn</span><strong id="profit">–</strong></div><div><span>Rechen-Score</span><strong><span id="score">–</span>/100</strong></div></div>
+  <div class="heroNumbers"><div><span>Rechnerischer Gewinn <a id="profitMetricLink" class="metricLink" href="/reselling-rechner/">Erklärt →</a></span><strong id="profit" class="moneyValue">–</strong></div><div><span>ROI <a id="roiMetricLink" class="metricLink" href="/roi-reselling/">Erklärt →</a></span><strong id="roi">–</strong></div></div>
   <div id="gate" class="gate" hidden></div>
   <div class="actions mainActions"><button id="save">Merken</button><button id="share" class="secondary">Teilen</button><button id="copy" class="secondary">Kopieren</button></div>
   <details class="advancedBox resultDetails">
     <summary>Alle Zahlen ansehen</summary>
-    <div class="evidence"><div class="ev">Verkäufe / Angebote<strong id="sth">–</strong></div><div class="ev">Datenqualität<strong id="quality">–</strong></div></div>
-    <div class="metrics"><div class="metric"><span>ROI</span><strong id="roi">–</strong></div><div class="metric"><span>Marge</span><strong id="margin">–</strong></div><div class="metric"><span>ROI / 30 Tage</span><strong id="roi30">–</strong></div><div class="metric"><span>Max. Einkauf</span><strong id="maxbuy">–</strong></div></div>
-    <div class="scenarios"><div class="scenario"><b>Vorsichtig</b><span id="worst">–</span></div><div class="scenario"><b>Normal</b><span id="real">–</span></div><div class="scenario"><b>Sehr gut</b><span id="bestcase">–</span></div></div>
+    <div class="evidence"><div class="ev">Verkäufe / Angebote <a id="sellRateMetricLink" class="metricLink" href="/sell-through/">Erklärt →</a><strong id="sth">–</strong></div><div class="ev">Datenqualität<strong id="quality">–</strong></div></div>
+    <div class="metrics"><div class="metric" id="scoreCard"><span>Rechen-Score</span><strong><span id="score">–</span>/100</strong></div><div class="metric"><span>Marge</span><strong id="margin">–</strong></div><div class="metric"><span>ROI / 30 Tage</span><strong id="roi30">–</strong></div><div class="metric"><span>Max. Einkauf <a id="maxBuyMetricLink" class="metricLink" href="/maximaler-einkaufspreis/">Erklärt →</a></span><strong id="maxbuy" class="moneyValue">–</strong></div></div>
+    <div class="scenarios"><div class="scenario"><b>Vorsichtig</b><span id="worst" class="moneyValue">–</span></div><div class="scenario"><b>Normal</b><span id="real" class="moneyValue">–</span></div><div class="scenario"><b>Sehr gut</b><span id="bestcase" class="moneyValue">–</span></div></div>
+    <div id="personalEstimate" class="personalEstimate" hidden>
+      <strong>Deine persönliche Korrektur</strong>
+      <span id="personalEstimateText"></span>
+    </div>
   </details>
 </section>
 
@@ -83,23 +99,23 @@
 
 <details class="toolBox" id="markets"><summary>🔎 Preise vergleichen</summary><div class="toolBody"><p>Öffne Originalseiten und prüfe den Markt.</p><div class="markets" id="marketLinks"></div><p class="mini"><strong>Hinweis:</strong> Affiliate-Monetarisierung ist derzeit deaktiviert. Die Marktlinks dienen ausschließlich der eigenen Recherche.</p></div></details>
 
-<details class="toolBox" id="watchlist"><summary>⭐ Gemerkte Deals</summary><div class="toolBody"><p>Alles bleibt auf diesem Gerät.</p><div class="actions"><button id="exportJson" class="secondary">Backup</button><button id="exportCsv" class="secondary">CSV</button><button id="importJson" class="secondary">Backup laden</button><button id="clearWatch" class="danger">Alles löschen</button><input id="importFile" type="file" accept="application/json" hidden></div><div id="watch"></div></div></details>
+<details class="toolBox" id="watchlist"><summary>⭐ Gemerkte Deals</summary><div class="toolBody"><p>Alles bleibt auf diesem Gerät.</p><div class="actions"><button id="exportJson" class="secondary">Backup</button><button id="exportCsv" class="secondary">CSV</button><button id="importJson" class="secondary">Backup laden</button><button id="clearWatch" class="danger">Offene Deals löschen</button><input id="importFile" type="file" accept="application/json" hidden></div><div id="watch"></div></div></details>
 
-<details class="toolBox" id="battle"><summary>⚖️ Zwei Deals vergleichen</summary><div class="toolBody"><h2>Deal-Vergleich</h2><div class="battle"><div class="battleCard"><h3>Deal A</h3><p id="battleA">–</p></div><div class="battleCard"><h3>Deal B</h3><div class="advancedGrid"><label class="f" for="bName">Name<input id="bName" placeholder="Alternative"></label><label class="f" for="bBuy">Einkauf (€)<input id="bBuy" type="number" min="0" value="200"></label><label class="f" for="bSell">Verkauf (€)<input id="bSell" type="number" min="0" value="290"></label><label class="f" for="bCost">Kosten (€)<input id="bCost" type="number" min="0" value="25"></label><label class="f" for="bRisk">Risiko 1–5<input id="bRisk" type="number" min="1" max="5" value="3"></label><label class="f" for="bDays">Tage<input id="bDays" type="number" min="1" value="30"></label></div><p id="battleB">–</p></div></div><div id="battleWinner" class="winner neutral">Noch kein eindeutiger Vergleich.</div></div></details>
+<details class="toolBox" id="battle"><summary>⚖️ Zwei Deals vergleichen</summary><div class="toolBody"><h2>Deal-Vergleich</h2><div class="battle"><div class="battleCard"><h3>Deal A</h3><p id="battleA">–</p></div><div class="battleCard"><h3>Deal B</h3><div class="advancedGrid"><label class="f" for="bName">Name<input id="bName" placeholder="Alternative"></label><label class="f moneyField" for="bBuy">Einkauf (€)<input id="bBuy" type="number" min="0" value="200"></label><label class="f moneyField" for="bSell">Verkauf (€)<input id="bSell" type="number" min="0" value="290"></label><label class="f moneyField" for="bCost">Kosten (€)<input id="bCost" type="number" min="0" value="25"></label><label class="f" for="bRisk">Risiko 1–5<input id="bRisk" type="number" min="1" max="5" value="3"></label><label class="f" for="bDays">Tage<input id="bDays" type="number" min="1" value="30"></label></div><p id="battleB">–</p></div></div><div id="battleWinner" class="winner neutral">Noch kein eindeutiger Vergleich.</div></div></details>
 
-<details class="toolBox" id="realitaet"><summary>📦 Tatsächliches Ergebnis</summary><div class="toolBody"><h2>Was kam wirklich raus?</h2><p>Trage später den echten Verkauf ein.</p><div class="actions"><button id="saveForecast">Erwartung merken</button><button id="exportOutcomes" class="secondary">Ergebnisse als CSV</button></div><div id="forecastList"></div><div class="innerBox"><h3>Verkauf eintragen</h3><input id="selectedForecast" type="hidden"><div class="advancedGrid"><label class="f" for="actualSell">Verkaufspreis (€)<input id="actualSell" type="number" min="0" step="0.01"></label><label class="f" for="actualCost">Kosten (€)<input id="actualCost" type="number" min="0" step="0.01"></label><label class="f" for="actualDays">Tage<input id="actualDays" type="number" min="0" step="1"></label></div><div class="actions"><button id="saveOutcome">Ergebnis speichern</button></div><p id="outcomeHint">Wähle zuerst eine gemerkte Erwartung.</p></div><div id="outcomeList"></div></div></details>
+<details class="toolBox" id="realitaet"><summary>📦 Tatsächliches Ergebnis</summary><div class="toolBody"><h2>Was kam wirklich raus?</h2><p>Trage später ein, ob und zu welchen Bedingungen der Deal abgeschlossen wurde.</p><div id="factorPanel" class="factorBox" role="status"></div><div class="actions"><button id="saveForecast">Erwartung merken</button><button id="exportOutcomes" class="secondary">Ergebnisse als CSV</button></div><div id="forecastList"></div><div class="innerBox"><h3>Ergebnis eintragen</h3><input id="selectedForecast" type="hidden"><div class="advancedGrid"><label class="f" for="actualSold">Ausgang<select id="actualSold"><option value="true">Verkauft</option><option value="false">Nicht verkauft</option></select></label><label class="f moneyField" for="actualSell" id="actualSellField">Verkaufspreis (€)<input id="actualSell" type="number" min="0" step="0.01"></label><label class="f moneyField" for="actualCost">Tatsächliche Kosten (€)<input id="actualCost" type="number" min="0" step="0.01"></label><label class="f" for="actualDays">Tatsächliche Tage<input id="actualDays" type="number" min="1" step="1" required></label><label class="f" for="actualMinutes">Arbeitsaufwand (Minuten)<input id="actualMinutes" type="number" min="1" step="1" placeholder="z. B. 45" required></label><label class="f span2" for="actualNote">Notiz (optional)<input id="actualNote" maxlength="500" placeholder="z. B. Preis nachverhandelt"></label></div><div class="actions"><button id="saveOutcome">Ergebnis speichern</button></div><p id="outcomeHint">Wähle zuerst eine gemerkte Erwartung.</p></div><div id="outcomeList"></div></div></details>
 
-<details class="toolBox" id="rules"><summary>⚙️ Meine Regeln</summary><div class="toolBody"><h2>Eigene Grenzen</h2><div class="advancedGrid"><label class="f" for="ruleProfit">Mindestens Gewinn (€)<input id="ruleProfit" type="number" min="0" value="20"></label><label class="f" for="ruleRoi">Mindestens ROI (%)<input id="ruleRoi" type="number" min="0" value="25"></label><label class="f" for="ruleRisk">Höchstens Risiko<input id="ruleRisk" type="number" min="1" max="5" value="3"></label><label class="f" for="ruleQuality">Mindestens Datenqualität<input id="ruleQuality" type="number" min="0" max="100" value="50"></label></div><div class="actions"><button id="saveRules">Regeln speichern</button></div><p id="ruleStatus"></p></div></details>
+<details class="toolBox" id="rules"><summary>⚙️ Meine Regeln & Einstellungen</summary><div class="toolBody"><h2>Eigene Grenzen</h2><div class="advancedGrid"><label class="f moneyField" for="ruleProfit">Mindestens Gewinn (€)<input id="ruleProfit" type="number" min="0" value="20"></label><label class="f financeField" for="ruleRoi">Mindestens ROI (%)<input id="ruleRoi" type="number" min="0" value="30"></label><label class="f" for="ruleRisk">Höchstens Risiko<input id="ruleRisk" type="number" min="1" max="5" value="3"></label><label class="f" for="ruleQuality">Mindestens Datenqualität (1–5)<input id="ruleQuality" type="number" min="1" max="5" value="2"></label></div><div class="actions"><button id="saveRules">Regeln speichern</button></div><p id="ruleStatus"></p><div class="innerBox"><h3>Rechner-Einstellungen</h3><div class="advancedGrid"><label class="f" for="defaultPlatform">Standard-Plattform<select id="defaultPlatform"></select></label><label class="f" for="currency">Währung<select id="currency"><option value="EUR">EUR · Euro</option></select></label></div><div class="yearSummary"><span>Realisierter Gewinn <b id="profitYtdYear"></b></span><strong id="profitYtd" class="moneyValue">0,00 €</strong></div><div class="actions"><button id="saveSettings">Einstellungen speichern</button></div><p id="settingsStatus" class="mini" role="status">Der Jahresgewinn wird aus verkauften Abschlüssen automatisch berechnet.</p></div></div></details>
 
 <details class="toolBox" id="wissen"><summary>📘 Mehr lernen</summary><div class="toolBody"><div class="markets"><a class="market" href="/reselling-rechner/"><strong>Gewinn berechnen</strong><span>Einfach erklärt →</span></a><a class="market" href="/maximaler-einkaufspreis/"><strong>Maximal einkaufen</strong><span>Einfach erklärt →</span></a><a class="market" href="/roi-reselling/"><strong>ROI verstehen</strong><span>Einfach erklärt →</span></a><a class="market" href="/sell-through/"><strong>Verkäufe vergleichen</strong><span>Einfach erklärt →</span></a></div></div></details>
 
 <section class="legal" id="recht">
   <h2>Recht & Transparenz</h2>
-  <p><strong>Keine Gewinn- oder Verkaufsgarantie:</strong> DEALFAZ ist eine Rechen- und Entscheidungshilfe. Ergebnisse beruhen auf deinen Eingaben und sind keine Kauf-, Rechts-, Steuer- oder Finanzberatung.</p>
-  <p><strong>Keine unerlaubten Datenzugriffe:</strong> DEALFAZ umgeht keine Logins, Paywalls oder technischen Schutzmaßnahmen und betreibt kein unerlaubtes Scraping.</p>
-  <p><strong>Monetarisierung:</strong> Affiliate-Monetarisierung ist derzeit deaktiviert. Amazon und andere Plattformen werden nur als externe Originalquellen verlinkt. Der Amazon-Link ist derzeit kein Partnerlink. DEALFAZ verkauft dort keine Waren und ist nicht Vertragspartner eines dortigen Kaufs.</p>
-  <p><strong>Lokale Daten:</strong> Gemerkte Deals, Regeln, Erwartungen und Ergebnisse bleiben in dieser Version auf deinem Gerät, bis du sie selbst löschst oder deine Browserdaten entfernst.</p>
-  <p><strong>Verbraucherstreitbeilegung:</strong> DEALFAZ ist nicht freiwillig zur Teilnahme an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle bereit. Soweit im Einzelfall eine gesetzliche Verpflichtung zur Teilnahme besteht, bleibt diese unberührt.</p>
+  <p><strong>Keine Gewinn- oder Verkaufsgarantie:</strong> DINAVO ist eine Rechen- und Entscheidungshilfe. Ergebnisse beruhen auf deinen Eingaben und sind keine Kauf-, Rechts-, Steuer- oder Finanzberatung.</p>
+  <p><strong>Keine unerlaubten Datenzugriffe:</strong> DINAVO umgeht keine Logins, Paywalls oder technischen Schutzmaßnahmen und betreibt kein unerlaubtes Scraping.</p>
+  <p><strong>Monetarisierung:</strong> Affiliate-Monetarisierung ist derzeit deaktiviert. Amazon und andere Plattformen werden nur als externe Originalquellen verlinkt. Der Amazon-Link ist derzeit kein Partnerlink. DINAVO verkauft dort keine Waren und ist nicht Vertragspartner eines dortigen Kaufs.</p>
+  <p><strong>Lokale Daten:</strong> Gemerkte Deals, Regeln, Einstellungen, Erwartungen und Ergebnisse bleiben in dieser Version auf deinem Gerät, bis du sie selbst löschst oder deine Browserdaten entfernst.</p>
+  <p><strong>Verbraucherstreitbeilegung:</strong> DINAVO ist nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen. Eine im Einzelfall bestehende gesetzliche Pflicht bleibt unberührt.</p>
   <div class="legalLinks"><button data-legal="imprint">Impressum</button><button data-legal="privacy">Datenschutz</button><button data-legal="terms">Nutzungsbedingungen</button><button data-legal="liability">Haftung</button></div>
 
   <div id="imprint" class="legalPage">
@@ -111,30 +127,31 @@
   <div id="privacy" class="legalPage">
     <h3>Datenschutzhinweise</h3>
     <p><strong>Verantwortlicher:</strong> Achraf Meslemani, Noreweg 25, 23812 Wahlstedt, Deutschland · nidalomes@gmail.com</p>
-    <p><strong>1. Hosting und Sicherheit:</strong> Beim Aufruf verarbeitet Cloudflare technisch erforderliche Verbindungs- und Sicherheitsdaten, insbesondere IP-Adresse, Zeitpunkt, angeforderte Ressource, Browser-/Geräteinformationen und Protokolldaten. Zweck ist die sichere, stabile und missbrauchsgeschützte Bereitstellung der Website. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO; das berechtigte Interesse liegt im sicheren und zuverlässigen Betrieb von DEALFAZ.</p>
-    <p><strong>2. Alte DEALFAZ-Links:</strong> Einzelne früher veröffentlichte Links können zunächst über eine DEALFAZ-Weiterleitung bei Supabase laufen und anschließend auf die aktuelle Cloudflare-Seite führen. Dabei können technisch notwendige Request- und Protokolldaten verarbeitet werden. Das Supabase-Projekt verwendet als primäre Datenregion Irland (EU); Edge-Funktionen können technisch über verteilte Infrastruktur ausgeführt werden. Zweck ist ausschließlich die Funktionsfähigkeit alter Links. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.</p>
-    <p><strong>3. Lokale Speicherung auf deinem Gerät:</strong> Watchlist, eigene Regeln, Erwartungen und tatsächliche Ergebnisse werden über den Browser lokal gespeichert und nicht als DEALFAZ-Nutzerprofil an eine zentrale Datenbank übertragen. Die Speicherung erfolgt nur für von dir genutzte Funktionen. Sie bleibt bestehen, bis du sie in DEALFAZ löschst oder die Browserdaten entfernst. Für die ausdrücklich gewünschten lokalen Funktionen wird auf § 25 Abs. 2 TDDDG gestützt.</p>
-    <p><strong>4. Reichweitenmessung/Cookies:</strong> Die aktuelle öffentliche Hauptseite lädt kein eigenes Analytics-Skript und setzt selbst keine Werbe- oder Marketing-Cookies. Es findet derzeit keine DEALFAZ-eigene eindeutige Besucheridentifikation und kein Profiling zu Werbezwecken statt. Ein vorhandenes, aktuell nicht geladenes Messmodul ist technisch nur für aggregierte Zählungen konzipiert; seine mögliche Klassifizierung zwischen Bot/Preview und technisch nicht als Bot/Preview erkennbarem Zugriff wäre keine Messung eindeutiger Besucher. Technische Server-/Sicherheitsprotokolle der Hostinganbieter bleiben hiervon unberührt.</p>
-    <p><strong>5. Externe Plattformen:</strong> Amazon, eBay, Kleinanzeigen, idealo und Google werden erst aufgerufen, wenn du den jeweiligen externen Link anklickst. Ab diesem Zeitpunkt verarbeitet der jeweilige Anbieter Daten nach seinen eigenen Datenschutzregeln. Die derzeitigen Links enthalten keine DEALFAZ-Affiliate- oder EPN-Trackingparameter.</p>
-    <p><strong>6. Empfänger und internationale Verarbeitung:</strong> Empfänger technischer Verbindungsdaten können die für DEALFAZ eingesetzten Hosting-/Infrastrukturanbieter Cloudflare und – nur bei den beschriebenen Legacy-Weiterleitungen – Supabase sein. Beide Anbieter stellen vertragliche Datenschutzmechanismen für internationale Übermittlungen bereit; je nach technischer Route kann eine Verarbeitung außerhalb des EWR nicht vollständig ausgeschlossen werden.</p>
-    <p><strong>7. Speicherdauer:</strong> DEALFAZ führt in der aktuellen Hauptseite keine eigene personenbezogene Besucherhistorie. Technische Logs bei Hosting-/Infrastrukturanbietern werden nur nach deren jeweiliger Servicekonfiguration und soweit für Sicherheit, Betrieb, Fehleranalyse oder gesetzliche Pflichten erforderlich aufbewahrt. Lokale Deal-Daten bestimmst und löschst du selbst.</p>
-    <p><strong>8. Deine Rechte:</strong> Soweit personenbezogene Daten verarbeitet werden, bestehen nach Maßgabe der DSGVO insbesondere Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch gegen Verarbeitungen auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Anfragen können an die oben genannte E-Mail-Adresse gerichtet werden.</p>
-    <p><strong>9. Beschwerderecht:</strong> Du kannst dich bei einer Datenschutzaufsichtsbehörde beschweren. Für einen Verantwortlichen mit Sitz in Schleswig-Holstein ist insbesondere das Unabhängige Landeszentrum für Datenschutz Schleswig-Holstein (ULD), Holstenstraße 98, 24103 Kiel, zuständig.</p>
-    <p><strong>10. Automatisierte Entscheidungen:</strong> Der DEALFAZ-Score erzeugt nur eine Rechenhilfe. Es findet keine automatisierte Entscheidung mit rechtlicher oder vergleichbar erheblicher Wirkung im Sinne von Art. 22 DSGVO statt.</p>
+    <p><strong>1. Hosting und Sicherheit:</strong> Beim Aufruf verarbeitet Cloudflare technisch erforderliche Verbindungs- und Sicherheitsdaten, insbesondere IP-Adresse, Zeitpunkt, angeforderte Ressource, Browser-/Geräteinformationen und Protokolldaten. Zweck ist die sichere, stabile und missbrauchsgeschützte Bereitstellung der Website. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO; das berechtigte Interesse liegt im sicheren und zuverlässigen Betrieb von DINAVO.</p>
+    <p><strong>2. Lokale Speicherung auf deinem Gerät:</strong> Die lokale Speicherstruktur wird beim Aufruf technisch initialisiert. Gemerkte Deals, eigene Regeln und Einstellungen, Erwartungen, tatsächliche Ergebnisse und daraus berechnete persönliche Korrekturfaktoren bleiben ausschließlich in deinem Browser und werden nicht an DINAVO oder eine zentrale Datenbank übertragen. Die Speicherung ist für diese von dir genutzten Funktionen erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG) und bleibt bestehen, bis du sie unten löschst oder die Browserdaten entfernst.</p>
+    <p><strong>3. Reichweitenmessung und Cookies:</strong> DINAVO lädt kein Analytics-, Werbe- oder Marketing-Skript und setzt selbst keine Werbe- oder Marketing-Cookies. Es findet kein DINAVO-eigenes Profiling und keine eigene Speicherung einer Besucherhistorie statt. Technisch erforderliche Server- und Sicherheitsprotokolle von Cloudflare bleiben hiervon unberührt.</p>
+    <p><strong>4. Externe Plattformen:</strong> Amazon, eBay, Kleinanzeigen, idealo und Google werden erst aufgerufen, wenn du den jeweiligen externen Link anklickst. Ab diesem Zeitpunkt verarbeitet der jeweilige Anbieter Daten nach seinen eigenen Datenschutzregeln. Die derzeitigen Links enthalten keine DINAVO-Affiliate- oder EPN-Trackingparameter.</p>
+    <p><strong>5. Empfänger und internationale Verarbeitung:</strong> Empfänger der beim Seitenaufruf entstehenden technischen Verbindungsdaten ist Cloudflare als Hosting- und Sicherheitsanbieter. Je nach technischer Route kann eine Verarbeitung außerhalb des EWR nicht vollständig ausgeschlossen werden. Cloudflare stellt hierfür vertragliche Datenschutzmechanismen bereit.</p>
+    <p><strong>6. Speicherdauer:</strong> DINAVO führt keine eigene personenbezogene Besucherhistorie. Technische Protokolle bei Cloudflare werden nach der dortigen Servicekonfiguration und nur soweit für Sicherheit, Betrieb, Fehleranalyse oder gesetzliche Pflichten erforderlich aufbewahrt. Deine lokalen Deal-Daten bestimmst und löschst du selbst.</p>
+    <p><strong>7. Deine Rechte:</strong> Soweit personenbezogene Daten verarbeitet werden, bestehen nach Maßgabe der DSGVO insbesondere Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch gegen Verarbeitungen auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Anfragen können an die oben genannte E-Mail-Adresse gerichtet werden.</p>
+    <p><strong>8. Beschwerderecht:</strong> Du kannst dich bei einer Datenschutzaufsichtsbehörde beschweren. Für den Verantwortlichen in Schleswig-Holstein ist insbesondere das Unabhängige Landeszentrum für Datenschutz Schleswig-Holstein (ULD), Holstenstraße 98, 24103 Kiel, zuständig.</p>
+    <p><strong>9. Automatisierte Entscheidungen:</strong> Der DINAVO-Score ist nur eine Rechenhilfe. Es findet keine automatisierte Entscheidung mit rechtlicher oder vergleichbar erheblicher Wirkung im Sinne von Art. 22 DSGVO statt.</p>
+    <div class="privacyDelete"><button id="clearAllData" class="danger">Alle lokalen DINAVO-Daten löschen</button><p id="privacyDeleteStatus" class="mini" role="status">Löscht Deals, Ergebnisse, Korrekturfaktoren, Regeln und Einstellungen auf diesem Gerät.</p></div>
   </div>
 
   <div id="terms" class="legalPage">
     <h3>Nutzungsbedingungen</h3>
-    <p>DEALFAZ ist derzeit kostenlos. DEALFAZ verkauft keine Waren, nimmt keine Zahlungen entgegen und vermittelt keinen Kaufvertrag zwischen dir und einem externen Marktplatz. Kauf- und Verkaufsentscheidungen triffst du selbst. Prüfe insbesondere Produkt, Echtheit, Zustand, Gebühren, Versand, Steuern und die Regeln des jeweiligen Marktplatzes.</p>
+    <p>DINAVO ist derzeit kostenlos. DINAVO verkauft keine Waren, nimmt keine Zahlungen entgegen und vermittelt keinen Kaufvertrag zwischen dir und einem externen Marktplatz. Kauf- und Verkaufsentscheidungen triffst du selbst. Prüfe insbesondere Produkt, Echtheit, Zustand, Gebühren, Versand, Steuern und die Regeln des jeweiligen Marktplatzes.</p>
   </div>
 
   <div id="liability" class="legalPage">
     <h3>Haftung</h3>
-    <p>Berechnungen, Marktannahmen und Hinweise können unvollständig oder fehlerhaft sein. DEALFAZ gibt keine Garantie für Gewinn, Verkauf, Preis oder Nachfrage. Zwingende gesetzliche Haftung, insbesondere für Vorsatz, grobe Fahrlässigkeit sowie Verletzung von Leben, Körper oder Gesundheit, bleibt unberührt.</p>
+    <p>Berechnungen, Marktannahmen und Hinweise können unvollständig oder fehlerhaft sein. DINAVO gibt keine Garantie für Gewinn, Verkauf, Preis oder Nachfrage. Zwingende gesetzliche Haftung, insbesondere für Vorsatz, grobe Fahrlässigkeit sowie Verletzung von Leben, Körper oder Gesundheit, bleibt unberührt.</p>
   </div>
 </section>
-<div class="footer">DEALFAZ · drei Angaben, eine klare Rechnung · kostenlos.</div>
+<div class="footer">DINAVO · drei Angaben, eine klare Rechnung · kostenlos.</div>
 </main>
-<a class="mobileCta" href="#check" aria-label="Zum DEALFAZ Deal-Check">Deal prüfen</a>
+<a class="mobileCta" href="#check" aria-label="Zum DINAVO Deal-Check">Deal prüfen</a>
+<script src="/data-store.js" defer></script>
 <script src="/app.js" defer></script>
 </body></html>

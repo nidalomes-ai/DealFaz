@@ -1,4 +1,4 @@
-name: DEALFAZ Commercialization Guards
+name: DINAVO Commercialization Guards
 
 on:
   push:
@@ -52,8 +52,10 @@ jobs:
           grep -Fq 'keine EPN-Partnerlinks aktivieren' EBAY-ACTIVATION.md
           grep -Fq 'MONETIZATION_DISABLED' EBAY-ACTIVATION.md
           grep -Fq 'keine fiktiven Umsätze oder Gewinne' ELSTER-FIELD-PREP.md
-          grep -Fq 'DEALFA' TRADEMARK-CHECK.md
-          grep -Fq 'DEALFAST' TRADEMARK-CHECK.md
+          grep -Fq 'Dinavo AB' TRADEMARK-CHECK.md
+          grep -Fq 'dinavo.com' TRADEMARK-CHECK.md
+          grep -Fq 'keine rechtlich garantierte oder weltweit freie Marke' TRADEMARK-CHECK.md
+          grep -Fq 'Klasse 35' TRADEMARK-CHECK.md
           grep -Fq 'kommerzielle Affiliate-Freigabe erfolgt zuerst für Deutschland' DACH-COMMERCIAL-ROLLOUT.md
           grep -Fq 'keine Österreich-spezifische bezahlte Kampagne' DACH-COMMERCIAL-ROLLOUT.md
           grep -Fq 'keine Schweiz-spezifische bezahlte Kampagne' DACH-COMMERCIAL-ROLLOUT.md
@@ -63,23 +65,23 @@ jobs:
         run: |
           set -euo pipefail
           grep -Fq 'Verbraucherstreitbeilegung:' index.html
-          grep -Fq 'nicht freiwillig zur Teilnahme' index.html
+          grep -Fq 'Eine im Einzelfall bestehende gesetzliche Pflicht bleibt unberührt' index.html
           grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' index.html
-          grep -Fq 'technisch nicht als Bot/Preview erkennbarem Zugriff' index.html
-          grep -Fq 'keine Messung eindeutiger Besucher' index.html
+          grep -Fq 'lädt kein Analytics-, Werbe- oder Marketing-Skript' index.html
+          ! grep -Fq 'supabase.co/functions/v1' index.html app.js analytics.js _headers vercel.json
           if grep -Fq 'wahrscheinlich menschlich' index.html; then
             echo 'Ambiguous human-visitor wording detected in live legal text.'
             exit 1
           fi
 
-      - name: Analytics reporting must stay neutral
+      - name: Analytics must remain disabled
         shell: bash
         run: |
           set -euo pipefail
           test -f ANALYTICS-MEASUREMENT.md
-          grep -Fq 'non_bot_or_preview_ua' ANALYTICS-MEASUREMENT.md
+          grep -Fq 'lädt kein eigenes Analytics-' ANALYTICS-MEASUREMENT.md
+          grep -Fq 'Supabase-Pixel wurde aus dem Laufzeitcode entfernt' ANALYTICS-MEASUREMENT.md
           grep -Fq 'keine eindeutigen Besucher' ANALYTICS-MEASUREMENT.md
-          grep -Fq 'Niemals aus diesen Aggregaten' ANALYTICS-MEASUREMENT.md
 
       - name: Indexing claims must stay conservative
         shell: bash

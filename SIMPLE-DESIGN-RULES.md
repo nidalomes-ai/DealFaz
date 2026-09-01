@@ -1,14 +1,14 @@
-# DEALFAZ – Einfache Designregeln
+# DINAVO – Einfache Designregeln
 
-Stand: 27.08.2026
+Stand: 01.09.2026
 
-Ziel: DEALFAZ soll ohne Vorkenntnisse verständlich sein – auch für sehr junge oder technisch unerfahrene Nutzer.
+Ziel: DINAVO soll ohne Vorkenntnisse verständlich sein – auch für sehr junge oder technisch unerfahrene Nutzer.
 
 ## Feste Regeln
 
 - 🟢 Heller Hintergrund und weiße Flächen.
 - 🟢 Eine Hauptfarbe: Blau.
-- 🟢 Grün nur für positive Ergebnisse.
+- 🟢 Alle Geldbeträge werden einheitlich grün dargestellt; negative Bewertungen bleiben als Warnstatus erkennbar.
 - 🟢 Rot nur für Fehler oder klare Warnungen.
 - 🟢 Große, gut lesbare Schrift.
 - 🟢 Große Buttons und Eingabefelder.

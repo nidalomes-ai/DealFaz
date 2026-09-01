@@ -31,6 +31,9 @@ Der Dateiname bleibt aus Kompatibilitätsgründen bestehen. Die frühere Cloudfl
 - `maximaler-einkaufspreis/`
 - `roi-reselling/`
 - `sell-through/`
+- `impressum/`
+- `datenschutz/`
+- `nutzungsbedingungen/`
 - IndexNow-Verifikationsdatei
 
 ## Security
@@ -68,7 +71,7 @@ Vor einem späteren geschäftskritischen oder monetarisierten Dauerbetrieb bleib
 
 Vor dem Umschalten:
 
-1. Root und alle vier SEO-Seiten auf dem Zielhost HTTP 200 prüfen.
+1. Root, alle vier Wissensseiten und die drei rechtlichen Seiten auf dem Zielhost mit HTTP 200 prüfen.
 2. JS/CSS/Manifest/Icon/Social-Card/IndexNow prüfen.
 3. Security-Header prüfen.
 4. LocalStorage-Funktionen praktisch testen.

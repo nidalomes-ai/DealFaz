@@ -53,9 +53,11 @@ jobs:
           grep -Fq 'Mehr lernen' "$body"
           grep -Fq 'apple-mobile-web-app-capable' "$body"
           grep -Fq '<link rel="apple-touch-icon" href="/icon.svg">' "$body"
-          grep -Fq 'Datenschutz' "$body"
-          grep -Fq 'Impressum' "$body"
-          grep -Fq 'Keine Gewinn- oder Verkaufsgarantie' "$body"
+          grep -Fq 'href="/impressum/"' "$body"
+          grep -Fq 'href="/datenschutz/"' "$body"
+          grep -Fq 'href="/nutzungsbedingungen/"' "$body"
+          grep -Fq 'Es besteht keine Garantie für Gewinn, Verkauf oder Nachfrage' "$body"
+          ! grep -Eq 'id="(imprint|privacy|terms|liability)"|class="legalPage"' "$body"
           grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' "$body"
           ! grep -Fq 'Als Amazon-Partner verdiene ich an qualifizierten Verkäufen' "$body"
           ! grep -Fq 'Der Amazon-Link ist ein Partnerlink' "$body"
@@ -127,7 +129,7 @@ jobs:
           body=$(curl --retry 2 --retry-delay 2 -fsS "https://dealfaz.dealfaz-social.workers.dev/${key}.txt")
           test "$body" = "$key"
 
-      - name: SEO knowledge pages are reachable canonical and legal-linked
+      - name: Public content pages are reachable, canonical and legal-linked
         id: seo
         if: always()
         continue-on-error: true
@@ -142,14 +144,22 @@ jobs:
             test "$code" = "200"
             grep -Fq "<link rel=\"canonical\" href=\"${canonical}\"" "$body"
             grep -Fq 'DINAVO' "$body"
-            grep -Fq 'Impressum & Recht' "$body"
-            grep -Fq 'href="/#privacy"' "$body"
+            grep -Fq 'href="/impressum/"' "$body"
+            grep -Fq 'href="/datenschutz/"' "$body"
+            grep -Fq 'href="/nutzungsbedingungen/"' "$body"
             ! grep -Fq 'supabase.co/functions/v1' "$body"
           }
           check_page /reselling-rechner/ https://dealfaz.dealfaz-social.workers.dev/reselling-rechner/
           check_page /maximaler-einkaufspreis/ https://dealfaz.dealfaz-social.workers.dev/maximaler-einkaufspreis/
           check_page /roi-reselling/ https://dealfaz.dealfaz-social.workers.dev/roi-reselling/
           check_page /sell-through/ https://dealfaz.dealfaz-social.workers.dev/sell-through/
+          check_page /impressum/ https://dealfaz.dealfaz-social.workers.dev/impressum/
+          check_page /datenschutz/ https://dealfaz.dealfaz-social.workers.dev/datenschutz/
+          check_page /nutzungsbedingungen/ https://dealfaz.dealfaz-social.workers.dev/nutzungsbedingungen/
+          imprint=$(curl --retry 2 --retry-delay 2 -fsS https://dealfaz.dealfaz-social.workers.dev/impressum/)
+          printf '%s' "$imprint" | grep -Eq 'href="mailto:[^"[:space:]]+@[^"[:space:]]+\.[^"[:space:]]+"'
+          ! printf '%s' "$imprint" | grep -Eq '__DINAVO_PROJECT_EMAIL__|\[Projekt-Adresse eintragen\]'
+          printf '%s' "$imprint" | grep -Fq 'dealfaz.social@gmail.com'
 
       - name: Sitemap contains all public pages
         id: sitemap
@@ -164,7 +174,10 @@ jobs:
             'https://dealfaz.dealfaz-social.workers.dev/reselling-rechner/' \
             'https://dealfaz.dealfaz-social.workers.dev/maximaler-einkaufspreis/' \
             'https://dealfaz.dealfaz-social.workers.dev/roi-reselling/' \
-            'https://dealfaz.dealfaz-social.workers.dev/sell-through/'
+            'https://dealfaz.dealfaz-social.workers.dev/sell-through/' \
+            'https://dealfaz.dealfaz-social.workers.dev/impressum/' \
+            'https://dealfaz.dealfaz-social.workers.dev/datenschutz/' \
+            'https://dealfaz.dealfaz-social.workers.dev/nutzungsbedingungen/'
           do
             printf '%s' "$sitemap" | grep -Fq "<loc>${url}</loc>"
           done

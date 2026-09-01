@@ -3,7 +3,12 @@ import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 
 const root = new URL('../', import.meta.url);
-const [html, app, css, headers, vercelConfig, knowledgePages] = await Promise.all([
+const legalPagePaths = [
+  'impressum/index.html',
+  'datenschutz/index.html',
+  'nutzungsbedingungen/index.html'
+];
+const [html, app, css, headers, vercelConfig, knowledgePages, legalPages] = await Promise.all([
   readFile(new URL('index.html', root), 'utf8'),
   readFile(new URL('app.js', root), 'utf8'),
   readFile(new URL('style.css', root), 'utf8'),
@@ -14,7 +19,8 @@ const [html, app, css, headers, vercelConfig, knowledgePages] = await Promise.al
     'maximaler-einkaufspreis/index.html',
     'roi-reselling/index.html',
     'sell-through/index.html'
-  ].map(path => readFile(new URL(path, root), 'utf8')))
+  ].map(path => readFile(new URL(path, root), 'utf8'))),
+  Promise.all(legalPagePaths.map(path => readFile(new URL(path, root), 'utf8')))
 ]);
 
 const idMatches = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
@@ -31,6 +37,18 @@ assert.match(css, /--surface:\s*#101c30/, 'The DINAVO surface token must stay en
 assert.match(css, /--accent:\s*#4da3ff/, 'DINAVO must use the single blue accent token');
 assert.match(html, /<div class="app" data-app>[\s\S]*class="panel easyCheck form"[^>]*data-form[\s\S]*id="resultCard"[^>]*data-result/, 'Calculator and result must share the responsive app layout');
 assert.match(html, /<nav class="tabbar" data-tabbar[\s\S]*>Prüfen<[\s\S]*>Meine Deals<[\s\S]*>Mehr</, 'Mobile navigation must expose the three primary destinations');
+assert.match(html, /<footer class="siteFooter" data-legal>[\s\S]*href="\/impressum\/"[\s\S]*href="\/datenschutz\/"[\s\S]*href="\/nutzungsbedingungen\/"/, 'The homepage must expose only the compact legal footer');
+assert.doesNotMatch(html, /id="(?:imprint|privacy|terms|liability)"|class="legalPage"/, 'Full legal documents must not remain embedded on the homepage');
+assert.match(html, /DINAVO ist eine Rechenhilfe und ersetzt keine Kauf-, Rechts-, Steuer- oder Finanzberatung/, 'The homepage disclaimer must stay visible');
+for (const [index, page] of legalPages.entries()) {
+  const route = `/${legalPagePaths[index].replace(/index\.html$/, '')}`;
+  assert.match(page, new RegExp(`<link rel="canonical" href="https://dealfaz\\.dealfaz-social\\.workers\\.dev${route}"`), `${route} must have its production canonical`);
+  assert.match(page, /<h1>[^<]+<\/h1>/, `${route} must have one clear page heading`);
+  assert.match(page, /href="\/impressum\/"/, `${route} must link to the imprint`);
+  assert.match(page, /href="\/datenschutz\/"/, `${route} must link to privacy information`);
+  assert.match(page, /href="\/nutzungsbedingungen\/"/, `${route} must link to the terms`);
+  assert.doesNotMatch(page, /<script\b/i, `${route} must stay static and tracking-free`);
+}
 assert.match(html, /id="profit"[^>]*data-amount/, 'Profit must be the stable-width primary amount');
 assert.match(html, /id="factorPanel"[^>]*data-factor/, 'The personal correction factor must use its responsive presentation');
 assert.match(app, /window\.dinavoVerdict = function dinavoVerdict/, 'The responsive verdict helper must exist in the CSP-safe external script');
@@ -239,5 +257,9 @@ const helperVerdict = globalThis.window.dinavoVerdict(10, 0.1);
 assert.deepEqual(helperVerdict, { state: 'warn', text: 'Knapp' });
 assert.equal(elements.get('resultCard').dataset.state, 'warn');
 assert.equal(elements.get('verdict').textContent, 'Knapp');
+
+assert.doesNotMatch(legalPages[0], /__DINAVO_PROJECT_EMAIL__|\[Projekt-Adresse eintragen\]/i, 'The imprint must contain the confirmed project email, never a placeholder');
+assert.match(legalPages[0], /dealfaz\.social@gmail\.com/i, 'The imprint must contain the confirmed DealFaz project email');
+assert.match(legalPages[0], /href="mailto:[^"\s]+@[^"\s]+\.[^"\s]+"/, 'The imprint must contain a clickable project email');
 
 console.log('frontend regression: ok');

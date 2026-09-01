@@ -5,4 +5,7 @@
 <url><loc>https://dealfaz.dealfaz-social.workers.dev/maximaler-einkaufspreis/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
 <url><loc>https://dealfaz.dealfaz-social.workers.dev/roi-reselling/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
 <url><loc>https://dealfaz.dealfaz-social.workers.dev/sell-through/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://dealfaz.dealfaz-social.workers.dev/impressum/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+<url><loc>https://dealfaz.dealfaz-social.workers.dev/datenschutz/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+<url><loc>https://dealfaz.dealfaz-social.workers.dev/nutzungsbedingungen/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>

@@ -38,6 +38,7 @@ Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäf
 - [x] keine Werbe-/Marketing-Cookies der aktuellen Hauptseite
 - [x] keine Gewinn-, Verkaufs-, Preis- oder Nachfragegarantie
 - [x] Verbraucherstreitbeilegungs-Hinweis vorhanden
+- [x] Impressum, Datenschutz und Nutzungsbedingungen haben eigene öffentliche Routen; die Startseite zeigt nur den kompakten Rechts-Fußbereich
 - [x] aktueller Dienst verkauft selbst keine Waren und hat keinen Checkout
 - [x] keine Art.-22-Entscheidung mit rechtlicher oder vergleichbar erheblicher Wirkung behauptet
 
@@ -60,7 +61,7 @@ Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäf
 - [x] Canonical und `og:url` auf Cloudflare
 - [x] 1200×630 Social-PNG
 - [x] Sitemap/robots korrekt ausgerichtet
-- [x] vier Wissensseiten in Sitemap
+- [x] vier Wissensseiten und drei rechtliche Seiten in der Sitemap
 - [x] IndexNow technisch vorbereitet/ausgeführt
 
 Tatsächliche Indexierung und Social-Caches bleiben externe Beobachtungen.

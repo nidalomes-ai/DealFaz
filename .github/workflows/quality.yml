@@ -50,6 +50,9 @@ jobs:
           test -f maximaler-einkaufspreis/index.html
           test -f roi-reselling/index.html
           test -f sell-through/index.html
+          test -f impressum/index.html
+          test -f datenschutz/index.html
+          test -f nutzungsbedingungen/index.html
           test -f DATA-SOURCES.md
           test -f PRIVACY-ARCHITECTURE.md
           test -f RELEASE-CHECKLIST.md
@@ -76,22 +79,22 @@ jobs:
           grep -Fq '"start_url":"/"' manifest.webmanifest
           grep -Fq "Sitemap: ${origin}/sitemap.xml" robots.txt
           grep -Fq "<loc>${origin}/</loc>" sitemap.xml
-          for page in reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html; do
+          for page in reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html impressum/index.html datenschutz/index.html nutzungsbedingungen/index.html; do
             grep -Fq "${origin}/" "$page"
           done
-          ! grep -Fn 'dealfaz.vercel.app' index.html robots.txt sitemap.xml reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html
+          ! grep -Fn 'dealfaz.vercel.app' index.html robots.txt sitemap.xml reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html impressum/index.html datenschutz/index.html nutzungsbedingungen/index.html
           ! grep -Fn 'Beim Aufruf verarbeitet Vercel' index.html
           ! grep -Fn 'nidalomes-ai.github.io/DealFaz' index.html robots.txt sitemap.xml README.md DATA-SOURCES.md PRIVACY-ARCHITECTURE.md manifest.webmanifest
-          ! grep -Fn 'supabase.co/functions/v1' index.html reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html
-          ! grep -Fn 'PEVRU' index.html manifest.webmanifest icon.svg social-card.svg reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html
+          ! grep -Fn 'supabase.co/functions/v1' index.html reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html impressum/index.html datenschutz/index.html nutzungsbedingungen/index.html
+          ! grep -Fn 'PEVRU' index.html manifest.webmanifest icon.svg social-card.svg reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html impressum/index.html datenschutz/index.html nutzungsbedingungen/index.html
 
       - name: Legal and monetization safety checks
         shell: bash
         run: |
           set -euo pipefail
-          grep -Fq 'Keine Gewinn- oder Verkaufsgarantie' index.html
-          grep -Fq 'umgeht keine Logins, Paywalls oder technischen Schutzmaßnahmen' index.html
-          grep -Fq 'Amazon und andere Plattformen werden nur als externe Originalquellen verlinkt' index.html
+          grep -Fq 'Es besteht keine Garantie für Gewinn, Verkauf oder Nachfrage' index.html
+          grep -Fq 'umgeht keine Logins, Paywalls oder technischen Schutzmaßnahmen' nutzungsbedingungen/index.html
+          grep -Fq 'Die Links enthalten derzeit keine Affiliate- oder Trackingparameter von DINAVO' datenschutz/index.html
           grep -Fq 'Affiliate-Links erst nach tatsächlicher Programmfreigabe verwenden' LEGAL-GUARDRAILS.md
           grep -Fq 'Keine versteckte Provision' LEGAL-GUARDRAILS.md
           grep -Fq 'monetization is intentionally disabled' MONETIZATION_DISABLED
@@ -127,18 +130,26 @@ jobs:
           fi
           grep -Fq 'https://www.amazon.de/s?k=${encoded}' app.js
           grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' index.html
-          grep -Fq 'derzeit kein Partnerlink' index.html
           grep -Fq 'keine Gewinn-, Preis-, Nachfrage- oder Verkaufsgarantie' DATA-SOURCES.md
-          grep -Fq 'Beim Aufruf verarbeitet Cloudflare' index.html
+          grep -Fq 'Beim Aufruf verarbeitet Cloudflare' datenschutz/index.html
+          grep -Fq 'Eine im Einzelfall bestehende gesetzliche Pflicht bleibt unberührt' impressum/index.html
+          grep -Eq 'href="mailto:[^"[:space:]]+@[^"[:space:]]+\.[^"[:space:]]+"' impressum/index.html
+          ! grep -Eq '__DINAVO_PROJECT_EMAIL__|\[Projekt-Adresse eintragen\]' impressum/index.html
+          grep -Fq 'dealfaz.social@gmail.com' impressum/index.html
 
       - name: SEO legal navigation checks
         shell: bash
         run: |
           set -euo pipefail
           for page in reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html; do
-            grep -Fq 'Impressum & Recht' "$page"
-            grep -Fq 'href="/#privacy"' "$page"
+            grep -Fq 'href="/impressum/"' "$page"
+            grep -Fq 'href="/datenschutz/"' "$page"
+            grep -Fq 'href="/nutzungsbedingungen/"' "$page"
           done
+          grep -Fq 'href="/impressum/"' index.html
+          grep -Fq 'href="/datenschutz/"' index.html
+          grep -Fq 'href="/nutzungsbedingungen/"' index.html
+          ! grep -Eq 'id="(imprint|privacy|terms|liability)"|class="legalPage"' index.html
 
       - name: Share privacy checks
         shell: bash
@@ -159,7 +170,7 @@ jobs:
           ! grep -Fq 'dealfaz-pixel' index.html app.js simple-ui.js analytics.js
           ! grep -Fq 'supabase.co/functions/v1' index.html app.js simple-ui.js analytics.js _headers vercel.json
           grep -Fq 'DINAVO laedt kein eigenes Analytics-' analytics.js
-          grep -Fq 'lädt kein Analytics-, Werbe- oder Marketing-Skript' index.html
+          grep -Fq 'lädt kein Analyse-, Werbe- oder Marketing-Skript' datenschutz/index.html
 
       - name: CSV export injection hardening
         run: |

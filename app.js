@@ -800,22 +800,6 @@ $('exportOutcomes').onclick = () => {
   download('dinavo-ergebnisse.csv', `\ufeff${rows.map(row => row.map(csv).join(';')).join('\n')}`, 'text/csv;charset=utf-8');
 };
 
-const legalIds = new Set(['imprint', 'privacy', 'terms', 'liability']);
-function openLegal(id) {
-  document.querySelectorAll('.legalPage').forEach(page => page.classList.toggle('open', page.id === id));
-}
-function routeLegalHash() {
-  const id = location.hash.slice(1);
-  if (legalIds.has(id)) openLegal(id);
-}
-document.querySelectorAll('button[data-legal]').forEach(button => {
-  button.onclick = () => {
-    openLegal(button.dataset.legal);
-    location.hash = button.dataset.legal;
-  };
-});
-window.addEventListener('hashchange', routeLegalHash);
-
 $('clearAllData').onclick = () => {
   if (!confirm('Wirklich alle lokal gespeicherten Deals, Ergebnisse, Faktoren, Regeln und Einstellungen löschen?')) return;
   STORE.clearAllData();
@@ -872,4 +856,3 @@ syncActualSaleState();
 setupResponsiveEnhancements();
 renderStoredData();
 calculate();
-routeLegalHash();

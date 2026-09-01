@@ -40,7 +40,7 @@ Diese alten Frontends werden nicht erneut in Launch-, SEO-, Canonical- oder Soci
 
 Wenn später bewusst eine Custom Domain/Route verwendet wird, erfolgt der Wechsel nur gemeinsam für:
 
-- Root und alle vier SEO-Seiten
+- Root, alle vier Wissensseiten und die drei rechtlichen Seiten
 - `app.js`, `analytics.js`, `style.css`, Manifest, Social-Card, Sitemap, Robots und IndexNow-Key
 - Sicherheitsheader
 - Canonical, `og:url`, Schema, Sitemap, robots.txt und Social-Card-URL

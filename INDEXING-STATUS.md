@@ -13,12 +13,12 @@ Frühere Vercel-/Supabase-Frontendpfade sind nicht mehr die öffentliche Hauptqu
 ## Technisch erledigt
 
 - [x] `robots.txt` vorhanden und verweist auf die aktuelle Sitemap
-- [x] `sitemap.xml` enthält die aktuelle Hauptseite und die vier Wissensseiten
+- [x] `sitemap.xml` enthält die aktuelle Hauptseite, vier Wissensseiten und drei rechtliche Seiten
 - [x] Canonical-Tags zeigen auf die Cloudflare-Produktion
 - [x] Search-Engine-Verifikationsdatei vorhanden
 - [x] IndexNow-Schlüssel und Submission-Workflow vorhanden
 - [x] IndexNow bereits erfolgreich angestoßen
-- [x] interne SEO-Seiten verlinken Impressum/Recht und den lokalen Datenschutzbereich
+- [x] Start- und Wissensseiten verlinken die eigenen Routen für Impressum, Datenschutz und Nutzungsbedingungen
 - [x] alte Supabase-Funktionslinks aus öffentlichen HTML-Seiten entfernt
 - [x] Quality schützt gegen Rückfall auf alte Vercel-/GitHub-Pages-/Supabase-Public-Links
 

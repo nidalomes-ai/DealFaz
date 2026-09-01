@@ -25,7 +25,7 @@ Amtliche Quellen:
 | Leitklasse | Klasse 42 |
 | Anmelder | Achraf Meslemani als natürliche Person |
 | Anschrift | Noreweg 25, 23812 Wahlstedt, Deutschland |
-| Kontakt-E-Mail | vor Einreichung bestätigen; derzeit im Impressum: nidalomes@gmail.com |
+| Kontakt-E-Mail | dealfaz.social@gmail.com (bestätigte DealFaz-Projektadresse im separaten DINAVO-Impressum) |
 | Vertreter | keiner, sofern nicht noch ein Rechts-/Patentanwalt beauftragt wird |
 | Beschleunigte Prüfung | zunächst nein; Zusatzgebühr derzeit 200 Euro |
 

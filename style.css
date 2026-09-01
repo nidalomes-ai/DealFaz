@@ -277,3 +277,31 @@ button,.btn,a.btn{min-height:var(--tap);border-radius:10px;cursor:pointer}
 
 /* Bestehende Euro-Felder behalten ihren gemeinsamen Außenrahmen. */
 .moneyInput input{border:0}
+
+/* Rechtstexte stehen auf eigenen, ruhigen Unterseiten. */
+.siteFooter{
+  margin-top:32px;padding:20px 0 0;border-top:1px solid var(--border);
+  color:var(--muted);font-size:.85rem;text-align:left;
+}
+.siteFooter nav{display:flex;flex-wrap:wrap;gap:10px 18px}
+.siteFooter nav a{color:var(--text);font-weight:750;text-decoration:none}
+.siteFooter nav a:hover,.siteFooter nav a:focus-visible,
+.siteFooter nav a[aria-current=page]{color:var(--accent);text-decoration:underline}
+.siteFooter p{max-width:780px;margin:14px 0 0;color:var(--muted)}
+.legalDocument{max-width:820px;margin:0 auto;padding:32px 16px 64px}
+.legalDocument article{
+  margin-top:20px;padding:clamp(20px,5vw,40px);border:1px solid var(--border);
+  border-radius:var(--radius);background:var(--surface);box-shadow:0 16px 36px #0000002b;
+}
+.legalDocument h1{margin-top:0;font-size:clamp(2.2rem,8vw,3.8rem)}
+.legalDocument h2{margin:30px 0 8px;font-size:clamp(1.2rem,4vw,1.55rem)}
+.legalDocument p{margin:8px 0;color:var(--muted)}
+.legalDocument article a,.backLink{color:var(--accent)}
+.backLink{display:inline-flex;min-height:var(--tap);align-items:center;font-weight:750;text-decoration:none}
+.legalDate{margin-top:32px!important;font-size:.85rem}
+@media(max-width:680px){
+  .legalDocument{padding:20px 12px 44px}
+  .legalDocument article{padding:20px 16px}
+  .siteFooter nav{flex-direction:column;gap:0}
+  .siteFooter nav a{display:flex;min-height:var(--tap);align-items:center}
+}

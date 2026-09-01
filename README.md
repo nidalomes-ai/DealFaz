@@ -36,7 +36,7 @@ Die öffentliche Version läuft über HTTPS und benötigt kein Nutzerkonto. Die 
 - JSON-Backup, Wiederherstellung und CSV-Export
 - reproduzierbare Share-Links mit den eingegebenen Deal-Werten
 - Originalquellen für eBay verkauft/aktiv, Kleinanzeigen, idealo, Google Shopping und Amazon
-- Impressum, Datenschutz, Nutzungsbedingungen und Haftungshinweise direkt in der Oberfläche
+- kompakter Rechts-Fußbereich auf der Startseite sowie eigene Seiten für Impressum, Datenschutz und Nutzungsbedingungen
 - installierbare Web-App-Struktur über Manifest und App-Icon
 - Security-Header für Content-Type, Framing, Referrer, Berechtigungen und Content Security Policy
 
@@ -46,6 +46,12 @@ Die öffentliche Version läuft über HTTPS und benötigt kein Nutzerkonto. Die 
 - [Maximalen Einkaufspreis berechnen](https://dealfaz.dealfaz-social.workers.dev/maximaler-einkaufspreis/)
 - [ROI beim Reselling verstehen](https://dealfaz.dealfaz-social.workers.dev/roi-reselling/)
 - [Sell-through verstehen](https://dealfaz.dealfaz-social.workers.dev/sell-through/)
+
+## Rechtliche Seiten
+
+- [Impressum](https://dealfaz.dealfaz-social.workers.dev/impressum/)
+- [Datenschutz](https://dealfaz.dealfaz-social.workers.dev/datenschutz/)
+- [Nutzungsbedingungen](https://dealfaz.dealfaz-social.workers.dev/nutzungsbedingungen/)
 
 ## Transparenz & Methodik
 

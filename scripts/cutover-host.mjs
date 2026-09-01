@@ -3,7 +3,7 @@ import path from 'node:path';
 
 const nextRaw = process.argv[2] || '';
 const oldOrigin = 'https://dealfaz.dealfaz-social.workers.dev';
-const vsbgNotice = '<p><strong>Verbraucherstreitbeilegung:</strong> DINAVO ist nicht freiwillig zur Teilnahme an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle bereit. Soweit im Einzelfall eine gesetzliche Verpflichtung zur Teilnahme besteht, bleibt diese unberührt.</p>';
+const vsbgNotice = '<h2>Verbraucherstreitbeilegung:</h2><p>DINAVO ist nicht freiwillig zur Teilnahme an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle bereit. Soweit im Einzelfall eine gesetzliche Verpflichtung zur Teilnahme besteht, bleibt diese unberührt.</p>';
 
 function normalizeOrigin(value) {
   const u = new URL(value);
@@ -21,7 +21,7 @@ if (!nextRaw) {
 
 const nextOrigin = normalizeOrigin(nextRaw);
 if (nextOrigin === oldOrigin) {
-  console.error('New production origin equals old Vercel origin');
+  console.error('New production origin equals the current production origin');
   process.exit(2);
 }
 
@@ -33,6 +33,9 @@ const candidates = [
   'maximaler-einkaufspreis/index.html',
   'roi-reselling/index.html',
   'sell-through/index.html',
+  'impressum/index.html',
+  'datenschutz/index.html',
+  'nutzungsbedingungen/index.html',
   '.github/workflows/live-health.yml',
   '.github/workflows/indexnow-vercel.yml',
 ];
@@ -50,16 +53,16 @@ for (const rel of candidates) {
   }
 }
 
-const indexFile = path.resolve('index.html');
-if (!fs.existsSync(indexFile)) throw new Error('index.html is missing');
-let index = fs.readFileSync(indexFile, 'utf8');
-if (!index.includes('Verbraucherstreitbeilegung:')) {
-  const marker = '<div class="legalLinks">';
-  if (!index.includes(marker)) throw new Error('Could not find legalLinks insertion point');
-  index = index.replace(marker, `${vsbgNotice}${marker}`);
-  fs.writeFileSync(indexFile, index);
+const imprintFile = path.resolve('impressum/index.html');
+if (!fs.existsSync(imprintFile)) throw new Error('impressum/index.html is missing');
+let imprint = fs.readFileSync(imprintFile, 'utf8');
+if (!imprint.includes('Verbraucherstreitbeilegung')) {
+  const marker = '</article>';
+  if (!imprint.includes(marker)) throw new Error('Could not find the imprint article insertion point');
+  imprint = imprint.replace(marker, `${vsbgNotice}\n    ${marker}`);
+  fs.writeFileSync(imprintFile, imprint);
   changed += 1;
-  console.log('added conservative VSBG notice to index.html');
+  console.log('added conservative VSBG notice to impressum/index.html');
 }
 
 if (!changed) {
@@ -78,8 +81,8 @@ if (remaining.length) {
   process.exit(1);
 }
 
-index = fs.readFileSync(indexFile, 'utf8');
-if (!index.includes('Verbraucherstreitbeilegung:') || !index.includes('nicht freiwillig zur Teilnahme')) {
+imprint = fs.readFileSync(imprintFile, 'utf8');
+if (!imprint.includes('Verbraucherstreitbeilegung') || !imprint.includes('Eine im Einzelfall bestehende gesetzliche Pflicht bleibt unberührt')) {
   throw new Error('VSBG production notice missing after cutover preparation');
 }
 

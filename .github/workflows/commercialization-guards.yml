@@ -64,12 +64,14 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          grep -Fq 'Verbraucherstreitbeilegung:' index.html
-          grep -Fq 'Eine im Einzelfall bestehende gesetzliche Pflicht bleibt unberührt' index.html
+          grep -Fq 'Verbraucherstreitbeilegung' impressum/index.html
+          grep -Fq 'Eine im Einzelfall bestehende gesetzliche Pflicht bleibt unberührt' impressum/index.html
           grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' index.html
-          grep -Fq 'lädt kein Analytics-, Werbe- oder Marketing-Skript' index.html
-          ! grep -Fq 'supabase.co/functions/v1' index.html app.js analytics.js _headers vercel.json
-          if grep -Fq 'wahrscheinlich menschlich' index.html; then
+          grep -Fq 'lädt kein Analyse-, Werbe- oder Marketing-Skript' datenschutz/index.html
+          ! grep -Fq 'supabase.co/functions/v1' index.html impressum/index.html datenschutz/index.html nutzungsbedingungen/index.html app.js analytics.js _headers vercel.json
+          ! grep -Eq '__DINAVO_PROJECT_EMAIL__|\[Projekt-Adresse eintragen\]' impressum/index.html
+          grep -Fq 'dealfaz.social@gmail.com' impressum/index.html
+          if grep -Fq 'wahrscheinlich menschlich' index.html impressum/index.html datenschutz/index.html nutzungsbedingungen/index.html; then
             echo 'Ambiguous human-visitor wording detected in live legal text.'
             exit 1
           fi

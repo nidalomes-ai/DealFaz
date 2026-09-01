@@ -93,12 +93,55 @@ function setMoney(id, value) {
   $(id).textContent = eur(value);
 }
 
+window.dinavoVerdict = function dinavoVerdict(profit, roi, override = {}) {
+  const box = $('resultCard');
+  const verdict = $('verdict');
+  if (!box || !verdict) return null;
+  let state = 'bad';
+  let text = 'Finger weg';
+  if (profit >= 15 && roi >= 0.30) {
+    state = 'good';
+    text = 'Lohnt sich';
+  } else if (profit > 0) {
+    state = 'warn';
+    text = 'Knapp';
+  }
+  if (typeof override.state === 'string') state = override.state;
+  if (typeof override.text === 'string') text = override.text;
+  box.dataset.state = state;
+  verdict.textContent = text;
+  return { state, text };
+};
+
 function setVerdict(text, type = '') {
   const verdict = $('verdict');
   const resultCard = $('resultCard');
-  verdict.textContent = text;
+  window.dinavoVerdict(current.profit || 0, (current.roi || 0) / 100, { state: type, text });
   verdict.className = `bigVerdict verdict${type ? ` verdict-${type}` : ''}`;
   resultCard.className = `result result-card simpleResult${type ? ` is-${type}` : ''}`;
+}
+
+function setupResponsiveEnhancements() {
+  document.querySelectorAll('input[type=number]').forEach(input => {
+    if (input.hasAttribute('inputmode')) return;
+    const decimal = String(input.step || '').includes('.') || input.closest('.moneyField, .financeField, .moneyInput');
+    input.setAttribute('inputmode', decimal ? 'decimal' : 'numeric');
+  });
+
+  const links = [...document.querySelectorAll('[data-tabbar] a[href^="#"]')];
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  const targets = new Map();
+  links.forEach(link => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) targets.set(target, link);
+  });
+  const observer = new IntersectionObserver(entries => {
+    const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+    if (!visible.length) return;
+    links.forEach(link => link.removeAttribute('aria-current'));
+    targets.get(visible[0].target)?.setAttribute('aria-current', 'page');
+  }, { rootMargin: '-40% 0px -40% 0px', threshold: [0, 0.01, 0.5] });
+  targets.forEach((_, target) => observer.observe(target));
 }
 
 function configureFieldsAndMetricLinks() {
@@ -765,7 +808,7 @@ function routeLegalHash() {
   const id = location.hash.slice(1);
   if (legalIds.has(id)) openLegal(id);
 }
-document.querySelectorAll('[data-legal]').forEach(button => {
+document.querySelectorAll('button[data-legal]').forEach(button => {
   button.onclick = () => {
     openLegal(button.dataset.legal);
     location.hash = button.dataset.legal;
@@ -826,6 +869,7 @@ $('ruleRoi').value = Math.round(rules.minRoi * 100);
 $('ruleRisk').value = rules.maxRisk;
 $('ruleQuality').value = rules.minDataQuality;
 syncActualSaleState();
+setupResponsiveEnhancements();
 renderStoredData();
 calculate();
 routeLegalHash();

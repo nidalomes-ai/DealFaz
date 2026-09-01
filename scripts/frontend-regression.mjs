@@ -29,9 +29,14 @@ assert.match(css, /\.moneyInput input,[^}]*\.moneyValue\{color:var\(--green\)!im
 assert.match(css, /--bg:\s*#09111f/, 'The DINAVO dark background token must stay enabled');
 assert.match(css, /--surface:\s*#101c30/, 'The DINAVO surface token must stay enabled');
 assert.match(css, /--accent:\s*#4da3ff/, 'DINAVO must use the single blue accent token');
-assert.match(html, /<div class="app">[\s\S]*class="panel easyCheck form"[\s\S]*id="resultCard"/, 'Calculator and result must share the responsive app layout');
-assert.match(html, /<nav class="tabbar"[\s\S]*>Prüfen<[\s\S]*>Meine Deals<[\s\S]*>Mehr</, 'Mobile navigation must expose the three primary destinations');
-const heroMetrics = html.match(/<div class="heroNumbers">([\s\S]*?)<\/div>\s*<div id="gate"/)?.[1] || '';
+assert.match(html, /<div class="app" data-app>[\s\S]*class="panel easyCheck form"[^>]*data-form[\s\S]*id="resultCard"[^>]*data-result/, 'Calculator and result must share the responsive app layout');
+assert.match(html, /<nav class="tabbar" data-tabbar[\s\S]*>Prüfen<[\s\S]*>Meine Deals<[\s\S]*>Mehr</, 'Mobile navigation must expose the three primary destinations');
+assert.match(html, /id="profit"[^>]*data-amount/, 'Profit must be the stable-width primary amount');
+assert.match(html, /id="factorPanel"[^>]*data-factor/, 'The personal correction factor must use its responsive presentation');
+assert.match(app, /window\.dinavoVerdict = function dinavoVerdict/, 'The responsive verdict helper must exist in the CSP-safe external script');
+assert.match(app, /new IntersectionObserver\(entries =>/, 'The mobile tab bar must track the visible section');
+assert.doesNotMatch(app, /\)\.observe;/, 'No unused IntersectionObserver may be created');
+const heroMetrics = html.match(/<div class="heroNumbers"[^>]*>([\s\S]*?)<\/div>\s*<div id="gate"/)?.[1] || '';
 assert.match(heroMetrics, /id="profit"/, 'Profit must be a primary metric');
 assert.match(heroMetrics, /id="roi"/, 'ROI must be a primary metric');
 assert.doesNotMatch(heroMetrics, /id="score"/, 'Score must stay inside the expanded details');
@@ -179,6 +184,7 @@ assert.equal(Number(elements.get('cost').value), 18.24);
 assert.equal(elements.get('profit').textContent, '26,76 €');
 assert.equal(elements.get('roi').textContent, '59.5 %');
 assert.match(elements.get('resultCard').className, /\bis-(good|warn|bad)\b/, 'The result card must expose a visible state class');
+assert.equal(elements.get('resultCard').dataset.state, 'good');
 assert.equal(elements.get('profitMetricLink').href, '/reselling-rechner/');
 assert.equal(elements.get('roiMetricLink').href, '/roi-reselling/');
 
@@ -228,5 +234,10 @@ assert.equal(closed.actual.costs, 21.10);
 assert.equal(store.getSettings().profitYtd, 6.9);
 assert.match(elements.get('outcomeList').innerHTML, /Stundenlohn/);
 assert.match(elements.get('outcomeList').innerHTML, /moneyValue/);
+
+const helperVerdict = globalThis.window.dinavoVerdict(10, 0.1);
+assert.deepEqual(helperVerdict, { state: 'warn', text: 'Knapp' });
+assert.equal(elements.get('resultCard').dataset.state, 'warn');
+assert.equal(elements.get('verdict').textContent, 'Knapp');
 
 console.log('frontend regression: ok');

@@ -185,3 +185,95 @@ button, .btn { min-height: var(--tap-min); }
   .result { position: static; }
   .footer { padding-bottom: 12px; }
 }
+
+/* ============================================================
+   DINAVO – Layout für Handy und Browser
+   ============================================================ */
+:root{
+  --bg:#09111f;--surface:#101c30;--surface-2:#17263f;--border:#23344f;
+  --text:#eaf0f8;--muted:#91a3bd;--accent:#4da3ff;
+  --good:#35c98a;--warn:#e8b13a;--bad:#ef5f5f;
+  --good-bg:#35c98a1a;--warn-bg:#e8b13a1a;--bad-bg:#ef5f5f1a;
+  --sp:16px;--radius:14px;--tap:48px;--input-h:56px;
+  --max:1100px;--col:420px;
+  --num:ui-monospace,"SF Mono","Roboto Mono",monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text)}
+img,svg{max-width:100%;height:auto}
+input,select,textarea,button{font-size:max(16px,1rem);font-family:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+input[type=number],input[type=text],select{
+  width:100%;min-height:var(--input-h);padding:0 14px;
+  color:var(--text);background:var(--surface);
+  border:1px solid var(--border);border-radius:10px;
+}
+input[type=number]{font-family:var(--num);font-variant-numeric:tabular-nums}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input[type=number]{-moz-appearance:textfield}
+button,.btn,a.btn{min-height:var(--tap);border-radius:10px;cursor:pointer}
+
+[data-amount],[data-metric] b,[data-metric] strong{
+  font-family:var(--num);font-variant-numeric:tabular-nums;letter-spacing:-.01em;
+}
+[data-app]{
+  display:flex;flex-direction:column;gap:var(--sp);max-width:var(--max);
+  margin:0 auto;padding:var(--sp);
+  padding-bottom:calc(var(--tap) + 24px + env(safe-area-inset-bottom));
+}
+[data-result]{order:1}
+[data-form]{order:2}
+[data-result]{
+  padding:20px;border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--surface);text-align:center;
+}
+[data-verdict]{font-size:clamp(1.3rem,6vw,1.8rem);font-weight:700;margin:0}
+[data-amount]{font-size:clamp(2.4rem,12vw,3.6rem);line-height:1.05;display:block}
+[data-result][data-state=good]{border-color:var(--good);background:var(--good-bg)}
+[data-result][data-state=good] [data-verdict],
+[data-result][data-state=good] [data-amount]{color:var(--good)}
+[data-result][data-state=warn]{border-color:var(--warn);background:var(--warn-bg)}
+[data-result][data-state=warn] [data-verdict],
+[data-result][data-state=warn] [data-amount]{color:var(--warn)}
+[data-result][data-state=bad]{border-color:var(--bad);background:var(--bad-bg)}
+[data-result][data-state=bad] [data-verdict],
+[data-result][data-state=bad] [data-amount]{color:var(--bad)}
+[data-secondary]{
+  margin-top:14px;font-size:.9rem;color:var(--muted);display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;
+}
+[data-factor]{
+  margin-top:14px;padding:12px;border-radius:10px;background:var(--surface-2);
+  font-size:.9rem;color:var(--muted);text-align:left;
+}
+[data-factor] b{color:var(--text);font-family:var(--num)}
+
+@media (min-width:720px){
+  [data-app]{display:grid;grid-template-columns:var(--col) 1fr;gap:32px;align-items:start;padding-bottom:var(--sp)}
+  [data-form],[data-result]{order:0}
+  [data-result]{position:sticky;top:76px}
+  [data-secondary]{grid-template-columns:repeat(2,1fr)}
+}
+[data-tabbar]{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;
+  background:var(--bg);border-top:1px solid var(--border);
+  padding-bottom:env(safe-area-inset-bottom);
+}
+[data-tabbar] a{
+  flex:1;min-height:var(--tap);display:grid;place-items:center;
+  font-size:.85rem;color:var(--muted);text-decoration:none;
+}
+[data-tabbar] a[aria-current=page]{color:var(--accent)}
+@media (min-width:720px){[data-tabbar]{display:none}}
+[data-legal]{margin-top:32px;font-size:.85rem;color:var(--muted)}
+[data-legal] > details{border-top:1px solid var(--border);padding:12px 0}
+[data-legal] summary{
+  cursor:pointer;min-height:var(--tap);display:flex;align-items:center;color:var(--text);
+}
+
+/* Bestehende Euro-Felder behalten ihren gemeinsamen Außenrahmen. */
+.moneyInput input{border:0}

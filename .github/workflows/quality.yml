@@ -25,6 +25,7 @@ jobs:
           node scripts/data-store-regression.mjs
           node scripts/data-store-migration-regression.mjs
           node scripts/frontend-regression.mjs
+          node scripts/organic-campaign-regression.mjs
 
       - name: Required frontend and governance files
         run: |
@@ -36,6 +37,11 @@ jobs:
           test -f manifest.webmanifest
           test -f icon.svg
           test -f social-card.png
+          test -f ORGANIC-BETA-CAMPAIGN.md
+          test -f social/dinavo-feed.svg
+          test -f social/dinavo-feed.png
+          test -f social/dinavo-story.svg
+          test -f social/dinavo-story.png
           test -f vercel.json
           test -f _headers
           test -f robots.txt
@@ -65,6 +71,8 @@ jobs:
           grep -Fq '<meta property="og:image:type" content="image/png">' index.html
           grep -Fq "<meta name=\"twitter:image\" content=\"${origin}/social-card.png\">" index.html
           grep -Fq 'summary_large_image' index.html
+          grep -Fq 'id="shareBeta"' index.html
+          grep -Fq '✓ Daten bleiben im Browser' index.html
           grep -Fq '"start_url":"/"' manifest.webmanifest
           grep -Fq "Sitemap: ${origin}/sitemap.xml" robots.txt
           grep -Fq "<loc>${origin}/</loc>" sitemap.xml

@@ -40,6 +40,9 @@ Alte Supabase-/Vercel-Frontendlinks sind keine Launch-Einstiege mehr. Die aktuel
 - Beispiel-Deal nur bei leerem Speicher; beim ersten Tippen vollständig entfernt und nie als echter Deal speicherbar
 - Gewinn und ROI als einzige große Hauptkennzahlen mit direkten Lernlinks
 - Teilen mit Dealwerten im URL-Fragment
+- zusätzlicher allgemeiner Teilen-Button mit sauberer Haupt-URL ohne Dealwerte oder Tracking
+- kostenloses organisches Beta-Kampagnenpaket mit sieben fertigen Beiträgen, Profiltexten und Kommentarvorlagen
+- Feed- und Story-Motive als SVG und PNG; Geldbeträge im Marken-Grün
 - externe Marktplätze als Originalquellen
 
 ## Sicherheit und Transparenz – 🟢
@@ -50,6 +53,7 @@ Alte Supabase-/Vercel-Frontendlinks sind keine Launch-Einstiege mehr. Die aktuel
 - keine Login-/Paywall-Umgehung und kein unerlaubtes Scraping
 - kein eigenes Analytics-, Werbe- oder Marketing-Skript geladen
 - Partner-/Affiliate-Monetarisierung bleibt durch `MONETIZATION_DISABLED` deaktiviert
+- Kampagnen-Regression verhindert Affiliate-, Tracking- oder Gewinnversprechen im organischen Beta-Paket
 - Amazon- und eBay-Verweise bleiben bis zur späteren Aktivierung neutral
 
 ## Technischer Status – 🟢

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920" role="img" aria-labelledby="title desc">
+  <title id="title">DINAVO Story zur kostenlosen Beta</title>
+  <desc id="desc">Vertikale Social-Media-Story mit einer transparenten Reselling-Beispielrechnung.</desc>
+  <rect width="1080" height="1920" fill="#09111f"/>
+  <circle cx="945" cy="185" r="235" fill="#86efac" opacity="0.10"/>
+  <circle cx="100" cy="1730" r="310" fill="#2563eb" opacity="0.10"/>
+  <text x="84" y="166" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="66" font-weight="800" letter-spacing="2">DINA<tspan fill="#86efac">VO</tspan></text>
+  <rect x="84" y="218" width="286" height="62" rx="31" fill="#ecfdf3"/>
+  <text x="227" y="259" text-anchor="middle" fill="#045d3b" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="800">KOSTENLOSE BETA</text>
+
+  <text x="84" y="420" fill="#86efac" font-family="Arial,Helvetica,sans-serif" font-size="67" font-weight="900">50,00 €</text>
+  <text x="84" y="493" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="50" font-weight="750">einkaufen.</text>
+  <text x="84" y="610" fill="#86efac" font-family="Arial,Helvetica,sans-serif" font-size="67" font-weight="900">100,00 €</text>
+  <text x="84" y="683" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="50" font-weight="750">verkaufen.</text>
+  <text x="84" y="811" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="68" font-weight="900">50 € Gewinn?</text>
+  <text x="84" y="875" fill="#cbd5e1" font-family="Arial,Helvetica,sans-serif" font-size="30">Nicht automatisch. Kosten fehlen noch.</text>
+
+  <rect x="84" y="954" width="912" height="480" rx="42" fill="#ffffff"/>
+  <text x="140" y="1030" fill="#475569" font-family="Arial,Helvetica,sans-serif" font-size="25">DINAVO-BEISPIELRECHNUNG</text>
+  <text x="140" y="1124" fill="#111827" font-family="Arial,Helvetica,sans-serif" font-size="31">Gebühr, Versand, Extras</text>
+  <text x="936" y="1124" text-anchor="end" fill="#067647" font-family="Arial,Helvetica,sans-serif" font-size="37" font-weight="800">21,34 €</text>
+  <line x1="140" y1="1171" x2="936" y2="1171" stroke="#d8dee8" stroke-width="2"/>
+  <text x="140" y="1261" fill="#111827" font-family="Arial,Helvetica,sans-serif" font-size="35" font-weight="800">Gewinn</text>
+  <text x="936" y="1261" text-anchor="end" fill="#067647" font-family="Arial,Helvetica,sans-serif" font-size="49" font-weight="900">28,66 €</text>
+  <text x="140" y="1353" fill="#475569" font-family="Arial,Helvetica,sans-serif" font-size="31">ROI</text>
+  <text x="936" y="1353" text-anchor="end" fill="#067647" font-family="Arial,Helvetica,sans-serif" font-size="42" font-weight="850">57,3 %</text>
+
+  <rect x="84" y="1512" width="752" height="104" rx="52" fill="#ffffff"/>
+  <text x="460" y="1579" text-anchor="middle" fill="#09111f" font-family="Arial,Helvetica,sans-serif" font-size="35" font-weight="850">Kostenlos prüfen · Link im Profil</text>
+  <text x="84" y="1710" fill="#86efac" font-family="Arial,Helvetica,sans-serif" font-size="31" font-weight="800">Ohne Anmeldung · Daten bleiben im Browser</text>
+  <text x="84" y="1780" fill="#94a3b8" font-family="Arial,Helvetica,sans-serif" font-size="23">Werte sind Annahmen. Keine Gewinn- oder Verkaufsgarantie.</text>
+</svg>
+

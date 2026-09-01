@@ -9,6 +9,9 @@ Stand: 01.09.2026
 - Affiliate-Monetarisierung: bewusst deaktiviert; `MONETIZATION_DISABLED` bleibt aktiv
 - Canonicals, Sitemap, robots.txt und Launch-Links: Cloudflare
 - Social Preview: 1200×630 PNG
+- organisches Beta-Kampagnenpaket: Feed- und Story-Motiv, sieben Posts und Antwortvorlagen vorbereitet
+- kostenloser Teilen-Button: aktiv; teilt nur die saubere Haupt-URL ohne Dealwerte oder Trackingparameter
+- Werbemodus: ausschließlich organisch und unbezahlt; keine Affiliate-Links, kein Checkout, keine Werbetracker
 - Mobile-/Touch-Checks: dokumentiert
 - Metricool-Schutzregel: maximal 20 Veröffentlichungen pro Monat
 - Amazon: neutrale Links ohne Affiliate-Tag
@@ -49,5 +52,6 @@ Bei relevanten Pushes laufen:
 - **Vollständiges rechtliches Geschäfts-GO:** 🟡 NOCH NICHT – Gewerbebeginn/Gewerbeanmeldung zuerst klären
 - **Einziger aktiver gelber Punkt:** Gewerbebeginn/Gewerbeanmeldung
 - **Monetarisierung:** 🔒 NEIN, bis Gewerbe-/Steuer-/Partnergates erfüllt sind
+- **Öffentliche Social-Posts:** ⏸ vorbereitet; Veröffentlichung erst nach ausdrücklicher Freigabe für das konkrete Konto
 
-Die ausführliche Prüfung steht in `LEGAL-AUDIT-2026-08-26.md` und `BUSINESS-START-CHECKLIST.md`.
+Die ausführliche Prüfung steht in `LEGAL-AUDIT-2026-08-26.md`, `BUSINESS-START-CHECKLIST.md` und `ORGANIC-BETA-CAMPAIGN.md`.

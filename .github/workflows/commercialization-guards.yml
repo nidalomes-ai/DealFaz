@@ -83,6 +83,16 @@ jobs:
           grep -Fq 'Supabase-Pixel wurde aus dem Laufzeitcode entfernt' ANALYTICS-MEASUREMENT.md
           grep -Fq 'keine eindeutigen Besucher' ANALYTICS-MEASUREMENT.md
 
+      - name: Organic beta campaign stays non-commercial
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f ORGANIC-BETA-CAMPAIGN.md
+          grep -Fq 'ausschließlich organische, unbezahlte Beiträge' ORGANIC-BETA-CAMPAIGN.md
+          grep -Fq 'keine Affiliate- oder Partnerlinks' ORGANIC-BETA-CAMPAIGN.md
+          grep -Fq 'Keine Gewinn- oder Verkaufsgarantie' ORGANIC-BETA-CAMPAIGN.md
+          ! grep -Eq '([?&]|&amp;)tag=|dealfaz-21|supabase\.co/functions/v1' ORGANIC-BETA-CAMPAIGN.md social/*.svg
+
       - name: Indexing claims must stay conservative
         shell: bash
         run: |

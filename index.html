@@ -7,42 +7,50 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="DINAVO">
-<meta name="description" content="DINAVO prüft einen Reselling-Deal mit drei einfachen Angaben – kostenlos, ohne Anmeldung und mit optionalen Details.">
+<meta name="description" content="Prüfe Gewinn, ROI und Gebühren eines Reselling-Deals kostenlos mit DINAVO – ohne Anmeldung und mit lokaler Datenspeicherung im Browser.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://dealfaz.dealfaz-social.workers.dev/">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/icon.svg">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
 <meta property="og:site_name" content="DINAVO">
-<meta property="og:title" content="DINAVO – Deal einfach prüfen">
-<meta property="og:description" content="Was ist es? Was zahlst du? Für wie viel kannst du es verkaufen? DINAVO rechnet den Rest.">
+<meta property="og:title" content="Lohnt sich der Deal? Kostenlos mit DINAVO prüfen">
+<meta property="og:description" content="Einkauf, Verkauf und Gebühren eingeben. DINAVO zeigt dir sofort Gewinn und ROI – kostenlos und ohne Anmeldung.">
 <meta property="og:url" content="https://dealfaz.dealfaz-social.workers.dev/">
 <meta property="og:image" content="https://dealfaz.dealfaz-social.workers.dev/social-card.png">
 <meta property="og:image:secure_url" content="https://dealfaz.dealfaz-social.workers.dev/social-card.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="DINAVO – Deal einfach prüfen">
+<meta property="og:image:alt" content="DINAVO – kostenloser Deal-Check ohne Anmeldung">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="DINAVO – Deal einfach prüfen">
-<meta name="twitter:description" content="Drei Angaben. Eine klare Rechnung.">
+<meta name="twitter:title" content="Lohnt sich der Deal? Kostenlos mit DINAVO prüfen">
+<meta name="twitter:description" content="Gewinn, ROI und Gebühren kostenlos berechnen – ohne Anmeldung.">
 <meta name="twitter:image" content="https://dealfaz.dealfaz-social.workers.dev/social-card.png">
+<meta name="twitter:image:alt" content="DINAVO – kostenloser Deal-Check ohne Anmeldung">
 <title>DINAVO – Deal einfach prüfen</title>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"DINAVO","url":"https://dealfaz.dealfaz-social.workers.dev/","description":"Kostenlose browserbasierte Reselling-Entscheidungshilfe für Deutschland, Österreich und die Schweiz.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}}</script>
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <header><div class="bar"><a class="brand" href="/" aria-label="DINAVO Startseite">DINA<b>VO</b></a><span class="pill">KOSTENLOS · BETA</span></div></header>
-<main>
+<main class="wrap">
 <section class="hero simpleHero">
   <div class="eyebrow">SCHNELL PRÜFEN</div>
   <h1>Lohnt sich der Deal?</h1>
   <p class="lead">Drei Angaben reichen für den Schnellcheck.</p>
+  <div class="trustPoints" aria-label="Vorteile der kostenlosen Beta">
+    <span>✓ Kostenlos</span><span>✓ Ohne Anmeldung</span><span>✓ Daten bleiben im Browser</span>
+  </div>
+  <div class="actions heroActions"><a class="btn" href="#check">Jetzt kostenlos prüfen</a><button id="shareBeta" class="secondary" type="button">DINAVO teilen</button></div>
+  <p id="shareBetaStatus" class="mini shareStatus" role="status" aria-live="polite"></p>
   <div class="threeSteps" aria-label="Drei Schritte"><span><b>1</b> Artikel</span><span><b>2</b> Einkauf</span><span><b>3</b> Verkauf</span></div>
 </section>
 
-<section class="panel easyCheck" id="check">
+<div class="app">
+<section class="panel easyCheck form" id="check">
   <div class="sectionHead"><div><h2>Deal prüfen</h2><p>Eintragen. Ergebnis sofort sehen.</p></div></div>
   <div class="easyFields">
     <label class="easyField" for="product"><span>Was ist es?</span><input id="product" maxlength="120" placeholder="z. B. PlayStation 5" autocomplete="off"></label>
@@ -76,9 +84,9 @@
   </details>
 </section>
 
-<section class="result simpleResult" aria-live="polite">
+<section id="resultCard" class="result result-card simpleResult" aria-live="polite">
   <div class="resultLabel">ERGEBNIS</div>
-  <div class="bigVerdict" id="verdict">–</div>
+  <div class="bigVerdict verdict" id="verdict">–</div>
   <p id="summary">–</p>
   <div class="heroNumbers"><div><span>Rechnerischer Gewinn <a id="profitMetricLink" class="metricLink" href="/reselling-rechner/">Erklärt →</a></span><strong id="profit" class="moneyValue">–</strong></div><div><span>ROI <a id="roiMetricLink" class="metricLink" href="/roi-reselling/">Erklärt →</a></span><strong id="roi">–</strong></div></div>
   <div id="gate" class="gate" hidden></div>
@@ -94,6 +102,7 @@
     </div>
   </details>
 </section>
+</div>
 
 <section class="panel simpleWhy" id="counter"><h2>Was spricht dagegen?</h2><p>Nur die wichtigsten Warnungen.</p><div class="counters" id="counterList"></div></section>
 
@@ -151,7 +160,11 @@
 </section>
 <div class="footer">DINAVO · drei Angaben, eine klare Rechnung · kostenlos.</div>
 </main>
-<a class="mobileCta" href="#check" aria-label="Zum DINAVO Deal-Check">Deal prüfen</a>
+<nav class="tabbar" aria-label="DINAVO Hauptnavigation">
+  <a href="#check" aria-current="page">Prüfen</a>
+  <a href="#watchlist">Meine Deals</a>
+  <a href="#wissen">Mehr</a>
+</nav>
 <script src="/data-store.js" defer></script>
 <script src="/app.js" defer></script>
 </body></html>

@@ -76,6 +76,12 @@ Tatsächliche Indexierung und Social-Caches bleiben externe Beobachtungen.
 ## 7. Social / Launch-Technik – 🟢
 
 - [x] öffentlicher Hauptlink funktioniert
+- [x] organisches, unbezahltes Beta-Kampagnenpaket mit sieben Posts und Antwortvorlagen
+- [x] Feed- und Story-Motiv in veröffentlichbaren PNG-Abmessungen
+- [x] generischer Teilen-Button ohne Dealwerte, UTM- oder Affiliate-Parameter
+- [x] Profiltext und klare Gratis-/Datenschutzbotschaft vorbereitet
+- [x] keine Bots, Massen-DMs, Gewinnversprechen oder automatischen Veröffentlichungen
+- [x] Veröffentlichung auf einem konkreten Social-Konto bleibt ein separates Freigabegate
 - [x] Launch-Ziele auf Cloudflare
 - [x] Metricool-Regel: maximal 20 Veröffentlichungen pro Monat
 - [x] keine zusätzlichen Posts bei erreichtem Limit

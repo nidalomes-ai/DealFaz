@@ -26,6 +26,11 @@ assert.deepEqual(missingIds, [], `Every app.js element reference must exist: ${m
 assert.doesNotMatch(html, /simple-ui\.js/, 'The old competing calculator must not run beside app.js');
 assert.doesNotMatch(app, /onclick="/, 'Generated controls must comply with the script-src CSP');
 assert.match(css, /\.moneyInput input,[^}]*\.moneyValue\{color:var\(--green\)!important/, 'Money styling must be green');
+assert.match(css, /--bg:\s*#09111f/, 'The DINAVO dark background token must stay enabled');
+assert.match(css, /--surface:\s*#101c30/, 'The DINAVO surface token must stay enabled');
+assert.match(css, /--accent:\s*#4da3ff/, 'DINAVO must use the single blue accent token');
+assert.match(html, /<div class="app">[\s\S]*class="panel easyCheck form"[\s\S]*id="resultCard"/, 'Calculator and result must share the responsive app layout');
+assert.match(html, /<nav class="tabbar"[\s\S]*>Prüfen<[\s\S]*>Meine Deals<[\s\S]*>Mehr</, 'Mobile navigation must expose the three primary destinations');
 const heroMetrics = html.match(/<div class="heroNumbers">([\s\S]*?)<\/div>\s*<div id="gate"/)?.[1] || '';
 assert.match(heroMetrics, /id="profit"/, 'Profit must be a primary metric');
 assert.match(heroMetrics, /id="roi"/, 'ROI must be a primary metric');
@@ -173,6 +178,7 @@ assert.equal(Number(elements.get('feePercent').value), 11);
 assert.equal(Number(elements.get('cost').value), 18.24);
 assert.equal(elements.get('profit').textContent, '26,76 €');
 assert.equal(elements.get('roi').textContent, '59.5 %');
+assert.match(elements.get('resultCard').className, /\bis-(good|warn|bad)\b/, 'The result card must expose a visible state class');
 assert.equal(elements.get('profitMetricLink').href, '/reselling-rechner/');
 assert.equal(elements.get('roiMetricLink').href, '/roi-reselling/');
 

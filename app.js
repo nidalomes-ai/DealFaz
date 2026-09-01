@@ -95,8 +95,10 @@ function setMoney(id, value) {
 
 function setVerdict(text, type = '') {
   const verdict = $('verdict');
+  const resultCard = $('resultCard');
   verdict.textContent = text;
-  verdict.className = `bigVerdict${type ? ` verdict-${type}` : ''}`;
+  verdict.className = `bigVerdict verdict${type ? ` verdict-${type}` : ''}`;
+  resultCard.className = `result result-card simpleResult${type ? ` is-${type}` : ''}`;
 }
 
 function configureFieldsAndMetricLinks() {
@@ -636,6 +638,26 @@ $('share').onclick = async () => {
     try { await navigator.share({ title: 'DINAVO DealCheck', text, url }); } catch (_) {}
   } else {
     try { await navigator.clipboard.writeText(url); } catch (_) {}
+  }
+};
+
+$('shareBeta').onclick = async () => {
+  const url = `${location.origin}${location.pathname}`;
+  const text = 'Lohnt sich der Deal? Prüfe Einkauf, Verkauf, Gebühren, Gewinn und ROI kostenlos mit DINAVO – ohne Anmeldung.';
+  const status = $('shareBetaStatus');
+  status.textContent = '';
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: 'DINAVO – Deal einfach prüfen', text, url });
+      status.textContent = 'Danke fürs Teilen.';
+    } catch (_) {}
+  } else {
+    try {
+      await navigator.clipboard.writeText(`${text} ${url}`);
+      status.textContent = 'Link und Text wurden kopiert.';
+    } catch (_) {
+      status.textContent = 'Teilen ist in diesem Browser nicht verfügbar.';
+    }
   }
 };
 

@@ -125,7 +125,7 @@ DINAVO schließt derzeit selbst keinen Verbrauchervertrag und hat keinen Checkou
 
 Vor eigener E-Commerce-/Checkout-Funktion oder enger auf einen Vertragsschluss gerichteten Diensten erfolgt eine neue BFSG-Prüfung.
 
-## 11. Marken-/Namensrecht – 🟢 VORSICHTIGE NUTZUNG / 🟡 KEINE ABSOLUTE FREIGABE
+## 11. Marken-/Namensrecht – 🟢 FÜR VORSICHTIGE KOSTENLOSE BETA / ⏸ NEUGATE VOR MARKENINVESTITION
 
 Dokumentiert sind:
 
@@ -183,13 +183,14 @@ CI soll weiterhin verhindern:
 - 🟢 BFSG: aktuelle Produktarchitektur ohne eigenen Verbrauchervertrag; Neugate bei E-Commerce
 - 🟢 Steuer-/Partner-Vorbereitung
 - 🟡 **Gewerbebeginn/Gewerbeanmeldung – kritisches Launch-Gate**
-- 🟡 **Markenrecht – keine absolute Kollisionsfreigabe; vor irreversibler Markeninvestition finalisieren**
+- 🟢 **Markenname für kostenlose Beta – Vorrecherche und Risikosteuerung dokumentiert; keine amtliche Kollisionsfreigabe behauptet**
+- ⏸ professionelle Ähnlichkeitsprüfung – vor Markenanmeldung oder größerer irreversibler Markeninvestition
 - ⏸ eBay EPN-Acceptance und sonstige Partner-Endfreigaben – nur für spätere Monetarisierung relevant
 
 ## Release-Entscheidung 01.09.2026
 
 **Technisches Beta-GO: JA.**
 
-**Vollständiges rechtliches Geschäfts-GO: NOCH NICHT.** Zuerst Gewerbebeginn/Gewerbeanmeldung klären. Die Markenprüfung bleibt als Risikopunkt vor größerer kommerzieller Markeninvestition offen.
+**Vollständiges rechtliches Geschäfts-GO: NOCH NICHT.** Zuerst Gewerbebeginn/Gewerbeanmeldung klären. Die professionelle Markenprüfung bleibt ein pausiertes Neu-Gate vor größerer kommerzieller Markeninvestition und ist kein weiterer gelber Punkt der kostenlosen Beta.
 
 **Monetarisierung: NEIN, bis die vorgesehenen Gates erfüllt sind.**

@@ -620,6 +620,38 @@
     };
   }
 
+  function applyFactors(estimate = {}) {
+    const factors = getFactors();
+    const sampleSize = factors.sampleSize;
+    if (sampleSize < CALC.minSampleForFactors || !Number.isFinite(factors.priceFactor)) {
+      return {
+        ready: false,
+        sampleSize,
+        missing: Math.max(0, CALC.minSampleForFactors - sampleSize)
+      };
+    }
+
+    const buy = nonNegative(estimate.buy);
+    const estimatedSell = nonNegative(estimate.sell);
+    const estimatedCosts = nonNegative(estimate.costs ?? estimate.cost);
+    const estimatedDays = Math.max(1, Math.round(nonNegative(estimate.days, 1)));
+    const sell = round(estimatedSell * factors.priceFactor, 2);
+    const costs = round(Math.max(0, estimatedCosts + factors.costsDelta), 2);
+    const profit = round(sell - buy - costs, 2);
+
+    return {
+      ready: true,
+      sampleSize,
+      sell,
+      costs,
+      profit,
+      days: Math.round(Math.max(1, estimatedDays * factors.daysFactor)),
+      roi: buy > 0 ? profit / buy : null,
+      unsoldRate: factors.unsoldRate,
+      hourlyRate: factors.hourlyRate
+    };
+  }
+
   function getSettings() {
     return syncSettings(getDeals());
   }
@@ -739,7 +771,7 @@
 
   migrate();
 
-  global.DEALFAZ_STORE = Object.freeze({
+  const storeApi = Object.freeze({
     KEYS,
     CONFIG,
     PLATFORMS,
@@ -774,5 +806,14 @@
     toOutcome,
     calculateFactors,
     calculateProfitYtd
+  });
+  global.DEALFAZ_STORE = storeApi;
+
+  // Öffentliche, rückwärtskompatible Schnittstelle für die Ergebnisanzeige.
+  // Sie verwendet dieselben stabilen dealfaz:v1:-Keys wie der zentrale Store.
+  global.dinavoFactors = Object.freeze({
+    recalc: storeApi.recomputeFactors,
+    apply: applyFactors,
+    load: storeApi.getFactors
   });
 })(typeof window !== 'undefined' ? window : globalThis);

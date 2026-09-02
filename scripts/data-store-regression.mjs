@@ -16,8 +16,10 @@ globalThis.localStorage = {
 await import('../data-store.js');
 
 const store = globalThis.DEALFAZ_STORE;
+const factorApi = globalThis.dinavoFactors;
 const year = new Date().getUTCFullYear();
 assert.ok(store, 'Store must be exposed');
+assert.ok(factorApi, 'Factor API must be exposed');
 assert.deepEqual(store.KEYS, {
   deals: 'dealfaz:v1:deals',
   factors: 'dealfaz:v1:factors',
@@ -160,6 +162,18 @@ assert.equal(factors.daysFactor, 1.5);
 assert.equal(factors.costsDelta, 4);
 assert.equal(factors.unsoldRate, 0.167);
 assert.equal(factors.hourlyRate, 82.66);
+assert.deepEqual(factorApi.load(), factors, 'Factor API must use the central stored factors');
+assert.deepEqual(factorApi.apply({ buy: 45, sell: 90, costs: 18.24, days: 21 }), {
+  ready: true,
+  sampleSize: 5,
+  sell: 90,
+  costs: 22.24,
+  profit: 22.76,
+  days: 32,
+  roi: 22.76 / 45,
+  unsoldRate: 0.167,
+  hourlyRate: 82.66
+});
 
 const settingsAfterResults = store.getSettings();
 assert.equal(settingsAfterResults.profitYtd, 413.3, 'YTD profit must include sold deals in the current year');

@@ -82,7 +82,8 @@ Tatsächliche Indexierung und Social-Caches bleiben externe Beobachtungen.
 - [x] generischer Teilen-Button ohne Dealwerte, UTM- oder Affiliate-Parameter
 - [x] Profiltext und klare Gratis-/Datenschutzbotschaft vorbereitet
 - [x] keine Bots, Massen-DMs, Gewinnversprechen oder automatischen Veröffentlichungen
-- [x] Veröffentlichung auf einem konkreten Social-Konto bleibt ein separates Freigabegate
+- [x] erster DINAVO-Beitrag auf den konkret verbundenen Facebook- und LinkedIn-Konten veröffentlicht
+- [x] weitere aktive Beiträge auf DINAVO und die saubere Cloudflare-Hauptadresse umgestellt
 - [x] Launch-Ziele auf Cloudflare
 - [x] Metricool-Regel: maximal 20 Veröffentlichungen pro Monat
 - [x] keine zusätzlichen Posts bei erreichtem Limit

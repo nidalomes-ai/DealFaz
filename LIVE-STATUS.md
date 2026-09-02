@@ -1,6 +1,6 @@
 # DINAVO Live-Status
 
-Stand: 01.09.2026
+Stand: 02.09.2026
 
 ## Technischer Beta-Stand – 🟢 STARTBEREIT
 
@@ -9,7 +9,7 @@ Stand: 01.09.2026
 - Affiliate-Monetarisierung: bewusst deaktiviert; `MONETIZATION_DISABLED` bleibt aktiv
 - Canonicals, Sitemap, robots.txt und Launch-Links: Cloudflare
 - Social Preview: 1200×630 PNG
-- organisches Beta-Kampagnenpaket: Feed- und Story-Motiv, sieben Posts und Antwortvorlagen vorbereitet
+- organische Beta-Kampagne: auf Facebook und LinkedIn veröffentlicht; weitere DINAVO-Beiträge geplant
 - kostenloser Teilen-Button: aktiv; teilt nur die saubere Haupt-URL ohne Dealwerte oder Trackingparameter
 - Werbemodus: ausschließlich organisch und unbezahlt; keine Affiliate-Links, kein Checkout, keine Werbetracker
 - Mobile-/Touch-Checks: dokumentiert
@@ -52,6 +52,6 @@ Bei relevanten Pushes laufen:
 - **Vollständiges rechtliches Geschäfts-GO:** 🟡 NOCH NICHT – Gewerbebeginn/Gewerbeanmeldung zuerst klären
 - **Einziger aktiver gelber Punkt:** Gewerbebeginn/Gewerbeanmeldung
 - **Monetarisierung:** 🔒 NEIN, bis Gewerbe-/Steuer-/Partnergates erfüllt sind
-- **Öffentliche Social-Posts:** ⏸ vorbereitet; Veröffentlichung erst nach ausdrücklicher Freigabe für das konkrete Konto
+- **Öffentliche Social-Posts:** 🟢 DINAVO-Beitrag auf Facebook und LinkedIn veröffentlicht; weitere Beiträge für Facebook, LinkedIn, Instagram und TikTok geplant
 
 Die ausführliche Prüfung steht in `LEGAL-AUDIT-2026-08-26.md`, `BUSINESS-START-CHECKLIST.md` und `ORGANIC-BETA-CAMPAIGN.md`.

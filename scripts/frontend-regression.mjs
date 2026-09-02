@@ -8,9 +8,10 @@ const legalPagePaths = [
   'datenschutz/index.html',
   'nutzungsbedingungen/index.html'
 ];
-const [html, app, css, headers, vercelConfig, knowledgePages, legalPages] = await Promise.all([
+const [html, app, storeSource, css, headers, vercelConfig, knowledgePages, legalPages] = await Promise.all([
   readFile(new URL('index.html', root), 'utf8'),
   readFile(new URL('app.js', root), 'utf8'),
+  readFile(new URL('data-store.js', root), 'utf8'),
   readFile(new URL('style.css', root), 'utf8'),
   readFile(new URL('_headers', root), 'utf8'),
   readFile(new URL('vercel.json', root), 'utf8'),
@@ -50,11 +51,16 @@ for (const [index, page] of legalPages.entries()) {
   assert.doesNotMatch(page, /<script\b/i, `${route} must stay static and tracking-free`);
 }
 assert.match(html, /id="profit"[^>]*data-amount/, 'Profit must be the stable-width primary amount');
-assert.match(html, /id="factorPanel"[^>]*data-factor/, 'The personal correction factor must use its responsive presentation');
+assert.match(html, /data-secondary>[\s\S]*?<div id="personalEstimate" data-factor hidden role="status"><\/div>/, 'The personal correction factor must sit directly below profit and ROI');
+assert.doesNotMatch(html, /id="factorPanel"[^>]*data-factor/, 'The history factor summary must not capture the primary factor selector');
+assert.match(app, /function dinavoShowFactor\(estimate\)/, 'The factor result renderer must exist');
+assert.match(app, /dinavoShowFactor\(\{ buy, sell, costs, days \}\)/, 'The calculator must update the factor result');
+assert.match(app, /window\.dinavoFactors\.recalc\(\)/, 'Saving an actual result must recalculate factors');
+assert.match(storeSource, /global\.dinavoFactors = Object\.freeze/, 'The factor API must be available globally');
 assert.match(app, /window\.dinavoVerdict = function dinavoVerdict/, 'The responsive verdict helper must exist in the CSP-safe external script');
 assert.match(app, /new IntersectionObserver\(entries =>/, 'The mobile tab bar must track the visible section');
 assert.doesNotMatch(app, /\)\.observe;/, 'No unused IntersectionObserver may be created');
-const heroMetrics = html.match(/<div class="heroNumbers"[^>]*>([\s\S]*?)<\/div>\s*<div id="gate"/)?.[1] || '';
+const heroMetrics = html.match(/<div class="heroNumbers"[^>]*>([\s\S]*?)<\/div>\s*<div id="personalEstimate"/)?.[1] || '';
 assert.match(heroMetrics, /id="profit"/, 'Profit must be a primary metric');
 assert.match(heroMetrics, /id="roi"/, 'ROI must be a primary metric');
 assert.doesNotMatch(heroMetrics, /id="score"/, 'Score must stay inside the expanded details');
@@ -190,6 +196,7 @@ globalThis.confirm = () => true;
 globalThis.alert = () => {};
 globalThis.window = {
   DEALFAZ_STORE: store,
+  dinavoFactors: globalThis.dinavoFactors,
   addEventListener() {}
 };
 

@@ -1,8 +1,15 @@
 # DINAVO – kostenlose organische Beta-Kampagne
 
-Stand: 01.09.2026
+Stand: 02.09.2026
 
-Status: **vorbereitet, noch nicht auf einem Social-Media-Konto veröffentlicht**
+Status: **aktiv – erster DINAVO-Beitrag auf Facebook und LinkedIn veröffentlicht; weitere Beiträge geplant**
+
+Veröffentlichte DINAVO-Beiträge:
+
+- Facebook: https://facebook.com/122102831157445036/posts/122107501845445036
+- LinkedIn: https://linkedin.com/feed/update/urn:li:share:7500684328297717760
+
+Die aktive Planung verwendet ausschließlich DINAVO, saubere Cloudflare-Links ohne eigene Trackingparameter und den kostenlosen Metricool-Rahmen. Frühere DealFaz-Entwürfe bleiben inaktiv und werden nicht veröffentlicht.
 
 Ziel der ersten sieben Tage: 20 echte Rechner-Tests und mindestens 5 verständliche Rückmeldungen. Es gibt kein Umsatz-, Reichweiten- oder Besucherzahlversprechen.
 
@@ -181,4 +188,3 @@ Nach jedem Beitrag nur diese Plattformwerte notieren:
 - Keine Affiliate-Parameter oder bezahlte Kooperation sind enthalten.
 - Beispielzahlen werden als Rechnung, nicht als echter Verdienst dargestellt.
 - Der endgültige Beitrag wird erst nach ausdrücklicher Veröffentlichungsfreigabe abgesendet.
-

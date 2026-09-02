@@ -340,7 +340,7 @@ function calculate() {
   renderCounter(hasCoreValues, hasEvidence);
   renderBattle();
   renderMarkets(product);
-  renderPersonalEstimate(current);
+  dinavoShowFactor({ buy, sell, costs, days });
 }
 
 function renderCounter(hasCoreValues, hasEvidence) {
@@ -521,21 +521,36 @@ function renderFactors() {
     `<div><span>Stundenlohn</span><b class="moneyValue">${eur(factors.hourlyRate)}</b></div></div>`;
 }
 
-function renderPersonalEstimate(deal) {
+function dinavoShowFactor(estimate) {
   const panel = $('personalEstimate');
-  const factors = STORE.getFactors();
-  if (factors.sampleSize < CALC.minSampleForFactors) {
+  if (!panel || !window.dinavoFactors) return;
+  if (!estimate || !(estimate.sell > 0) || !(estimate.buy > 0)) {
     panel.hidden = true;
     return;
   }
-  const adjustedSell = deal.sell * factors.priceFactor;
-  const adjustedCosts = Math.max(0, deal.costs + factors.costsDelta);
-  const adjustedDays = Math.max(1, Math.round(deal.days * factors.daysFactor));
-  const adjustedProfit = adjustedSell - deal.buy - adjustedCosts;
+
+  const result = window.dinavoFactors.apply(estimate);
   panel.hidden = false;
-  $('personalEstimateText').innerHTML = `Aus deinen ${factors.sampleSize} verkauften Deals: Verkauf etwa ${money(adjustedSell)}, ` +
-    `Kosten etwa ${money(adjustedCosts)}, Dauer etwa ${adjustedDays} Tage und daraus etwa ${money(adjustedProfit)} Gewinn.`;
+  if (!result.ready) {
+    panel.dataset.ready = '0';
+    panel.innerHTML = `Noch <b>${result.missing}</b> eingetragene ` +
+      `${result.missing === 1 ? 'Ergebnis' : 'Ergebnisse'}, dann rechnet DINAVO mit deinen eigenen ` +
+      'Erfahrungswerten statt mit reinen Schätzungen.';
+    return;
+  }
+
+  panel.dataset.ready = '1';
+  let html = `Nach deinen letzten <b>${result.sampleSize}</b> Verkäufen realistisch: ` +
+    `<b class="moneyValue">${eur(result.profit)}</b> Gewinn in <b>${result.days}</b> Tagen.`;
+  if (result.unsoldRate > 0) {
+    html += `<br>Nicht verkauft wurden bisher <b>${Math.round(result.unsoldRate * 100)} %</b> deiner Artikel.`;
+  }
+  if (result.hourlyRate) {
+    html += `<br>Dein Schnitt pro Stunde Arbeit: <b class="moneyValue">${eur(result.hourlyRate)}</b>.`;
+  }
+  panel.innerHTML = html;
 }
+window.dinavoShowFactor = dinavoShowFactor;
 
 function renderSettings() {
   settings = STORE.getSettings();
@@ -782,6 +797,7 @@ $('saveOutcome').onclick = () => {
     $('outcomeHint').textContent = 'Das Ergebnis konnte nicht gespeichert werden.';
     return;
   }
+  window.dinavoFactors.recalc();
   $('selectedForecast').value = '';
   renderStoredData();
   calculate();

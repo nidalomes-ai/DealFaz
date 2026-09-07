@@ -23,11 +23,14 @@ Rechtsgrundlage zur Prüfung: § 25 TDDDG.
 
 ## 3. Analytics
 
-- [ ] DINAVO-eigene Analytics möglichst aggregiert und datensparsam halten.
-- [ ] Keine Passwörter, E-Mail-Adressen, IBAN, Steuerdaten, exakte Formulareingaben oder hochgeladene Inhalte in Analytics schreiben.
-- [ ] Keine Produkt-Suchbegriffe in die eigene Analytics-Tabelle übernehmen, wenn eine abstrakte Ereignisbezeichnung genügt.
+- [x] Cloudflare Web Analytics datensparsam und ausschließlich nach ausdrücklicher Einwilligung vorbereitet.
+- [x] Ohne gültigen Token keine Abfrage und keine externe Messung.
+- [x] Keine Passwörter, E-Mail-Adressen, IBAN, Steuerdaten, exakte Formulareingaben oder hochgeladene Inhalte an Analytics übermitteln.
+- [x] Keine Produkt-Suchbegriffe, Dealpreise oder Watchlistinhalte als eigene Analytics-Ereignisse übermitteln.
+- [x] Ablehnung und späterer Widerruf über sichtbare Datenschutz-Einstellungen vorgesehen.
+- [x] Automatische Cloudflare-Injektion durch manuellen Snippet-Modus und `Cache-Control: no-transform` abgesichert.
 - [ ] Bot-/Preview-/Healthcheck-Aufrufe von menschlicher Nutzung trennen.
-- [ ] Hosting-/Infrastrukturverarbeitung in der Datenschutzerklärung berücksichtigen.
+- [x] Hosting-/Infrastrukturverarbeitung in der Datenschutzerklärung berücksichtigt.
 
 ## 4. Marktdaten und Plattformen
 

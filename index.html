@@ -149,6 +149,7 @@
     <a href="/impressum/">Impressum</a>
     <a href="/datenschutz/">Datenschutz</a>
     <a href="/nutzungsbedingungen/">Nutzungsbedingungen</a>
+    <button id="analyticsSettings" class="footerLinkButton" type="button" hidden>Datenschutz-Einstellungen</button>
   </nav>
   <p>DINAVO ist eine Rechenhilfe und ersetzt keine Kauf-, Rechts-, Steuer- oder Finanzberatung. Ergebnisse beruhen auf deinen eigenen Eingaben. Es besteht keine Garantie für Gewinn, Verkauf oder Nachfrage.</p>
 </footer>
@@ -158,6 +159,13 @@
   <a href="#watchlist">Meine Deals</a>
   <a href="#wissen">Mehr</a>
 </nav>
+<section id="analyticsConsent" class="consentPanel" role="dialog" aria-labelledby="analyticsConsentTitle" aria-describedby="analyticsConsentText" hidden>
+  <h2 id="analyticsConsentTitle">Optionale Reichweitenmessung</h2>
+  <p id="analyticsConsentText">Freiwillig: Mit deiner Einwilligung verarbeitet Cloudflare Web Analytics Seitenaufrufe, aufgerufene Pfade, Herkunft, Land, Browser-/Gerätetyp und Ladezeiten. Cloudflare erhält dabei auch technisch erforderliche Verbindungsdaten. DINAVO lädt das Analyseskript erst nach deiner Zustimmung; bei Ablehnung bleibt der Rechner vollständig nutzbar.</p>
+  <div class="actions consentActions"><button id="analyticsAccept" class="secondary" type="button">Einwilligen</button><button id="analyticsReject" class="secondary" type="button">Ablehnen</button></div>
+  <a class="consentPrivacyLink" href="/datenschutz/">Mehr im Datenschutz</a>
+</section>
 <script src="/data-store.js" defer></script>
 <script src="/app.js" defer></script>
+<script src="/analytics.js" defer></script>
 </body></html>

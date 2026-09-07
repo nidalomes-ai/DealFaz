@@ -35,7 +35,9 @@ Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäf
 - [x] Cloudflare-Hosting beschrieben
 - [x] lokale Datenschutzfassung beschreibt nur die tatsächlich verwendeten aktuellen und nutzerinitiierten Datenflüsse
 - [x] lokale Browser-Speicherung transparent erklärt
-- [x] aktuelle Hauptseite lädt kein eigenes Analytics-Skript
+- [x] Cloudflare Web Analytics nur nach gültigem Token und ausdrücklicher Einwilligung vorbereitet
+- [x] ohne Token keine Abfrage und keine externe Analytics-Anfrage
+- [x] automatische Cloudflare-Beacon-Injektion durch manuellen Modus plus `no-transform` ausgeschlossen
 - [x] keine Werbe-/Marketing-Cookies der aktuellen Hauptseite
 - [x] keine Gewinn-, Verkaufs-, Preis- oder Nachfragegarantie
 - [x] Verbraucherstreitbeilegungs-Hinweis vorhanden

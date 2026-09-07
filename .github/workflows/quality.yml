@@ -24,6 +24,7 @@ jobs:
         run: |
           node scripts/data-store-regression.mjs
           node scripts/data-store-migration-regression.mjs
+          node scripts/analytics-regression.mjs
           node scripts/frontend-regression.mjs
           node scripts/organic-campaign-regression.mjs
 
@@ -173,11 +174,16 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          ! grep -Fq '/analytics.js' index.html app.js
+          grep -Fq '<script src="/analytics.js" defer></script>' index.html
+          ! grep -Fq 'static.cloudflareinsights.com' index.html
+          ! grep -Fq 'data-cf-beacon' index.html
           ! grep -Fq 'dealfaz-pixel' index.html app.js analytics.js
           ! grep -Fq 'supabase.co/functions/v1' index.html app.js analytics.js _headers vercel.json
-          grep -Fq 'DINAVO laedt kein eigenes Analytics-' analytics.js
-          grep -Fq 'lädt kein Analyse-, Werbe- oder Marketing-Skript' datenschutz/index.html
+          grep -Fq "readConsent() !== 'granted'" analytics.js
+          grep -Eq "const CLOUDFLARE_TOKEN = '([A-Za-z0-9_-]{16,128})?';" analytics.js
+          grep -Fq 'Cache-Control: public, max-age=0, must-revalidate, no-transform' _headers
+          grep -Fq 'Optionale Reichweitenmessung mit Cloudflare Web Analytics' datenschutz/index.html
+          grep -Fq 'Art. 6 Abs. 1 lit. a DSGVO' datenschutz/index.html
 
       - name: CSV export injection hardening
         run: |
@@ -217,6 +223,7 @@ jobs:
           grep -Fq 'Content-Security-Policy' vercel.json
           grep -Fq 'Cross-Origin-Opener-Policy' vercel.json
           grep -Fq 'X-Permitted-Cross-Domain-Policies' vercel.json
+          grep -Fq 'public, max-age=0, must-revalidate, no-transform' vercel.json
           grep -Fq 'X-Content-Type-Options' _headers
           grep -Fq 'Referrer-Policy' _headers
           grep -Fq 'Permissions-Policy' _headers
@@ -225,6 +232,7 @@ jobs:
           grep -Fq 'Content-Security-Policy' _headers
           grep -Fq 'Cross-Origin-Opener-Policy' _headers
           grep -Fq 'X-Permitted-Cross-Domain-Policies' _headers
+          grep -Fq 'Cache-Control: public, max-age=0, must-revalidate, no-transform' _headers
 
       - name: Cloudflare production workflows are aligned
         shell: bash

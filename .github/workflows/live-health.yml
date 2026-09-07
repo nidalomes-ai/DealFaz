@@ -45,6 +45,7 @@ jobs:
           grep -Eiq '^content-security-policy:' "$headers"
           grep -Eiq '^cross-origin-opener-policy: same-origin' "$headers"
           grep -Eiq '^x-permitted-cross-domain-policies: none' "$headers"
+          grep -Eiq '^cache-control:.*no-transform' "$headers"
           grep -Fq 'DINAVO' "$body"
           grep -Fq 'SCHNELL PRÜFEN' "$body"
           grep -Fq 'Was spricht dagegen?' "$body"
@@ -115,10 +116,11 @@ jobs:
           ! printf '%s' "$js" | grep -Eq 'location\.(origin|pathname).*\?.*(params|p)\.toString'
           printf '%s' "$js" | grep -Fq 'const safeText = value =>'
           printf '%s' "$js" | grep -Fq '/^[=+\-@\t\r]/.test(text)'
-          ! printf '%s' "$js" | grep -Fq '/analytics.js'
           ! printf '%s' "$analytics" | grep -Fq 'dealfaz-pixel'
           ! printf '%s' "$analytics" | grep -Fq 'supabase.co/functions/v1'
-          printf '%s' "$analytics" | grep -Fq 'DINAVO laedt kein eigenes Analytics-'
+          printf '%s' "$analytics" | grep -Fq "readConsent() !== 'granted'"
+          printf '%s' "$analytics" | grep -Fq 'https://static.cloudflareinsights.com/beacon.min.js'
+          printf '%s' "$analytics" | grep -Fq 'dealfaz:v1:analytics-consent'
 
       - name: IndexNow key is present on production host
         id: indexnow

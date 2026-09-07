@@ -75,14 +75,14 @@ Nach Festlegung des echten Betriebsbeginns werden die tatsächlichen Angaben üb
 
 ## 5. Datenschutz / Cookies – 🟢 FÜR AKTUELLEN DATENFLUSS, NEUPRÜFUNG BEI ÄNDERUNG
 
-- aktuelle öffentliche Hauptseite lädt nur `app.js`, kein eigenes Analytics-Skript
+- Cloudflare-Web-Analytics-Controller ist consent-first vorbereitet und lädt ohne gültigen Token keine externe Ressource
 - Watchlist, Regeln, Erwartungen und Ergebnisse werden lokal im Browser gespeichert
 - keine DINAVO-Werbe-/Marketing-Cookies auf der aktuellen Hauptseite
 - Cloudflare-Hosting ist im Datenschutztext beschrieben; externe Legacy-Weiterleitungen sind kein Bestandteil der aktuellen Hauptseite
 - Art. 6 Abs. 1 lit. f DSGVO, Betroffenenrechte, Empfänger, Speicherkriterien und Beschwerderecht sind beschrieben
 - lokale ausdrücklich gewünschte Funktionen sind als § 25 Abs. 2 TDDDG-Prüfpunkt dokumentiert
 
-Bei Aktivierung von Analytics, Affiliate-Tracking, Nutzerkonten, Uploads, Zahlungen oder anderen nicht notwendigen Endgerätezugriffen muss die Datenschutz-/Einwilligungsprüfung **vor** Aktivierung erneut erfolgen.
+Die vorbereitete Cloudflare-Web-Analytics-Integration ist bereits auf ausdrückliche Einwilligung, Ablehnung und Widerruf ausgelegt. Andere Analytics-Systeme, Affiliate-Tracking, Nutzerkonten, Uploads, Zahlungen oder sonstige neue Endgerätezugriffe benötigen **vor** Aktivierung erneut eine Datenschutz-/Einwilligungsprüfung.
 
 ## 6. Impressum / DDG – 🟢 AKTUELLER BASISSTAND
 

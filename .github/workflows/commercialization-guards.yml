@@ -27,7 +27,7 @@ jobs:
           test -f netlify.toml
           test -f scripts/cutover-host.mjs
           grep -Fq 'Cloudflare Pages' HOSTING-FALLBACKS.md
-          grep -Fq 'Firebase Hosting Spark' HOSTING-FALLBACKS.md
+          grep -Fq 'Alte Firebase-Instanz – nur Stilllegung' HOSTING-FALLBACKS.md
           grep -Fq 'Netlify Free' HOSTING-FALLBACKS.md
           grep -Fq 'Render Free' HOSTING-FALLBACKS.md
           grep -Fq 'nicht als kommerzieller Produktionsersatz' HOSTING-FALLBACKS.md
@@ -67,7 +67,9 @@ jobs:
           grep -Fq 'Verbraucherstreitbeilegung' impressum/index.html
           grep -Fq 'Eine im Einzelfall bestehende gesetzliche Pflicht bleibt unberührt' impressum/index.html
           grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' index.html
-          grep -Fq 'lädt kein Analyse-, Werbe- oder Marketing-Skript' datenschutz/index.html
+          grep -Fq 'Optionale Reichweitenmessung mit Cloudflare Web Analytics' datenschutz/index.html
+          grep -Fq 'Art. 6 Abs. 1 lit. a DSGVO' datenschutz/index.html
+          grep -Fq '§ 25 Abs. 1 TDDDG' datenschutz/index.html
           ! grep -Fq 'supabase.co/functions/v1' index.html impressum/index.html datenschutz/index.html nutzungsbedingungen/index.html app.js analytics.js _headers vercel.json
           ! grep -Eq '__DINAVO_PROJECT_EMAIL__|\[Projekt-Adresse eintragen\]' impressum/index.html
           grep -Fq 'dealfaz.social@gmail.com' impressum/index.html
@@ -76,14 +78,19 @@ jobs:
             exit 1
           fi
 
-      - name: Analytics must remain disabled
+      - name: Analytics stays consent-first
         shell: bash
         run: |
           set -euo pipefail
           test -f ANALYTICS-MEASUREMENT.md
-          grep -Fq 'lädt kein eigenes Analytics-' ANALYTICS-MEASUREMENT.md
-          grep -Fq 'Supabase-Pixel wurde aus dem Laufzeitcode entfernt' ANALYTICS-MEASUREMENT.md
-          grep -Fq 'keine eindeutigen Besucher' ANALYTICS-MEASUREMENT.md
+          grep -Fq 'ohne gültigen Beacon-Token automatisch deaktiviert' ANALYTICS-MEASUREMENT.md
+          grep -Fq "readConsent() !== 'granted'" analytics.js
+          grep -Eq "const CLOUDFLARE_TOKEN = '([A-Za-z0-9_-]{16,128})?';" analytics.js
+          grep -Fq 'https://static.cloudflareinsights.com/beacon.min.js' analytics.js
+          grep -Fq 'Enable with JS Snippet installation' ANALYTICS-MEASUREMENT.md
+          grep -Fq 'Cache-Control: public, max-age=0, must-revalidate, no-transform' _headers
+          grep -Fq 'kein PostHog, Google Analytics, Supabase-Pixel oder Affiliate-Tracking' ANALYTICS-MEASUREMENT.md
+          grep -Fq 'keine eindeutigen Menschen' ANALYTICS-MEASUREMENT.md
 
       - name: Organic beta campaign stays non-commercial
         shell: bash

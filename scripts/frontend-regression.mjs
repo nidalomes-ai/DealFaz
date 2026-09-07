@@ -8,9 +8,10 @@ const legalPagePaths = [
   'datenschutz/index.html',
   'nutzungsbedingungen/index.html'
 ];
-const [html, app, storeSource, css, headers, vercelConfig, firebaseConfig, netlifyConfig, renderConfig, knowledgePages, legalPages] = await Promise.all([
+const [html, app, analyticsSource, storeSource, css, headers, vercelConfig, firebaseConfig, netlifyConfig, renderConfig, knowledgePages, legalPages] = await Promise.all([
   readFile(new URL('index.html', root), 'utf8'),
   readFile(new URL('app.js', root), 'utf8'),
+  readFile(new URL('analytics.js', root), 'utf8'),
   readFile(new URL('data-store.js', root), 'utf8'),
   readFile(new URL('style.css', root), 'utf8'),
   readFile(new URL('_headers', root), 'utf8'),
@@ -34,6 +35,20 @@ const appIds = [...app.matchAll(/\$\('([^']+)'\)/g)].map(match => match[1]);
 const missingIds = [...new Set(appIds)].filter(id => !idMatches.includes(id));
 assert.deepEqual(missingIds, [], `Every app.js element reference must exist: ${missingIds.join(', ')}`);
 assert.doesNotMatch(html, /simple-ui\.js/, 'The old competing calculator must not run beside app.js');
+assert.match(html, /<script src="\/analytics\.js" defer><\/script>/, 'The consent-first analytics controller must be loaded');
+assert.doesNotMatch(html, /static\.cloudflareinsights\.com|data-cf-beacon/, 'The external beacon must never load directly from HTML');
+for (const id of ['analyticsConsent', 'analyticsSettings', 'analyticsAccept', 'analyticsReject']) {
+  assert.match(html, new RegExp(`id="${id}"`), `Analytics consent control #${id} must exist`);
+}
+assert.match(html, /id="analyticsAccept" class="secondary"/, 'Consent choices must have equal visual weight');
+assert.match(html, /id="analyticsReject" class="secondary"/, 'Consent choices must have equal visual weight');
+const analyticsToken = analyticsSource.match(/const CLOUDFLARE_TOKEN = '([^']*)';/)?.[1];
+assert.notEqual(analyticsToken, undefined, 'Analytics must expose one explicit Cloudflare token setting');
+assert.ok(analyticsToken === '' || /^[A-Za-z0-9_-]{16,128}$/.test(analyticsToken), 'Analytics token must be empty or a valid public Cloudflare token');
+assert.match(analyticsSource, /readConsent\(\) !== 'granted'/, 'The beacon must require explicit consent');
+assert.match(analyticsSource, /https:\/\/static\.cloudflareinsights\.com\/beacon\.min\.js/, 'Only the official Cloudflare beacon may be loaded');
+assert.match(analyticsSource, /dealfaz:v1:analytics-consent/, 'The consent decision must use the stable local namespace');
+assert.doesNotMatch(analyticsSource, /HIER_TOKEN_EINSETZEN/, 'A misleading active placeholder must not ship');
 assert.doesNotMatch(app, /onclick="/, 'Generated controls must comply with the script-src CSP');
 assert.doesNotMatch(html + app, /\sstyle="/i, 'Inline styles must not weaken the style-src CSP');
 assert.match(css, /\.moneyInput input,[^}]*\.moneyValue\{color:var\(--green\)!important/, 'Money styling must be green');
@@ -64,6 +79,11 @@ assert.match(privacy, /JSON-Backups und CSV-Dateien/, 'Privacy information must 
 assert.match(privacy, /Google \(Gmail\)/, 'Privacy information must identify the email provider');
 assert.match(privacy, /mail@datenschutzzentrum\.de/, 'Privacy information must identify the competent supervisory authority');
 assert.match(privacy, /Stand: 7\. September 2026/, 'Privacy information must expose its revision date');
+assert.match(privacy, /Optionale Reichweitenmessung mit Cloudflare Web Analytics/, 'Privacy information must explain optional analytics');
+assert.match(privacy, /Art\. 6 Abs\. 1 lit\. a DSGVO/, 'Analytics must be based on explicit consent');
+assert.match(privacy, /§ 25 Abs\. 1 TDDDG/, 'Analytics must disclose the end-device consent basis');
+assert.match(privacy, /§ 25 Abs\. 2 Nr\. 2 TDDDG/, 'The local privacy choice must be explained as a requested setting');
+assert.match(privacy, /Datenschutz-Einstellungen/, 'Privacy information must explain withdrawal');
 assert.doesNotMatch(app, /new URLSearchParams\(location\.search\)/, 'Deal values must never be restored from request query parameters');
 assert.match(html, /id="profit"[^>]*data-amount/, 'Profit must be the stable-width primary amount');
 assert.match(html, /data-secondary>[\s\S]*?<div id="personalEstimate" data-factor hidden role="status"><\/div>/, 'The personal correction factor must sit directly below profit and ROI');
@@ -98,7 +118,11 @@ for (const [name, config] of [
 ]) {
   assert.doesNotMatch(config, /unsafe-inline/, `${name} CSP must not allow inline styles`);
   assert.match(config, new RegExp(`script-src[^;]*'sha256-${structuredDataHash.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}'`), `${name} CSP must allow only the exact structured-data block`);
+  assert.match(config, /script-src[^;]*https:\/\/static\.cloudflareinsights\.com/, `${name} CSP must allow the configured Cloudflare analytics script`);
+  assert.match(config, /connect-src[^;]*https:\/\/cloudflareinsights\.com/, `${name} CSP must allow the configured Cloudflare analytics endpoint`);
+  assert.match(config, /Cache-Control[\s\S]{0,120}public, max-age=0, must-revalidate, no-transform/, `${name} must block automatic HTML transformation`);
 }
+assert.match(headers, /Cache-Control: public, max-age=0, must-revalidate, no-transform/, 'Cloudflare responses must block automatic HTML injection');
 const parsedFirebaseConfig = JSON.parse(firebaseConfig);
 assert.equal(parsedFirebaseConfig.hosting.public, 'firebase-retirement', 'Firebase must publish only the retirement surface');
 assert.deepEqual(parsedFirebaseConfig.hosting.redirects, [{
@@ -110,7 +134,7 @@ assert.match(css, /@media\(max-width:680px\)\{[^}]*main\{/, 'A narrow-screen lay
 assert.match(css, /\.advancedGrid,\.heroNumbers,[^}]*\{grid-template-columns:1fr\}/, 'Calculator grids must collapse on mobile');
 assert.match(css, /@media\(max-width:680px\)\{\.costSummary\{grid-template-columns:1fr 1fr\}/, 'Cost summary must remain compact on mobile');
 assert.match(css, /\[data-form\]\{order:1\}[\s\S]*\[data-result\]\{order:2\}/, 'The mobile flow must show the form before its result');
-assert.match(css, /button:not\(\.secondary\):not\(\.danger\),\.btn,a\.btn\{[\s\S]*?color:#06101d/, 'Primary blue actions must use high-contrast dark text');
+assert.match(css, /button:not\(\.secondary\):not\(\.danger\):not\(\.footerLinkButton\),\.btn,a\.btn\{[\s\S]*?color:#06101d/, 'Primary blue actions must use high-contrast dark text');
 assert.match(html, /id="basisStatus"[^>]*data-basis="empty"/, 'The result must disclose whether it is only calculated or supported by evidence');
 assert.match(html, /id="actionStatus"[^>]*role="status"/, 'Save, copy and share actions must provide visible feedback');
 

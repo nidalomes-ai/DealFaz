@@ -1,6 +1,6 @@
 # DINAVO – Datenschutz-Architektur
 
-Stand: 27.08.2026
+Stand: 07.09.2026
 
 Dieses Dokument beschreibt die technische Datenschutz-Idee hinter DINAVO. Es ersetzt keine gesetzlich erforderliche Datenschutzerklärung.
 
@@ -22,11 +22,13 @@ Lokale Daten können verloren gehen, wenn Browser- oder Website-Daten gelöscht 
 
 Die aktuelle Beta setzt selbst keine Werbe- oder Cross-Site-Marketing-Cookies für den Kernablauf. Cloudflare kann unabhängig davon technisch notwendige Verbindungs-, Sicherheits- und Protokolldaten zur Bereitstellung und Absicherung der Website verarbeiten.
 
-## Keine eigene Reichweitenmessung
+## Optionale Reichweitenmessung
 
-Die aktuelle Beta lädt kein DINAVO-Analytics-, Werbe- oder Marketing-Skript. Es werden daher weder Produktnamen oder freie Deal-Texte noch Einkaufs-/Verkaufspreise, Watchlistinhalte oder dauerhafte Tracking-IDs an ein DINAVO-Messsystem übertragen. Technisch erforderliche Hosting- und Sicherheitsprotokolle von Cloudflare bleiben davon unberührt.
+Cloudflare Web Analytics ist mit einer Einwilligungslogik vorbereitet. Ohne gültigen Token bleibt die Messung automatisch vollständig aus. Nach einer späteren Konfiguration wird der externe Beacon erst nach ausdrücklicher Einwilligung geladen. Eine Ablehnung lässt alle Rechnerfunktionen verfügbar.
 
-Eine spätere Reichweitenmessung darf erst nach einer neuen technischen und datenschutzrechtlichen Prüfung aktiviert werden. Datenschutzhinweise und Einwilligungslogik müssen dann dem tatsächlich eingesetzten System entsprechen.
+Die Cloudflare-Site muss dafür im manuellen JS-Snippet-Modus bleiben. Die automatische Beacon-Injektion ist nicht Teil der freigegebenen Architektur; `Cache-Control: no-transform` schützt die ausgelieferte Seite zusätzlich vor einer solchen HTML-Veränderung.
+
+Produktnamen, freie Deal-Texte, Einkaufs-/Verkaufspreise und Watchlistinhalte werden nicht als eigene Analytics-Ereignisse übertragen. Die Entscheidung wird lokal gespeichert und kann über die Datenschutz-Einstellungen geändert werden. Die öffentliche Datenschutzerklärung beschreibt die vorbereitete Integration einschließlich Rechtsgrundlage und Widerruf.
 
 ## Datenminimierung
 

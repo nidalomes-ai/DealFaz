@@ -2,6 +2,8 @@
 
 Stand: 01.09.2026
 
+Hinweis: Dieses Dokument hält den damaligen Launch-Stand fest. Seit 07.09.2026 ist optionales Cloudflare Web Analytics consent-first vorbereitet; der aktuelle Status steht in `ANALYTICS-MEASUREMENT.md` und `LIVE-STATUS.md`.
+
 DINAVO ist eine kostenlose browserbasierte Reselling-Rechen- und Entscheidungshilfe für Deutschland, Österreich und die Schweiz.
 
 ## Haupt-Einstieg

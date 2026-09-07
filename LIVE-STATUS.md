@@ -15,7 +15,7 @@ Der lokale Release-Kandidat ist technisch für die kostenlose, nicht monetarisie
 - interne Dokumente und Projektdateien durch `.assetsignore` aus dem Cloudflare-Assetpaket ausgeschlossen
 - eBay-Gewerbe-Richtwert für den Demo-Sneaker auf 12 % plus 0,45 € aktualisiert
 - Affiliate-Monetarisierung weiterhin durch `MONETIZATION_DISABLED` gesperrt
-- keine Analytics-, Werbe- oder Marketing-Skripte in der aktuellen DINAVO-Anwendung
+- Cloudflare-Web-Analytics-Controller consent-first vorbereitet; ohne gültigen Token automatisch ohne Messung
 
 ## Öffentlich noch offen – 🔴 BIS ZUR VERÖFFENTLICHUNG
 

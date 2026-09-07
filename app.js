@@ -476,7 +476,7 @@ window.loadWatch = index => {
 function renderForecasts() {
   const forecasts = getForecasts();
   $('forecastList').innerHTML = forecasts.length
-    ? '<h3 style="margin-top:18px">Vorgemerkte Erwartungen</h3>' + forecasts.map((forecast, index) =>
+    ? '<h3 class="historyHeading">Vorgemerkte Erwartungen</h3>' + forecasts.map((forecast, index) =>
       `<div class="forecastCard"><strong>${esc(forecast.product || 'Unbenannter Deal')}</strong><br>` +
       `<small>${esc(platformLabel(forecast.platformId))} · Verkauf ${money(forecast.sell)} · Gewinn ${money(forecast.profit)} · ` +
       `${Number(forecast.days || 0)} Tage · ${dealHasEvidence(forecast) ? `Score ${forecast.score}/100` : 'nur gerechnet'}</small><div class="actions">` +
@@ -509,7 +509,7 @@ window.chooseForecast = index => {
 function renderOutcomes() {
   const outcomes = getOutcomes();
   $('outcomeList').innerHTML = outcomes.length
-    ? '<h3 style="margin-top:18px">Deine Ergebnis-Historie</h3>' + outcomes.map(outcome => {
+    ? '<h3 class="historyHeading">Deine Ergebnis-Historie</h3>' + outcomes.map(outcome => {
       const profitDifference = outcome.actualProfit - outcome.expectedProfit;
       const daysDifference = outcome.actualDays - outcome.expectedDays;
       const differenceClass = profitDifference >= 0 ? 'deltaPos' : 'deltaNeg';

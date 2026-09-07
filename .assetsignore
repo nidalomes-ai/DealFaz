@@ -1,13 +1,17 @@
-.git
-.github
-docs
-scripts
+# Only public website assets belong in the Cloudflare bundle.
 *.md
-MONETIZATION_DISABLED
+.assetsignore
+.git/
+.github/
+.wrangler/
+.nojekyll
+docs/
+scripts/
+firebase-retirement/
 firebase.json
 netlify.toml
 render.yaml
 vercel.json
 wrangler.jsonc
-.assetsignore
-.nojekyll
+_headers
+MONETIZATION_DISABLED

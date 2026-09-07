@@ -84,7 +84,6 @@ jobs:
           }
           check https://dealfaz.dealfaz-social.workers.dev/app.js '(application|text)/(javascript|x-javascript)'
           check https://dealfaz.dealfaz-social.workers.dev/data-store.js '(application|text)/(javascript|x-javascript)'
-          check https://dealfaz.dealfaz-social.workers.dev/simple-ui.js '(application|text)/(javascript|x-javascript)'
           check https://dealfaz.dealfaz-social.workers.dev/analytics.js '(application|text)/(javascript|x-javascript)'
           check https://dealfaz.dealfaz-social.workers.dev/style.css 'text/css'
           check https://dealfaz.dealfaz-social.workers.dev/manifest.webmanifest 'application/(manifest\+json|json)'

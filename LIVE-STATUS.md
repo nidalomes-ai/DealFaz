@@ -1,57 +1,42 @@
-# DINAVO Live-Status
+# DINAVO – aktueller Freigabestatus
 
-Stand: 02.09.2026
+Stand: 07.09.2026
 
-## Technischer Beta-Stand – 🟢 STARTBEREIT
+## Kurzentscheidung
 
-- Hauptseite: `https://dealfaz.dealfaz-social.workers.dev/`
-- kostenlose Rechenfunktion: aktiv
-- Affiliate-Monetarisierung: bewusst deaktiviert; `MONETIZATION_DISABLED` bleibt aktiv
-- Canonicals, Sitemap, robots.txt und Launch-Links: Cloudflare
-- Social Preview: 1200×630 PNG
-- organische Beta-Kampagne: auf Facebook und LinkedIn veröffentlicht; weitere DINAVO-Beiträge geplant
-- kostenloser Teilen-Button: aktiv; teilt nur die saubere Haupt-URL ohne Dealwerte oder Trackingparameter
-- Werbemodus: ausschließlich organisch und unbezahlt; keine Affiliate-Links, kein Checkout, keine Werbetracker
-- Mobile-/Touch-Checks: dokumentiert
-- Metricool-Schutzregel: maximal 20 Veröffentlichungen pro Monat
-- Amazon: neutrale Links ohne Affiliate-Tag
-- eBay: neutrale Links ohne EPN-Tracking
-- Steuer-/ELSTER-Vorbereitung: dokumentiert, keine fiktiven Angaben
-- Hosting: Cloudflare Workers
+Der lokale Release-Kandidat ist technisch für die kostenlose, nicht monetarisierte Beta vorbereitet. Die öffentliche Cloudflare-Version ist noch nicht auf diesem Stand. Die alte Firebase-Seite muss mit der vorbereiteten 301-Weiterleitung separat stillgelegt werden.
 
-## Rechtlicher Basisstand
+## Lokal vorbereitet – 🟢
 
-- 🟢 Impressum / DDG-Basisangaben vorhanden
-- 🟢 Datenschutzhinweise für aktuellen Hosting-, Local-Storage- und Legacy-Redirect-Datenfluss erweitert
-- 🟢 aktuelle Hauptseite lädt kein eigenes Analytics-Skript und setzt selbst keine Werbe-/Marketing-Cookies
-- 🟢 Verbraucherhinweise für den aktuellen kostenlosen Rechner ohne Checkout
-- 🟢 keine Gewinn-/Verkaufsgarantie
-- 🟢 keine aktiven Affiliate-Tags oder EPN-Trackingparameter
-- 🟢 keine Nutzerkonten, öffentlichen Inserate oder UGC-Hostingfunktionen
-- 🟢 BFSG-Prüfpunkt für spätere E-Commerce-/Checkout-Funktionen dokumentiert
-- 🟡 **Gewerbebeginn/Gewerbeanmeldung: kritisches Geschäfts-Launch-Gate**
-- 🟢 **Markenname für kostenlose Beta: Vorrecherche und Risikosteuerung dokumentiert; keine Behauptung einer amtlichen Kollisionsfreigabe**
-- ⏸ professionelle Ähnlichkeitsprüfung: Neu-Gate vor Markenanmeldung oder größerem Werbebudget
-- ⏸ eBay EPN-Acceptance und weitere Partner-Endfreigaben: erst für Monetarisierung erforderlich
+- Rechner, Watchlist, Import/Export, Vergleich, Ergebnis-Historie und persönliche Lernfaktoren
+- Datenschutztext passend zu Cloudflare, lokaler Speicherung, Dateien, Zwischenablage, Teilen, Gmail und externen Marktplatzsuchen
+- PWA-Icons in 180, 192 und 512 Pixel
+- Content Security Policy ohne `unsafe-inline`
+- interne Dokumente und Projektdateien durch `.assetsignore` aus dem Cloudflare-Assetpaket ausgeschlossen
+- eBay-Gewerbe-Richtwert für den Demo-Sneaker auf 12 % plus 0,45 € aktualisiert
+- Affiliate-Monetarisierung weiterhin durch `MONETIZATION_DISABLED` gesperrt
+- keine Analytics-, Werbe- oder Marketing-Skripte in der aktuellen DINAVO-Anwendung
 
-## Wichtige Gewerbe-Regel
+## Öffentlich noch offen – 🔴 BIS ZUR VERÖFFENTLICHUNG
 
-Nicht der erste Euro Provision ist automatisch der Startpunkt. Bei einer selbständigen, dauerhaften und auf Gewinn ausgerichteten Tätigkeit kann ein Gewerbe bereits vorher begonnen haben. Deshalb muss der tatsächliche Betriebsbeginn geklärt und eine erforderliche Gewerbeanmeldung spätestens gleichzeitig mit dem Beginn vorgenommen werden.
+- Cloudflare liefert noch die frühere Datenschutzfassung aus.
+- Die referenzierten PNG-App-Icons sind dort noch nicht vorhanden.
+- Die frühere Firebase-/DEALFAZ-Seite ist erreichbar, indexierbar und lädt noch PostHog.
 
-## Qualitäts-Gates
+Für Firebase ist im Repository eine separate Hosting-Konfiguration vorbereitet: Sie veröffentlicht nicht erneut die alte Anwendung, sondern leitet sämtliche Aufrufe dauerhaft auf die aktuelle DINAVO-Adresse weiter. Diese Stilllegung erfordert einen eigenen Firebase-Deploy mit Zugriff auf das bisherige Projekt.
 
-Bei relevanten Pushes laufen:
+## Bleibende Geschäfts-Gates – 🟡 / 🔒
 
-- `DINAVO Quality`
-- `DINAVO Live Health`
-- `DINAVO Commercialization Guards`
+- Gewerbebeginn und erforderliche Gewerbeanmeldung vor dauerhaftem geschäftlichem Betrieb klären.
+- Markenähnlichkeitsprüfung vor Markenanmeldung, größerem Werbebudget oder schwer umkehrbaren Investitionen abschließen.
+- Partnerkonten, Steuern, Kennzeichnung und Tracking-Datenschutz vor Aktivierung von Affiliate-Links erneut prüfen.
+- Plattformgebühren bleiben editierbare Richtwerte; Nutzer müssen die konkrete Kategorie und den tatsächlichen Tarif kontrollieren.
 
-## Launch 01.09.2026
+## Freigabe
 
-- **Technisches Beta-GO:** 🟢 JA
-- **Vollständiges rechtliches Geschäfts-GO:** 🟡 NOCH NICHT – Gewerbebeginn/Gewerbeanmeldung zuerst klären
-- **Einziger aktiver gelber Punkt:** Gewerbebeginn/Gewerbeanmeldung
-- **Monetarisierung:** 🔒 NEIN, bis Gewerbe-/Steuer-/Partnergates erfüllt sind
-- **Öffentliche Social-Posts:** 🟢 DINAVO-Beitrag auf Facebook und LinkedIn veröffentlicht; weitere Beiträge für Facebook, LinkedIn, Instagram und TikTok geplant
+- Lokaler technischer Release-Kandidat: 🟢
+- Öffentlicher DINAVO-Stand: 🔴 Update ausstehend
+- Alte Firebase-Seite: 🔴 Stilllegung ausstehend
+- Monetarisierung: 🔒 deaktiviert
 
-Die ausführliche Prüfung steht in `LEGAL-AUDIT-2026-08-26.md`, `BUSINESS-START-CHECKLIST.md` und `ORGANIC-BETA-CAMPAIGN.md`.
+Diese interne Prüfung ist keine anwaltliche oder steuerliche Einzelfallberatung.

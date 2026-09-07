@@ -1,6 +1,6 @@
 # DINAVO – Rechts- und Launch-Prüfung
 
-Stand: 27.08.2026
+Stand: 07.09.2026
 
 > Interne Arbeits- und Release-Prüfung. Sie dokumentiert den aktuell geprüften Sachverhalt und reduziert erkennbare Risiken, ersetzt aber keine individuelle Rechts- oder Steuerberatung und ist keine Garantie, dass kein Dritter Ansprüche erhebt.
 
@@ -30,16 +30,18 @@ Live vorhanden:
 
 § 5 DDG verlangt für geschäftsmäßige, in der Regel gegen Entgelt angebotene digitale Dienste leicht erkennbare, unmittelbar erreichbare und ständig verfügbare Anbieterinformationen. Vor eigener Bezahlfunktion, Checkout oder Vertragsabschluss wird zusätzlich geprüft, ob für den dann konkreten Dienst ein weiterer schneller und unmittelbarer Kontaktweg bereitzustellen ist.
 
-## 3. Datenschutz / DSGVO – 🟢 FÜR AKTUELLEN DATENFLUSS
+## 3. Datenschutz / DSGVO – 🟢 LOKAL FÜR AKTUELLEN DATENFLUSS / 🔴 ÖFFENTLICHES UPDATE AUSSTEHEND
 
-Die Live-Datenschutzhinweise wurden am 27.08.2026 erweitert und enthalten nun unter anderem:
+Die lokale Datenschutzerklärung wurde am 07.09.2026 an den aktuellen Datenfluss angepasst und enthält nun unter anderem:
 
 - Verantwortlicher und Kontakt
 - Zwecke und Rechtsgrundlagen
 - berechtigtes Interesse für Hosting/Sicherheit
 - Cloudflare als Hosting-/Infrastrukturbezug
-- Supabase nur für beschriebene Legacy-Weiterleitungen
 - lokale Deal-/Watchlist-/Regeldaten
+- lokalen Dateiimport/-export, Zwischenablage und systemeigene Teilen-Funktion
+- fragmentbasierte Deal-Links und nutzerinitiierte Marktplatzsuchen
+- Gmail als Empfänger bei einer freiwilligen E-Mail-Kontaktaufnahme
 - Empfänger/Kategorien von Empfängern
 - internationale Verarbeitungsrisiken und Schutzmechanismen in allgemeiner Form
 - Speicherdauer bzw. Kriterien
@@ -49,6 +51,8 @@ Die Live-Datenschutzhinweise wurden am 27.08.2026 erweitert und enthalten nun un
 - Hinweis, dass der DealScore keine Art.-22-Entscheidung mit rechtlicher oder vergleichbar erheblicher Wirkung ist
 
 Die aktuelle Hauptseite lädt nur `app.js` und **kein eigenes Analytics-Skript**. Das im Repository vorhandene `analytics.js` ist derzeit nicht in `index.html` eingebunden.
+
+Die Cloudflare-Produktion zeigt bis zur Veröffentlichung noch eine ältere Datenschutzfassung. Zusätzlich ist die frühere Firebase-/DEALFAZ-Seite öffentlich erreichbar und lädt PostHog. Sie ist nicht Teil des freigegebenen DINAVO-Datenflusses und muss mit der vorbereiteten permanenten Weiterleitung separat stillgelegt werden.
 
 ## 4. Local Storage / § 25 TDDDG – 🟢 AKTUELLER FUNKTIONSSTAND
 
@@ -67,9 +71,7 @@ Diese Inhalte werden im aktuellen Code nicht als Nutzerprofil an eine zentrale D
 
 Aktueller Hauptbetrieb: Cloudflare Workers.
 
-Supabase wird für Legacy-Weiterleitungen und bestehende technische Hilfsfunktionen genutzt; das Projekt hat als primäre Datenregion `eu-west-1` (Irland). Edge-Infrastruktur kann technisch verteilt ausgeführt werden.
-
-Die öffentlichen Datenschutzhinweise verschweigen deshalb mögliche internationale Verarbeitung nicht. Bei Anbieter-, Region-, Logging- oder Trackingwechsel werden Datenschutztext und Vertrags-/DPA-Status erneut kontrolliert.
+Die Datenschutzerklärung nennt Cloudflare als aktuellen Hosting-Empfänger und verlinkt dessen Datenschutzhinweise und Auftragsverarbeitungsbedingungen. Bei Anbieter-, Region-, Logging- oder Trackingwechsel werden Datenschutztext und Vertrags-/DPA-Status erneut kontrolliert.
 
 ## 6. Externe Marktplätze / fremde Inhalte – 🟢 AKTUELLER MODUS
 

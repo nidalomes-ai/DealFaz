@@ -1,6 +1,6 @@
 # DINAVO – Release-Gate
 
-Stand: 01.09.2026
+Stand: 07.09.2026
 
 Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäftsstart** und **spätere Monetarisierung**. `[x]` bedeutet technisch oder anhand des aktuellen Datenflusses geprüft; es ist keine pauschale anwaltliche Rechtsfreigabe.
 
@@ -12,6 +12,7 @@ Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäf
 - [x] Maximaler Einkaufspreis bleibt im getesteten gültigen Fall nicht negativ
 - [x] Watchlist und persönliche Regeln lokal ohne Nutzerkonto
 - [x] Gebührenprofile, Kostenaufschlüsselung und unveränderliche Schätz-Snapshots
+- [x] eBay-Demo-Richtwert mit aktueller Fixgebühr für Bestellungen über 10 € abgeglichen
 - [x] tatsächliche Ergebnisse mit Zeitaufwand, Lernfaktoren, Stundenlohn und Jahresgewinn
 - [x] vollständiger lokaler Import/Export einschließlich Regeln und Einstellungen
 - [x] Migration alter DealFaz-/DINAVO-Daten in den stabilen `dealfaz:v1:*`-Schlüsseln
@@ -32,7 +33,7 @@ Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäf
 - [x] Impressum mit Name, ladungsfähiger Anschrift und E-Mail
 - [x] DSGVO-Hinweise um Zwecke, Rechtsgrundlagen, Empfänger, Speicherkriterien, Rechte und Beschwerdestelle ergänzt
 - [x] Cloudflare-Hosting beschrieben
-- [x] Supabase-Legacy-Weiterleitungen beschrieben
+- [x] lokale Datenschutzfassung beschreibt nur die tatsächlich verwendeten aktuellen und nutzerinitiierten Datenflüsse
 - [x] lokale Browser-Speicherung transparent erklärt
 - [x] aktuelle Hauptseite lädt kein eigenes Analytics-Skript
 - [x] keine Werbe-/Marketing-Cookies der aktuellen Hauptseite
@@ -54,6 +55,8 @@ Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäf
 - [x] Kamera-/Mikrofon-/Standortrechte eingeschränkt
 - [x] Clickjacking-Schutz
 - [x] HSTS/CSP vorhanden
+- [x] CSP benötigt keine Inline-Styles mehr
+- [x] interne Projektdateien aus dem Cloudflare-Assetpaket ausgeschlossen
 - [x] Live Health vorhanden
 
 ## 5. SEO & Teilen – 🟢
@@ -88,6 +91,7 @@ Tatsächliche Indexierung und Social-Caches bleiben externe Beobachtungen.
 - [x] Metricool-Regel: maximal 20 Veröffentlichungen pro Monat
 - [x] keine zusätzlichen Posts bei erreichtem Limit
 - [x] Legacy-Link-Weiterleitung vorhanden
+- [x] Firebase-Retirement-Konfiguration mit permanenter Weiterleitung vorbereitet
 - [x] Bots/Testaufrufe werden nicht als echte Reichweite dargestellt
 
 ## 8. Amazon – 🟢 VORBEREITET / 🔒 NICHT MONETARISIERT
@@ -151,7 +155,9 @@ Vor Entfernung von `MONETIZATION_DISABLED` müssen Gewerbe-/Steuergate, tatsäch
 
 ## Aktueller Freigabestatus
 
-**Technische kostenlose Beta: 🟢 startbereit.**
+**Lokaler Release-Kandidat für die kostenlose Beta: 🟢 startbereit.**
+
+**Öffentliche Version: 🔴 Veröffentlichung der vorbereiteten Änderungen und separate Firebase-Stilllegung ausstehend.**
 
 **Vollständiges rechtliches Geschäfts-GO: 🟡 noch nicht – Gewerbebeginn/Gewerbeanmeldung zuerst klären.**
 

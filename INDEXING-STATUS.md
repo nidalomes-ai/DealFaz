@@ -1,6 +1,6 @@
 # DINAVO – Suchmaschinen-Indexierung
 
-Stand: 27.08.2026
+Stand: 07.09.2026
 
 ## Aktueller Pre-Gewerbe-Status: 🟢 GRÜN technisch
 
@@ -8,7 +8,7 @@ Stand: 27.08.2026
 
 > `https://dealfaz.dealfaz-social.workers.dev/`
 
-Frühere Vercel-/Supabase-Frontendpfade sind nicht mehr die öffentliche Hauptquelle. Suchmaschinen entscheiden selbst über Crawl, Indexierung und Ranking; eine verzögerte Aufnahme ist kein technischer DINAVO-Fehler und kein aktueller gelber Punkt.
+Frühere Vercel-/Supabase-Frontendpfade sind nicht mehr die öffentliche Hauptquelle. Die alte Firebase-/DEALFAZ-Seite ist jedoch noch erreichbar und indexierbar. Ihre permanente Weiterleitung ist vorbereitet, aber noch nicht veröffentlicht. Suchmaschinen entscheiden anschließend selbst über Crawl, Indexierung und Ranking.
 
 ## Technisch erledigt
 
@@ -21,6 +21,13 @@ Frühere Vercel-/Supabase-Frontendpfade sind nicht mehr die öffentliche Hauptqu
 - [x] Start- und Wissensseiten verlinken die eigenen Routen für Impressum, Datenschutz und Nutzungsbedingungen
 - [x] alte Supabase-Funktionslinks aus öffentlichen HTML-Seiten entfernt
 - [x] Quality schützt gegen Rückfall auf alte Vercel-/GitHub-Pages-/Supabase-Public-Links
+- [x] Firebase-Retirement-Konfiguration mit permanenter Weiterleitung vorbereitet
+
+## 🔴 Vor Veröffentlichung offen
+
+- aktualisierten Cloudflare-Stand veröffentlichen
+- alte Firebase-Seite separat auf die vorbereitete 301-Weiterleitung umstellen
+- anschließend prüfen, dass alte DEALFAZ-Routen kein PostHog und keine indexierbaren Inhalte mehr ausliefern
 
 ## ⏸ Externe Nachlaufkontrollen – nicht gelb
 
@@ -39,6 +46,8 @@ Diese Punkte sind Beobachtung bzw. spätere Cutover-Arbeit und keine fehlende te
 
 ## Ergebnis
 
-**SEO-/Indexierungs-Technik: 🟢 100 % grün.**
+**Lokale SEO-/Indexierungs-Technik: 🟢 vorbereitet.**
+
+**Öffentliche Bereinigung: 🔴 Cloudflare-Update und Firebase-Stilllegung ausstehend.**
 
 **Tatsächliche Suchmaschinenaufnahme: externe Beobachtung, kein aktueller gelber Punkt.**

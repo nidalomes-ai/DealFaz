@@ -8,13 +8,16 @@ const legalPagePaths = [
   'datenschutz/index.html',
   'nutzungsbedingungen/index.html'
 ];
-const [html, app, storeSource, css, headers, vercelConfig, knowledgePages, legalPages] = await Promise.all([
+const [html, app, storeSource, css, headers, vercelConfig, firebaseConfig, netlifyConfig, renderConfig, knowledgePages, legalPages] = await Promise.all([
   readFile(new URL('index.html', root), 'utf8'),
   readFile(new URL('app.js', root), 'utf8'),
   readFile(new URL('data-store.js', root), 'utf8'),
   readFile(new URL('style.css', root), 'utf8'),
   readFile(new URL('_headers', root), 'utf8'),
   readFile(new URL('vercel.json', root), 'utf8'),
+  readFile(new URL('firebase.json', root), 'utf8'),
+  readFile(new URL('netlify.toml', root), 'utf8'),
+  readFile(new URL('render.yaml', root), 'utf8'),
   Promise.all([
     'reselling-rechner/index.html',
     'maximaler-einkaufspreis/index.html',
@@ -32,6 +35,7 @@ const missingIds = [...new Set(appIds)].filter(id => !idMatches.includes(id));
 assert.deepEqual(missingIds, [], `Every app.js element reference must exist: ${missingIds.join(', ')}`);
 assert.doesNotMatch(html, /simple-ui\.js/, 'The old competing calculator must not run beside app.js');
 assert.doesNotMatch(app, /onclick="/, 'Generated controls must comply with the script-src CSP');
+assert.doesNotMatch(html + app, /\sstyle="/i, 'Inline styles must not weaken the style-src CSP');
 assert.match(css, /\.moneyInput input,[^}]*\.moneyValue\{color:var\(--green\)!important/, 'Money styling must be green');
 assert.match(css, /--bg:\s*#09111f/, 'The DINAVO dark background token must stay enabled');
 assert.match(css, /--surface:\s*#101c30/, 'The DINAVO surface token must stay enabled');
@@ -85,6 +89,23 @@ assert.ok(structuredData, 'Structured application data must exist');
 const structuredDataHash = createHash('sha256').update(structuredData).digest('base64');
 assert.match(headers, new RegExp(`script-src[^;]*'sha256-${structuredDataHash.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}'`), 'Cloudflare CSP must allow only the exact structured-data block');
 assert.match(vercelConfig, new RegExp(`script-src[^;]*'sha256-${structuredDataHash.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}'`), 'Vercel fallback CSP must match the structured-data hash');
+for (const [name, config] of [
+  ['Cloudflare', headers],
+  ['Vercel', vercelConfig],
+  ['Firebase', firebaseConfig],
+  ['Netlify', netlifyConfig],
+  ['Render', renderConfig]
+]) {
+  assert.doesNotMatch(config, /unsafe-inline/, `${name} CSP must not allow inline styles`);
+  assert.match(config, new RegExp(`script-src[^;]*'sha256-${structuredDataHash.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}'`), `${name} CSP must allow only the exact structured-data block`);
+}
+const parsedFirebaseConfig = JSON.parse(firebaseConfig);
+assert.equal(parsedFirebaseConfig.hosting.public, 'firebase-retirement', 'Firebase must publish only the retirement surface');
+assert.deepEqual(parsedFirebaseConfig.hosting.redirects, [{
+  source: '**',
+  destination: 'https://dealfaz.dealfaz-social.workers.dev/',
+  type: 301
+}], 'Firebase must permanently redirect every legacy route to DINAVO');
 assert.match(css, /@media\(max-width:680px\)\{[^}]*main\{/, 'A narrow-screen layout must exist');
 assert.match(css, /\.advancedGrid,\.heroNumbers,[^}]*\{grid-template-columns:1fr\}/, 'Calculator grids must collapse on mobile');
 assert.match(css, /@media\(max-width:680px\)\{\.costSummary\{grid-template-columns:1fr 1fr\}/, 'Cost summary must remain compact on mobile');
@@ -220,10 +241,10 @@ await import(`../app.js?frontend-regression=${Date.now()}`);
 
 assert.equal(elements.get('product').value, 'Beispiel: Nike Air Max 90, Gr. 43');
 assert.equal(elements.get('platform').value, 'ebay_gewerblich');
-assert.equal(Number(elements.get('feePercent').value), 11);
-assert.equal(Number(elements.get('cost').value), 18.24);
-assert.equal(elements.get('profit').textContent, '26,76 €');
-assert.equal(elements.get('roi').textContent, '59.5 %');
+assert.equal(Number(elements.get('feePercent').value), 12);
+assert.equal(Number(elements.get('cost').value), 19.24);
+assert.equal(elements.get('profit').textContent, '25,76 €');
+assert.equal(elements.get('roi').textContent, '57.2 %');
 assert.match(elements.get('resultCard').className, /\bis-(good|warn|bad)\b/, 'The result card must expose a visible state class');
 assert.equal(elements.get('resultCard').dataset.state, 'good');
 assert.equal(elements.get('profitMetricLink').href, '/reselling-rechner/');
@@ -261,22 +282,22 @@ elements.get('buy').value = '50';
 elements.get('sell').value = '100';
 elements.get('platform').value = 'ebay_gewerblich';
 await elements.get('platform').dispatch('change');
-assert.equal(Number(elements.get('feePercent').value), 11);
-assert.equal(Number(elements.get('feeFixed').value), 0.35);
+assert.equal(Number(elements.get('feePercent').value), 12);
+assert.equal(Number(elements.get('feeFixed').value), 0.45);
 assert.equal(Number(elements.get('shipping').value), 4.99);
 
 elements.get('costsExtra').value = '3';
 await elements.get('costsExtra').dispatch('input');
-assert.equal(Number(elements.get('cost').value), 19.34);
-assert.equal(elements.get('feeAmount').textContent, '11,35 €');
-assert.equal(elements.get('costAmount').textContent, '19,34 €');
-assert.equal(elements.get('profit').textContent, '30,66 €');
+assert.equal(Number(elements.get('cost').value), 20.44);
+assert.equal(elements.get('feeAmount').textContent, '12,45 €');
+assert.equal(elements.get('costAmount').textContent, '20,44 €');
+assert.equal(elements.get('profit').textContent, '29,56 €');
 
 elements.get('save').onclick();
 let [saved] = store.getOpenDeals();
 assert.equal(saved.estimate.platformId, 'ebay_gewerblich');
-assert.equal(saved.estimate.feeAmount, 11.35);
-assert.equal(saved.estimate.costs, 19.34);
+assert.equal(saved.estimate.feeAmount, 12.45);
+assert.equal(saved.estimate.costs, 20.44);
 
 await globalThis.window.chooseForecast(0);
 elements.get('actualSell').value = '78';

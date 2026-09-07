@@ -62,7 +62,7 @@ assert.deepEqual(
   [
     { id: 'kleinanzeigen_privat', feePercent: 0, feeFixed: 0, shippingDefault: 0 },
     { id: 'ebay_privat', feePercent: 0, feeFixed: 0, shippingDefault: 0 },
-    { id: 'ebay_gewerblich', feePercent: 0.11, feeFixed: 0.35, shippingDefault: 4.99 },
+    { id: 'ebay_gewerblich', feePercent: 0.12, feeFixed: 0.45, shippingDefault: 4.99 },
     { id: 'vinted', feePercent: 0, feeFixed: 0, shippingDefault: 0 },
     { id: 'etsy', feePercent: 0.065, feeFixed: 0.18, shippingDefault: 4.99 },
     { id: 'amazon', feePercent: 0.15, feeFixed: 0, shippingDefault: 3.50 },

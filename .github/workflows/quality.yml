@@ -173,9 +173,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          ! grep -Fq '/analytics.js' index.html app.js simple-ui.js
-          ! grep -Fq 'dealfaz-pixel' index.html app.js simple-ui.js analytics.js
-          ! grep -Fq 'supabase.co/functions/v1' index.html app.js simple-ui.js analytics.js _headers vercel.json
+          ! grep -Fq '/analytics.js' index.html app.js
+          ! grep -Fq 'dealfaz-pixel' index.html app.js analytics.js
+          ! grep -Fq 'supabase.co/functions/v1' index.html app.js analytics.js _headers vercel.json
           grep -Fq 'DINAVO laedt kein eigenes Analytics-' analytics.js
           grep -Fq 'lädt kein Analyse-, Werbe- oder Marketing-Skript' datenschutz/index.html
 
@@ -185,6 +185,17 @@ jobs:
           grep -Fq '/^[=+\-@\t\r]/.test(text)' app.js
           grep -Fq 'rows.map(row => row.map(csv)' app.js
           grep -Fq '\ufeff' app.js
+
+      - name: Public asset bundle excludes internal project files
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fxq '*.md' .assetsignore
+          grep -Fxq '.github/' .assetsignore
+          grep -Fxq 'docs/' .assetsignore
+          grep -Fxq 'scripts/' .assetsignore
+          grep -Fxq 'firebase.json' .assetsignore
+          grep -Fxq 'MONETIZATION_DISABLED' .assetsignore
 
       - name: No obvious secrets in repository
         shell: bash

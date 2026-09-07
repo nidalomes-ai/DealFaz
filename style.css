@@ -335,6 +335,7 @@ header{backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .resultBasis[data-basis=calculation] span,.resultBasis[data-basis=limited] span{background:var(--warn);box-shadow:0 0 0 4px rgba(232,177,58,.14)}
 .resultBasis[data-basis=evidence] span{background:var(--good);box-shadow:0 0 0 4px rgba(53,201,138,.14)}
 .actionStatus{min-height:1.3rem;margin:8px 0 0;text-align:center;font-size:.78rem}
+.historyHeading{margin-top:18px}
 button:not(.secondary):not(.danger),.btn,a.btn{
   background:var(--accent);color:#06101d;font-weight:850;
 }

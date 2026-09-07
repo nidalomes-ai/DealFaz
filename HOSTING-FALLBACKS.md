@@ -1,6 +1,6 @@
 # DINAVO – Hosting-Fallbacks
 
-Stand: 27.08.2026
+Stand: 07.09.2026
 
 Ziel: keine unnötige Abhängigkeit von einem einzelnen kostenlosen Anbieter. Der kostenlose Beta-Betrieb ist bereits aktiv. Monetarisierung bleibt separat gesperrt, bis Business-/Steuer-/Partner-Gates tatsächlich erfüllt sind.
 
@@ -22,15 +22,15 @@ Vor einem späteren geschäftskritischen/monetarisierten Dauerbetrieb bleibt bew
 
 **Cloudflare Pages bleibt als statischer kostenloser Fallback dokumentiert.** Das Repository ist als statische Site vorbereitet; ein Pages-Deployment wird aber nicht parallel als zweite öffentliche Hauptquelle beworben. Falls Workers technisch ausfällt und Pages verfügbar ist, gilt vor Umschaltung dasselbe vollständige Cutover-Gate wie für jeden anderen Host.
 
-## Plan B – Firebase Hosting Spark
+## Alte Firebase-Instanz – nur Stilllegung
 
-**Kostenloser technischer Ersatzweg, falls der aktive Cloudflare-Beta-Host künftig ausfällt.**
+**Kein Hosting-Fallback mehr.**
 
-`firebase.json` ist vorbereitet und veröffentlicht nur Web-Dateien; interne Markdown-Dokumentation, Workflows, Scripts und der Monetarisierungs-Lock werden nicht als Website-Inhalte hochgeladen.
+Die frühere DEALFAZ-Seite auf Firebase ist noch öffentlich und lädt PostHog. `firebase.json` veröffentlicht deshalb ausschließlich eine minimale Retirement-Oberfläche und leitet alle Routen permanent auf DINAVO bei Cloudflare weiter. Ein Firebase-Deploy darf nur für diese Stilllegung verwendet werden.
 
-Vor Umschaltung: Deployment-URL prüfen, danach Canonical/OG/Sitemap/robots.txt/Datenschutz-Hostingtext anpassen und Live Health vollständig ausführen.
+Nach dem separaten Deploy müssen Root, alte Sprachrouten, Header und das Ende der PostHog-Auslieferung geprüft werden.
 
-## Plan C – Netlify Free
+## Plan B – Netlify Free
 
 **Weiterer technischer Ersatzkandidat.** `netlify.toml` ist vorbereitet. Vor Nutzung werden die dann aktuellen Free-Tier-Bedingungen nochmals geprüft.
 
@@ -72,4 +72,4 @@ Kein neuer Host wird öffentlich als Produktionshost geschaltet, bevor folgende 
 
 ## Automatische Entscheidungsregel
 
-Aktiver Cloudflare-Host funktioniert → dort bleiben. Bei einem echten technischen Ausfall zuerst Cloudflare Pages prüfen. Wenn Pages nicht geeignet/verfügbar ist, Firebase Hosting Spark prüfen. Wenn das nicht funktioniert, Netlify Free prüfen. Keine kostenpflichtige Lösung automatisch aktivieren.
+Aktiver Cloudflare-Host funktioniert → dort bleiben. Bei einem echten technischen Ausfall zuerst Cloudflare Pages prüfen. Wenn Pages nicht geeignet oder verfügbar ist, Netlify Free prüfen. Die alte Firebase-Instanz dient nur noch als Weiterleitung. Keine kostenpflichtige Lösung automatisch aktivieren.

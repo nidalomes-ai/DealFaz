@@ -32,8 +32,8 @@
     }),
     Object.freeze({
       id: 'ebay_gewerblich', label: 'eBay (gewerblich)',
-      feePercent: 0.11, feeFixed: 0.35, shippingDefault: 4.99,
-      note: 'Richtwert: Kategorie, Transaktionsbetrag, Fixbetrag und Umsatzsteuer können die Gebühr verändern.'
+      feePercent: 0.12, feeFixed: 0.45, shippingDefault: 4.99,
+      note: 'Richtwert für viele Kategorien und Bestellungen über 10 €: 12 % + 0,45 €. Kategorie, Gesamtbetrag, Shop, Artikelzustand und Umsatzsteuer können abweichen.'
     }),
     Object.freeze({
       id: 'vinted', label: 'Vinted',
@@ -43,12 +43,12 @@
     Object.freeze({
       id: 'etsy', label: 'Etsy',
       feePercent: 0.065, feeFixed: 0.18, shippingDefault: 4.99,
-      note: 'Richtwert; Zahlungs-, Listing-, Werbe- und weitere Gebühren können hinzukommen.'
+      note: 'Enthält nur 6,5 % Transaktionsgebühr und einen ungefähren Listingbetrag. Zahlungsabwicklung, Werbung, Umsatzsteuer und weitere Gebühren zusätzlich eintragen.'
     }),
     Object.freeze({
       id: 'amazon', label: 'Amazon',
       feePercent: 0.15, feeFixed: 0, shippingDefault: 3.50,
-      note: 'Richtwert; Kategorie, Verkaufstarif und FBA können weitere Kosten verursachen.'
+      note: '15 % ist nur ein grober Richtwert. Kategorie, Verkaufstarif, Abschlussgebühr, Versand und FBA können deutlich abweichen.'
     }),
     Object.freeze({
       id: 'custom', label: 'Eigene Angabe',

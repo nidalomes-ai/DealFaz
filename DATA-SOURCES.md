@@ -40,7 +40,7 @@ Namen externer Marktplätze werden ausschließlich beschreibend verwendet, um Re
 
 Die im Rechner hinterlegten Profile sind **editierbare Richtwerte**, keine verbindlichen Preislisten. Prozent-, Fix-, Versand-, Listing-, Zahlungs-, Werbe-, Tarif-, Umsatzsteuer- und FBA-Kosten können je nach Plattform, Kategorie, Betrag, Land und gewählten Zusatzleistungen abweichen. Der Rechner zeigt deshalb bei jedem Profil einen Prüfhinweis und speichert die tatsächlich verwendeten Werte als unveränderlichen Deal-Snapshot.
 
-Offizielle Prüfquellen, zuletzt kontrolliert am 01.09.2026:
+Offizielle Prüfquellen, zuletzt kontrolliert am 07.09.2026:
 
 - [eBay – Gebühren für private Verkäufer](https://www.ebay.de/help/selling/fees-credits-invoices/gebhren-fr-private-verkufer?id=4822)
 - [eBay – Gebühren für gewerbliche Verkäufer](https://www.ebay.de/help/selling/fees-credits-invoices/gebuhren-fur-gewerbliche-verkaufer?id=4809)
@@ -48,6 +48,8 @@ Offizielle Prüfquellen, zuletzt kontrolliert am 01.09.2026:
 - [Vinted – Käuferschutz-Gebühren](https://www.vinted.de/help/342-kauferschutz-gebuhren-auf-vinted)
 - [Etsy – Fees & Payments Policy](https://www.etsy.com/legal/fees/)
 - [Amazon – Preisgestaltung für Verkäufer](https://sell.amazon.de/preisgestaltung)
+
+Für den Beispiel-Deal mit Sneakern unter 100 € verwendet DINAVO beim Profil „eBay (gewerblich)“ derzeit 12 % plus 0,45 € für eine Bestellung über 10 €. Andere eBay-Kategorien können deutlich abweichen. Das Etsy-Profil enthält bewusst nur die allgemeine Transaktionsgebühr und einen ungefähren Listingbetrag; Zahlungsabwicklung und optionale Werbung müssen zusätzlich eingetragen werden. Der Amazon-Wert von 15 % bleibt wegen der Kategorie- und Tarifunterschiede ausdrücklich ein grober Richtwert.
 
 ## Haftungsgrenze
 

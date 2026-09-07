@@ -135,6 +135,8 @@ Der sichere Zustand vor Gewerbe ist damit vollständig hergestellt.
 
 **Technische kostenlose Beta: 🟢 releasebereit.**
 
-**Einziger aktiver gelber Schritt:** Gewerbeanmeldung beziehungsweise Klärung des tatsächlichen Betriebsbeginns vor kommerziellem Betrieb.
+**Geschäftliches gelbes Gate:** Gewerbeanmeldung beziehungsweise Klärung des tatsächlichen Betriebsbeginns vor kommerziellem Betrieb.
+
+**Technische Veröffentlichungsgates:** aktualisierten Cloudflare-Stand veröffentlichen und die alte Firebase-/PostHog-Seite mit der vorbereiteten permanenten Weiterleitung stilllegen.
 
 Spätere Affiliate-, Steuer-, Marken- und Domain-Ausführungsschritte stehen `⏸`; sie werden nicht als bereits erteilte externe Freigaben dargestellt und sind keine Freigabe der jeweiligen externen Stelle.

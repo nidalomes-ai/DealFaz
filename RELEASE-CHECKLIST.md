@@ -140,7 +140,7 @@ Für einen technischen Beta-Test ist die vorsichtige Nutzung dokumentiert; eine 
 
 Bei Checkout, kostenpflichtigen Leistungen oder gehosteten Nutzerinhalten erfolgt vor Aktivierung eine neue BFSG-/DSA-/Verbraucherrechtsprüfung.
 
-## 13. Gewerbe – 🟡 KRITISCHES GESCHÄFTS-LAUNCH-GATE
+## 13. Gewerbe – 🟢 AKTUELLE KOSTENLOSE BETA / 🔒 GESCHÄFTS-LAUNCH-GATE
 
 - [x] zuständige Stelle/Verfahren vorbereitet
 - [x] Tätigkeitsbeschreibung vorbereitet
@@ -159,7 +159,9 @@ Vor Entfernung von `MONETIZATION_DISABLED` müssen Gewerbe-/Steuergate, tatsäch
 
 **Öffentliche Version: 🔴 Veröffentlichung der vorbereiteten Änderungen und separate Firebase-Stilllegung ausstehend.**
 
-**Vollständiges rechtliches Geschäfts-GO: 🟡 noch nicht – Gewerbebeginn/Gewerbeanmeldung zuerst klären.**
+**Aktuelle kostenlose, nicht monetarisierte Beta: 🟢 freigegeben.**
+
+**Vollständiges rechtliches Geschäfts-GO: 🔒 gesperrt – Gewerbebeginn/Gewerbeanmeldung zuerst klären.**
 
 **Markenname: 🟢 für die vorsichtige kostenlose Beta; ⏸ Neuprüfung vor Anmeldung oder größerer irreversibler Markeninvestition.**
 

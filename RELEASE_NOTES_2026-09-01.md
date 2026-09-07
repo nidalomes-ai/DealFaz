@@ -95,7 +95,7 @@ Diese Punkte sind nicht vorab erzwingbar und keine technischen Release-Blocker.
 - 🟢 eBay-Vorbereitung
 - 🟢 Steuer-/ELSTER-Vorbereitung
 - 🟢 DINAVO als unregistrierter Arbeitsname ohne `®`
-- 🟡 Gewerbeanmeldung vor kommerziellem Betrieb
+- 🔒 kommerzieller Betrieb bis zur Klärung von Gewerbebeginn/Gewerbeanmeldung gesperrt
 - ⏸ professionelle Marken-Ähnlichkeitsrecherche als Neu-Gate vor Anmeldung oder größerem Werbebudget
 
 ## ⏸ Monetarisierung nach Gewerbe
@@ -104,4 +104,4 @@ Steuerliche Übermittlung mit echten Betriebsdaten, Amazon-Partnerlinks, eBay nu
 
 ## Ergebnis
 
-**Technische kostenlose DINAVO-Beta: lokal releasebereit. Einziger aktiver gelber Punkt: Gewerbebeginn/Gewerbeanmeldung.** Externe Rechtsakte wie Markenanmeldung, Domainkauf und Partnerfreigaben bleiben pausiert und werden nicht als bereits erledigt dargestellt.
+**Technische kostenlose DINAVO-Beta: lokal releasebereit und ohne gelbe Punkte.** Gewerblicher Betrieb bleibt bis zur Klärung von Gewerbebeginn/Gewerbeanmeldung gesperrt. Externe Rechtsakte wie Markenanmeldung, Domainkauf und Partnerfreigaben bleiben pausiert und werden nicht als bereits erledigt dargestellt.

@@ -125,7 +125,7 @@ Der sichere Zustand vor Gewerbe ist damit vollständig hergestellt.
 
 ## 12. Gewerbe
 
-**Status: 🟡 EXTERNER SCHRITT VOR KOMMERZIELLEM START**
+**Status: 🟢 FÜR AKTUELLE KOSTENLOSE BETA / 🔒 VOR KOMMERZIELLEM START**
 
 - zuständige Stelle identifiziert
 - Verfahren und Tätigkeitsbeschreibung vorbereitet
@@ -135,7 +135,9 @@ Der sichere Zustand vor Gewerbe ist damit vollständig hergestellt.
 
 **Technische kostenlose Beta: 🟢 releasebereit.**
 
-**Geschäftliches gelbes Gate:** Gewerbeanmeldung beziehungsweise Klärung des tatsächlichen Betriebsbeginns vor kommerziellem Betrieb.
+**Aktuelle kostenlose Beta:** 🟢 ohne Monetarisierung freigegeben.
+
+**Geschäftsstart:** 🔒 bis zur Gewerbeanmeldung beziehungsweise Klärung des tatsächlichen Betriebsbeginns gesperrt.
 
 **Technische Veröffentlichungsgates:** aktualisierten Cloudflare-Stand veröffentlichen und die alte Firebase-/PostHog-Seite mit der vorbereiteten permanenten Weiterleitung stilllegen.
 

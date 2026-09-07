@@ -22,10 +22,11 @@ DINAVO ist auf einen dauerhaften öffentlichen Betrieb und spätere Affiliate-Ei
 - 🟢 eBay-Vorbereitung: Bewerbung dokumentiert; keine EPN-Links live.
 - 🟢 Hosting: Cloudflare Workers aktueller Hauptbetrieb.
 - 🟢 Social-Limitschutz: maximal 20 Veröffentlichungen/Monat dokumentiert.
-- 🟡 **Gewerbeanmeldung / tatsächlicher Betriebsbeginn: rechtlich zu klären bzw. auszuführen.**
+- 🟢 **Kostenlose Beta: kein Umsatz, keine Affiliate-Links, kein Checkout und keine Nutzerzahlungen.**
+- 🔒 **Gewerblicher Start: bis zur Klärung des Betriebsbeginns und einer erforderlichen Gewerbeanmeldung gesperrt.**
 - 🔒 Monetarisierung: gesperrt.
 
-## 1. Gewerbeanmeldung – KRITISCHER GELBER PUNKT
+## 1. Gewerbeanmeldung – GESPERRTES NEUGATE VOR GESCHÄFTSSTART
 
 ### Vorbereitet
 
@@ -127,6 +128,8 @@ Vor Aktivierung:
 
 **Technische Launch-Bereitschaft: 🟢.**
 
-**Rechtlicher Geschäftsstart: 🟡 bis Gewerbe/Betriebsbeginn geklärt bzw. erforderliche Gewerbeanmeldung erfolgt ist.**
+**Aktuelle kostenlose, nicht monetarisierte Beta: 🟢 freigegeben.**
+
+**Rechtlicher Geschäftsstart: 🔒 nicht freigegeben, bis Gewerbe/Betriebsbeginn geklärt und eine erforderliche Gewerbeanmeldung erfolgt ist.**
 
 **Monetarisierung: 🔒 deaktiviert.**

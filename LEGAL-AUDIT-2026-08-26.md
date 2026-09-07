@@ -10,7 +10,7 @@ Stand: 07.09.2026
 
 Affiliate-Monetarisierung bleibt bis dahin durch `MONETIZATION_DISABLED` gesperrt.
 
-## 1. Gewerberecht – 🟡 KRITISCHES STARTGATE
+## 1. Gewerberecht – 🟢 AKTUELLE KOSTENLOSE BETA / 🔒 GESCHÄFTSSTART GESPERRT
 
 § 14 Abs. 1 GewO verlangt die gleichzeitige Anzeige, wenn der selbständige Betrieb eines stehenden Gewerbes anfängt. Für den Gewerbebegriff sind insbesondere Selbständigkeit, Dauerhaftigkeit und Gewinnerzielungsabsicht relevant; ein tatsächlich bereits erzielter Gewinn ist nicht Voraussetzung.
 
@@ -184,7 +184,8 @@ CI soll weiterhin verhindern:
 - 🟢 DSA: aktuell keine UGC-/Hosting-Plattformfunktion
 - 🟢 BFSG: aktuelle Produktarchitektur ohne eigenen Verbrauchervertrag; Neugate bei E-Commerce
 - 🟢 Steuer-/Partner-Vorbereitung
-- 🟡 **Gewerbebeginn/Gewerbeanmeldung – kritisches Launch-Gate**
+- 🟢 **Aktuelle kostenlose Beta – keine Affiliate-Links, Nutzerzahlungen oder eigenen Verkäufe**
+- 🔒 **Geschäftsstart – bis Klärung von Gewerbebeginn/Gewerbeanmeldung gesperrt**
 - 🟢 **Markenname für kostenlose Beta – Vorrecherche und Risikosteuerung dokumentiert; keine amtliche Kollisionsfreigabe behauptet**
 - ⏸ professionelle Ähnlichkeitsprüfung – vor Markenanmeldung oder größerer irreversibler Markeninvestition
 - ⏸ eBay EPN-Acceptance und sonstige Partner-Endfreigaben – nur für spätere Monetarisierung relevant
@@ -193,6 +194,8 @@ CI soll weiterhin verhindern:
 
 **Technisches Beta-GO: JA.**
 
-**Vollständiges rechtliches Geschäfts-GO: NOCH NICHT.** Zuerst Gewerbebeginn/Gewerbeanmeldung klären. Die professionelle Markenprüfung bleibt ein pausiertes Neu-Gate vor größerer kommerzieller Markeninvestition und ist kein weiterer gelber Punkt der kostenlosen Beta.
+**Aktuelle kostenlose, nicht monetarisierte Beta: GRÜN.**
+
+**Vollständiges rechtliches Geschäfts-GO: GESPERRT.** Zuerst Gewerbebeginn/Gewerbeanmeldung klären. Die professionelle Markenprüfung bleibt ein verpflichtendes Neu-Gate vor größerer kommerzieller Markeninvestition.
 
 **Monetarisierung: NEIN, bis die vorgesehenen Gates erfüllt sind.**

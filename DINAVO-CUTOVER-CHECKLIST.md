@@ -2,7 +2,7 @@
 
 Stand: 29.08.2026
 
-**Status: ⏸ PAUSIERTER CUSTOM-DOMAIN-/MARKEN-CUTOVER.** Die offenen Punkte sind Zukunftsschritte und keine weiteren gelben Gates der kostenlosen Beta. Aktiv gelb bleibt ausschließlich die Klärung von Gewerbebeginn/Gewerbeanmeldung.
+**Status: ⏸ PAUSIERTER CUSTOM-DOMAIN-/MARKEN-CUTOVER.** Die offenen Punkte sind Zukunftsschritte und keine Gates der kostenlosen Beta. Die aktuelle kostenlose Beta bleibt grün; ein geschäftlicher Start ist bis zur Klärung von Gewerbebeginn/Gewerbeanmeldung gesperrt.
 
 ## 1. Sofort sichern
 

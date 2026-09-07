@@ -25,7 +25,7 @@ Der lokale Release-Kandidat ist technisch für die kostenlose, nicht monetarisie
 
 Für Firebase ist im Repository eine separate Hosting-Konfiguration vorbereitet: Sie veröffentlicht nicht erneut die alte Anwendung, sondern leitet sämtliche Aufrufe dauerhaft auf die aktuelle DINAVO-Adresse weiter. Diese Stilllegung erfordert einen eigenen Firebase-Deploy mit Zugriff auf das bisherige Projekt.
 
-## Bleibende Geschäfts-Gates – 🟡 / 🔒
+## Spätere Geschäfts-Gates – 🔒
 
 - Gewerbebeginn und erforderliche Gewerbeanmeldung vor dauerhaftem geschäftlichem Betrieb klären.
 - Markenähnlichkeitsprüfung vor Markenanmeldung, größerem Werbebudget oder schwer umkehrbaren Investitionen abschließen.
@@ -38,5 +38,6 @@ Für Firebase ist im Repository eine separate Hosting-Konfiguration vorbereitet:
 - Öffentlicher DINAVO-Stand: 🔴 Update ausstehend
 - Alte Firebase-Seite: 🔴 Stilllegung ausstehend
 - Monetarisierung: 🔒 deaktiviert
+- Aktuelle kostenlose Beta-Gates: 🟢 ohne gelbe Punkte
 
 Diese interne Prüfung ist keine anwaltliche oder steuerliche Einzelfallberatung.

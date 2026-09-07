@@ -41,7 +41,7 @@ Die endgültigen Begriffe müssen vor Anmeldung in der amtlichen Klassifikations
 |---|---|---|
 | Technische Entwicklung und interne Tests | Grün | DINAVO ohne `®` als Arbeitsname |
 | Kostenlose öffentliche Beta | Grün mit dokumentiertem Restrisiko | keine Exklusivitätsbehauptung |
-| Markenanmeldung oder größeres Werbebudget | Gelb | vorher professionelle Identitäts- und Ähnlichkeitsrecherche |
+| Markenanmeldung oder größeres Werbebudget | Gesperrt | vorher professionelle Identitäts- und Ähnlichkeitsrecherche |
 | EU-/weltweite Exklusivität behaupten | Rot | dafür liegt keine belastbare Grundlage vor |
 
 ## Schutzschritte

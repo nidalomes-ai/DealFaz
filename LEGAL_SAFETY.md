@@ -2,7 +2,7 @@
 
 Diese Datei ist eine interne Freigabe-Checkliste für neue DINAVO-Funktionen. Sie ersetzt keine individuelle Rechtsberatung. Eine Funktion soll erst live gehen, wenn die relevanten Punkte geprüft sind.
 
-**Aktueller Stand 01.09.2026:** Die für die kostenlose Beta zutreffenden Punkte wurden im `RELEASE-CHECKLIST.md` geprüft und sind grün. Offene Kästchen in dieser Datei sind verpflichtende Neuprüfungen bei künftigen Funktionen, keine zusätzlichen gelben Punkte. Einzig aktiv gelb bleibt Gewerbebeginn/Gewerbeanmeldung.
+**Aktueller Stand 07.09.2026:** Die für die kostenlose, nicht monetarisierte Beta zutreffenden Punkte wurden im `RELEASE-CHECKLIST.md` geprüft und sind grün. Offene Kästchen in dieser Datei sind verpflichtende Neuprüfungen bei künftigen Funktionen. Gewerblicher Betrieb und Monetarisierung bleiben bis zur Klärung von Gewerbebeginn/Gewerbeanmeldung gesperrt.
 
 ## 1. Pflichtangaben vor öffentlichem geschäftsmäßigem Betrieb
 
@@ -79,7 +79,7 @@ Vor einer zukünftigen Foto-/Screenshot-Funktion:
 
 **ROT = nicht deployen** bei: unklarer Datenquelle, ungeklärtem Scraping, fehlender erforderlicher Einwilligung, ungeklärter Affiliate-Kennzeichnung, falscher Partnerschaftsbehauptung, Garantien oder Verarbeitung sensibler Daten ohne klares Konzept.
 
-**GELB = erst prüfen** bei: neuen Drittanbieter-SDKs, neuen externen Datenquellen, Uploads, Nutzerkonten, E-Mail-Sammlung, Zahlungen, Affiliate, personalisierten Empfehlungen oder neuen Trackingmethoden.
+**GESPERRTES NEUGATE = erst prüfen und danach bewusst freigeben** bei: neuen Drittanbieter-SDKs, neuen externen Datenquellen, Uploads, Nutzerkonten, E-Mail-Sammlung, Zahlungen, Affiliate, personalisierten Empfehlungen oder neuen Trackingmethoden.
 
 **GRÜN = deploybar** wenn: Datenquelle erlaubt/nutzerbereitgestellt, Datensparsamkeit gewahrt, Claims transparent, keine Garantien, externe Plattformen klar getrennt und relevante Pflichtinformationen berücksichtigt sind.
 

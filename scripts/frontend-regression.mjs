@@ -8,6 +8,12 @@ const legalPagePaths = [
   'datenschutz/index.html',
   'nutzungsbedingungen/index.html'
 ];
+const knowledgePagePaths = [
+  'reselling-rechner/index.html',
+  'maximaler-einkaufspreis/index.html',
+  'roi-reselling/index.html',
+  'sell-through/index.html'
+];
 const [html, app, analyticsSource, storeSource, css, headers, vercelConfig, firebaseConfig, netlifyConfig, renderConfig, knowledgePages, legalPages] = await Promise.all([
   readFile(new URL('index.html', root), 'utf8'),
   readFile(new URL('app.js', root), 'utf8'),
@@ -19,14 +25,10 @@ const [html, app, analyticsSource, storeSource, css, headers, vercelConfig, fire
   readFile(new URL('firebase.json', root), 'utf8'),
   readFile(new URL('netlify.toml', root), 'utf8'),
   readFile(new URL('render.yaml', root), 'utf8'),
-  Promise.all([
-    'reselling-rechner/index.html',
-    'maximaler-einkaufspreis/index.html',
-    'roi-reselling/index.html',
-    'sell-through/index.html'
-  ].map(path => readFile(new URL(path, root), 'utf8'))),
+  Promise.all(knowledgePagePaths.map(path => readFile(new URL(path, root), 'utf8'))),
   Promise.all(legalPagePaths.map(path => readFile(new URL(path, root), 'utf8')))
 ]);
+const sitemap = await readFile(new URL('sitemap.xml', root), 'utf8');
 
 const idMatches = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
 assert.equal(new Set(idMatches).size, idMatches.length, 'HTML IDs must be unique');
@@ -62,6 +64,16 @@ assert.match(html, /<nav class="tabbar" data-tabbar[\s\S]*>Prüfen<[\s\S]*>Meine
 assert.match(html, /<footer class="siteFooter" data-legal>[\s\S]*href="\/impressum\/"[\s\S]*href="\/datenschutz\/"[\s\S]*href="\/nutzungsbedingungen\/"/, 'The homepage must expose only the compact legal footer');
 assert.doesNotMatch(html, /id="(?:imprint|privacy|terms|liability)"|class="legalPage"/, 'Full legal documents must not remain embedded on the homepage');
 assert.match(html, /DINAVO ist eine Rechenhilfe und ersetzt keine Kauf-, Rechts-, Steuer- oder Finanzberatung/, 'The homepage disclaimer must stay visible');
+for (const [index, page] of knowledgePages.entries()) {
+  const route = `/${knowledgePagePaths[index].replace(/index\.html$/, '')}`;
+  assert.match(page, /<meta name="robots" content="index,follow">/, `${route} must stay publicly indexable`);
+  assert.match(page, /<h1>[^<]+(?:<br>)?[^<]*<\/h1>/, `${route} must expose a visible primary heading`);
+  assert.match(html, new RegExp(`href="${route.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`), `${route} must remain visible in homepage navigation`);
+  assert.match(sitemap, new RegExp(`<loc>https://dealfaz\\.dealfaz-social\\.workers\\.dev${route.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</loc>`), `${route} must remain in the public sitemap`);
+}
+const publicMarkup = [html, ...knowledgePages, ...legalPages].join('\n');
+assert.doesNotMatch(publicMarkup, /<(?:s|del)(?:\s|>)/i, 'Public content must not contain struck-through posts or text');
+assert.doesNotMatch(css, /text-decoration(?:-line)?\s*:\s*line-through/i, 'Public styling must not strike through posts or text');
 for (const [index, page] of legalPages.entries()) {
   const route = `/${legalPagePaths[index].replace(/index\.html$/, '')}`;
   assert.match(page, new RegExp(`<link rel="canonical" href="https://dealfaz\\.dealfaz-social\\.workers\\.dev${route}"`), `${route} must have its production canonical`);

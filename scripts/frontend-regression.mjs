@@ -50,6 +50,17 @@ for (const [index, page] of legalPages.entries()) {
   assert.match(page, /href="\/nutzungsbedingungen\/"/, `${route} must link to the terms`);
   assert.doesNotMatch(page, /<script\b/i, `${route} must stay static and tracking-free`);
 }
+const privacy = legalPages[1];
+assert.match(privacy, /Cloudflare, Inc\./, 'Privacy information must identify the hosting recipient');
+assert.match(privacy, /cloudflare-customer-dpa/, 'Privacy information must link to Cloudflare transfer safeguards');
+assert.match(privacy, /Fragment hinter dem Zeichen „#“/, 'Privacy information must explain private fragment-based sharing');
+assert.match(privacy, /systemeigene Teilen-Funktion/, 'Privacy information must explain the device share sheet');
+assert.match(privacy, /Artikelbezeichnung als Suchbegriff/, 'Privacy information must disclose outbound marketplace searches');
+assert.match(privacy, /JSON-Backups und CSV-Dateien/, 'Privacy information must explain local import and export');
+assert.match(privacy, /Google \(Gmail\)/, 'Privacy information must identify the email provider');
+assert.match(privacy, /mail@datenschutzzentrum\.de/, 'Privacy information must identify the competent supervisory authority');
+assert.match(privacy, /Stand: 7\. September 2026/, 'Privacy information must expose its revision date');
+assert.doesNotMatch(app, /new URLSearchParams\(location\.search\)/, 'Deal values must never be restored from request query parameters');
 assert.match(html, /id="profit"[^>]*data-amount/, 'Profit must be the stable-width primary amount');
 assert.match(html, /data-secondary>[\s\S]*?<div id="personalEstimate" data-factor hidden role="status"><\/div>/, 'The personal correction factor must sit directly below profit and ROI');
 assert.doesNotMatch(html, /id="factorPanel"[^>]*data-factor/, 'The history factor summary must not capture the primary factor selector');

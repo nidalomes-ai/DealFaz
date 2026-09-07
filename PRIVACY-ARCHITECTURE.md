@@ -36,7 +36,15 @@ DINAVO führt neue serverseitige Datenspeicherung nur ein, wenn sie für eine ko
 
 Beim Öffnen eines externen Marktplatzes verlässt der Nutzer DINAVO. Dort gelten die Datenschutz-, Cookie- und Nutzungsregeln der jeweiligen Plattform.
 
+Die vom Nutzer eingetragene Artikelbezeichnung wird erst beim bewussten Öffnen als Suchbegriff in die Zieladresse der ausgewählten Plattform eingesetzt.
+
 Die aktuellen Marktlinks sind neutrale Originalquellen. Affiliate-Monetarisierung bleibt deaktiviert, solange `MONETIZATION_DISABLED` aktiv ist.
+
+## Teilen, Zwischenablage und Dateien
+
+Geteilte Deal-Werte stehen im URL-Fragment hinter `#`. Sie werden beim normalen Seitenabruf nicht an den DINAVO-Server übertragen, sind aber für Empfänger des vollständigen Links und den ausgewählten Teilen-Dienst sichtbar. Kopieren erfolgt nur nach Nutzeraktion über die Geräte-Zwischenablage.
+
+JSON-Backups und CSV-Exporte werden lokal erzeugt. Importierte JSON-Dateien werden nur im Browser gelesen und nicht an DINAVO hochgeladen.
 
 ## Alte Frontends
 

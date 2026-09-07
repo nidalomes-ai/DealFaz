@@ -882,12 +882,11 @@ $('clearAllData').onclick = () => {
   $('privacyDeleteStatus').textContent = 'Alle DINAVO-Daten wurden auf diesem Gerät gelöscht.';
 };
 
-const query = new URLSearchParams(location.search);
 let shared = new URLSearchParams();
 if (location.hash.startsWith('#deal=')) {
   try { shared = new URLSearchParams(decodeURIComponent(location.hash.slice(6))); } catch (_) {}
 }
-const incoming = shared.size ? shared : query;
+const incoming = shared;
 const sharedFields = [
   'product', 'buy', 'sell', 'platformId', 'platform', 'feePercent', 'feeFixed', 'shipping',
   'costsExtra', 'cost', 'sold', 'active', 'comps', 'certainty', 'risk', 'target', 'days'

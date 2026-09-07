@@ -134,7 +134,10 @@ jobs:
           grep -Fq 'https://www.amazon.de/s?k=${encoded}' app.js
           grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' index.html
           grep -Fq 'keine Gewinn-, Preis-, Nachfrage- oder Verkaufsgarantie' DATA-SOURCES.md
-          grep -Fq 'Beim Aufruf verarbeitet Cloudflare' datenschutz/index.html
+          grep -Fq 'DINAVO wird als Cloudflare Worker' datenschutz/index.html
+          grep -Fq 'Fragment hinter dem Zeichen „#“' datenschutz/index.html
+          grep -Fq 'Google (Gmail)' datenschutz/index.html
+          ! grep -Fq 'iosghttnctdaociwltos.supabase.co' firebase.json netlify.toml render.yaml
           grep -Fq 'Eine im Einzelfall bestehende gesetzliche Pflicht bleibt unberührt' impressum/index.html
           grep -Eq 'href="mailto:[^"[:space:]]+@[^"[:space:]]+\.[^"[:space:]]+"' impressum/index.html
           ! grep -Eq '__DINAVO_PROJECT_EMAIL__|\[Projekt-Adresse eintragen\]' impressum/index.html
@@ -160,6 +163,7 @@ jobs:
           set -euo pipefail
           grep -Fq '#deal=${encodeURIComponent(params.toString())}' app.js
           grep -Fq "location.hash.startsWith('#deal=')" app.js
+          ! grep -Fq 'new URLSearchParams(location.search)' app.js
           if grep -Eq 'location\.(origin|pathname).*\?.*(params|p)\.toString' app.js; then
             echo 'Share values are still being placed in the request query string.'
             exit 1

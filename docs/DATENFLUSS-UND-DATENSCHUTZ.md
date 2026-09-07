@@ -25,7 +25,7 @@ Deal-Eingaben werden clientseitig im Browser verarbeitet. Die Rechenlogik läuft
 
 ## Hosting
 
-Die öffentliche Website wird über Vercel bereitgestellt. Wie bei praktisch jedem Webhosting können dabei technisch notwendige Verbindungs- und Sicherheitsdaten durch den Hosting-Anbieter verarbeitet werden. Für dessen Verarbeitung gelten die jeweiligen Vercel-Datenschutzinformationen und vertraglichen Regelungen.
+Die öffentliche Website wird als Cloudflare Worker bereitgestellt. Dabei verarbeitet Cloudflare technisch notwendige Verbindungs-, Netzwerk- und Sicherheitsdaten zur Auslieferung und Absicherung der Website. Die öffentliche Datenschutzerklärung benennt Cloudflare, die Zwecke, Rechtsgrundlage, mögliche Drittlandverarbeitung und die maßgeblichen Schutzmechanismen.
 
 ## Externe Originalquellen
 
@@ -48,7 +48,11 @@ Die aktuelle öffentliche DINAVO-Oberfläche setzt selbst keine Werbe- oder Mark
 
 ## Teilen
 
-Beim Teilen eines Deal-Checks werden die vom Nutzer gewählten Deal-Parameter als URL-Parameter weitergegeben. Nutzer sollten daher keine vertraulichen oder personenbezogenen Inhalte in das Produktfeld eintragen, wenn sie einen Link teilen möchten.
+Beim Teilen eines Deal-Checks werden die vom Nutzer gewählten Deal-Parameter im URL-Fragment hinter `#` weitergegeben. Das Fragment wird beim normalen Seitenabruf nicht an den DINAVO-Server gesendet, ist aber für Empfänger des vollständigen Links und den vom Nutzer gewählten Teilen-Dienst sichtbar. Nutzer sollten daher keine vertraulichen oder personenbezogenen Inhalte in das Produktfeld eintragen, wenn sie einen Link teilen möchten.
+
+## Lokaler Import und Export
+
+JSON-Backups und CSV-Dateien werden im Browser erzeugt. Ein ausgewähltes JSON-Backup wird lokal im Browser gelesen und nicht zu DINAVO hochgeladen. Nach dem Download liegt die Datei außerhalb des Website-Speichers; Schutz, Aufbewahrung und Weitergabe liegen dann beim Nutzer.
 
 ## Datenminimierung
 

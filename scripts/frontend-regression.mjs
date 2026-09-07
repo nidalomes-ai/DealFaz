@@ -39,6 +39,11 @@ assert.deepEqual(missingIds, [], `Every app.js element reference must exist: ${m
 assert.doesNotMatch(html, /simple-ui\.js/, 'The old competing calculator must not run beside app.js');
 assert.match(html, /<script src="\/analytics\.js" defer><\/script>/, 'The consent-first analytics controller must be loaded');
 assert.match(html, /id="exampleDeal"[^>]*>Beispiel-Deal einsetzen<\/button>/, 'The calculator must expose a working example action');
+assert.match(
+  html,
+  /<details class="dnv-more">[\s\S]*?<summary>Genauer rechnen <span>optional<\/span><\/summary>[\s\S]*?id="sold"[\s\S]*?id="active"[\s\S]*?id="comps"[\s\S]*?id="certainty"[\s\S]*?id="risk"[\s\S]*?id="target"[\s\S]*?id="days"[\s\S]*?<\/details>/,
+  'The optional market and target fields must remain in the second detail level'
+);
 assert.doesNotMatch(html, /static\.cloudflareinsights\.com|data-cf-beacon/, 'The external beacon must never load directly from HTML');
 for (const id of ['analyticsConsent', 'analyticsSettings', 'analyticsAccept', 'analyticsReject']) {
   assert.match(html, new RegExp(`id="${id}"`), `Analytics consent control #${id} must exist`);

@@ -365,3 +365,36 @@ button:not(.secondary):not(.danger):not(.footerLinkButton):active,.btn:active,a.
   [data-app]{padding-left:0;padding-right:0}
   .resultBasis{border-radius:12px}
 }
+
+/* Zweite Detailstufe: Marktdaten und persönliche Zielwerte bleiben optional. */
+.dnv-more{
+  margin:16px 0 0;
+  padding-top:13px;
+  border-top:1px solid var(--border);
+}
+.dnv-more>summary{
+  min-height:44px;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:4px 0;
+  cursor:pointer;
+  list-style:none;
+  color:var(--text);
+  font-size:.92rem;
+  font-weight:800;
+  user-select:none;
+}
+.dnv-more>summary::-webkit-details-marker{display:none}
+.dnv-more>summary::before{
+  content:'▸';
+  display:inline-block;
+  color:var(--accent);
+  transition:transform .15s ease;
+}
+.dnv-more[open]>summary::before{content:'▾'}
+.dnv-more>summary::after,
+.advancedBox[open] .dnv-more>summary::after{content:none!important}
+.dnv-more>summary span{font-size:12px;color:var(--muted);font-weight:700}
+.dnv-more-body{padding-top:3px}
+@media(prefers-reduced-motion:reduce){.dnv-more>summary::before{transition:none}}

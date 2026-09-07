@@ -17,6 +17,7 @@ if (!STORE) throw new Error('Lokaler Deal-Speicher konnte nicht geladen werden.'
 const CONFIG = STORE.CONFIG;
 const PLATFORMS = CONFIG.PLATFORMS;
 const FIELDS = CONFIG.FIELDS;
+const UI = CONFIG.UI;
 const PRIMARY_METRICS = CONFIG.PRIMARY_METRICS;
 const DEMO_DEAL = CONFIG.DEMO_DEAL;
 const METRIC_LINKS = CONFIG.METRIC_LINKS;
@@ -75,17 +76,17 @@ function populatePlatformSelect(select) {
 }
 
 function updatePlatformNote() {
-  const profile = platformById($('platform').value);
+  const profile = platformById($(UI.platform).value);
   $('platformNote').innerHTML = `<strong>Editierbarer Richtwert:</strong> ${esc(profile.note)} ` +
     '<span class="feeDisclaimer">Prüfe vor dem Kauf die aktuellen, kategorieabhängigen Gebühren der Plattform.</span>';
 }
 
 function applyPlatformProfile(id) {
   const profile = platformById(id);
-  $('platform').value = profile.id;
-  $('feePercent').value = round(profile.feePercent * 100, 2);
-  $('feeFixed').value = profile.feeFixed;
-  $('shipping').value = profile.shippingDefault;
+  $(UI.platform).value = profile.id;
+  $(UI.feePct).value = round(profile.feePercent * 100, 2);
+  $(UI.feeFix).value = profile.feeFixed;
+  $(UI.shipping).value = profile.shippingDefault;
   updatePlatformNote();
 }
 
@@ -165,11 +166,11 @@ function configureFieldsAndMetricLinks() {
 
 function fillDemoDeal() {
   demoActive = true;
-  $('product').value = DEMO_DEAL.name;
-  $('buy').value = DEMO_DEAL.buy;
-  $('sell').value = DEMO_DEAL.sell;
+  $(UI.product).value = DEMO_DEAL.name;
+  $(UI.buy).value = DEMO_DEAL.buy;
+  $(UI.sell).value = DEMO_DEAL.sell;
   applyPlatformProfile(DEMO_DEAL.platformId);
-  $('costsExtra').value = DEMO_DEAL.costsExtra;
+  $(UI.extra).value = DEMO_DEAL.costsExtra;
   $('days').value = DEMO_DEAL.days;
   $('risk').value = DEMO_DEAL.risk;
 }
@@ -633,6 +634,11 @@ populatePlatformSelect($('defaultPlatform'));
 configureFieldsAndMetricLinks();
 $('defaultPlatform').value = settings.defaultPlatformId;
 applyPlatformProfile(settings.defaultPlatformId);
+$(UI.example).addEventListener('click', () => {
+  fillDemoDeal();
+  calculate();
+  $(UI.product).focus();
+});
 
 const configuredFieldIds = new Set(['product', ...FIELDS.map(field => field.id)]);
 document.querySelectorAll('#check input').forEach(input => {

@@ -35,7 +35,10 @@ Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäf
 - [x] Cloudflare-Hosting beschrieben
 - [x] lokale Datenschutzfassung beschreibt nur die tatsächlich verwendeten aktuellen und nutzerinitiierten Datenflüsse
 - [x] lokale Browser-Speicherung transparent erklärt
-- [x] Cloudflare Web Analytics nur nach gültigem Token und ausdrücklicher Einwilligung vorbereitet
+- [x] Cloudflare Web Analytics technisch nur nach gültigem Token und ausdrücklicher Einwilligung vorbereitet
+- [x] Datenschutz-Ziffer 5, widerspruchsfreier Text und Consent-Controller als ein gemeinsames Release gekoppelt
+- [x] geteilter `#deal=`-Link bleibt selbst bei bestehender Einwilligung vollständig vom Beacon ausgeschlossen
+- [ ] echten öffentlichen Cloudflare-Web-Analytics-Site-Token einsetzen und Release-Gate erfolgreich ausführen
 - [x] ohne Token keine Abfrage und keine externe Analytics-Anfrage
 - [x] automatische Cloudflare-Beacon-Injektion durch manuellen Modus plus `no-transform` ausgeschlossen
 - [x] keine Werbe-/Marketing-Cookies der aktuellen Hauptseite
@@ -157,7 +160,7 @@ Vor Entfernung von `MONETIZATION_DISABLED` müssen Gewerbe-/Steuergate, tatsäch
 
 ## Aktueller Freigabestatus
 
-**Lokaler Release-Kandidat für die kostenlose Beta: 🟢 startbereit.**
+**Lokaler Release-Kandidat: 🔒 bewusst blockiert, bis der echte Cloudflare-Web-Analytics-Site-Token eingesetzt ist.**
 
 **Öffentliche Version: 🔴 Veröffentlichung der vorbereiteten Änderungen und separate Firebase-Stilllegung ausstehend.**
 

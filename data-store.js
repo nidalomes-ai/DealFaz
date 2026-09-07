@@ -68,6 +68,21 @@
 
   const PRIMARY_METRICS = Object.freeze(['profit', 'roi']);
 
+  // Tatsächliche IDs der vorhandenen DINAVO-Oberfläche. Der Beispiel-Deal
+  // und die Gebührenprofile greifen ausschließlich über diese Zuordnung zu.
+  const UI = Object.freeze({
+    product: 'product',
+    buy: 'buy',
+    sell: 'sell',
+    platform: 'platform',
+    feePct: 'feePercent',
+    feeFix: 'feeFixed',
+    shipping: 'shipping',
+    extra: 'costsExtra',
+    mount: 'resultCard',
+    example: 'exampleDeal'
+  });
+
   const DEMO_DEAL = Object.freeze({
     isDemo: true,
     name: 'Beispiel: Nike Air Max 90, Gr. 43',
@@ -113,6 +128,7 @@
     STORE,
     PLATFORMS,
     FIELDS,
+    UI,
     PRIMARY_METRICS,
     DEMO_DEAL,
     METRIC_LINKS,
@@ -776,6 +792,7 @@
     CONFIG,
     PLATFORMS,
     FIELDS,
+    UI,
     PRIMARY_METRICS,
     DEMO_DEAL,
     METRIC_LINKS,

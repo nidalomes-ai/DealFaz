@@ -36,6 +36,7 @@ const missingIds = [...new Set(appIds)].filter(id => !idMatches.includes(id));
 assert.deepEqual(missingIds, [], `Every app.js element reference must exist: ${missingIds.join(', ')}`);
 assert.doesNotMatch(html, /simple-ui\.js/, 'The old competing calculator must not run beside app.js');
 assert.match(html, /<script src="\/analytics\.js" defer><\/script>/, 'The consent-first analytics controller must be loaded');
+assert.match(html, /id="exampleDeal"[^>]*>Beispiel-Deal einsetzen<\/button>/, 'The calculator must expose a working example action');
 assert.doesNotMatch(html, /static\.cloudflareinsights\.com|data-cf-beacon/, 'The external beacon must never load directly from HTML');
 for (const id of ['analyticsConsent', 'analyticsSettings', 'analyticsAccept', 'analyticsReject']) {
   assert.match(html, new RegExp(`id="${id}"`), `Analytics consent control #${id} must exist`);
@@ -46,6 +47,7 @@ const analyticsToken = analyticsSource.match(/const CLOUDFLARE_TOKEN = '([^']*)'
 assert.notEqual(analyticsToken, undefined, 'Analytics must expose one explicit Cloudflare token setting');
 assert.ok(analyticsToken === '' || /^[A-Za-z0-9_-]{16,128}$/.test(analyticsToken), 'Analytics token must be empty or a valid public Cloudflare token');
 assert.match(analyticsSource, /readConsent\(\) !== 'granted'/, 'The beacon must require explicit consent');
+assert.match(analyticsSource, /SENSITIVE_DEAL_NAVIGATION/, 'Shared deal fragments must be excluded from analytics');
 assert.match(analyticsSource, /https:\/\/static\.cloudflareinsights\.com\/beacon\.min\.js/, 'Only the official Cloudflare beacon may be loaded');
 assert.match(analyticsSource, /dealfaz:v1:analytics-consent/, 'The consent decision must use the stable local namespace');
 assert.doesNotMatch(analyticsSource, /HIER_TOKEN_EINSETZEN/, 'A misleading active placeholder must not ship');
@@ -80,9 +82,12 @@ assert.match(privacy, /Google \(Gmail\)/, 'Privacy information must identify the
 assert.match(privacy, /mail@datenschutzzentrum\.de/, 'Privacy information must identify the competent supervisory authority');
 assert.match(privacy, /Stand: 7\. September 2026/, 'Privacy information must expose its revision date');
 assert.match(privacy, /Optionale Reichweitenmessung mit Cloudflare Web Analytics/, 'Privacy information must explain optional analytics');
+assert.match(privacy, /<h2>5\. Optionale Reichweitenmessung mit Cloudflare Web Analytics<\/h2>/, 'Analytics must be the published privacy section 5');
+assert.doesNotMatch(privacy, /Keine eigene Reichweitenmessung|lädt kein Analyse-, Werbe- oder Marketing-Skript|keine Analyse-Tools/i, 'Privacy information must not contradict active consent-first analytics');
 assert.match(privacy, /Art\. 6 Abs\. 1 lit\. a DSGVO/, 'Analytics must be based on explicit consent');
 assert.match(privacy, /§ 25 Abs\. 1 TDDDG/, 'Analytics must disclose the end-device consent basis');
 assert.match(privacy, /§ 25 Abs\. 2 Nr\. 2 TDDDG/, 'The local privacy choice must be explained as a requested setting');
+assert.match(privacy, /#deal=<\/code>-Fragment sind für den gesamten jeweiligen Dokumentaufruf von der Reichweitenmessung ausgeschlossen/, 'Privacy information must disclose the shared-deal analytics exclusion');
 assert.match(privacy, /Datenschutz-Einstellungen/, 'Privacy information must explain withdrawal');
 assert.doesNotMatch(app, /new URLSearchParams\(location\.search\)/, 'Deal values must never be restored from request query parameters');
 assert.match(html, /id="profit"[^>]*data-amount/, 'Profit must be the stable-width primary amount');
@@ -93,6 +98,7 @@ assert.match(app, /dinavoShowFactor\(\{ buy, sell, costs, days \}\)/, 'The calcu
 assert.match(app, /window\.dinavoFactors\.recalc\(\)/, 'Saving an actual result must recalculate factors');
 assert.match(storeSource, /global\.dinavoFactors = Object\.freeze/, 'The factor API must be available globally');
 assert.match(app, /window\.dinavoVerdict = function dinavoVerdict/, 'The responsive verdict helper must exist in the CSP-safe external script');
+assert.match(app, /\$\(UI\.example\)\.addEventListener\('click',[\s\S]*?fillDemoDeal\(\);[\s\S]*?calculate\(\);/, 'The example action must fill the configured fields and recalculate');
 assert.match(app, /new IntersectionObserver\(entries =>/, 'The mobile tab bar must track the visible section');
 assert.doesNotMatch(app, /\)\.observe;/, 'No unused IntersectionObserver may be created');
 const heroMetrics = html.match(/<div class="heroNumbers"[^>]*>([\s\S]*?)<\/div>\s*<div id="personalEstimate"/)?.[1] || '';
@@ -169,6 +175,14 @@ globalThis.localStorage = {
 
 await import('../data-store.js');
 const store = globalThis.DEALFAZ_STORE;
+assert.deepEqual(store.UI, {
+  product: 'product', buy: 'buy', sell: 'sell', platform: 'platform',
+  feePct: 'feePercent', feeFix: 'feeFixed', shipping: 'shipping',
+  extra: 'costsExtra', mount: 'resultCard', example: 'exampleDeal'
+}, 'The configured UI IDs must match the existing DINAVO form');
+for (const id of Object.values(store.UI)) {
+  assert.ok(idMatches.includes(id), `Configured UI target #${id} must exist`);
+}
 for (const field of store.FIELDS) {
   const input = [...html.matchAll(/<input\b[^>]*>/g)].map(match => match[0]).find(tag => tag.includes(`id="${field.id}"`));
   assert.ok(input, `Configured field #${field.id} must exist`);
@@ -205,6 +219,8 @@ class FakeElement {
     listeners.push(listener);
     this.listeners.set(type, listeners);
   }
+
+  focus() {}
 
   async dispatch(type) {
     for (const listener of this.listeners.get(type) || []) await listener({ target: this });
@@ -283,6 +299,14 @@ assert.equal(elements.get('buy').value, '');
 assert.equal(elements.get('sell').value, '');
 assert.equal(elements.get('platform').value, 'ebay_privat');
 assert.equal(Number(elements.get('cost').value), 0);
+
+await elements.get('exampleDeal').dispatch('click');
+assert.equal(elements.get('product').value, store.DEMO_DEAL.name, 'The example button must fill the configured product field');
+assert.equal(Number(elements.get('buy').value), store.DEMO_DEAL.buy, 'The example button must fill the configured buy field');
+assert.equal(Number(elements.get('sell').value), store.DEMO_DEAL.sell, 'The example button must fill the configured sell field');
+assert.equal(elements.get('platform').value, store.DEMO_DEAL.platformId, 'The example button must fill the configured platform field');
+assert.equal(elements.get('profit').textContent, '25,76 €', 'The example button must recalculate the visible result');
+await elements.get('product').dispatch('beforeinput');
 
 elements.get('product').value = 'Kostenloser Schrank';
 elements.get('buy').value = '0';

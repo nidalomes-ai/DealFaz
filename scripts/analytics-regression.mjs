@@ -5,7 +5,7 @@ import { readFile } from 'node:fs/promises';
 const source = await readFile(new URL('../analytics.js', import.meta.url), 'utf8');
 const token = '0123456789abcdef0123456789abcdef';
 
-function runScenario({ configured = true, stored = null, blockedStorage = false } = {}) {
+function runScenario({ configured = true, stored = null, blockedStorage = false, hash = '' } = {}) {
   const elements = new Map();
   let focused = null;
   let reloads = 0;
@@ -53,7 +53,7 @@ function runScenario({ configured = true, stored = null, blockedStorage = false 
   vm.runInNewContext(scenarioSource, {
     document,
     localStorage,
-    location: { reload() { reloads += 1; } },
+    location: { hash, reload() { reloads += 1; } },
     window
   });
 
@@ -88,6 +88,12 @@ assert.equal(undecided.scripts.length, 1, 'Repeated consent must not duplicate t
 const denied = runScenario({ stored: 'denied' });
 assert.equal(denied.scripts.length, 0, 'A stored rejection must block the beacon');
 assert.equal(denied.elements.get('analyticsConsent').hidden, true, 'A stored decision must avoid repeated prompting');
+
+const sharedDeal = runScenario({ stored: 'granted', hash: '#deal=product%3DPrivater%2520Test' });
+assert.equal(sharedDeal.scripts.length, 0, 'A shared-deal navigation must never expose fragment values to the beacon');
+sharedDeal.elements.get('analyticsSettings').click();
+sharedDeal.elements.get('analyticsAccept').click();
+assert.equal(sharedDeal.scripts.length, 0, 'Repeated consent must not override the shared-deal privacy block');
 
 const granted = runScenario({ stored: 'granted' });
 assert.equal(granted.scripts.length, 1, 'Stored consent may load one beacon');

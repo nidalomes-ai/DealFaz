@@ -7,6 +7,10 @@
   const CONSENT_KEY = 'dealfaz:v1:analytics-consent';
   const BEACON_URL = 'https://static.cloudflareinsights.com/beacon.min.js';
   const TOKEN_PATTERN = /^[A-Za-z0-9_-]{16,128}$/;
+  // Cloudflares RUM-Daten enthalten die URL des Seitenaufrufs. Geteilte
+  // DINAVO-Deals tragen ihre Werte im Fragment und bleiben deshalb für den
+  // gesamten aktuellen Dokumentaufruf von der Messung ausgeschlossen.
+  const SENSITIVE_DEAL_NAVIGATION = location.hash.startsWith('#deal=');
   let sessionConsent = null;
 
   const configured = TOKEN_PATTERN.test(CLOUDFLARE_TOKEN);
@@ -44,7 +48,7 @@
   }
 
   function loadBeacon() {
-    if (!configured || readConsent() !== 'granted') return false;
+    if (!configured || SENSITIVE_DEAL_NAVIGATION || readConsent() !== 'granted') return false;
     if (document.querySelector('script[data-dinavo-analytics]')) return true;
 
     const script = document.createElement('script');

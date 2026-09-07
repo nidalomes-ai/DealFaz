@@ -337,6 +337,7 @@ header{backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .resultBasis[data-basis=evidence] span{background:var(--good);box-shadow:0 0 0 4px rgba(53,201,138,.14)}
 .actionStatus{min-height:1.3rem;margin:8px 0 0;text-align:center;font-size:.78rem}
 .historyHeading{margin-top:18px}
+.exampleActions{margin:12px 0 0}
 .consentPanel{
   position:fixed;z-index:100;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));
   width:min(620px,calc(100% - 24px));max-height:calc(100vh - 32px);overflow:auto;

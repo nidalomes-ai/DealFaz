@@ -4,7 +4,7 @@ Stand: 07.09.2026
 
 ## Status
 
-Cloudflare Web Analytics ist technisch und datenschutzseitig vorbereitet, aber ohne gültigen Beacon-Token automatisch deaktiviert. In `analytics.js` ist `CLOUDFLARE_TOKEN` deshalb zunächst leer. Solange das so bleibt, wird kein externes Analyseskript geladen, keine Einwilligungsabfrage angezeigt und keine Reichweitenmessung durchgeführt.
+Cloudflare Web Analytics und Datenschutz-Ziffer 5 sind als gemeinsames Release vorbereitet. In `analytics.js` ist `CLOUDFLARE_TOKEN` bis zur Übergabe der echten öffentlichen Site-Kennung noch leer. Solange das so bleibt, wird kein externes Analyseskript geladen, keine Einwilligungsabfrage angezeigt und keine Reichweitenmessung durchgeführt. Der Release-Check `node scripts/analytics-release-gate.mjs` scheitert deshalb absichtlich und verhindert die Veröffentlichung dieses Zwischenstands.
 
 ## Sichere Aktivierung
 
@@ -12,10 +12,12 @@ Cloudflare Web Analytics ist technisch und datenschutzseitig vorbereitet, aber o
 2. Unter „Manage Site“ zwingend **Enable with JS Snippet installation** wählen. Die automatische Einrichtung beziehungsweise One-Click-Injektion darf nicht aktiv sein, weil sie den Beacon vor der lokalen Einwilligungsprüfung einfügen könnte.
 3. Den öffentlichen Token aus „Manage Site“ kopieren.
 4. Ausschließlich den leeren Wert von `CLOUDFLARE_TOKEN` in `analytics.js` ersetzen. Den von Cloudflare angezeigten kompletten `<script>`-Block nicht zusätzlich in HTML einfügen.
-5. Tests ausführen und den Stand bewusst veröffentlichen.
+5. `node scripts/analytics-release-gate.mjs` ausführen. Erst veröffentlichen, wenn dieser Check Datenschutz-Ziffer 5 und den gültigen Token gemeinsam bestätigt.
 6. Im Browser kontrollieren: vor Einwilligung keine Anfrage an `static.cloudflareinsights.com`; nach Ablehnung ebenfalls keine Anfrage; erst nach Einwilligung Beacon und Messanfrage.
 
 Die Seite lädt immer nur den lokalen Consent-Controller. Der externe Cloudflare-Beacon wird dynamisch und ausschließlich nach der gespeicherten Auswahl `granted` geladen. Ablehnen lässt den Rechner vollständig nutzbar. Ein späterer Widerruf setzt die Auswahl auf `denied` und lädt die Seite neu, falls der Beacon bereits aktiv war.
+
+Geteilte Deal-Links mit `#deal=` bleiben für ihren gesamten Dokumentaufruf von der Reichweitenmessung ausgeschlossen. So kann die vom RUM-Beacon verarbeitete Seitenaufruf-URL keine Artikelbezeichnung, Preise oder sonstigen Deal-Werte aus dem Fragment übertragen.
 
 Die Hosting-Antwort setzt zusätzlich `Cache-Control: public, max-age=0, must-revalidate, no-transform`. `no-transform` verhindert bei Cloudflare-proxied HTML die automatische Beacon-Injektion als zweite technische Schutzschicht. Die Dashboard-Einstellung muss trotzdem im manuellen Modus bleiben und wird nach jedem Hostingwechsel erneut kontrolliert.
 

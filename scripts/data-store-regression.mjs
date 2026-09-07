@@ -177,10 +177,11 @@ assert.deepEqual(factorApi.apply({ buy: 45, sell: 90, costs: 18.24, days: 21 }),
 
 const settingsAfterResults = store.getSettings();
 assert.equal(settingsAfterResults.profitYtd, 413.3, 'YTD profit must include sold deals in the current year');
-const changedSettings = store.setSettings({ currency: 'USD', defaultPlatformId: 'amazon', profitYtd: 99999 });
-assert.equal(changedSettings.currency, 'EUR', 'Schema v1 must keep the currently supported currency');
+const changedSettings = store.setSettings({ currency: 'CHF', defaultPlatformId: 'amazon', profitYtd: 99999 });
+assert.equal(changedSettings.currency, 'CHF', 'DACH settings must support Swiss francs');
 assert.equal(changedSettings.defaultPlatformId, 'amazon');
 assert.equal(changedSettings.profitYtd, 413.3, 'Derived YTD profit must not accept a stale manual value');
+assert.equal(store.setSettings({ currency: 'USD' }).currency, 'EUR', 'Unsupported currencies must fall back safely');
 
 const capped = store.calculateFactors(
   store.getClosedDeals().filter(deal => deal.actual.sold).map(deal => ({

@@ -52,7 +52,7 @@ jobs:
           grep -Fq 'Tatsächliches Ergebnis' "$body"
           grep -Fq 'Mehr lernen' "$body"
           grep -Fq 'apple-mobile-web-app-capable' "$body"
-          grep -Fq '<link rel="apple-touch-icon" href="/icon.svg">' "$body"
+          grep -Fq '<link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png">' "$body"
           grep -Fq 'href="/impressum/"' "$body"
           grep -Fq 'href="/datenschutz/"' "$body"
           grep -Fq 'href="/nutzungsbedingungen/"' "$body"
@@ -91,6 +91,9 @@ jobs:
           check https://dealfaz.dealfaz-social.workers.dev/robots.txt 'text/plain'
           check https://dealfaz.dealfaz-social.workers.dev/sitemap.xml '(application|text)/(xml|xml\+rss)'
           check https://dealfaz.dealfaz-social.workers.dev/icon.svg 'image/svg\+xml'
+          check https://dealfaz.dealfaz-social.workers.dev/icon-180.png 'image/png'
+          check https://dealfaz.dealfaz-social.workers.dev/icon-192.png 'image/png'
+          check https://dealfaz.dealfaz-social.workers.dev/icon-512.png 'image/png'
           check https://dealfaz.dealfaz-social.workers.dev/social-card.png 'image/png'
 
       - name: Monetization, sharing and CSV safety are live

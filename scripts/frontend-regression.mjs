@@ -77,6 +77,10 @@ assert.match(vercelConfig, new RegExp(`script-src[^;]*'sha256-${structuredDataHa
 assert.match(css, /@media\(max-width:680px\)\{[^}]*main\{/, 'A narrow-screen layout must exist');
 assert.match(css, /\.advancedGrid,\.heroNumbers,[^}]*\{grid-template-columns:1fr\}/, 'Calculator grids must collapse on mobile');
 assert.match(css, /@media\(max-width:680px\)\{\.costSummary\{grid-template-columns:1fr 1fr\}/, 'Cost summary must remain compact on mobile');
+assert.match(css, /\[data-form\]\{order:1\}[\s\S]*\[data-result\]\{order:2\}/, 'The mobile flow must show the form before its result');
+assert.match(css, /button:not\(\.secondary\):not\(\.danger\),\.btn,a\.btn\{[\s\S]*?color:#06101d/, 'Primary blue actions must use high-contrast dark text');
+assert.match(html, /id="basisStatus"[^>]*data-basis="empty"/, 'The result must disclose whether it is only calculated or supported by evidence');
+assert.match(html, /id="actionStatus"[^>]*role="status"/, 'Save, copy and share actions must provide visible feedback');
 
 const labelledIds = new Set([...html.matchAll(/<label\b[^>]*\bfor="([^"]+)"/g)].map(match => match[1]));
 const visibleControls = [...html.matchAll(/<(input|select|textarea)\b([^>]*)>/g)]
@@ -188,9 +192,10 @@ globalThis.location = {
   search: '',
   hash: ''
 };
+let clipboardText = '';
 Object.defineProperty(globalThis, 'navigator', {
   configurable: true,
-  value: { clipboard: { async writeText() {} } }
+  value: { clipboard: { async writeText(value) { clipboardText = value; } } }
 });
 globalThis.confirm = () => true;
 globalThis.alert = () => {};
@@ -222,6 +227,23 @@ assert.equal(elements.get('buy').value, '');
 assert.equal(elements.get('sell').value, '');
 assert.equal(elements.get('platform').value, 'ebay_privat');
 assert.equal(Number(elements.get('cost').value), 0);
+
+elements.get('product').value = 'Kostenloser Schrank';
+elements.get('buy').value = '0';
+elements.get('sell').value = '100';
+await elements.get('sell').dispatch('input');
+assert.equal(elements.get('verdict').textContent, 'RECHNET SICH', 'A free acquisition must be a valid completed deal');
+assert.equal(elements.get('profit').textContent, '100,00 €');
+assert.equal(elements.get('roi').textContent, 'nicht definiert', 'ROI must not pretend to be 0% when the purchase price is zero');
+assert.equal(elements.get('scoreCard').hidden, true, 'Score must stay hidden without market evidence');
+assert.equal(elements.get('basisStatus').dataset.basis, 'calculation');
+await elements.get('copy').onclick();
+assert.match(clipboardText, /Nur Rechencheck/);
+assert.doesNotMatch(clipboardText, /Score|\/100/, 'Copied checks without evidence must not expose a score');
+elements.get('save').onclick();
+assert.match(elements.get('watch').innerHTML, /nur gerechnet/);
+assert.doesNotMatch(elements.get('watch').innerHTML, /Score \d+\/100/, 'Stored checks without evidence must not expose a score');
+store.clearAllData();
 
 elements.get('product').value = 'Testschuh';
 elements.get('buy').value = '50';

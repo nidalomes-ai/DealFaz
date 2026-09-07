@@ -18,6 +18,7 @@ Die öffentliche Version läuft über HTTPS und benötigt kein Nutzerkonto. Die 
 ## Aktueller Funktionsumfang
 
 - 60-Sekunden-Check für einen konkreten Deal
+- Euro und Schweizer Franken als lokale Rechenwährungen
 - DealScore 0–100
 - rechnerisches Signal `KAUFEN`, `VERHANDELN`, `LIEGEN LASSEN` oder `DATEN PRÜFEN`
 - Gewinn, ROI, Marge und ROI pro 30 Tage

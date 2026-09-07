@@ -25,6 +25,8 @@ DINAVO kopiert keine fremden Angebotsdaten und umgeht keine Logins, Paywalls ode
 
 **ROI** = Gewinn ÷ Einkaufspreis × 100
 
+Bei einem kostenlosen Artikel ist der ROI mathematisch nicht definiert. DINAVO zeigt dann keinen künstlichen Prozentwert, berechnet Gewinn und Marge aber weiterhin korrekt.
+
 **Marge** = Gewinn ÷ Verkaufspreis × 100
 
 **ROI pro 30 Tage** = ROI × 30 ÷ geschätzte Verkaufstage
@@ -54,14 +56,16 @@ Der aktuelle Score verwendet vier Bereiche mit zusammen maximal 100 Punkten:
 
 Bei nicht positivem Gewinn wird der Score begrenzt. Ein negativer Worst Case führt zu einem zusätzlichen Abschlag.
 
+Der Score wird nur angezeigt, gespeichert, kopiert oder geteilt, wenn mindestens eigene Markt- oder Vergleichsdaten eingetragen wurden. Ohne diese Evidenz kennzeichnet DINAVO das Ergebnis ausdrücklich als **Rechencheck**.
+
 ## Rechnerisches Signal
 
-Der Score kann in vier Signale übersetzt werden:
+Der Score und die Datenqualität können in vier Signale übersetzt werden:
 
-- **KAUFEN**
-- **VERHANDELN**
-- **LIEGEN LASSEN**
-- **DATEN PRÜFEN**
+- **SIEHT GUT AUS**
+- **PREIS PRÜFEN**
+- **EHER NICHT**
+- **NOCH PRÜFEN**
 
 Diese Begriffe sind keine persönliche Kaufberatung und keine Prognose. Sie fassen lediglich die eingegebenen Werte nach der dokumentierten Rechenlogik zusammen.
 

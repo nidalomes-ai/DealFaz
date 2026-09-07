@@ -36,6 +36,9 @@ jobs:
           test -f style.css
           test -f manifest.webmanifest
           test -f icon.svg
+          test -f icon-180.png
+          test -f icon-192.png
+          test -f icon-512.png
           test -f social-card.png
           test -f ORGANIC-BETA-CAMPAIGN.md
           test -f social/dinavo-feed.svg

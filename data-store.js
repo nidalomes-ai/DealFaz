@@ -434,7 +434,7 @@
     const rawCurrency = String(source.currency || defaults.currency).toUpperCase();
     return {
       schemaVersion: 1,
-      currency: rawCurrency === 'EUR' ? rawCurrency : defaults.currency,
+      currency: ['EUR', 'CHF'].includes(rawCurrency) ? rawCurrency : defaults.currency,
       defaultPlatformId: platformId(source.defaultPlatformId, defaults.defaultPlatformId),
       profitYtd: round(number(source.profitYtd), 2),
       profitYtdYear: Math.round(number(source.profitYtdYear, defaults.profitYtdYear))

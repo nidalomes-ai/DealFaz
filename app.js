@@ -202,14 +202,15 @@ function calculate() {
   const sold = num('sold');
   const active = num('active');
   const comps = num('comps');
-  const certainty = clamp(num('certainty') || 1, 1, 5);
-  const risk = clamp(num('risk') || 1, 1, 5);
+  const certainty = clamp(num('certainty') || 3, 1, 5);
+  const risk = clamp(num('risk') || 3, 1, 5);
   const target = num('target');
   const days = Math.max(1, num('days') || 30);
   const sample = sold + active;
   const sellThrough = sample ? sold / sample * 100 : 0;
   const profit = sell - buy - costs;
-  const roi = buy ? profit / buy * 100 : 0;
+  const roiDefined = buy > 0;
+  const roi = roiDefined ? profit / buy * 100 : 0;
   const margin = sell ? profit / sell * 100 : 0;
   const roi30 = roi * 30 / days;
   const quality = Math.round(clamp(
@@ -217,7 +218,8 @@ function calculate() {
     0,
     100
   ));
-  let score = clamp(roi / 50 * 35, 0, 35) + clamp(sellThrough / 80 * 25, 0, 25) +
+  const roiScore = roiDefined ? clamp(roi / 50 * 35, 0, 35) : (profit > 0 ? 35 : 0);
+  let score = roiScore + clamp(sellThrough / 80 * 25, 0, 25) +
     (6 - risk) / 5 * 20 + clamp(margin / 30 * 20, 0, 20);
   const worst = sell * 0.85 - buy - costs * 1.15;
   const best = sell * 1.10 - buy - costs * 0.95;
@@ -225,7 +227,8 @@ function calculate() {
   if (worst < 0) score -= 10;
   score = Math.round(clamp(score, 0, 100));
   const maxBuy = Math.max(0, (sell - costs) / (1 + target / 100));
-  const hasCoreValues = Boolean(product && buy > 0 && sell > 0);
+  const buyEntered = String($('buy').value).trim() !== '';
+  const hasCoreValues = Boolean(product && buyEntered && sell > 0);
   const hasEvidence = sold + active + comps > 0;
 
   let verdict = '3 ANGABEN FEHLEN';
@@ -245,7 +248,7 @@ function calculate() {
   } else if (hasCoreValues && hasEvidence) {
     verdict = 'EHER NICHT';
     verdictType = 'bad';
-  } else if (hasCoreValues && roi >= target) {
+  } else if (hasCoreValues && (buy === 0 || roi >= target)) {
     verdict = 'RECHNET SICH';
     verdictType = 'good';
   } else if (hasCoreValues) {
@@ -280,7 +283,10 @@ function calculate() {
     roi30,
     worst,
     best,
-    score,
+    score: hasEvidence ? score : null,
+    hasCoreValues,
+    hasEvidence,
+    roiDefined,
     verdict,
     maxBuy,
     ts: Date.now(),
@@ -294,7 +300,7 @@ function calculate() {
   setMoney('costAmount', costs);
   const primaryMetricWriters = {
     profit: () => setMoney('profit', profit),
-    roi: () => { $('roi').textContent = `${roi.toFixed(1)} %`; }
+    roi: () => { $('roi').textContent = roiDefined ? `${roi.toFixed(1)} %` : 'nicht definiert'; }
   };
   PRIMARY_METRICS.forEach(metric => primaryMetricWriters[metric]?.());
   setMoney('maxbuy', maxBuy);
@@ -308,7 +314,22 @@ function calculate() {
   $('sth').textContent = hasEvidence ? `${sellThrough.toFixed(0)} %` : '–';
   $('quality').textContent = hasEvidence ? `${quality}/100` : '–';
   $('margin').textContent = `${margin.toFixed(1)} %`;
-  $('roi30').textContent = `${roi30.toFixed(1)} %`;
+  $('roi30').textContent = roiDefined ? `${roi30.toFixed(1)} %` : 'nicht definiert';
+
+  const basis = $('basisStatus');
+  if (!hasCoreValues) {
+    basis.dataset.basis = 'empty';
+    basis.innerHTML = '<span aria-hidden="true"></span><strong>Bereit für deinen Deal</strong>';
+  } else if (!hasEvidence) {
+    basis.dataset.basis = 'calculation';
+    basis.innerHTML = '<span aria-hidden="true"></span><strong>Rechencheck</strong><em>Markt noch nicht belegt</em>';
+  } else if (quality < 45) {
+    basis.dataset.basis = 'limited';
+    basis.innerHTML = '<span aria-hidden="true"></span><strong>Marktcheck</strong><em>Datenbasis noch klein</em>';
+  } else {
+    basis.dataset.basis = 'evidence';
+    basis.innerHTML = '<span aria-hidden="true"></span><strong>Marktcheck</strong><em>mit deinen Vergleichsdaten</em>';
+  }
 
   if (!hasCoreValues) {
     $('summary').textContent = 'Artikel, Einkaufspreis und Verkaufspreis eintragen.';
@@ -367,11 +388,11 @@ function renderCounter(hasCoreValues, hasEvidence) {
 }
 
 function renderBattle() {
-  if (!current.buy) return;
+  if (!current.hasCoreValues) return;
   const buy = num('bBuy');
   const sell = num('bSell');
   const costs = num('bCost');
-  const risk = clamp(num('bRisk') || 1, 1, 5);
+  const risk = clamp(num('bRisk') || 3, 1, 5);
   const days = Math.max(1, num('bDays') || 30);
   const profit = sell - buy - costs;
   const roi = buy ? profit / buy * 100 : 0;
@@ -418,10 +439,14 @@ function renderWatch() {
   const watch = getWatch();
   $('watch').innerHTML = watch.length ? watch.map((deal, index) =>
     `<div class="watch"><div class="watchTop"><div><strong>${esc(deal.product || 'Unbenannter Deal')}</strong><br>` +
-    `<small>${money(deal.buy)} → ${money(deal.sell)} · ${esc(platformLabel(deal.platformId))} · ${deal.score ?? '–'}/100 · ${esc(deal.verdict || '')}</small>` +
+    `<small>${money(deal.buy)} → ${money(deal.sell)} · ${esc(platformLabel(deal.platformId))} · ${dealHasEvidence(deal) ? `Score ${deal.score}/100` : 'nur gerechnet'} · ${esc(deal.verdict || '')}</small>` +
     `</div><div class="actions"><button class="secondary" data-watch-action="load" data-index="${index}">Laden</button>` +
     `<button class="secondary" data-watch-action="remove" data-index="${index}">Entfernen</button></div></div></div>`
   ).join('') : '<p>Noch keine Deals gespeichert.</p>';
+}
+
+function dealHasEvidence(deal) {
+  return Number(deal?.sold || 0) + Number(deal?.active || 0) + Number(deal?.comps || 0) > 0;
 }
 
 window.removeWatch = index => {
@@ -454,7 +479,7 @@ function renderForecasts() {
     ? '<h3 style="margin-top:18px">Vorgemerkte Erwartungen</h3>' + forecasts.map((forecast, index) =>
       `<div class="forecastCard"><strong>${esc(forecast.product || 'Unbenannter Deal')}</strong><br>` +
       `<small>${esc(platformLabel(forecast.platformId))} · Verkauf ${money(forecast.sell)} · Gewinn ${money(forecast.profit)} · ` +
-      `${Number(forecast.days || 0)} Tage · Score ${forecast.score ?? '–'}/100</small><div class="actions">` +
+      `${Number(forecast.days || 0)} Tage · ${dealHasEvidence(forecast) ? `Score ${forecast.score}/100` : 'nur gerechnet'}</small><div class="actions">` +
       `<button class="secondary" data-forecast-action="choose" data-index="${index}">Ergebnis erfassen</button>` +
       `<button class="secondary" data-forecast-action="remove" data-index="${index}">Entfernen</button></div></div>`
     ).join('')
@@ -556,6 +581,9 @@ function renderSettings() {
   settings = STORE.getSettings();
   $('defaultPlatform').value = settings.defaultPlatformId;
   $('currency').value = settings.currency;
+  document.querySelectorAll('[data-currency-symbol]').forEach(element => {
+    element.textContent = settings.currency === 'CHF' ? 'CHF' : '€';
+  });
   $('profitYtdYear').textContent = settings.profitYtdYear;
   setMoney('profitYtd', settings.profitYtd);
 }
@@ -571,7 +599,7 @@ function renderStoredData() {
 function syncActualSaleState() {
   const sold = $('actualSold').value === 'true';
   $('actualSell').disabled = !sold;
-  $('actualSellField').firstChild.nodeValue = sold ? 'Verkaufspreis (€)' : 'Verkaufspreis (€) – entfällt';
+  $('actualSellField').firstChild.nodeValue = sold ? 'Verkaufspreis' : 'Verkaufspreis – entfällt';
   if (!sold) $('actualSell').value = '0';
 }
 
@@ -580,7 +608,7 @@ function canSaveDeal() {
     $('summary').textContent = 'Das ist nur ein Beispiel. Ändere zuerst eine Eingabe, bevor du den Deal speicherst.';
     return false;
   }
-  if (current.product && current.buy > 0 && current.sell > 0) return true;
+  if (current.hasCoreValues) return true;
   $('summary').textContent = 'Bitte zuerst Artikel, Einkaufspreis und Verkaufspreis vollständig eintragen.';
   return false;
 }
@@ -665,11 +693,23 @@ $('save').onclick = () => {
   if (!canSaveDeal()) return;
   STORE.addEstimate(current);
   renderStoredData();
+  $('actionStatus').textContent = 'Deal wurde auf diesem Gerät gespeichert.';
 };
 
 $('copy').onclick = async () => {
-  const text = `DINAVO ${current.product || 'Deal'}: ${current.score}/100 · ${current.verdict} · Gewinn ${eur(current.profit)} · ROI ${current.roi.toFixed(1)}%`;
-  try { await navigator.clipboard.writeText(text); } catch (_) {}
+  if (!current.hasCoreValues) {
+    $('actionStatus').textContent = 'Bitte zuerst die drei Angaben ausfüllen.';
+    return;
+  }
+  const scoreText = current.hasEvidence ? `Score ${current.score}/100 · ` : 'Nur Rechencheck · ';
+  const roiText = current.roiDefined ? `${current.roi.toFixed(1)}%` : 'nicht definiert (0 € Einkauf)';
+  const text = `DINAVO ${current.product || 'Deal'}: ${scoreText}${current.verdict} · Gewinn ${eur(current.profit)} · ROI ${roiText}`;
+  try {
+    await navigator.clipboard.writeText(text);
+    $('actionStatus').textContent = 'Ergebnis wurde kopiert.';
+  } catch (_) {
+    $('actionStatus').textContent = 'Kopieren ist in diesem Browser nicht verfügbar.';
+  }
 };
 
 $('share').onclick = async () => {
@@ -691,11 +731,20 @@ $('share').onclick = async () => {
     days: current.days
   });
   const url = `${location.origin}${location.pathname}#deal=${encodeURIComponent(params.toString())}`;
-  const text = `DINAVO ${current.product || 'Deal'}: ${current.score}/100 · ${current.verdict}`;
+  const scoreText = current.hasEvidence ? `Score ${current.score}/100 · ` : 'Nur Rechencheck · ';
+  const text = `DINAVO ${current.product || 'Deal'}: ${scoreText}${current.verdict}`;
   if (navigator.share) {
-    try { await navigator.share({ title: 'DINAVO DealCheck', text, url }); } catch (_) {}
+    try {
+      await navigator.share({ title: 'DINAVO DealCheck', text, url });
+      $('actionStatus').textContent = 'Deal wurde geteilt.';
+    } catch (_) {}
   } else {
-    try { await navigator.clipboard.writeText(url); } catch (_) {}
+    try {
+      await navigator.clipboard.writeText(url);
+      $('actionStatus').textContent = 'Deal-Link wurde kopiert.';
+    } catch (_) {
+      $('actionStatus').textContent = 'Teilen ist in diesem Browser nicht verfügbar.';
+    }
   }
 };
 
@@ -730,7 +779,8 @@ $('exportCsv').onclick = () => {
     ['Produkt', 'Plattform', 'Einkauf', 'Verkauf', 'Gebühr', 'Versand', 'Weitere Kosten', 'Gesamtkosten', 'Score', 'Signal', 'ROI', 'Datenqualität'],
     ...getWatch().map(deal => [
       deal.product, platformLabel(deal.platformId), deal.buy, deal.sell, deal.feeAmount, deal.shipping,
-      deal.costsExtra, deal.costs, deal.score, deal.verdict, Number(deal.roi || 0).toFixed(1), deal.quality
+      deal.costsExtra, deal.costs, dealHasEvidence(deal) ? deal.score : '', deal.verdict,
+      deal.buy > 0 ? Number(deal.roi || 0).toFixed(1) : '', deal.quality
     ])
   ];
   download('dinavo-watchlist.csv', `\ufeff${rows.map(row => row.map(csv).join(';')).join('\n')}`, 'text/csv;charset=utf-8');

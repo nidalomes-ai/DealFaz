@@ -119,8 +119,12 @@ Keine EPN-Partnerlinks vor tatsächlicher Freigabe.
 ## 10. Steuer / ELSTER – 🟢 VORBEREITET
 
 - [x] Formulartyp/Tätigkeitsbeschreibung vorbereitet
-- [x] EU-B2B, Reverse Charge, USt-IdNr. und Zusammenfassende Meldung als Prüfpunkte dokumentiert
+- [x] EU-B2B, Reverse Charge, USt-IdNr. und aktuelle ZM-Sonderregel für Kleinunternehmer dokumentiert
 - [x] keine fiktiven Umsätze oder Gewinne
+- [x] elektronische Übermittlung grundsätzlich innerhalb eines Monats nach Betriebseröffnung dokumentiert
+- [x] Kleinunternehmergrenzen 25.000 Euro im Gründungsjahr beziehungsweise 25.000/100.000 Euro in Folgejahren verifiziert
+- [x] fünfjährige Bindung eines Verzichts auf die Kleinunternehmerregelung dokumentiert
+- [x] Gewerbesteuerfreibetrag von 24.500 Euro Gewerbeertrag für ein Einzelunternehmen dokumentiert
 
 `⏸ nach festgelegtem Betriebsbeginn`: echte Angaben fristgerecht übermitteln.
 
@@ -149,6 +153,7 @@ Bei Checkout, kostenpflichtigen Leistungen oder gehosteten Nutzerinhalten erfolg
 
 - [x] zuständige Stelle/Verfahren vorbereitet
 - [x] Tätigkeitsbeschreibung vorbereitet
+- [x] Wahlstedter Online-Verfahren, Frist, Unterlagen und Bestätigungsdauer am 08.09.2026 amtlich verifiziert
 - [ ] tatsächlichen Betriebsbeginn rechtlich/sachlich festlegen
 - [ ] erforderliche Gewerbeanmeldung spätestens gleichzeitig mit Beginn absenden
 

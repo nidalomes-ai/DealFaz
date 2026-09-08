@@ -1,6 +1,6 @@
 # DINAVO – Gewerbe- und Steuer-Startfreigabe
 
-Stand: 01.09.2026
+Stand: 08.09.2026
 
 Diese Checkliste trennt technische Bereitschaft von der rechtlichen Aufnahme einer gewerblichen Tätigkeit. Externe Freigaben werden nicht erfunden.
 
@@ -35,10 +35,21 @@ DINAVO ist auf einen dauerhaften öffentlichen Betrieb und spätere Affiliate-Ei
 - [x] Tätigkeitsbeschreibung vorbereitet
 - [x] Unterlagen-Grundliste vorbereitet
 - [x] Behördenanfrage zu Tätigkeit, Verfahren, Gebühr und Unterlagen vorbereitet/versandt
+- [x] zuständige Stadtseite am 08.09.2026 erneut gegen den aktuellen Behördenstand geprüft
 
 Geplante Tätigkeitsbeschreibung:
 
 > Betrieb einer Online-Plattform für Reselling-Rechen- und Entscheidungshilfen sowie Online-Marketing/Affiliate-Marketing; keine erlaubnispflichtigen Tätigkeiten.
+
+Verifizierter Weg für den Betriebssitz Wahlstedt:
+
+- zuständig: Stadt Wahlstedt, Ordnungsamt, Markt 3, 23812 Wahlstedt
+- online: Einheitlicher Ansprechpartner Schleswig-Holstein
+- Frist: unmittelbar und spätestens gleichzeitig mit dem tatsächlichen Betriebsbeginn
+- Nachweis: GewA 1 und Identitätsnachweis; Registerunterlagen nur, wenn sie im Einzelfall existieren
+- Bestätigung: bei vollständiger persönlicher Vorsprache sofort, schriftlich/online innerhalb von drei Tagen
+
+Offizielle Quelle: <https://www.wahlstedt.de/buergerservice-politik/buergerservice/was-erledige-ich-wo/leistung/gewerbe-anmelden-383>
 
 ### Noch auszuführen
 
@@ -54,10 +65,18 @@ Geplante Tätigkeitsbeschreibung:
 - [x] EU-B2B-Sachverhalt bei ausländischen Partnerunternehmen als eigener Prüfpunkt dokumentiert
 - [x] Reverse Charge als möglicher Umsatzsteuer-Prüfpunkt dokumentiert
 - [x] USt-IdNr.-Antragsweg vorbereitet
-- [x] Behandlung einer Zusammenfassender Meldung als konkreter Prüfpunkt dokumentiert
+- [x] Behandlung einer Zusammenfassenden Meldung nach aktuellem Kleinunternehmerstatus dokumentiert
 - [x] keine fiktiven Umsätze oder Gewinne eingetragen
+- [x] gesetzliche Ein-Monats-Frist ab Betriebseröffnung dokumentiert
+- [x] aktuelle Kleinunternehmergrenzen ab 2025 dokumentiert
 
 Nach Festlegung des echten Betriebsbeginns werden die tatsächlichen Angaben übermittelt. Umsatz-/Gewinnschätzungen und steuerliche Wahlrechte werden nicht erfunden.
+
+Der elektronische Fragebogen zur steuerlichen Erfassung ist grundsätzlich innerhalb eines Monats nach Betriebseröffnung zu übermitteln (§ 138 Abs. 1b i. V. m. Abs. 4 AO). Für ein Einzelunternehmen steht das amtliche ELSTER-Formular bereit: <https://www.elster.de/eportal/formulare-leistungen/alleformulare/fseeun>
+
+Für eine Neugründung gilt bei der Kleinunternehmerregelung im Gründungsjahr eine Umsatzgrenze von 25.000 Euro. In Folgejahren darf der Vorjahresumsatz 25.000 Euro und der laufende Umsatz 100.000 Euro nicht übersteigen. Ein Verzicht auf die Kleinunternehmerregelung bindet fünf Jahre und wird deshalb nicht ohne reale Zahlen erklärt. Offizielle Erläuterung der Finanzverwaltung: <https://www.finanzamt.nrw.de/steuerinfos/unternehmen/umsatzsteuer/kleinunternehmerinnen-und-kleinunternehmer>
+
+Der Gewerbesteuerfreibetrag für natürliche Personen und Personengesellschaften beträgt 24.500 Euro Gewerbeertrag; Einkommensteuer- und Erklärungspflichten bleiben davon unberührt. Rechtsgrundlage: <https://www.gesetze-im-internet.de/gewstg/__11.html>
 
 ## 3. Amazon PartnerNet – 🟢 VORBEREITET / 🔒 NICHT LIVE MONETARISIERT
 
@@ -88,6 +107,8 @@ Die vorbereitete Cloudflare-Web-Analytics-Integration ist bereits auf ausdrückl
 
 Das Impressum enthält Name, ladungsfähige Anschrift und E-Mail. Register- oder USt-IdNr.-Angaben werden nur aufgenommen, wenn sie tatsächlich existieren und anzugeben sind. Vor bezahlten Diensten, Checkout oder Vertragsschluss wird zusätzlich geprüft, ob ein weiterer schneller und unmittelbarer Kontaktweg erforderlich ist.
 
+§ 5 DDG verlangt für geschäftsmäßige digitale Dienste insbesondere leicht erkennbare, unmittelbar erreichbare und ständig verfügbare Angaben zu Name, Anschrift und schneller elektronischer Kontaktaufnahme. Register- und USt-IdNr.-Angaben gehören nur hinein, wenn sie tatsächlich bestehen. Rechtsgrundlage: <https://www.gesetze-im-internet.de/ddg/__5.html>
+
 ## 7. Verbraucherrecht / Verbraucherschlichtung – 🟢 AKTUELLER BASISSTAND
 
 - keine eigenen Warenverkäufe
@@ -115,7 +136,7 @@ Vor Aktivierung:
 
 - Gewerbe-/Betriebsbeginn geklärt
 - steuerliche Erfassung mit echten Angaben eingeleitet/erledigt
-- USt-IdNr./EU-B2B/Reverse-Charge/ZM für den realen Partner-Sachverhalt geprüft
+- USt-IdNr./EU-B2B/Reverse Charge und eine nur bei tatsächlicher Pflicht abzugebende ZM für den realen Partner-Sachverhalt geprüft
 - Amazon-Status und Website-Zuordnung korrekt
 - eBay nur nach EPN-Freigabe
 - Affiliate-Werbekennzeichnung an echte Links angepasst
@@ -123,6 +144,8 @@ Vor Aktivierung:
 - Markenrisiko erneut geprüft
 - Quality, Live Health und Commercialization Guards erneut grün
 - `MONETIZATION_DISABLED` erst zuletzt bewusst entfernen
+
+Jede konkrete Affiliate-Empfehlung wird am Inhalt selbst eindeutig als Werbung beziehungsweise Affiliate-Link gekennzeichnet. Ein pauschaler Hinweis nur im Impressum ersetzt die unmittelbare Kennzeichnung nicht. § 5a Abs. 4 UWG: <https://www.gesetze-im-internet.de/uwg_2004/__5a.html>; Leitfaden der Medienanstalten: <https://www.die-medienanstalten.de/service/merkblaetter-und-leitfaeden/leitfaden-werbekennzeichnung-bei-online-medien>
 
 ## Gesamtstatus
 

@@ -60,6 +60,7 @@ ffmpeg -y \
 
     drawbox=x=95:y=1745:w=890:h=100:color=white:t=fill:enable='gte(t,21.5)',
     drawtext=fontfile=${font_bold}:text='Kostenlos prüfen · Link im Profil':fontsize=38:fontcolor=0x0f172a:x=(w-text_w)/2:y=1773:enable='gte(t,21.5)',
+    drawtext=fontfile=${font_regular}:text='Beispielrechnung · keine Gewinn- oder Verkaufsgarantie':fontsize=20:fontcolor=0x94a3b8:x=(w-text_w)/2:y=1870:enable='gte(t,12)',
     fade=t=in:st=0:d=0.35,
     fade=t=out:st=24.4:d=0.6,
     format=yuv420p[v];

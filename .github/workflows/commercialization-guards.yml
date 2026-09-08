@@ -94,6 +94,7 @@ jobs:
           grep -Fq 'Cache-Control: public, max-age=0, must-revalidate, no-transform' _headers
           grep -Fq 'kein PostHog, Google Analytics, Supabase-Pixel oder Affiliate-Tracking' ANALYTICS-MEASUREMENT.md
           grep -Fq 'keine eindeutigen Menschen' ANALYTICS-MEASUREMENT.md
+          node scripts/analytics-release-gate.mjs
 
       - name: Organic beta campaign stays non-commercial
         shell: bash

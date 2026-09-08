@@ -162,7 +162,7 @@ Vor Entfernung von `MONETIZATION_DISABLED` müssen Gewerbe-/Steuergate, tatsäch
 
 **Lokaler Release-Kandidat: 🟢 veröffentlichbar ohne optionale Reichweitenmessung.**
 
-**Öffentliche Version: 🔴 Veröffentlichung der vorbereiteten Änderungen und separate Firebase-Stilllegung ausstehend.**
+**Öffentliche Version: 🟢 öffentlicher Website-Commit veröffentlicht; verbundene Vercel-Bereitstellungen erfolgreich.**
 
 **Aktuelle kostenlose, nicht monetarisierte Beta: 🟢 freigegeben.**
 

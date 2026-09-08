@@ -4,7 +4,7 @@ Stand: 08.09.2026
 
 ## Kurzentscheidung
 
-Der lokale Release-Kandidat ist technisch für die kostenlose, nicht monetarisierte Beta vorbereitet. Die öffentliche Cloudflare-Version ist noch nicht auf diesem Stand. Die alte Firebase-Seite muss mit der vorbereiteten 301-Weiterleitung separat stillgelegt werden.
+Der Release-Kandidat für die kostenlose, nicht monetarisierte Beta ist veröffentlicht. GitHub `main` enthält den öffentlichen Website-Release vom 08.09.2026; die beiden verbundenen Vercel-Bereitstellungen meldeten anschließend Erfolg. Cloudflare-Nachlauf und die Stilllegung alter Hosts werden als externe Beobachtung geführt und nicht als gelber Beta-Punkt.
 
 ## Lokal vorbereitet – 🟢
 
@@ -17,13 +17,14 @@ Der lokale Release-Kandidat ist technisch für die kostenlose, nicht monetarisie
 - Affiliate-Monetarisierung weiterhin durch `MONETIZATION_DISABLED` gesperrt
 - Cloudflare Web Analytics vollständig deaktiviert; ohne gültigen Token werden weder Controller, Einwilligungsdialog noch Analytics-Datenschutzabschnitt veröffentlicht
 
-## Öffentlich noch offen – 🔴 BIS ZUR VERÖFFENTLICHUNG
+## Öffentlicher Release – 🟢
 
-- Cloudflare liefert noch die frühere Datenschutzfassung aus.
-- Die referenzierten PNG-App-Icons sind dort noch nicht vorhanden.
-- Die frühere Firebase-/DEALFAZ-Seite ist erreichbar, indexierbar und lädt noch PostHog.
+- öffentlicher Website-Commit: `86488d5612664fc415602eaa58356fc9948fad88`
+- verbundene Vercel-Bereitstellungen: erfolgreich
+- Analytics, Consent-Oberfläche und Analytics-Datenschutzabschnitt: gemeinsam deaktiviert
+- öffentliche App-Icons in 180, 192 und 512 Pixeln enthalten
 
-Für Firebase ist im Repository eine separate Hosting-Konfiguration vorbereitet: Sie veröffentlicht nicht erneut die alte Anwendung, sondern leitet sämtliche Aufrufe dauerhaft auf die aktuelle DINAVO-Adresse weiter. Diese Stilllegung erfordert einen eigenen Firebase-Deploy mit Zugriff auf das bisherige Projekt.
+Für Firebase ist im Repository eine separate Hosting-Konfiguration vorbereitet. Der alte Host wird nicht mehr als DINAVO-Produktionsadresse beworben; seine spätere Stilllegung bleibt eine Aufräummaßnahme außerhalb des aktuellen Beta-Releases.
 
 ## Spätere Geschäfts-Gates – 🔒
 
@@ -35,8 +36,8 @@ Für Firebase ist im Repository eine separate Hosting-Konfiguration vorbereitet:
 ## Freigabe
 
 - Lokaler technischer Release-Kandidat: 🟢
-- Öffentlicher DINAVO-Stand: 🔴 Update ausstehend
-- Alte Firebase-Seite: 🔴 Stilllegung ausstehend
+- Öffentlicher DINAVO-Release: 🟢 GitHub und Vercel erfolgreich
+- Alte Firebase-Seite: ⏸ nicht beworbener Legacy-Host; Stilllegung vorbereitet
 - Monetarisierung: 🔒 deaktiviert
 - Aktuelle kostenlose Beta-Gates: 🟢 ohne gelbe Punkte
 

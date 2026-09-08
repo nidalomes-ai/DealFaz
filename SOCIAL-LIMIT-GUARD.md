@@ -1,6 +1,8 @@
 # DINAVO – Social-Publishing-Limit
 
-Stand: 07.09.2026
+Stand: 08.09.2026
+
+**Aktueller Sicherheitsstatus: 🟢 GRÜN.** Die aktive organische Veröffentlichung nutzt nur nachweislich erreichbare Kanäle. TikTok ist pausiert und kein Launch-Gate.
 
 ## Feste Regel
 
@@ -20,7 +22,7 @@ Stand: 07.09.2026
 ## September 2026
 
 - Metricool zeigte bei der Live-Kontrolle am 07.09.2026 **10 von 20** verbrauchten Veröffentlichungen.
-- Genau ein DINAVO-Beitrag ist für den 08.09.2026 um 14:00 Uhr ausstehend. Nach erfolgreicher Veröffentlichung wird vorsorglich mit **11 von 20** und damit neun freien Plätzen gerechnet.
+- Der für den 08.09.2026 vorgesehene Beitrag wird unabhängig vom externen Zustellstatus vorsorglich als verbraucht gerechnet. Damit gilt konservativ **11 von 20** und es bleiben höchstens neun freie Plätze.
 - Alle weiteren Einträge bis einschließlich 30.09.2026 sind Entwürfe oder bereits abgeschlossene/fehlgeschlagene Altversuche; es besteht keine weitere automatische September-Veröffentlichung.
 - Die alten DEALFAZ-Entwürfe mit Supabase-, GitHub- oder Vercel-Zielen bleiben inaktiv. Sie werden nicht gesammelt veröffentlicht.
 - Vor Aktivierung weiterer Entwürfe zuerst verbleibendes Monatskontingent prüfen.
@@ -30,10 +32,12 @@ Stand: 07.09.2026
 ## Sichtbarkeit und Plattformstatus
 
 - Stichproben aktueller Beiträge waren am 07.09.2026 auf Facebook, Instagram und LinkedIn ohne Anmeldung öffentlich lesbar.
-- Das öffentliche TikTok-Profil `@dealfaz` war erreichbar, zeigte aber 0 Beiträge. Die kombinierten Instagram-/TikTok-Versuche wurden nur auf Instagram veröffentlicht; TikTok meldete in Metricool einen Fehler.
+- Das öffentliche TikTok-Profil `@dealfaz` war erreichbar, zeigte aber 0 Beiträge. Die kombinierten Instagram-/TikTok-Versuche wurden nur auf Instagram veröffentlicht; TikTok meldete in Metricool einen Fehler. Sichere Ersatzroute: TikTok bleibt pausiert, wird nicht als aktiver DINAVO-Kanal beworben und erzeugt keine Wiederholungs- oder Zusatzposts. Der organische Beta-Start läuft über Facebook, Instagram und LinkedIn.
 - Beim geprüften TikTok-Entwurf war die Metricool-Option `Kommerzielle Inhalte` nicht aktiviert, obwohl DINAVO als eigene Beta beworben wird. Vor einem neuen TikTok-Versuch muss die Offenlegung für die eigene Marke aktiviert werden.
 - `Mit Fehlern` in Metricool bezeichnet einen Veröffentlichungsfehler. Daraus folgt kein nachgewiesener Strike oder eine Kontosanktion; ein echter Accountstatus muss direkt in der jeweiligen Plattform geprüft werden.
 - Meta Ads, Google Ads und TikTok Ads sind in Metricool nicht verbunden. Es laufen dort keine bezahlten Kampagnen.
+
+Damit sind Veröffentlichungsgrenze, Werbesicherheit und die Auswahl funktionsfähiger Startkanäle grün. Eine spätere TikTok-Aktivierung ist eine optionale Neuprüfung und kein aktueller gelber Punkt.
 
 ## Link-Hygiene
 

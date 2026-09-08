@@ -67,9 +67,13 @@ jobs:
           grep -Fq 'Verbraucherstreitbeilegung' impressum/index.html
           grep -Fq 'Eine im Einzelfall bestehende gesetzliche Pflicht bleibt unberührt' impressum/index.html
           grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' index.html
-          grep -Fq 'Optionale Reichweitenmessung mit Cloudflare Web Analytics' datenschutz/index.html
-          grep -Fq '<h2>5. Optionale Reichweitenmessung mit Cloudflare Web Analytics</h2>' datenschutz/index.html
-          ! grep -Eiq 'Keine eigene Reichweitenmessung|lädt kein Analyse-, Werbe- oder Marketing-Skript|keine Analyse-Tools' datenschutz/index.html
+          if grep -Eq "const CLOUDFLARE_TOKEN = '[A-Za-z0-9_-]{16,128}';" analytics.js; then
+            grep -Fq '<h2>5. Optionale Reichweitenmessung mit Cloudflare Web Analytics</h2>' datenschutz/index.html
+            grep -Fq '<script src="/analytics.js" defer></script>' index.html
+          else
+            ! grep -Fq 'Optionale Reichweitenmessung mit Cloudflare Web Analytics' datenschutz/index.html
+            ! grep -Fq '<script src="/analytics.js" defer></script>' index.html
+          fi
           grep -Fq 'Art. 6 Abs. 1 lit. a DSGVO' datenschutz/index.html
           grep -Fq '§ 25 Abs. 1 TDDDG' datenschutz/index.html
           ! grep -Fq 'supabase.co/functions/v1' index.html impressum/index.html datenschutz/index.html nutzungsbedingungen/index.html app.js analytics.js _headers vercel.json
@@ -85,7 +89,7 @@ jobs:
         run: |
           set -euo pipefail
           test -f ANALYTICS-MEASUREMENT.md
-          grep -Fq 'Datenschutz-Ziffer 5 sind als gemeinsames Release vorbereitet' ANALYTICS-MEASUREMENT.md
+          grep -Fq 'Datenschutz-Ziffer 5 sind als gemeinsames optionales Release vorbereitet' ANALYTICS-MEASUREMENT.md
           test -f scripts/analytics-release-gate.mjs
           grep -Fq "readConsent() !== 'granted'" analytics.js
           grep -Eq "const CLOUDFLARE_TOKEN = '([A-Za-z0-9_-]{16,128})?';" analytics.js

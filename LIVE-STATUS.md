@@ -1,6 +1,6 @@
 # DINAVO – aktueller Freigabestatus
 
-Stand: 07.09.2026
+Stand: 08.09.2026
 
 ## Kurzentscheidung
 
@@ -15,7 +15,7 @@ Der lokale Release-Kandidat ist technisch für die kostenlose, nicht monetarisie
 - interne Dokumente und Projektdateien durch `.assetsignore` aus dem Cloudflare-Assetpaket ausgeschlossen
 - eBay-Gewerbe-Richtwert für den Demo-Sneaker auf 12 % plus 0,45 € aktualisiert
 - Affiliate-Monetarisierung weiterhin durch `MONETIZATION_DISABLED` gesperrt
-- Cloudflare-Web-Analytics-Controller consent-first vorbereitet; ohne gültigen Token automatisch ohne Messung
+- Cloudflare Web Analytics vollständig deaktiviert; ohne gültigen Token werden weder Controller, Einwilligungsdialog noch Analytics-Datenschutzabschnitt veröffentlicht
 
 ## Öffentlich noch offen – 🔴 BIS ZUR VERÖFFENTLICHUNG
 

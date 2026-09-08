@@ -176,7 +176,6 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          grep -Fq '<script src="/analytics.js" defer></script>' index.html
           ! grep -Fq 'static.cloudflareinsights.com' index.html
           ! grep -Fq 'data-cf-beacon' index.html
           ! grep -Fq 'dealfaz-pixel' index.html app.js analytics.js
@@ -184,10 +183,15 @@ jobs:
           grep -Fq "readConsent() !== 'granted'" analytics.js
           grep -Eq "const CLOUDFLARE_TOKEN = '([A-Za-z0-9_-]{16,128})?';" analytics.js
           grep -Fq 'Cache-Control: public, max-age=0, must-revalidate, no-transform' _headers
-          grep -Fq 'Optionale Reichweitenmessung mit Cloudflare Web Analytics' datenschutz/index.html
-          grep -Fq '<h2>5. Optionale Reichweitenmessung mit Cloudflare Web Analytics</h2>' datenschutz/index.html
-          ! grep -Eiq 'Keine eigene Reichweitenmessung|lädt kein Analyse-, Werbe- oder Marketing-Skript|keine Analyse-Tools' datenschutz/index.html
-          grep -Fq 'Art. 6 Abs. 1 lit. a DSGVO' datenschutz/index.html
+          if grep -Eq "const CLOUDFLARE_TOKEN = '[A-Za-z0-9_-]{16,128}';" analytics.js; then
+            grep -Fq '<script src="/analytics.js" defer></script>' index.html
+            grep -Fq '<h2>5. Optionale Reichweitenmessung mit Cloudflare Web Analytics</h2>' datenschutz/index.html
+            grep -Fq 'Art. 6 Abs. 1 lit. a DSGVO' datenschutz/index.html
+          else
+            ! grep -Fq '<script src="/analytics.js" defer></script>' index.html
+            ! grep -Fq 'Optionale Reichweitenmessung mit Cloudflare Web Analytics' datenschutz/index.html
+          fi
+          node scripts/analytics-release-gate.mjs
 
       - name: CSV export injection hardening
         run: |

@@ -1,6 +1,6 @@
 # DINAVO – Release-Gate
 
-Stand: 07.09.2026
+Stand: 08.09.2026
 
 Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäftsstart** und **spätere Monetarisierung**. `[x]` bedeutet technisch oder anhand des aktuellen Datenflusses geprüft; es ist keine pauschale anwaltliche Rechtsfreigabe.
 
@@ -36,9 +36,9 @@ Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäf
 - [x] lokale Datenschutzfassung beschreibt nur die tatsächlich verwendeten aktuellen und nutzerinitiierten Datenflüsse
 - [x] lokale Browser-Speicherung transparent erklärt
 - [x] Cloudflare Web Analytics technisch nur nach gültigem Token und ausdrücklicher Einwilligung vorbereitet
-- [x] Datenschutz-Ziffer 5, widerspruchsfreier Text und Consent-Controller als ein gemeinsames Release gekoppelt
+- [x] Datenschutz-Ziffer 5, widerspruchsfreier Text und Consent-Controller als ein optionales gemeinsames Release gekoppelt
 - [x] geteilter `#deal=`-Link bleibt selbst bei bestehender Einwilligung vollständig vom Beacon ausgeschlossen
-- [ ] echten öffentlichen Cloudflare-Web-Analytics-Site-Token einsetzen und Release-Gate erfolgreich ausführen
+- [x] ohne öffentlichen Site-Token weder Analytics-Controller noch Analytics-Ziffer 5 veröffentlichen
 - [x] ohne Token keine Abfrage und keine externe Analytics-Anfrage
 - [x] automatische Cloudflare-Beacon-Injektion durch manuellen Modus plus `no-transform` ausgeschlossen
 - [x] keine Werbe-/Marketing-Cookies der aktuellen Hauptseite
@@ -160,7 +160,7 @@ Vor Entfernung von `MONETIZATION_DISABLED` müssen Gewerbe-/Steuergate, tatsäch
 
 ## Aktueller Freigabestatus
 
-**Lokaler Release-Kandidat: 🔒 bewusst blockiert, bis der echte Cloudflare-Web-Analytics-Site-Token eingesetzt ist.**
+**Lokaler Release-Kandidat: 🟢 veröffentlichbar ohne optionale Reichweitenmessung.**
 
 **Öffentliche Version: 🔴 Veröffentlichung der vorbereiteten Änderungen und separate Firebase-Stilllegung ausstehend.**
 

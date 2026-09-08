@@ -37,7 +37,6 @@ const appIds = [...app.matchAll(/\$\('([^']+)'\)/g)].map(match => match[1]);
 const missingIds = [...new Set(appIds)].filter(id => !idMatches.includes(id));
 assert.deepEqual(missingIds, [], `Every app.js element reference must exist: ${missingIds.join(', ')}`);
 assert.doesNotMatch(html, /simple-ui\.js/, 'The old competing calculator must not run beside app.js');
-assert.match(html, /<script src="\/analytics\.js" defer><\/script>/, 'The consent-first analytics controller must be loaded');
 assert.match(html, /id="exampleDeal"[^>]*>Beispiel-Deal einsetzen<\/button>/, 'The calculator must expose a working example action');
 assert.match(
   html,
@@ -45,14 +44,20 @@ assert.match(
   'The optional market and target fields must remain in the second detail level'
 );
 assert.doesNotMatch(html, /static\.cloudflareinsights\.com|data-cf-beacon/, 'The external beacon must never load directly from HTML');
-for (const id of ['analyticsConsent', 'analyticsSettings', 'analyticsAccept', 'analyticsReject']) {
-  assert.match(html, new RegExp(`id="${id}"`), `Analytics consent control #${id} must exist`);
-}
-assert.match(html, /id="analyticsAccept" class="secondary"/, 'Consent choices must have equal visual weight');
-assert.match(html, /id="analyticsReject" class="secondary"/, 'Consent choices must have equal visual weight');
 const analyticsToken = analyticsSource.match(/const CLOUDFLARE_TOKEN = '([^']*)';/)?.[1];
 assert.notEqual(analyticsToken, undefined, 'Analytics must expose one explicit Cloudflare token setting');
 assert.ok(analyticsToken === '' || /^[A-Za-z0-9_-]{16,128}$/.test(analyticsToken), 'Analytics token must be empty or a valid public Cloudflare token');
+if (analyticsToken) {
+  assert.match(html, /<script src="\/analytics\.js" defer><\/script>/, 'The consent-first analytics controller must be loaded');
+  for (const id of ['analyticsConsent', 'analyticsSettings', 'analyticsAccept', 'analyticsReject']) {
+    assert.match(html, new RegExp(`id="${id}"`), `Analytics consent control #${id} must exist`);
+  }
+  assert.match(html, /id="analyticsAccept" class="secondary"/, 'Consent choices must have equal visual weight');
+  assert.match(html, /id="analyticsReject" class="secondary"/, 'Consent choices must have equal visual weight');
+} else {
+  assert.doesNotMatch(html, /<script src="\/analytics\.js" defer><\/script>/, 'An unconfigured analytics controller must not be published');
+  assert.doesNotMatch(html, /id="analytics(?:Consent|Settings|Accept|Reject)"/, 'Disabled analytics must not expose inert consent controls');
+}
 assert.match(analyticsSource, /readConsent\(\) !== 'granted'/, 'The beacon must require explicit consent');
 assert.match(analyticsSource, /SENSITIVE_DEAL_NAVIGATION/, 'Shared deal fragments must be excluded from analytics');
 assert.match(analyticsSource, /https:\/\/static\.cloudflareinsights\.com\/beacon\.min\.js/, 'Only the official Cloudflare beacon may be loaded');
@@ -97,15 +102,18 @@ assert.match(privacy, /Artikelbezeichnung als Suchbegriff/, 'Privacy information
 assert.match(privacy, /JSON-Backups und CSV-Dateien/, 'Privacy information must explain local import and export');
 assert.match(privacy, /Google \(Gmail\)/, 'Privacy information must identify the email provider');
 assert.match(privacy, /mail@datenschutzzentrum\.de/, 'Privacy information must identify the competent supervisory authority');
-assert.match(privacy, /Stand: 7\. September 2026/, 'Privacy information must expose its revision date');
-assert.match(privacy, /Optionale Reichweitenmessung mit Cloudflare Web Analytics/, 'Privacy information must explain optional analytics');
-assert.match(privacy, /<h2>5\. Optionale Reichweitenmessung mit Cloudflare Web Analytics<\/h2>/, 'Analytics must be the published privacy section 5');
-assert.doesNotMatch(privacy, /Keine eigene Reichweitenmessung|lädt kein Analyse-, Werbe- oder Marketing-Skript|keine Analyse-Tools/i, 'Privacy information must not contradict active consent-first analytics');
-assert.match(privacy, /Art\. 6 Abs\. 1 lit\. a DSGVO/, 'Analytics must be based on explicit consent');
-assert.match(privacy, /§ 25 Abs\. 1 TDDDG/, 'Analytics must disclose the end-device consent basis');
 assert.match(privacy, /§ 25 Abs\. 2 Nr\. 2 TDDDG/, 'The local privacy choice must be explained as a requested setting');
-assert.match(privacy, /#deal=<\/code>-Fragment sind für den gesamten jeweiligen Dokumentaufruf von der Reichweitenmessung ausgeschlossen/, 'Privacy information must disclose the shared-deal analytics exclusion');
-assert.match(privacy, /Datenschutz-Einstellungen/, 'Privacy information must explain withdrawal');
+assert.match(privacy, /Stand: 8\. September 2026/, 'Privacy information must expose its revision date');
+if (analyticsToken) {
+  assert.match(privacy, /<h2>5\. Optionale Reichweitenmessung mit Cloudflare Web Analytics<\/h2>/, 'Analytics must be the published privacy section 5');
+  assert.match(privacy, /Art\. 6 Abs\. 1 lit\. a DSGVO/, 'Analytics must be based on explicit consent');
+  assert.match(privacy, /§ 25 Abs\. 1 TDDDG/, 'Analytics must disclose the end-device consent basis');
+  assert.match(privacy, /#deal=<\/code>-Fragment sind für den gesamten jeweiligen Dokumentaufruf von der Reichweitenmessung ausgeschlossen/, 'Privacy information must disclose the shared-deal analytics exclusion');
+  assert.match(privacy, /Datenschutz-Einstellungen/, 'Privacy information must explain withdrawal');
+} else {
+  assert.doesNotMatch(privacy, /Optionale Reichweitenmessung mit Cloudflare Web Analytics|aggregierte Web-Analytics-Daten|Analytics-Auswahl/, 'Disabled analytics must not be described as active');
+  assert.match(privacy, /<h2>5\. Deal teilen<\/h2>/, 'Privacy sections must remain consecutively numbered without analytics');
+}
 assert.doesNotMatch(app, /new URLSearchParams\(location\.search\)/, 'Deal values must never be restored from request query parameters');
 assert.match(html, /id="profit"[^>]*data-amount/, 'Profit must be the stable-width primary amount');
 assert.match(html, /data-secondary>[\s\S]*?<div id="personalEstimate" data-factor hidden role="status"><\/div>/, 'The personal correction factor must sit directly below profit and ROI');

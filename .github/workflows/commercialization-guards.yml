@@ -89,7 +89,7 @@ jobs:
         run: |
           set -euo pipefail
           test -f ANALYTICS-MEASUREMENT.md
-          grep -Fq 'Datenschutz-Ziffer 5 sind als gemeinsames optionales Release vorbereitet' ANALYTICS-MEASUREMENT.md
+          grep -Eq 'Datenschutz-Ziffer 5 sind als gemeinsames( optionales)? Release vorbereitet' ANALYTICS-MEASUREMENT.md
           test -f scripts/analytics-release-gate.mjs
           grep -Fq "readConsent() !== 'granted'" analytics.js
           grep -Eq "const CLOUDFLARE_TOKEN = '([A-Za-z0-9_-]{16,128})?';" analytics.js

@@ -73,7 +73,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          origin='https://dealfaz.dealfaz-social.workers.dev'
+          origin='https://dealfaz.vercel.app'
           grep -Fq "<link rel=\"canonical\" href=\"${origin}/\">" index.html
           grep -Fq "<meta property=\"og:url\" content=\"${origin}/\">" index.html
           grep -Fq "<meta property=\"og:image\" content=\"${origin}/social-card.png\">" index.html
@@ -88,7 +88,7 @@ jobs:
           for page in reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html impressum/index.html datenschutz/index.html nutzungsbedingungen/index.html; do
             grep -Fq "${origin}/" "$page"
           done
-          ! grep -Fn 'dealfaz.vercel.app' index.html robots.txt sitemap.xml reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html impressum/index.html datenschutz/index.html nutzungsbedingungen/index.html
+          ! grep -Fn 'dealfaz.dealfaz-social.workers.dev' index.html robots.txt sitemap.xml reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html impressum/index.html datenschutz/index.html nutzungsbedingungen/index.html
           ! grep -Fn 'Beim Aufruf verarbeitet Vercel' index.html
           ! grep -Fn 'nidalomes-ai.github.io/DealFaz' index.html robots.txt sitemap.xml README.md DATA-SOURCES.md PRIVACY-ARCHITECTURE.md manifest.webmanifest
           ! grep -Fn 'supabase.co/functions/v1' index.html reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html impressum/index.html datenschutz/index.html nutzungsbedingungen/index.html
@@ -137,7 +137,7 @@ jobs:
           grep -Fq 'https://www.amazon.de/s?k=${encoded}' app.js
           grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' index.html
           grep -Fq 'keine Gewinn-, Preis-, Nachfrage- oder Verkaufsgarantie' DATA-SOURCES.md
-          grep -Fq 'DINAVO wird als Cloudflare Worker' datenschutz/index.html
+          grep -Fq 'Die aktuelle DINAVO-Adresse wird über Vercel bereitgestellt' datenschutz/index.html
           grep -Fq 'Fragment hinter dem Zeichen „#“' datenschutz/index.html
           grep -Fq 'Google (Gmail)' datenschutz/index.html
           ! grep -Fq 'iosghttnctdaociwltos.supabase.co' firebase.json netlify.toml render.yaml
@@ -242,11 +242,11 @@ jobs:
           grep -Fq 'X-Permitted-Cross-Domain-Policies' _headers
           grep -Fq 'Cache-Control: public, max-age=0, must-revalidate, no-transform' _headers
 
-      - name: Cloudflare production workflows are aligned
+      - name: Vercel production workflows are aligned
         shell: bash
         run: |
           set -euo pipefail
-          grep -Fq 'dealfaz.dealfaz-social.workers.dev' .github/workflows/live-health.yml
-          grep -Fq 'dealfaz.dealfaz-social.workers.dev' .github/workflows/indexnow-vercel.yml
-          ! grep -Fq 'dealfaz.vercel.app' .github/workflows/live-health.yml
-          ! grep -Fq 'dealfaz.vercel.app' .github/workflows/indexnow-vercel.yml
+          grep -Fq 'dealfaz.vercel.app' .github/workflows/live-health.yml
+          grep -Fq 'dealfaz.vercel.app' .github/workflows/indexnow-vercel.yml
+          ! grep -Fq 'dealfaz.dealfaz-social.workers.dev' .github/workflows/live-health.yml
+          ! grep -Fq 'dealfaz.dealfaz-social.workers.dev' .github/workflows/indexnow-vercel.yml

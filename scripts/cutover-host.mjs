@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const nextRaw = process.argv[2] || '';
-const oldOrigin = 'https://dealfaz.dealfaz-social.workers.dev';
+const oldOrigin = 'https://dealfaz.vercel.app';
 const vsbgNotice = '<h2>Verbraucherstreitbeilegung:</h2><p>DINAVO ist nicht freiwillig zur Teilnahme an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle bereit. Soweit im Einzelfall eine gesetzliche Verpflichtung zur Teilnahme besteht, bleibt diese unberührt.</p>';
 
 function normalizeOrigin(value) {

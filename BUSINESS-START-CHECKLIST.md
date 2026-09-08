@@ -20,7 +20,7 @@ DINAVO ist auf einen dauerhaften öffentlichen Betrieb und spätere Affiliate-Ei
 - 🟢 Steuer-/ELSTER-Felder und EU-B2B-Prüfpunkte: vorbereitet, ohne fiktive Angaben.
 - 🟢 Amazon-Vorbereitung: dokumentiert; keine Affiliate-Tags live.
 - 🟢 eBay-Vorbereitung: Bewerbung dokumentiert; keine EPN-Links live.
-- 🟢 Hosting: Cloudflare Workers aktueller Hauptbetrieb.
+- 🟢 Hosting: Vercel aktueller Hauptbetrieb; Cloudflare als technisch dokumentierte Alt-/Alternativadresse.
 - 🟢 Social-Limitschutz: maximal 20 Veröffentlichungen/Monat dokumentiert.
 - 🟢 **Kostenlose Beta: kein Umsatz, keine Affiliate-Links, kein Checkout und keine Nutzerzahlungen.**
 - 🔒 **Gewerblicher Start: bis zur Klärung des Betriebsbeginns und einer erforderlichen Gewerbeanmeldung gesperrt.**
@@ -97,7 +97,7 @@ Der Gewerbesteuerfreibetrag für natürliche Personen und Personengesellschaften
 - Cloudflare-Web-Analytics-Controller ist consent-first vorbereitet und lädt ohne gültigen Token keine externe Ressource
 - Watchlist, Regeln, Erwartungen und Ergebnisse werden lokal im Browser gespeichert
 - keine DINAVO-Werbe-/Marketing-Cookies auf der aktuellen Hauptseite
-- Cloudflare-Hosting ist im Datenschutztext beschrieben; externe Legacy-Weiterleitungen sind kein Bestandteil der aktuellen Hauptseite
+- Vercel-Hosting und eine mögliche Cloudflare-Alt-/Alternativadresse sind im Datenschutztext beschrieben; externe Legacy-Weiterleitungen sind kein Bestandteil der aktuellen Hauptseite
 - Art. 6 Abs. 1 lit. f DSGVO, Betroffenenrechte, Empfänger, Speicherkriterien und Beschwerderecht sind beschrieben
 - lokale ausdrücklich gewünschte Funktionen sind als § 25 Abs. 2 TDDDG-Prüfpunkt dokumentiert
 

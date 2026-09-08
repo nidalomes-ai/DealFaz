@@ -9,7 +9,7 @@ Veröffentlichte DINAVO-Beiträge:
 - Facebook: https://facebook.com/122102831157445036/posts/122107501845445036
 - LinkedIn: https://linkedin.com/feed/update/urn:li:share:7500684328297717760
 
-Die aktive Planung verwendet ausschließlich DINAVO, saubere Cloudflare-Links ohne eigene Trackingparameter und den kostenlosen Metricool-Rahmen. Frühere DealFaz-Entwürfe bleiben inaktiv und werden nicht veröffentlicht.
+Die aktive Planung verwendet ausschließlich DINAVO, die saubere Vercel-Hauptadresse ohne eigene Trackingparameter und den kostenlosen Metricool-Rahmen. Frühere DealFaz-Entwürfe bleiben inaktiv und werden nicht veröffentlicht.
 
 Ziel der ersten sieben Tage: 20 echte Rechner-Tests und mindestens 5 verständliche Rückmeldungen. Es gibt kein Umsatz-, Reichweiten- oder Besucherzahlversprechen.
 
@@ -26,7 +26,7 @@ Ziel der ersten sieben Tage: 20 echte Rechner-Tests und mindestens 5 verständli
 
 Öffentliche Hauptadresse:
 
-> https://dealfaz.dealfaz-social.workers.dev/
+> https://dealfaz.vercel.app/
 
 ## Profile vorbereiten
 
@@ -42,7 +42,7 @@ Ziel der ersten sieben Tage: 20 echte Rechner-Tests und mindestens 5 verständli
 
 **Link im Profil**
 
-> https://dealfaz.dealfaz-social.workers.dev/
+> https://dealfaz.vercel.app/
 
 Bestehende Handles wie `@dealfaz` dürfen vorerst als technische Legacy-Adresse bestehen bleiben. Ein öffentlicher Handle-Wechsel wird erst nach Verfügbarkeitsprüfung und ausdrücklicher Freigabe durchgeführt.
 

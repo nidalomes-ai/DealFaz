@@ -4,7 +4,7 @@
 
 ## Öffentliche Hauptseite
 
-**https://dealfaz.dealfaz-social.workers.dev/**
+**https://dealfaz.vercel.app/**
 
 Die öffentliche Version läuft über HTTPS und benötigt kein Nutzerkonto. Die Adresse enthält während der technischen Übergangsphase noch den früheren Namen `dealfaz`; die sichtbare Marke und alle neuen Inhalte heißen **DINAVO**. Alte Links bleiben dadurch funktionsfähig, bis eine DINAVO-Domain erfolgreich registriert und gemeinsam umgestellt wurde.
 
@@ -43,16 +43,16 @@ Die öffentliche Version läuft über HTTPS und benötigt kein Nutzerkonto. Die 
 
 ## Wissensseiten
 
-- [Reselling-Rechner: Gewinn, ROI & Marge](https://dealfaz.dealfaz-social.workers.dev/reselling-rechner/)
-- [Maximalen Einkaufspreis berechnen](https://dealfaz.dealfaz-social.workers.dev/maximaler-einkaufspreis/)
-- [ROI beim Reselling verstehen](https://dealfaz.dealfaz-social.workers.dev/roi-reselling/)
-- [Sell-through verstehen](https://dealfaz.dealfaz-social.workers.dev/sell-through/)
+- [Reselling-Rechner: Gewinn, ROI & Marge](https://dealfaz.vercel.app/reselling-rechner/)
+- [Maximalen Einkaufspreis berechnen](https://dealfaz.vercel.app/maximaler-einkaufspreis/)
+- [ROI beim Reselling verstehen](https://dealfaz.vercel.app/roi-reselling/)
+- [Sell-through verstehen](https://dealfaz.vercel.app/sell-through/)
 
 ## Rechtliche Seiten
 
-- [Impressum](https://dealfaz.dealfaz-social.workers.dev/impressum/)
-- [Datenschutz](https://dealfaz.dealfaz-social.workers.dev/datenschutz/)
-- [Nutzungsbedingungen](https://dealfaz.dealfaz-social.workers.dev/nutzungsbedingungen/)
+- [Impressum](https://dealfaz.vercel.app/impressum/)
+- [Datenschutz](https://dealfaz.vercel.app/datenschutz/)
+- [Nutzungsbedingungen](https://dealfaz.vercel.app/nutzungsbedingungen/)
 
 ## Transparenz & Methodik
 

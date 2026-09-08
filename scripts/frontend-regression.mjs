@@ -79,14 +79,14 @@ for (const [index, page] of knowledgePages.entries()) {
   assert.match(page, /<meta name="robots" content="index,follow">/, `${route} must stay publicly indexable`);
   assert.match(page, /<h1>[^<]+(?:<br>)?[^<]*<\/h1>/, `${route} must expose a visible primary heading`);
   assert.match(html, new RegExp(`href="${route.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`), `${route} must remain visible in homepage navigation`);
-  assert.match(sitemap, new RegExp(`<loc>https://dealfaz\\.dealfaz-social\\.workers\\.dev${route.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</loc>`), `${route} must remain in the public sitemap`);
+  assert.match(sitemap, new RegExp(`<loc>https://dealfaz\\.vercel\\.app${route.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</loc>`), `${route} must remain in the public sitemap`);
 }
 const publicMarkup = [html, ...knowledgePages, ...legalPages].join('\n');
 assert.doesNotMatch(publicMarkup, /<(?:s|del)(?:\s|>)/i, 'Public content must not contain struck-through posts or text');
 assert.doesNotMatch(css, /text-decoration(?:-line)?\s*:\s*line-through/i, 'Public styling must not strike through posts or text');
 for (const [index, page] of legalPages.entries()) {
   const route = `/${legalPagePaths[index].replace(/index\.html$/, '')}`;
-  assert.match(page, new RegExp(`<link rel="canonical" href="https://dealfaz\\.dealfaz-social\\.workers\\.dev${route}"`), `${route} must have its production canonical`);
+  assert.match(page, new RegExp(`<link rel="canonical" href="https://dealfaz\\.vercel\\.app${route}"`), `${route} must have its production canonical`);
   assert.match(page, /<h1>[^<]+<\/h1>/, `${route} must have one clear page heading`);
   assert.match(page, /href="\/impressum\/"/, `${route} must link to the imprint`);
   assert.match(page, /href="\/datenschutz\/"/, `${route} must link to privacy information`);
@@ -158,7 +158,7 @@ const parsedFirebaseConfig = JSON.parse(firebaseConfig);
 assert.equal(parsedFirebaseConfig.hosting.public, 'firebase-retirement', 'Firebase must publish only the retirement surface');
 assert.deepEqual(parsedFirebaseConfig.hosting.redirects, [{
   source: '**',
-  destination: 'https://dealfaz.dealfaz-social.workers.dev/',
+  destination: 'https://dealfaz.vercel.app/',
   type: 301
 }], 'Firebase must permanently redirect every legacy route to DINAVO');
 assert.match(css, /@media\(max-width:680px\)\{[^}]*main\{/, 'A narrow-screen layout must exist');

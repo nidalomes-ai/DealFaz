@@ -1,19 +1,19 @@
 # DINAVO – Hosting-Status und Ausweichplan
 
-Stand: 27.08.2026
+Stand: 08.09.2026
 
 ## Aktueller Status: 🟢 GRÜN
 
 Der kostenlose Hauptbetrieb ist entschieden und aktiv:
 
-1. **Cloudflare Workers – aktiver Hauptbetrieb**
-   - öffentliche Beta: `https://dealfaz.dealfaz-social.workers.dev/`
+1. **Vercel – aktiver Hauptbetrieb**
+   - öffentliche Beta: `https://dealfaz.vercel.app/`
    - Quality und Live Health prüfen diesen Host
    - Canonical, Sitemap, robots.txt und Social-Metadaten zeigen auf diesen Host
    - öffentliche HTML-Seiten hängen nicht mehr von alten Supabase-Funktionslinks ab
 
 2. **Pre-Gewerbe-Entscheidung**
-   - Cloudflare Workers bleibt Hauptbetrieb
+   - Vercel bleibt Hauptbetrieb der kostenlosen, nicht monetarisierten Beta
    - es wird jetzt keine kostenpflichtige Domain gekauft
    - eine Custom Domain/Route ist keine Voraussetzung für die kostenlose Beta und kein aktueller gelber Punkt
 
@@ -30,7 +30,7 @@ Die jeweils aktuellen Tarif-/Nutzungsbedingungen werden vor einer späteren komm
 
 ## Nicht wieder als primäre öffentliche Quelle verwenden
 
-- alte Vercel-Frontendstände
+- alte Cloudflare-Frontendstände
 - alte GitHub-Pages-Frontendstände
 - alte Supabase-Edge-Function-Frontendlinks
 

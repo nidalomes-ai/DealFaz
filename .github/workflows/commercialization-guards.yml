@@ -44,7 +44,7 @@ jobs:
           test -f DACH-COMMERCIAL-ROLLOUT.md
           grep -Fq 'Gewerbeanmeldung' BUSINESS-START-CHECKLIST.md
           grep -Fq 'Reverse Charge' BUSINESS-START-CHECKLIST.md
-          grep -Fq 'Zusammenfassender Meldung' BUSINESS-START-CHECKLIST.md
+          grep -Fq 'Zusammenfassenden Meldung' BUSINESS-START-CHECKLIST.md
           grep -Fq 'Verbraucherschlichtung' BUSINESS-START-CHECKLIST.md
           grep -Fq 'MONETIZATION_DISABLED' AMAZON-ACTIVATION.md
           grep -Fq 'Als Amazon-Partner verdiene ich an qualifizierten Verkäufen.' AMAZON-ACTIVATION.md
@@ -70,12 +70,14 @@ jobs:
           if grep -Eq "const CLOUDFLARE_TOKEN = '[A-Za-z0-9_-]{16,128}';" analytics.js; then
             grep -Fq '<h2>5. Optionale Reichweitenmessung mit Cloudflare Web Analytics</h2>' datenschutz/index.html
             grep -Fq '<script src="/analytics.js" defer></script>' index.html
+            grep -Fq 'Art. 6 Abs. 1 lit. a DSGVO' datenschutz/index.html
+            grep -Fq '§ 25 Abs. 1 TDDDG' datenschutz/index.html
           else
             ! grep -Fq 'Optionale Reichweitenmessung mit Cloudflare Web Analytics' datenschutz/index.html
             ! grep -Fq '<script src="/analytics.js" defer></script>' index.html
+            ! grep -Fq 'Art. 6 Abs. 1 lit. a DSGVO' datenschutz/index.html
+            ! grep -Fq '§ 25 Abs. 1 TDDDG' datenschutz/index.html
           fi
-          grep -Fq 'Art. 6 Abs. 1 lit. a DSGVO' datenschutz/index.html
-          grep -Fq '§ 25 Abs. 1 TDDDG' datenschutz/index.html
           ! grep -Fq 'supabase.co/functions/v1' index.html impressum/index.html datenschutz/index.html nutzungsbedingungen/index.html app.js analytics.js _headers vercel.json
           ! grep -Eq '__DINAVO_PROJECT_EMAIL__|\[Projekt-Adresse eintragen\]' impressum/index.html
           grep -Fq 'dealfaz.social@gmail.com' impressum/index.html
@@ -116,7 +118,7 @@ jobs:
           set -euo pipefail
           test -f INDEXING-STATUS.md
           grep -Fq 'Indexierung, Positionen und Besucherzahlen werden nicht garantiert' INDEXING-STATUS.md
-          grep -Fq 'reale Indexierung der aktuellen Cloudflare-URLs' INDEXING-STATUS.md
+          grep -Fq 'reale Indexierung der aktuellen Vercel-URLs' INDEXING-STATUS.md
           grep -Fq 'Alte Hosts nicht erneut als primäre öffentliche URL bewerben' INDEXING-STATUS.md
 
       - name: Cutover must enforce legal notice

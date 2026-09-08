@@ -1,32 +1,32 @@
 # DINAVO – Hosting-Fallbacks
 
-Stand: 07.09.2026
+Stand: 08.09.2026
 
 Ziel: keine unnötige Abhängigkeit von einem einzelnen kostenlosen Anbieter. Der kostenlose Beta-Betrieb ist bereits aktiv. Monetarisierung bleibt separat gesperrt, bis Business-/Steuer-/Partner-Gates tatsächlich erfüllt sind.
 
-## Aktiver Plan A – Cloudflare Workers
+## Aktiver Plan A – Vercel
 
 **Status für kostenlose Beta: 🟢 aktiv.**
 
 Aktuelle öffentliche Version:
 
-> `https://dealfaz.dealfaz-social.workers.dev/`
+> `https://dealfaz.vercel.app/`
 
-Der frühere Cloudflare-Account-/Deployment-Blocker ist überholt. Der aktuelle Host wird bereits von Quality und Live Health geprüft. Canonical, OpenGraph, Sitemap, robots.txt, Launch-Kit und die öffentlichen SEO-Seiten sind auf diesen Host ausgerichtet.
+Der aktuelle Host wird von Quality und Live Health geprüft. Canonical, OpenGraph, Sitemap, robots.txt, Launch-Kit und die öffentlichen SEO-Seiten sind auf diesen Host ausgerichtet.
 
 Für die kostenlose Beta ist **kein Hosting-Fallback erforderlich**.
 
 Vor einem späteren geschäftskritischen/monetarisierten Dauerbetrieb bleibt bewusst separat zu entscheiden, ob eine Custom Domain/Route bzw. finale Produktionsdomain verwendet wird. Dafür wird jetzt nichts gekauft.
 
-## Plan A2 – Cloudflare Pages
+## Plan A2 – Cloudflare Workers / Cloudflare Pages
 
-**Cloudflare Pages bleibt als statischer kostenloser Fallback dokumentiert.** Das Repository ist als statische Site vorbereitet; ein Pages-Deployment wird aber nicht parallel als zweite öffentliche Hauptquelle beworben. Falls Workers technisch ausfällt und Pages verfügbar ist, gilt vor Umschaltung dasselbe vollständige Cutover-Gate wie für jeden anderen Host.
+**Cloudflare Pages bleibt als statischer kostenloser Fallback dokumentiert.** Eine frühere Workers-Adresse kann als Altadresse bestehen, wird aber nicht als zweite öffentliche Hauptquelle beworben. Vor jeder Umschaltung gilt dasselbe vollständige Cutover-Gate wie für jeden anderen Host.
 
 ## Alte Firebase-Instanz – nur Stilllegung
 
 **Kein Hosting-Fallback mehr.**
 
-Die frühere DEALFAZ-Seite auf Firebase ist noch öffentlich und lädt PostHog. `firebase.json` veröffentlicht deshalb ausschließlich eine minimale Retirement-Oberfläche und leitet alle Routen permanent auf DINAVO bei Cloudflare weiter. Ein Firebase-Deploy darf nur für diese Stilllegung verwendet werden.
+Die frühere DEALFAZ-Seite auf Firebase kann noch öffentlich sein und PostHog laden. `firebase.json` veröffentlicht deshalb ausschließlich eine minimale Retirement-Oberfläche und leitet alle Routen permanent auf DINAVO bei Vercel weiter. Ein Firebase-Deploy darf nur für diese Stilllegung verwendet werden.
 
 Nach dem separaten Deploy müssen Root, alte Sprachrouten, Header und das Ende der PostHog-Auslieferung geprüft werden.
 
@@ -38,7 +38,7 @@ Vor Umschaltung: Repository anbinden, Preview testen, danach vollständigen Cuto
 
 ## Nicht automatisch als kommerzieller Produktions-Fallback verwenden
 
-Die folgenden Wege gelten **nicht als kommerzieller Produktionsersatz**, solange ihre dann aktuellen Bedingungen und der konkrete Monetarisierungsbetrieb nicht erneut geprüft wurden.
+Die folgenden Wege gelten **nicht als kommerzieller Produktionsersatz**, solange ihre dann aktuellen Bedingungen und der konkrete Monetarisierungsbetrieb nicht erneut geprüft wurden. Dasselbe gilt vor einer Monetarisierung der aktuellen Vercel-Beta.
 
 ### Render Free
 
@@ -52,9 +52,9 @@ Nicht als Site-Hosting-Ersatz verwenden. Supabase bleibt Backend/Analytics/Legac
 
 Nicht als primären kommerziellen Dauerhost einplanen.
 
-### Vercel Hobby
+### Vercel nach Monetarisierungsstart
 
-Nicht mehr als öffentliche Hauptquelle behandeln. Alte Vercel-Ziele wurden aus der aktuellen öffentlichen Konfiguration entfernt.
+Vor einem kommerziellen Start Tarif, Nutzungsbedingungen und erforderliche Auftragsverarbeitungsbedingungen erneut prüfen und gegebenenfalls auf einen geeigneten Tarif wechseln.
 
 ## Umschalt-Gate
 

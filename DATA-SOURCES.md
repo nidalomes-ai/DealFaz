@@ -55,4 +55,4 @@ Für den Beispiel-Deal mit Sneakern unter 100 € verwendet DINAVO beim Profil �
 
 Marktbelege können veraltet, unvollständig oder nicht direkt vergleichbar sein. Zustand, Variante, Zubehör, Region, Versand, Gebühren, Steuern und Zeitpunkt können Ergebnisse verändern. DINAVO gibt deshalb keine Gewinn-, Preis-, Nachfrage- oder Verkaufsgarantie.
 
-[Öffentliche DINAVO-Beta öffnen](https://dealfaz.dealfaz-social.workers.dev/?utm_source=github&utm_medium=referral&utm_campaign=data_sources&utm_content=public_beta)
+[Öffentliche DINAVO-Beta öffnen](https://dealfaz.vercel.app/?utm_source=github&utm_medium=referral&utm_campaign=data_sources&utm_content=public_beta)

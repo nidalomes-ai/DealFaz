@@ -1,14 +1,14 @@
 # DINAVO – Cloudflare Hosting
 
-Stand: 27.08.2026
+Stand: 08.09.2026
 
-Der Dateiname bleibt aus Kompatibilitätsgründen bestehen. Die frühere Cloudflare-Pages-Migrationsplanung ist inzwischen durch den aktiven Cloudflare-Workers-Betrieb überholt.
+Der Dateiname bleibt aus Kompatibilitätsgründen bestehen. Cloudflare ist nach dem Produktionswechsel auf Vercel nur noch als dokumentierte Alt-/Fallback-Infrastruktur eingeordnet.
 
-## Aktueller Produktionsstand
+## Aktueller Repository- und Fallback-Stand
 
 - Repository: `nidalomes-ai/DealFaz`
 - Produktionsbranch: `main`
-- öffentliche kostenlose Beta: `https://dealfaz.dealfaz-social.workers.dev/`
+- aktuelle öffentliche kostenlose Beta: `https://dealfaz.vercel.app/`
 - sichtbare Marke seit 28.08.2026: `DINAVO`; Repository- und Hostnamen bleiben bis zum koordinierten technischen Cutover als Legacy-Bezeichnungen bestehen
 - statisches Frontend ohne erforderlichen Build-Schritt
 - keine geheimen Frontend-Umgebungsvariablen für den Kernbetrieb nötig

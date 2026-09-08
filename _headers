@@ -7,4 +7,4 @@
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   Cross-Origin-Opener-Policy: same-origin
   X-Permitted-Cross-Domain-Policies: none
-  Content-Security-Policy: default-src 'self'; style-src 'self'; script-src 'self' 'sha256-3+Y+AMwRg3bKAzFf5WCs+/cYZvRdxcYgizjP1lp/85U=' https://static.cloudflareinsights.com; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; style-src 'self'; script-src 'self' 'sha256-koiK3vksjoRYC0RQeh2/AJ0YbHYgX2vBUABTphy9/hk=' https://static.cloudflareinsights.com; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests

@@ -29,7 +29,7 @@ assert.doesNotMatch(app, /shareBeta[\s\S]{0,900}(utm_|#deal=)/i, 'Generic beta s
 
 assert.match(campaign, /ausschließlich organische, unbezahlte Beiträge/);
 assert.match(campaign, /Keine Gewinn- oder Verkaufsgarantie/);
-assert.match(campaign, /https:\/\/dealfaz\.dealfaz-social\.workers\.dev\//);
+assert.match(campaign, /https:\/\/dealfaz\.vercel\.app\//);
 assert.doesNotMatch(campaign, /([?&]|&amp;)tag=|dealfaz-21|amazon-adsystem|supabase\.co\/functions\/v1/i, 'Campaign material must not contain affiliate or tracking endpoints');
 
 assert.match(feed, /width="1080" height="1350"/);
@@ -41,4 +41,3 @@ for (const asset of [feed, story]) {
 }
 
 console.log('organic campaign regression: ok');
-

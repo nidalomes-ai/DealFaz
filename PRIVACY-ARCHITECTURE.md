@@ -1,14 +1,14 @@
 # DINAVO – Datenschutz-Architektur
 
-Stand: 07.09.2026
+Stand: 08.09.2026
 
 Dieses Dokument beschreibt die technische Datenschutz-Idee hinter DINAVO. Es ersetzt keine gesetzlich erforderliche Datenschutzerklärung.
 
 ## Öffentliche Beta
 
-Die aktuelle öffentliche Beta läuft über Cloudflare:
+Die aktuelle öffentliche Beta läuft über Vercel:
 
-`https://dealfaz.dealfaz-social.workers.dev/`
+`https://dealfaz.vercel.app/`
 
 Für die Kernnutzung ist kein DINAVO-Konto erforderlich.
 
@@ -20,7 +20,7 @@ Lokale Daten können verloren gehen, wenn Browser- oder Website-Daten gelöscht 
 
 ## Keine Marketing-Cookies durch DINAVO-Kernfunktionen
 
-Die aktuelle Beta setzt selbst keine Werbe- oder Cross-Site-Marketing-Cookies für den Kernablauf. Cloudflare kann unabhängig davon technisch notwendige Verbindungs-, Sicherheits- und Protokolldaten zur Bereitstellung und Absicherung der Website verarbeiten.
+Die aktuelle Beta setzt selbst keine Werbe- oder Cross-Site-Marketing-Cookies für den Kernablauf. Vercel und – bei Aufruf einer dort bereitgestellten Alt-/Alternativadresse – Cloudflare können technisch notwendige Verbindungs-, Sicherheits- und Protokolldaten zur Bereitstellung und Absicherung der Website verarbeiten.
 
 ## Optionale Reichweitenmessung
 
@@ -50,7 +50,7 @@ JSON-Backups und CSV-Exporte werden lokal erzeugt. Importierte JSON-Dateien werd
 
 ## Alte Frontends
 
-Frühere Vercel-, GitHub-Pages- oder Supabase-Frontendlinks sind keine aktuelle öffentliche Hauptquelle mehr. Datenschutz- und Launch-Dokumente sollen ausschließlich den tatsächlichen Live-Host als aktuelle Beta ausweisen.
+Frühere Cloudflare-, GitHub-Pages- oder Supabase-Frontendlinks sind keine aktuelle öffentliche Hauptquelle mehr. Datenschutz- und Launch-Dokumente sollen ausschließlich den tatsächlichen Live-Host als aktuelle Beta ausweisen.
 
 ## Uploads und Fotos
 
@@ -60,4 +60,4 @@ Eine spätere Foto- oder Screenshot-Funktion darf nur Inhalte verarbeiten, die d
 
 Die tatsächliche Live-Beta enthält eigene Anbieter-, Datenschutz-, Haftungs- und Nutzungshinweise. Dieses Architektur-Dokument erklärt nur die technische Richtung.
 
-[Öffentliche DINAVO-Beta öffnen](https://dealfaz.dealfaz-social.workers.dev/?utm_source=github&utm_medium=referral&utm_campaign=privacy_architecture&utm_content=public_beta)
+[Öffentliche DINAVO-Beta öffnen](https://dealfaz.vercel.app/?utm_source=github&utm_medium=referral&utm_campaign=privacy_architecture&utm_content=public_beta)

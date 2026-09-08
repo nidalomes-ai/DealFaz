@@ -32,8 +32,8 @@
     }),
     Object.freeze({
       id: 'ebay_gewerblich', label: 'eBay (gewerblich)',
-      feePercent: 0.11, feeFixed: 0.35, shippingDefault: 4.99,
-      note: 'Richtwert: Kategorie, Transaktionsbetrag, Fixbetrag und Umsatzsteuer können die Gebühr verändern.'
+      feePercent: 0.12, feeFixed: 0.45, shippingDefault: 4.99,
+      note: 'Richtwert für viele Kategorien und Bestellungen über 10 €: 12 % + 0,45 €. Kategorie, Gesamtbetrag, Shop, Artikelzustand und Umsatzsteuer können abweichen.'
     }),
     Object.freeze({
       id: 'vinted', label: 'Vinted',
@@ -43,12 +43,12 @@
     Object.freeze({
       id: 'etsy', label: 'Etsy',
       feePercent: 0.065, feeFixed: 0.18, shippingDefault: 4.99,
-      note: 'Richtwert; Zahlungs-, Listing-, Werbe- und weitere Gebühren können hinzukommen.'
+      note: 'Enthält nur 6,5 % Transaktionsgebühr und einen ungefähren Listingbetrag. Zahlungsabwicklung, Werbung, Umsatzsteuer und weitere Gebühren zusätzlich eintragen.'
     }),
     Object.freeze({
       id: 'amazon', label: 'Amazon',
       feePercent: 0.15, feeFixed: 0, shippingDefault: 3.50,
-      note: 'Richtwert; Kategorie, Verkaufstarif und FBA können weitere Kosten verursachen.'
+      note: '15 % ist nur ein grober Richtwert. Kategorie, Verkaufstarif, Abschlussgebühr, Versand und FBA können deutlich abweichen.'
     }),
     Object.freeze({
       id: 'custom', label: 'Eigene Angabe',
@@ -67,6 +67,21 @@
   ]);
 
   const PRIMARY_METRICS = Object.freeze(['profit', 'roi']);
+
+  // Tatsächliche IDs der vorhandenen DINAVO-Oberfläche. Der Beispiel-Deal
+  // und die Gebührenprofile greifen ausschließlich über diese Zuordnung zu.
+  const UI = Object.freeze({
+    product: 'product',
+    buy: 'buy',
+    sell: 'sell',
+    platform: 'platform',
+    feePct: 'feePercent',
+    feeFix: 'feeFixed',
+    shipping: 'shipping',
+    extra: 'costsExtra',
+    mount: 'resultCard',
+    example: 'exampleDeal'
+  });
 
   const DEMO_DEAL = Object.freeze({
     isDemo: true,
@@ -113,6 +128,7 @@
     STORE,
     PLATFORMS,
     FIELDS,
+    UI,
     PRIMARY_METRICS,
     DEMO_DEAL,
     METRIC_LINKS,
@@ -434,7 +450,7 @@
     const rawCurrency = String(source.currency || defaults.currency).toUpperCase();
     return {
       schemaVersion: 1,
-      currency: rawCurrency === 'EUR' ? rawCurrency : defaults.currency,
+      currency: ['EUR', 'CHF'].includes(rawCurrency) ? rawCurrency : defaults.currency,
       defaultPlatformId: platformId(source.defaultPlatformId, defaults.defaultPlatformId),
       profitYtd: round(number(source.profitYtd), 2),
       profitYtdYear: Math.round(number(source.profitYtdYear, defaults.profitYtdYear))
@@ -776,6 +792,7 @@
     CONFIG,
     PLATFORMS,
     FIELDS,
+    UI,
     PRIMARY_METRICS,
     DEMO_DEAL,
     METRIC_LINKS,

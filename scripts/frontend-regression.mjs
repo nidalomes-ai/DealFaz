@@ -182,7 +182,7 @@ assert.deepEqual(unlabelledControls, [], `Every visible input must have a label:
 for (const requiredId of [
   'platform', 'feePercent', 'feeFixed', 'feeAmount', 'shipping', 'costsExtra', 'costAmount',
   'country', 'customPlatform', 'actualMinutes', 'defaultPlatform', 'currencyDisplay', 'profitYtd', 'profitYtdYear',
-  'saveForResult', 'resultFollowup', 'dataSafetyNotice', 'backupNow', 'backupLater', 'openDealCount',
+  'saveForResult', 'openOutcomes', 'resultFollowup', 'dataSafetyNotice', 'backupNow', 'backupLater', 'openDealCount',
   'profitMetricLink', 'roiMetricLink', 'maxBuyMetricLink', 'sellRateMetricLink'
 ]) {
   assert.ok(idMatches.includes(requiredId), `Required extended data field #${requiredId} must exist`);

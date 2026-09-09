@@ -433,6 +433,7 @@ button:not(.secondary):not(.danger):not(.footerLinkButton):active,.btn:active,a.
 }
 .settingReadout{display:flex;flex-direction:column;justify-content:center;gap:5px;min-height:var(--input-h);padding:8px 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface)}
 .settingReadout span{font-size:.76rem;color:var(--muted)}
+.btn.secondary{background:var(--surface)!important;color:var(--text)!important;border:1px solid var(--border)!important}
 @media(max-width:680px){
   .marketSelector{grid-template-columns:1fr}
   .marketSelector small{grid-column:1}

@@ -809,6 +809,9 @@ $('saveSettings').onclick = () => {
 
 $('save').onclick = () => saveCurrentDeal();
 $('saveForResult').onclick = () => saveCurrentDeal();
+$('openOutcomes').addEventListener('click', () => {
+  $('realitaet').open = true;
+});
 
 $('copy').onclick = async () => {
   if (!current.hasCoreValues) {

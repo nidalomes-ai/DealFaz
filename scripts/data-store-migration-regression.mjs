@@ -52,7 +52,8 @@ assert.ok(values.has('dealfaz:v1:factors'));
 assert.ok(values.has('dealfaz:v1:rules'));
 assert.ok(values.has('dealfaz:v1:settings'));
 assert.equal(store.KEYS.license, 'dealfaz:v1:license');
-assert.equal(store.getSettings().schemaVersion, 1);
+assert.equal(store.getSettings().schemaVersion, 2);
+assert.equal(store.getSettings().country, 'DE');
 assert.equal(store.getSettings().defaultPlatformId, 'ebay_privat');
 assert.ok(values.has('dealfaz_watch_v2'), 'Legacy data must remain as a fallback');
 

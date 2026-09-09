@@ -1,6 +1,6 @@
 # DINAVO – kostenlose organische Beta-Kampagne
 
-Stand: 02.09.2026
+Stand: 09.09.2026
 
 Status: **aktiv – erster DINAVO-Beitrag auf Facebook und LinkedIn veröffentlicht; weitere Beiträge geplant**
 
@@ -68,17 +68,17 @@ Bestehende Handles wie `@dealfaz` dürfen vorerst als technische Legacy-Adresse 
 
 > Einkauf und Verkauf allein reichen nicht. DINAVO zeigt Gewinn, ROI und Kosten in einer Rechnung. Eigene kostenlose Beta. Keine Gewinn- oder Verkaufsgarantie. #reselling #kleinanzeigen #flipping #dinavo
 
-### Tag 2 – Plattformgebühren
+### Tag 2 – Plattformkosten ehrlich eintragen
 
-**Video:** Zwischen zwei Gebührenprofilen wechseln und zeigen, wie sich der Gewinn ändert.
+**Video:** Land und Plattform wählen, dann Gebühren und Versand aus der Originalquelle eintragen.
 
 **Sprechertext:**
 
-> Derselbe Verkaufspreis kann je nach Plattform ein anderes Ergebnis haben. DINAVO übernimmt editierbare Gebührenprofile, damit du nicht mit einer versteckten Null rechnest.
+> Derselbe Verkaufspreis kann je nach Plattform ein anderes Ergebnis haben. DINAVO setzt bewusst keine möglicherweise veralteten Gebühren oder Versandkosten ein. Du übernimmst die aktuellen Werte aus der verlinkten Originalquelle.
 
 **Caption:**
 
-> Gebührenprofile sind Startannahmen und bleiben editierbar. Prüfe die aktuellen Plattformbedingungen immer selbst. Kostenlos testen – Link im Profil. #resellingtipps #ebay #vinted #dinavo
+> Gebühren und Versand hängen von Land, Kategorie und Verkäuferstatus ab. Deshalb bleiben die Felder leer, bis du sie prüfst. Kostenlos testen – Link im Profil. #resellingtipps #ebay #vinted #dinavo
 
 ### Tag 3 – Weitere Kosten
 
@@ -159,7 +159,7 @@ Bestehende Handles wie `@dealfaz` dürfen vorerst als technische Legacy-Adresse 
 
 **„Sind die Gebühren immer aktuell?“**
 
-> Die Profile sind editierbare Startannahmen. Vor dem Kauf solltest du die aktuellen, kategorieabhängigen Bedingungen der Plattform prüfen.
+> DINAVO trägt keine möglicherweise veralteten Gebühren automatisch ein. Die verlinkte Originalseite und das sichtbare Prüfdatum helfen dir, die aktuellen, kategorieabhängigen Werte selbst einzutragen.
 
 **„Speichert ihr meine Deals?“**
 
@@ -178,6 +178,17 @@ Nach jedem Beitrag nur diese Plattformwerte notieren:
 | 5 |  |  |  |  |  |  |
 | 6 |  |  |  |  |  |  |
 | 7 |  |  |  |  |  |  |
+
+## Erste Nische und fünf echte Tests
+
+DINAVO startet gezielt mit **Retro-Games**. In dieser Nische sind Zustand, Zubehör, Plattformkosten und realer Verkaufspreis besonders wichtig – genau dafür eignet sich der Ergebnis-Abgleich.
+
+- In drei bis fünf aktiven Retro-Games-Gruppen zunächst nur mitlesen.
+- Bei konkreten Kauf-Fragen mit einer vollständigen Rechnung helfen, ohne sofort einen Link zu posten.
+- Fünf Verkäufer um zehn Minuten bitten und beim Benutzen nur beobachten.
+- Notieren: erstes Zögern, missverstandenes Feld, übersehener Button und erwartete nächste Aktion.
+- Nicht „Gefällt es dir?“ fragen, sondern: „Was würdest du jetzt als Nächstes tun?“
+- Erst nach erkennbarem Nutzen beiläufig nennen, dass die Rechnung mit DINAVO erstellt wurde.
 
 ## Vor jedem öffentlichen Beitrag
 

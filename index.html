@@ -40,7 +40,7 @@
 <section class="hero simpleHero">
   <div class="eyebrow">SCHNELL PRÜFEN</div>
   <h1>Lohnt sich der Deal?</h1>
-  <p class="lead">Drei Angaben zeigen die Rechnung. Deine Marktdaten machen daraus eine belastbare Entscheidung.</p>
+  <p class="lead">DINAVO rechnet dir in drei Feldern aus, ob sich ein Wiederverkauf lohnt – Gewinn, ROI und Gebühren. Kostenlos, ohne Anmeldung, und du kannst später eintragen, was wirklich rauskam.</p>
   <div class="trustPoints" aria-label="Vorteile der kostenlosen Beta">
     <span>✓ Kostenlos</span><span>✓ Ohne Anmeldung</span><span>✓ Daten bleiben im Browser</span>
   </div>
@@ -53,15 +53,17 @@
 <section class="panel easyCheck form" id="check" data-form>
   <div class="sectionHead"><div><h2>Deal prüfen</h2><p>Eintragen. Ergebnis sofort sehen.</p></div></div>
   <div class="actions exampleActions"><button id="exampleDeal" class="secondary" type="button">Beispiel-Deal einsetzen</button></div>
+  <label class="marketSelector" for="country"><span>Land / Markt</span><select id="country"><option value="DE">🇩🇪 Deutschland</option><option value="AT">🇦🇹 Österreich</option><option value="CH">🇨🇭 Schweiz</option></select><small>Stellt Währung und Plattformen gemeinsam um.</small></label>
   <div class="easyFields">
     <label class="easyField" for="product"><span>Was ist es?</span><input id="product" maxlength="120" placeholder="z. B. PlayStation 5" autocomplete="off"></label>
-    <label class="easyField" for="buy"><span>Was zahlst du?</span><div class="moneyInput"><input id="buy" type="number" min="0" step="0.01" value="300" inputmode="decimal" aria-describedby="buyHint"><b data-currency-symbol>€</b></div><small id="buyHint" class="fieldHint">Auch kostenlos ist möglich, zum Beispiel bei zu verschenkenden Artikeln.</small></label>
-    <label class="easyField" for="sell"><span>Für wie viel kannst du es verkaufen?</span><div class="moneyInput"><input id="sell" type="number" min="0" step="0.01" value="390" inputmode="decimal"><b data-currency-symbol>€</b></div></label>
+    <label class="easyField" for="buy"><span>Was zahlst du?</span><div class="moneyInput"><input id="buy" type="number" min="0" step="0.01" inputmode="decimal" aria-describedby="buyHint"><b data-currency-symbol>€</b></div><small id="buyHint" class="fieldHint">Auch kostenlos ist möglich, zum Beispiel bei zu verschenkenden Artikeln.</small></label>
+    <label class="easyField" for="sell"><span>Für wie viel kannst du es verkaufen?</span><div class="moneyInput"><input id="sell" type="number" min="0" step="0.01" inputmode="decimal"><b data-currency-symbol>€</b></div></label>
   </div>
   <details class="advancedBox">
     <summary>Genauer prüfen <span>optional</span></summary>
     <div class="advancedGrid">
       <label class="f span2" for="platform">Verkaufsplattform<select id="platform" aria-describedby="platformNote"></select></label>
+      <label class="f span2" id="customPlatformField" for="customPlatform" hidden>Andere Plattform<input id="customPlatform" maxlength="80" placeholder="Name der Plattform" autocomplete="off"></label>
       <label class="f financeField" for="feePercent">Plattformgebühr (%)<input id="feePercent" type="number" min="0" max="100" step="0.01" value="0" inputmode="decimal"></label>
       <label class="f moneyField" for="feeFixed">Fixgebühr<input id="feeFixed" type="number" min="0" step="0.01" value="0" inputmode="decimal"></label>
       <label class="f moneyField" for="shipping">Versand<input id="shipping" type="number" min="0" step="0.01" value="0" inputmode="decimal"></label>
@@ -98,22 +100,29 @@
   <div class="heroNumbers" data-secondary><div data-metric><span>Rechnerischer Gewinn <a id="profitMetricLink" class="metricLink" href="/reselling-rechner/">Erklärt →</a></span><strong id="profit" class="moneyValue" data-amount>–</strong></div><div data-metric><span>ROI <a id="roiMetricLink" class="metricLink" href="/roi-reselling/">Erklärt →</a></span><strong id="roi">–</strong></div></div>
   <div id="personalEstimate" data-factor hidden role="status"></div>
   <div id="gate" class="gate" hidden></div>
+  <div id="resultFollowup" class="resultFollowup" hidden>
+    <strong>Merken und später mit dem echten Ergebnis abgleichen</strong>
+    <p>So erkennt DINAVO, wie deine Schätzungen von deinen tatsächlichen Verkäufen abweichen.</p>
+    <div class="actions"><button id="saveForResult" type="button">Merken & später abgleichen</button><a class="btn secondary" href="#realitaet">Offene Ergebnisse ansehen</a></div>
+  </div>
   <div class="actions mainActions"><button id="save" type="button">Merken</button><button id="share" class="secondary" type="button">Teilen</button><button id="copy" class="secondary" type="button">Kopieren</button></div>
   <p id="actionStatus" class="mini actionStatus" role="status" aria-live="polite"></p>
   <details class="advancedBox resultDetails">
     <summary>Alle Zahlen ansehen</summary>
-    <div class="evidence"><div class="ev">Verkäufe / Angebote <a id="sellRateMetricLink" class="metricLink" href="/sell-through/">Erklärt →</a><strong id="sth">–</strong></div><div class="ev">Datenqualität<strong id="quality">–</strong></div></div>
-    <div class="metrics"><div class="metric" id="scoreCard"><span>Rechen-Score</span><strong><span id="score">–</span>/100</strong></div><div class="metric"><span>Marge</span><strong id="margin">–</strong></div><div class="metric"><span>ROI / 30 Tage</span><strong id="roi30">–</strong></div><div class="metric"><span>Max. Einkauf <a id="maxBuyMetricLink" class="metricLink" href="/maximaler-einkaufspreis/">Erklärt →</a></span><strong id="maxbuy" class="moneyValue">–</strong></div></div>
+    <div class="scoreTruth" role="note">Diese Bewertungen beruhen nur auf deinen Eingaben, nicht auf unabhängigen Marktdaten.</div>
+    <div class="evidence"><div class="ev">Verkäufe / Angebote <a id="sellRateMetricLink" class="metricLink" href="/sell-through/">Erklärt →</a><strong id="sth">–</strong></div><div class="ev">Qualität deiner Angaben<strong id="quality">–</strong><small>Bewertet Vollständigkeit und Umfang deiner Eingaben.</small></div></div>
+    <div class="metrics"><div class="metric" id="scoreCard"><span>Eingabe-Score</span><strong><span id="score">–</span>/100</strong></div><div class="metric"><span>Marge</span><strong id="margin">–</strong></div><div class="metric"><span>ROI / 30 Tage</span><strong id="roi30">–</strong></div><div class="metric"><span>Max. Einkauf <a id="maxBuyMetricLink" class="metricLink" href="/maximaler-einkaufspreis/">Erklärt →</a></span><strong id="maxbuy" class="moneyValue">–</strong></div></div>
     <div class="scenarios"><div class="scenario"><b>Vorsichtig</b><span id="worst" class="moneyValue">–</span></div><div class="scenario"><b>Normal</b><span id="real" class="moneyValue">–</span></div><div class="scenario"><b>Sehr gut</b><span id="bestcase" class="moneyValue">–</span></div></div>
   </details>
 </section>
+<aside id="dataSafetyNotice" class="dataSafetyNotice" role="status" aria-live="polite" hidden><div><strong id="dataSafetyTitle">Deine Daten bleiben in diesem Browser</strong><p id="dataSafetyText">Browserdaten können gelöscht werden und werden nicht automatisch auf andere Geräte übertragen. Lade jetzt ein Backup herunter.</p></div><div class="actions"><button id="backupNow" type="button">Backup herunterladen</button><button id="backupLater" class="secondary" type="button">Später erinnern</button></div></aside>
 </div>
 
 <section class="panel simpleWhy" id="counter"><h2>Was spricht dagegen?</h2><p>Nur die wichtigsten Warnungen.</p><div class="counters" id="counterList"></div></section>
 
-<details class="toolBox" id="markets"><summary>🔎 Preise vergleichen</summary><div class="toolBody"><p>Öffne Originalseiten und prüfe den Markt.</p><div class="markets" id="marketLinks"></div><p class="mini"><strong>Hinweis:</strong> Affiliate-Monetarisierung ist derzeit deaktiviert. Die Marktlinks dienen ausschließlich der eigenen Recherche.</p></div></details>
+<details class="toolBox" id="markets"><summary>🔎 Preise vergleichen</summary><div class="toolBody"><p>Öffne Originalseiten und prüfe den Markt. Die Links enthalten keine Affiliate-Parameter.</p><div class="markets" id="marketLinks"></div></div></details>
 
-<details class="toolBox" id="watchlist"><summary>⭐ Gemerkte Deals</summary><div class="toolBody"><p>Alles bleibt auf diesem Gerät.</p><div class="actions"><button id="exportJson" class="secondary">Backup</button><button id="exportCsv" class="secondary">CSV</button><button id="importJson" class="secondary">Backup laden</button><button id="clearWatch" class="danger">Offene Deals löschen</button><input id="importFile" type="file" accept="application/json" hidden></div><div id="watch"></div></div></details>
+<details class="toolBox" id="watchlist"><summary>⭐ Gemerkte Deals <span id="openDealCount" class="countBadge">0 offen</span></summary><div class="toolBody"><p>Alles bleibt auf diesem Gerät. Ein JSON-Backup lässt sich auf einem anderen Gerät wieder laden.</p><div class="actions"><button id="exportJson" class="secondary">Backup</button><button id="exportCsv" class="secondary">CSV</button><button id="importJson" class="secondary">Backup laden</button><button id="clearWatch" class="danger">Offene Deals löschen</button><input id="importFile" type="file" accept="application/json" hidden></div><p id="backupStatus" class="mini" role="status" aria-live="polite"></p><div id="watch"></div></div></details>
 
 <details class="toolBox" id="battle"><summary>⚖️ Zwei Deals vergleichen</summary><div class="toolBody"><h2>Deal-Vergleich</h2><div class="battle"><div class="battleCard"><h3>Deal A</h3><p id="battleA">–</p></div><div class="battleCard"><h3>Deal B</h3><div class="advancedGrid"><label class="f" for="bName">Name<input id="bName" placeholder="Alternative"></label><label class="f moneyField" for="bBuy">Einkauf<input id="bBuy" type="number" min="0" value="200"></label><label class="f moneyField" for="bSell">Verkauf<input id="bSell" type="number" min="0" value="290"></label><label class="f moneyField" for="bCost">Kosten<input id="bCost" type="number" min="0" value="25"></label><label class="f" for="bRisk">Risiko 1–5<input id="bRisk" type="number" min="1" max="5" value="3"></label><label class="f" for="bDays">Tage<input id="bDays" type="number" min="1" value="30"></label></div><p id="battleB">–</p></div></div><div id="battleWinner" class="winner neutral">Noch kein eindeutiger Vergleich.</div></div></details>
 
@@ -135,7 +144,7 @@
       <h3>Rechner-Einstellungen</h3>
       <div class="advancedGrid">
         <label class="f" for="defaultPlatform">Standard-Plattform<select id="defaultPlatform"></select></label>
-        <label class="f" for="currency">Währung<select id="currency"><option value="EUR">EUR · Euro</option><option value="CHF">CHF · Schweizer Franken</option></select></label>
+        <div class="settingReadout"><span>Währung folgt dem Markt</span><strong id="currencyDisplay">EUR · Euro</strong></div>
       </div>
       <div class="yearSummary"><span>Realisierter Gewinn <b id="profitYtdYear"></b></span><strong id="profitYtd" class="moneyValue">0,00 €</strong></div>
       <div class="actions"><button id="saveSettings">Einstellungen speichern</button></div>

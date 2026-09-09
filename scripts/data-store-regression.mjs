@@ -25,7 +25,8 @@ assert.deepEqual(store.KEYS, {
   factors: 'dealfaz:v1:factors',
   rules: 'dealfaz:v1:rules',
   settings: 'dealfaz:v1:settings',
-  license: 'dealfaz:v1:license'
+  license: 'dealfaz:v1:license',
+  backup: 'dealfaz:v1:backup-status'
 });
 assert.equal(Object.isFrozen(store.CONFIG), true, 'Central configuration must be immutable');
 assert.deepEqual(store.PRIMARY_METRICS, ['profit', 'roi']);
@@ -43,6 +44,10 @@ assert.deepEqual(store.DEMO_DEAL, {
   buy: 45,
   sell: 90,
   platformId: 'ebay_gewerblich',
+  country: 'DE',
+  feePercent: 0.12,
+  feeFixed: 0.45,
+  shipping: 4.99,
   costsExtra: 3,
   days: 21,
   risk: 2
@@ -56,19 +61,18 @@ assert.deepEqual(store.CALC, {
 });
 assert.equal(store.METRIC_LINKS.roi.url, '/roi-reselling/');
 assert.equal(Object.isFrozen(store.PLATFORMS), true, 'Platform profile list must be immutable');
-assert.equal(store.PLATFORMS.length, 7);
-assert.deepEqual(
-  store.PLATFORMS.map(({ id, feePercent, feeFixed, shippingDefault }) => ({ id, feePercent, feeFixed, shippingDefault })),
-  [
-    { id: 'kleinanzeigen_privat', feePercent: 0, feeFixed: 0, shippingDefault: 0 },
-    { id: 'ebay_privat', feePercent: 0, feeFixed: 0, shippingDefault: 0 },
-    { id: 'ebay_gewerblich', feePercent: 0.12, feeFixed: 0.45, shippingDefault: 4.99 },
-    { id: 'vinted', feePercent: 0, feeFixed: 0, shippingDefault: 0 },
-    { id: 'etsy', feePercent: 0.065, feeFixed: 0.18, shippingDefault: 4.99 },
-    { id: 'amazon', feePercent: 0.15, feeFixed: 0, shippingDefault: 3.50 },
-    { id: 'custom', feePercent: 0, feeFixed: 0, shippingDefault: 0 }
-  ]
-);
+assert.deepEqual(store.COUNTRIES.map(({ id, currency }) => ({ id, currency })), [
+  { id: 'DE', currency: 'EUR' }, { id: 'AT', currency: 'EUR' }, { id: 'CH', currency: 'CHF' }
+]);
+for (const platform of store.PLATFORMS) {
+  assert.equal(platform.feePercent, null, `${platform.id} must not prefill a potentially stale fee`);
+  assert.equal(platform.feeFixed, null, `${platform.id} must not prefill a fixed fee`);
+  assert.equal(platform.shippingDefault, null, `${platform.id} must not prefill shipping`);
+  assert.match(platform.checkedAt, /^\d{2}\.\d{2}\.\d{4}$/);
+}
+assert.ok(store.PLATFORMS.some(platform => platform.id === 'willhaben' && platform.countries.includes('AT')));
+assert.ok(store.PLATFORMS.some(platform => platform.id === 'ricardo' && platform.countries.includes('CH')));
+assert.ok(store.PLATFORMS.some(platform => platform.id === 'custom' && platform.countries.length === 3));
 assert.deepEqual(store.getRules(), {
   minProfit: 20,
   minRoi: 0.30,
@@ -76,7 +80,8 @@ assert.deepEqual(store.getRules(), {
   minDataQuality: 2
 });
 assert.deepEqual(store.getSettings(), {
-  schemaVersion: 1,
+  schemaVersion: 2,
+  country: 'DE',
   currency: 'EUR',
   defaultPlatformId: 'ebay_privat',
   profitYtd: 0,
@@ -111,7 +116,7 @@ for (let index = 0; index < 5; index += 1) {
   assert.equal(deal.estimate.feeAmount, 11.35);
   assert.equal(deal.estimate.costs, 19.34);
   assert.deepEqual(Object.keys(deal.estimate), [
-    'buy', 'sell', 'platformId', 'feePercent', 'feeFixed', 'feeAmount', 'shipping',
+    'buy', 'sell', 'country', 'platformId', 'customPlatform', 'feePercent', 'feeFixed', 'feeAmount', 'shipping',
     'costsExtra', 'costs', 'days', 'risk', 'profit', 'roi', 'score'
   ]);
   const estimateBeforeClose = JSON.stringify(deal.estimate);
@@ -177,11 +182,12 @@ assert.deepEqual(factorApi.apply({ buy: 45, sell: 90, costs: 18.24, days: 21 }),
 
 const settingsAfterResults = store.getSettings();
 assert.equal(settingsAfterResults.profitYtd, 413.3, 'YTD profit must include sold deals in the current year');
-const changedSettings = store.setSettings({ currency: 'CHF', defaultPlatformId: 'amazon', profitYtd: 99999 });
+const changedSettings = store.setSettings({ country: 'CH', defaultPlatformId: 'ricardo', profitYtd: 99999 });
 assert.equal(changedSettings.currency, 'CHF', 'DACH settings must support Swiss francs');
-assert.equal(changedSettings.defaultPlatformId, 'amazon');
+assert.equal(changedSettings.country, 'CH');
+assert.equal(changedSettings.defaultPlatformId, 'ricardo');
 assert.equal(changedSettings.profitYtd, 413.3, 'Derived YTD profit must not accept a stale manual value');
-assert.equal(store.setSettings({ currency: 'USD' }).currency, 'EUR', 'Unsupported currencies must fall back safely');
+assert.equal(store.setSettings({ country: 'XX' }).country, 'CH', 'Unsupported countries must preserve the last valid market');
 
 const capped = store.calculateFactors(
   store.getClosedDeals().filter(deal => deal.actual.sold).map(deal => ({
@@ -212,6 +218,17 @@ assert.equal(oldCanonical.estimate.costs, 10);
 const backup = store.exportData();
 assert.deepEqual(Object.keys(backup), ['schemaVersion', 'exportedAt', 'deals', 'rules', 'settings']);
 assert.ok(Array.isArray(backup.deals));
+assert.equal(backup.schemaVersion, 2);
+assert.deepEqual(store.getBackupStatus(), {
+  saveCount: 0, lastBackupSaveCount: 0, lastBackupAt: null, firstSaveExplained: false, dismissedAtSaveCount: 0
+});
+store.recordDealSaved();
+assert.equal(store.getBackupStatus().saveCount, 1);
+store.acknowledgeBackupReminder();
+assert.equal(store.getBackupStatus().firstSaveExplained, true);
+store.recordBackupCreated();
+assert.equal(store.getBackupStatus().lastBackupSaveCount, 1);
+assert.ok(store.getBackupStatus().lastBackupAt);
 
 values.set('dealfaz_watch_v2', JSON.stringify([{ product: 'Noch aelter' }]));
 values.set(store.KEYS.license, JSON.stringify({ status: 'inactive-test' }));
@@ -226,7 +243,8 @@ assert.deepEqual(store.getRules(), {
 assert.equal(store.getFactors().sampleSize, 0, 'Personal factors must be deleted');
 assert.equal(store.getFactors().hourlyRate, 0, 'Hourly rate must be deleted');
 assert.deepEqual(store.getSettings(), {
-  schemaVersion: 1,
+  schemaVersion: 2,
+  country: 'DE',
   currency: 'EUR',
   defaultPlatformId: 'ebay_privat',
   profitYtd: 0,
@@ -234,5 +252,8 @@ assert.deepEqual(store.getSettings(), {
 }, 'Settings must return to defaults');
 assert.equal(values.has('dealfaz_watch_v2'), false, 'Original legacy storage must be deleted on explicit user request');
 assert.equal(values.has(store.KEYS.license), false, 'Reserved license data must be deleted on explicit user request');
+const restored = store.importData(backup);
+assert.equal(restored.valid, true, 'A JSON backup must be accepted after clearing local storage');
+assert.equal(store.getDeals().length, backup.deals.length, 'A backup must restore the full deal history on a clean device');
 
 console.log('data-store regression: ok');

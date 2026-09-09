@@ -13,48 +13,34 @@
     factors: 'dealfaz:v1:factors',
     rules: 'dealfaz:v1:rules',
     settings: 'dealfaz:v1:settings',
-    license: 'dealfaz:v1:license'
+    license: 'dealfaz:v1:license',
+    backup: 'dealfaz:v1:backup-status'
   });
   const KEYS = STORE;
 
-  // Editierbare Richtwerte fuer den Rechner. Ein Deal speichert immer eine
-  // Kopie der verwendeten Werte, damit Profil-Aenderungen nicht rueckwirken.
+  const COUNTRIES = Object.freeze([
+    Object.freeze({ id: 'DE', label: 'Deutschland', currency: 'EUR', locale: 'de-DE' }),
+    Object.freeze({ id: 'AT', label: 'Österreich', currency: 'EUR', locale: 'de-AT' }),
+    Object.freeze({ id: 'CH', label: 'Schweiz', currency: 'CHF', locale: 'de-CH' })
+  ]);
+
+  // Plattformen werden je Markt angeboten. Bewusst werden keine Gebühren oder
+  // Versandkosten automatisch eingesetzt: Kategorie, Verkäuferstatus und
+  // Zusatzleistungen ändern die Beträge. Das sichtbare Quellen-Datum erinnert
+  // deshalb an die Prüfung auf der Originalseite.
   const PLATFORMS = Object.freeze([
-    Object.freeze({
-      id: 'kleinanzeigen_privat', label: 'Kleinanzeigen (privat)',
-      feePercent: 0, feeFixed: 0, shippingDefault: 0,
-      note: 'Provisionsfrei; Versand zahlt in der Regel der Käufer.'
-    }),
-    Object.freeze({
-      id: 'ebay_privat', label: 'eBay (privat)',
-      feePercent: 0, feeFixed: 0, shippingDefault: 0,
-      note: 'Innerhalb Deutschlands grundsätzlich provisionsfrei; Zusatzoptionen können kosten.'
-    }),
-    Object.freeze({
-      id: 'ebay_gewerblich', label: 'eBay (gewerblich)',
-      feePercent: 0.12, feeFixed: 0.45, shippingDefault: 4.99,
-      note: 'Richtwert für viele Kategorien und Bestellungen über 10 €: 12 % + 0,45 €. Kategorie, Gesamtbetrag, Shop, Artikelzustand und Umsatzsteuer können abweichen.'
-    }),
-    Object.freeze({
-      id: 'vinted', label: 'Vinted',
-      feePercent: 0, feeFixed: 0, shippingDefault: 0,
-      note: 'Käuferschutz und Versand werden dem Käufer beim Checkout berechnet.'
-    }),
-    Object.freeze({
-      id: 'etsy', label: 'Etsy',
-      feePercent: 0.065, feeFixed: 0.18, shippingDefault: 4.99,
-      note: 'Enthält nur 6,5 % Transaktionsgebühr und einen ungefähren Listingbetrag. Zahlungsabwicklung, Werbung, Umsatzsteuer und weitere Gebühren zusätzlich eintragen.'
-    }),
-    Object.freeze({
-      id: 'amazon', label: 'Amazon',
-      feePercent: 0.15, feeFixed: 0, shippingDefault: 3.50,
-      note: '15 % ist nur ein grober Richtwert. Kategorie, Verkaufstarif, Abschlussgebühr, Versand und FBA können deutlich abweichen.'
-    }),
-    Object.freeze({
-      id: 'custom', label: 'Eigene Angabe',
-      feePercent: 0, feeFixed: 0, shippingDefault: 0,
-      note: 'Prozent, Fixbetrag und Versand selbst eintragen.'
-    })
+    Object.freeze({ id: 'kleinanzeigen_privat', label: 'Kleinanzeigen (privat)', countries: Object.freeze(['DE']), sourceUrl: 'https://www.kleinanzeigen.de/', checkedAt: '09.09.2026', feePercent: null, feeFixed: null, shippingDefault: null, note: 'Keine automatische Gebühren- oder Versandannahme.' }),
+    Object.freeze({ id: 'ebay_privat', label: 'eBay (privat)', countries: Object.freeze(['DE', 'AT', 'CH']), sourceUrl: 'https://www.ebay.de/help/selling/fees-credits-invoices/gebhren-fr-private-verkufer?id=4822', checkedAt: '09.09.2026', feePercent: null, feeFixed: null, shippingDefault: null, note: 'Gebühren können von Markt, Kategorie und Zusatzoptionen abhängen.' }),
+    Object.freeze({ id: 'ebay_gewerblich', label: 'eBay (gewerblich)', countries: Object.freeze(['DE', 'AT', 'CH']), sourceUrl: 'https://www.ebay.de/help/selling/fees-credits-invoices/gebhren-fr-gewerbliche-verkufer?id=4809', checkedAt: '09.09.2026', feePercent: null, feeFixed: null, shippingDefault: null, note: 'Gebühren unterscheiden sich nach Kategorie, Verkäuferstatus und Zusatzleistungen.' }),
+    Object.freeze({ id: 'vinted', label: 'Vinted', countries: Object.freeze(['DE', 'AT']), sourceUrl: 'https://www.vinted.de/help', checkedAt: '09.09.2026', feePercent: null, feeFixed: null, shippingDefault: null, note: 'Keine automatische Gebühren- oder Versandannahme.' }),
+    Object.freeze({ id: 'etsy', label: 'Etsy', countries: Object.freeze(['DE', 'AT', 'CH']), sourceUrl: 'https://www.etsy.com/legal/fees/', checkedAt: '09.09.2026', feePercent: null, feeFixed: null, shippingDefault: null, note: 'Transaktions-, Zahlungs-, Listing- und mögliche Werbegebühren separat prüfen.' }),
+    Object.freeze({ id: 'amazon', label: 'Amazon', countries: Object.freeze(['DE', 'AT']), sourceUrl: 'https://sell.amazon.de/preisgestaltung', checkedAt: '09.09.2026', feePercent: null, feeFixed: null, shippingDefault: null, note: 'Tarif, Kategorie, Versand und Fulfillment bestimmen die tatsächlichen Kosten.' }),
+    Object.freeze({ id: 'willhaben', label: 'willhaben', countries: Object.freeze(['AT']), sourceUrl: 'https://www.willhaben.at/iad/kaufen-und-verkaufen', checkedAt: '09.09.2026', feePercent: null, feeFixed: null, shippingDefault: null, note: 'Keine automatische Gebühren- oder Versandannahme.' }),
+    Object.freeze({ id: 'shpock', label: 'Shpock', countries: Object.freeze(['AT']), sourceUrl: 'https://www.shpock.com/de-at', checkedAt: '09.09.2026', feePercent: null, feeFixed: null, shippingDefault: null, note: 'Keine automatische Gebühren- oder Versandannahme.' }),
+    Object.freeze({ id: 'ricardo', label: 'Ricardo', countries: Object.freeze(['CH']), sourceUrl: 'https://www.ricardo.ch/', checkedAt: '09.09.2026', feePercent: null, feeFixed: null, shippingDefault: null, note: 'Gebühren nach Kategorie, Preis und Verkäuferstatus auf der Originalseite prüfen.' }),
+    Object.freeze({ id: 'tutti', label: 'tutti', countries: Object.freeze(['CH']), sourceUrl: 'https://www.tutti.ch/de', checkedAt: '09.09.2026', feePercent: null, feeFixed: null, shippingDefault: null, note: 'Keine automatische Gebühren- oder Versandannahme.' }),
+    Object.freeze({ id: 'anibis', label: 'anibis', countries: Object.freeze(['CH']), sourceUrl: 'https://www.anibis.ch/de', checkedAt: '09.09.2026', feePercent: null, feeFixed: null, shippingDefault: null, note: 'Keine automatische Gebühren- oder Versandannahme.' }),
+    Object.freeze({ id: 'custom', label: 'Andere Plattform', countries: Object.freeze(['DE', 'AT', 'CH']), sourceUrl: '', checkedAt: '09.09.2026', feePercent: null, feeFixed: null, shippingDefault: null, note: 'Prozent, Fixbetrag und Versand selbst eintragen.' })
   ]);
 
   const FIELDS = Object.freeze([
@@ -89,6 +75,10 @@
     buy: 45,
     sell: 90,
     platformId: 'ebay_gewerblich',
+    country: 'DE',
+    feePercent: 0.12,
+    feeFixed: 0.45,
+    shipping: 4.99,
     costsExtra: 3,
     days: 21,
     risk: 2
@@ -110,7 +100,8 @@
   });
 
   const DEFAULT_SETTINGS = Object.freeze({
-    schemaVersion: 1,
+    schemaVersion: 2,
+    country: 'DE',
     currency: 'EUR',
     defaultPlatformId: 'ebay_privat',
     profitYtd: 0,
@@ -126,6 +117,7 @@
 
   const CONFIG = Object.freeze({
     STORE,
+    COUNTRIES,
     PLATFORMS,
     FIELDS,
     UI,
@@ -137,6 +129,7 @@
     DEFAULT_RULES
   });
   const PLATFORM_IDS = new Set(PLATFORMS.map(platform => platform.id));
+  const COUNTRY_IDS = new Set(COUNTRIES.map(country => country.id));
 
   const DEFAULT_FACTORS = Object.freeze({
     updatedAt: null,
@@ -269,6 +262,15 @@
     return PLATFORM_IDS.has(id) ? id : fallback;
   }
 
+  function countryId(value, fallback = 'DE') {
+    const id = String(value || fallback).toUpperCase();
+    return COUNTRY_IDS.has(id) ? id : fallback;
+  }
+
+  function currencyForCountry(value) {
+    return COUNTRIES.find(country => country.id === countryId(value))?.currency || 'EUR';
+  }
+
   function normalizeRate(value) {
     const rate = nonNegative(value);
     return round(clamp(rate > 1 ? rate / 100 : rate, 0, 1), 4);
@@ -327,7 +329,9 @@
     const updatedAt = iso(options.updatedAt || source.updatedAt || actual?.closedAt || createdAt);
     const buy = nonNegative(source.buy ?? estimate.buy);
     const sell = nonNegative(source.sell ?? source.expectedSell ?? estimate.sell);
+    const country = countryId(source.country ?? estimate.country ?? source.calculator?.country);
     const selectedPlatform = platformId(source.platformId ?? estimate.platformId ?? source.calculator?.platformId);
+    const customPlatform = String(source.customPlatform ?? estimate.customPlatform ?? source.calculator?.customPlatform ?? '').slice(0, 80);
     const feePercent = normalizeRate(source.feePercent ?? estimate.feePercent);
     const feeFixed = nonNegative(source.feeFixed ?? estimate.feeFixed);
     const feeAmount = round(sell * feePercent + feeFixed, 2);
@@ -364,7 +368,9 @@
       estimate: {
         buy,
         sell,
+        country,
         platformId: selectedPlatform,
+        customPlatform,
         feePercent,
         feeFixed,
         feeAmount,
@@ -447,10 +453,12 @@
 
   function normalizeSettings(source = {}) {
     const defaults = defaultSettings();
-    const rawCurrency = String(source.currency || defaults.currency).toUpperCase();
+    const inferredCountry = String(source.currency || '').toUpperCase() === 'CHF' ? 'CH' : defaults.country;
+    const country = countryId(source.country, inferredCountry);
     return {
-      schemaVersion: 1,
-      currency: ['EUR', 'CHF'].includes(rawCurrency) ? rawCurrency : defaults.currency,
+      schemaVersion: 2,
+      country,
+      currency: currencyForCountry(country),
       defaultPlatformId: platformId(source.defaultPlatformId, defaults.defaultPlatformId),
       profitYtd: round(number(source.profitYtd), 2),
       profitYtdYear: Math.round(number(source.profitYtdYear, defaults.profitYtdYear))
@@ -535,7 +543,9 @@
       product: normalized.name,
       buy: estimate.buy,
       sell: estimate.sell,
+      country: estimate.country,
       platformId: estimate.platformId,
+      customPlatform: estimate.customPlatform,
       feePercent: estimate.feePercent,
       feeFixed: estimate.feeFixed,
       feeAmount: estimate.feeAmount,
@@ -566,6 +576,8 @@
       product: normalized.name,
       buy: estimate.buy,
       platformId: estimate.platformId,
+      country: estimate.country,
+      customPlatform: estimate.customPlatform,
       expectedSell: estimate.sell,
       expectedCost: estimate.costs,
       expectedProfit: estimate.profit,
@@ -679,12 +691,50 @@
 
   function exportData() {
     return {
-      schemaVersion: 1,
+      schemaVersion: 2,
       exportedAt: new Date().toISOString(),
       deals: getDeals(),
       rules: getRules(),
       settings: getSettings()
     };
+  }
+
+  function getBackupStatus() {
+    const stored = readJson(KEYS.backup, {});
+    return {
+      saveCount: Math.max(0, Math.round(number(stored.saveCount))),
+      lastBackupSaveCount: Math.max(0, Math.round(number(stored.lastBackupSaveCount))),
+      lastBackupAt: stored.lastBackupAt ? iso(stored.lastBackupAt) : null,
+      firstSaveExplained: stored.firstSaveExplained === true,
+      dismissedAtSaveCount: Math.max(0, Math.round(number(stored.dismissedAtSaveCount)))
+    };
+  }
+
+  function recordDealSaved() {
+    const status = getBackupStatus();
+    const next = { ...status, saveCount: status.saveCount + 1 };
+    writeJson(KEYS.backup, next);
+    return next;
+  }
+
+  function acknowledgeBackupReminder() {
+    const status = getBackupStatus();
+    const next = { ...status, firstSaveExplained: true, dismissedAtSaveCount: status.saveCount };
+    writeJson(KEYS.backup, next);
+    return next;
+  }
+
+  function recordBackupCreated() {
+    const status = getBackupStatus();
+    const next = {
+      ...status,
+      firstSaveExplained: true,
+      lastBackupSaveCount: status.saveCount,
+      dismissedAtSaveCount: status.saveCount,
+      lastBackupAt: new Date().toISOString()
+    };
+    writeJson(KEYS.backup, next);
+    return next;
   }
 
   function importData(payload) {
@@ -790,6 +840,7 @@
   const storeApi = Object.freeze({
     KEYS,
     CONFIG,
+    COUNTRIES,
     PLATFORMS,
     FIELDS,
     UI,
@@ -813,6 +864,10 @@
     getFactors,
     getSettings,
     setSettings,
+    getBackupStatus,
+    recordDealSaved,
+    acknowledgeBackupReminder,
+    recordBackupCreated,
     clearAllData,
     recomputeFactors: () => {
       const factors = calculateFactors(getDeals());

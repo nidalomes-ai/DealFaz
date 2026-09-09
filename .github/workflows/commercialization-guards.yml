@@ -66,7 +66,9 @@ jobs:
           set -euo pipefail
           grep -Fq 'Verbraucherstreitbeilegung' impressum/index.html
           grep -Fq 'Eine im Einzelfall bestehende gesetzliche Pflicht bleibt unberührt' impressum/index.html
-          grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' index.html
+          ! grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' index.html
+          grep -Fq 'Die Links enthalten keine Affiliate-Parameter' index.html
+          grep -Fq 'keine Affiliate- oder Trackingparameter von DINAVO' datenschutz/index.html
           if grep -Eq "const CLOUDFLARE_TOKEN = '[A-Za-z0-9_-]{16,128}';" analytics.js; then
             grep -Fq '<h2>5. Optionale Reichweitenmessung mit Cloudflare Web Analytics</h2>' datenschutz/index.html
             grep -Fq '<script src="/analytics.js" defer></script>' index.html

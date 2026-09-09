@@ -36,11 +36,11 @@ Die geplante erweiterte DINAVO-Version berechnet Sell-through nur aus vom Nutzer
 
 Namen externer Marktplätze werden ausschließlich beschreibend verwendet, um Recherche- oder Verkaufswege zu benennen. Daraus folgt keine Partnerschaft mit DINAVO.
 
-## Gebührenprofile
+## Plattformkosten
 
-Die im Rechner hinterlegten Profile sind **editierbare Richtwerte**, keine verbindlichen Preislisten. Prozent-, Fix-, Versand-, Listing-, Zahlungs-, Werbe-, Tarif-, Umsatzsteuer- und FBA-Kosten können je nach Plattform, Kategorie, Betrag, Land und gewählten Zusatzleistungen abweichen. Der Rechner zeigt deshalb bei jedem Profil einen Prüfhinweis und speichert die tatsächlich verwendeten Werte als unveränderlichen Deal-Snapshot.
+DINAVO setzt bewusst **keine Gebühren oder Versandkosten automatisch ein**. Prozent-, Fix-, Versand-, Listing-, Zahlungs-, Werbe-, Tarif-, Umsatzsteuer- und Fulfillment-Kosten können je nach Plattform, Kategorie, Betrag, Land, Verkäuferstatus und Zusatzleistungen abweichen. Leere Felder sind ehrlicher als falsche Standardwerte. Der Rechner zeigt deshalb beim gewählten Profil eine Originalquelle mit Prüfdatum und speichert nur die vom Nutzer tatsächlich eingetragenen Werte als Deal-Snapshot.
 
-Offizielle Prüfquellen, zuletzt kontrolliert am 07.09.2026:
+Offizielle Prüfquellen, zuletzt kontrolliert am 09.09.2026:
 
 - [eBay – Gebühren für private Verkäufer](https://www.ebay.de/help/selling/fees-credits-invoices/gebhren-fr-private-verkufer?id=4822)
 - [eBay – Gebühren für gewerbliche Verkäufer](https://www.ebay.de/help/selling/fees-credits-invoices/gebuhren-fur-gewerbliche-verkaufer?id=4809)
@@ -48,8 +48,13 @@ Offizielle Prüfquellen, zuletzt kontrolliert am 07.09.2026:
 - [Vinted – Käuferschutz-Gebühren](https://www.vinted.de/help/342-kauferschutz-gebuhren-auf-vinted)
 - [Etsy – Fees & Payments Policy](https://www.etsy.com/legal/fees/)
 - [Amazon – Preisgestaltung für Verkäufer](https://sell.amazon.de/preisgestaltung)
+- [willhaben – Kaufen und Verkaufen](https://www.willhaben.at/iad/kaufen-und-verkaufen)
+- [Shpock Österreich](https://www.shpock.com/de-at)
+- [Ricardo Schweiz](https://www.ricardo.ch/)
+- [tutti Schweiz](https://www.tutti.ch/de)
+- [anibis Schweiz](https://www.anibis.ch/de)
 
-Für den Beispiel-Deal mit Sneakern unter 100 € verwendet DINAVO beim Profil „eBay (gewerblich)“ derzeit 12 % plus 0,45 € für eine Bestellung über 10 €. Andere eBay-Kategorien können deutlich abweichen. Das Etsy-Profil enthält bewusst nur die allgemeine Transaktionsgebühr und einen ungefähren Listingbetrag; Zahlungsabwicklung und optionale Werbung müssen zusätzlich eingetragen werden. Der Amazon-Wert von 15 % bleibt wegen der Kategorie- und Tarifunterschiede ausdrücklich ein grober Richtwert.
+Der ausdrücklich beschriftete Beispiel-Deal enthält feste Demonstrationswerte, damit sich die Berechnung testen lässt. Diese Werte werden nicht als aktuelles Plattformprofil gespeichert und können nicht versehentlich als echter Deal übernommen werden.
 
 ## Haftungsgrenze
 

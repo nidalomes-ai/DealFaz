@@ -398,3 +398,44 @@ button:not(.secondary):not(.danger):not(.footerLinkButton):active,.btn:active,a.
 .dnv-more>summary span{font-size:12px;color:var(--muted);font-weight:700}
 .dnv-more-body{padding-top:3px}
 @media(prefers-reduced-motion:reduce){.dnv-more>summary::before{transition:none}}
+
+/* Marktumschaltung, ehrliche Bewertung und sichtbarer Ergebnis-Abgleich. */
+.marketSelector{
+  display:grid;grid-template-columns:minmax(120px,.55fr) minmax(180px,1fr);gap:6px 12px;
+  align-items:center;margin:14px 0;padding:12px;border:1px solid var(--border);
+  border-radius:12px;background:var(--surface-2);font-weight:800;
+}
+.marketSelector small{grid-column:2;color:var(--muted);font-size:.76rem;font-weight:600}
+.platformNote a{color:var(--accent);font-weight:800}
+.resultFollowup{
+  margin:16px 0 4px;padding:14px;border:1px solid rgba(77,163,255,.38);
+  border-radius:12px;background:rgba(77,163,255,.08);text-align:left;
+}
+.resultFollowup[hidden]{display:none}
+.resultFollowup p{margin:5px 0 0;color:var(--muted);font-size:.88rem;line-height:1.45}
+.resultFollowup .actions{margin-top:12px}
+.scoreTruth{
+  margin:8px 0 12px;padding:10px 12px;border-radius:10px;background:var(--surface-2);
+  color:var(--muted);font-size:.8rem;line-height:1.45;text-align:left;
+}
+.ev small{display:block;margin-top:3px;color:var(--muted);font-size:.7rem;line-height:1.35}
+.dataSafetyNotice{
+  order:3;grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:16px;border:1px solid var(--warn);border-radius:var(--radius);
+  background:var(--warn-bg);text-align:left;
+}
+.dataSafetyNotice[hidden]{display:none}
+.dataSafetyNotice p{margin:5px 0 0;color:var(--muted);line-height:1.45}
+.dataSafetyNotice .actions{flex:0 0 auto;margin:0}
+.countBadge,.openBadge{
+  display:inline-flex;align-items:center;min-height:22px;padding:2px 8px;border-radius:999px;
+  background:var(--good-bg);color:var(--good);font-size:.7rem;font-weight:900;letter-spacing:.03em;
+}
+.settingReadout{display:flex;flex-direction:column;justify-content:center;gap:5px;min-height:var(--input-h);padding:8px 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface)}
+.settingReadout span{font-size:.76rem;color:var(--muted)}
+@media(max-width:680px){
+  .marketSelector{grid-template-columns:1fr}
+  .marketSelector small{grid-column:1}
+  .dataSafetyNotice{flex-direction:column;align-items:stretch}
+  .dataSafetyNotice .actions{display:grid;grid-template-columns:1fr}
+}

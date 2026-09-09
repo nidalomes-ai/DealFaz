@@ -15,6 +15,7 @@ const STORE = window.DEALFAZ_STORE;
 if (!STORE) throw new Error('Lokaler Deal-Speicher konnte nicht geladen werden.');
 
 const CONFIG = STORE.CONFIG;
+const COUNTRIES = CONFIG.COUNTRIES;
 const PLATFORMS = CONFIG.PLATFORMS;
 const FIELDS = CONFIG.FIELDS;
 const UI = CONFIG.UI;
@@ -25,32 +26,52 @@ const CALC = CONFIG.CALC;
 let settings = STORE.getSettings();
 let current = {};
 let demoActive = false;
+const originalText = new WeakMap();
 
-function eur(value) {
+function applyCountryLanguage() {
+  document.documentElement?.setAttribute?.('lang', settings.country === 'CH' ? 'de-CH' : 'de');
+  if (typeof document.createTreeWalker !== 'function' || typeof NodeFilter === 'undefined') return;
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  let node = walker.nextNode();
+  while (node) {
+    if (!originalText.has(node)) originalText.set(node, node.nodeValue);
+    const source = originalText.get(node);
+    node.nodeValue = settings.country === 'CH' ? source.replaceAll('ß', 'ss') : source;
+    node = walker.nextNode();
+  }
+}
+
+function eur(value, countryId = settings.country) {
   try {
-    return Number(value || 0).toLocaleString('de-DE', {
+    const country = COUNTRIES.find(item => item.id === countryId) || COUNTRIES[0];
+    return Number(value || 0).toLocaleString(country.locale, {
       style: 'currency',
-      currency: settings.currency || 'EUR'
+      currency: country.currency
     });
   } catch (_) {
     return Number(value || 0).toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
   }
 }
 
+function platformsForCountry(country = settings.country) {
+  return PLATFORMS.filter(platform => platform.countries.includes(country));
+}
+
 function platformById(id) {
   return PLATFORMS.find(platform => platform.id === id) || PLATFORMS.find(platform => platform.id === 'custom');
 }
 
-function platformLabel(id) {
-  return platformById(id)?.label || 'Eigene Angabe';
+function platformLabel(id, customPlatform = '') {
+  if (id === 'custom' && customPlatform) return customPlatform;
+  return platformById(id)?.label || 'Andere Plattform';
 }
 
 function qualityTier(value) {
   return clamp(Math.ceil(Number(value || 0) / 20), 1, 5);
 }
 
-function money(value) {
-  return `<span class="moneyValue">${eur(value)}</span>`;
+function money(value, country = settings.country) {
+  return `<span class="moneyValue">${eur(value, country)}</span>`;
 }
 
 function getRules() {
@@ -70,24 +91,44 @@ function getOutcomes() {
 }
 
 function populatePlatformSelect(select) {
-  select.innerHTML = PLATFORMS.map(platform =>
+  const available = platformsForCountry();
+  select.innerHTML = available.map(platform =>
     `<option value="${esc(platform.id)}">${esc(platform.label)}</option>`
   ).join('');
 }
 
 function updatePlatformNote() {
   const profile = platformById($(UI.platform).value);
-  $('platformNote').innerHTML = `<strong>Editierbarer Richtwert:</strong> ${esc(profile.note)} ` +
-    '<span class="feeDisclaimer">Prüfe vor dem Kauf die aktuellen, kategorieabhängigen Gebühren der Plattform.</span>';
+  const source = profile.sourceUrl
+    ? ` <a href="${esc(profile.sourceUrl)}" target="_blank" rel="nofollow noopener noreferrer">Originalseite prüfen →</a>`
+    : '';
+  $('platformNote').innerHTML = `<strong>Keine automatische Kostenannahme:</strong> ${esc(profile.note)} ` +
+    `<span class="feeDisclaimer">Quellenstand ${esc(profile.checkedAt)}.${source}</span>`;
+  const custom = profile.id === 'custom';
+  $('customPlatformField').hidden = !custom;
+  $('customPlatform').required = custom;
 }
 
 function applyPlatformProfile(id) {
-  const profile = platformById(id);
+  const available = platformsForCountry();
+  const profile = available.find(platform => platform.id === id) || available[0] || platformById('custom');
   $(UI.platform).value = profile.id;
-  $(UI.feePct).value = round(profile.feePercent * 100, 2);
-  $(UI.feeFix).value = profile.feeFixed;
-  $(UI.shipping).value = profile.shippingDefault;
+  $(UI.feePct).value = profile.feePercent === null ? '' : round(profile.feePercent * 100, 2);
+  $(UI.feeFix).value = profile.feeFixed === null ? '' : profile.feeFixed;
+  $(UI.shipping).value = profile.shippingDefault === null ? '' : profile.shippingDefault;
   updatePlatformNote();
+}
+
+function applyCountry(nextCountry, preferredPlatform) {
+  const country = COUNTRIES.find(item => item.id === nextCountry) || COUNTRIES[0];
+  const available = PLATFORMS.filter(platform => platform.countries.includes(country.id));
+  const platform = available.find(item => item.id === preferredPlatform) || available[0];
+  settings = STORE.setSettings({ country: country.id, defaultPlatformId: platform.id });
+  $('country').value = country.id;
+  populatePlatformSelect($('platform'));
+  populatePlatformSelect($('defaultPlatform'));
+  applyPlatformProfile(platform.id);
+  renderSettings();
 }
 
 function setMoney(id, value) {
@@ -166,10 +207,14 @@ function configureFieldsAndMetricLinks() {
 
 function fillDemoDeal() {
   demoActive = true;
+  applyCountry(DEMO_DEAL.country, DEMO_DEAL.platformId);
   $(UI.product).value = DEMO_DEAL.name;
   $(UI.buy).value = DEMO_DEAL.buy;
   $(UI.sell).value = DEMO_DEAL.sell;
   applyPlatformProfile(DEMO_DEAL.platformId);
+  $(UI.feePct).value = round(DEMO_DEAL.feePercent * 100, 2);
+  $(UI.feeFix).value = DEMO_DEAL.feeFixed;
+  $(UI.shipping).value = DEMO_DEAL.shipping;
   $(UI.extra).value = DEMO_DEAL.costsExtra;
   $('days').value = DEMO_DEAL.days;
   $('risk').value = DEMO_DEAL.risk;
@@ -181,6 +226,7 @@ function clearDemoBeforeInput(target) {
   $('product').value = '';
   $('buy').value = '';
   $('sell').value = '';
+  $('customPlatform').value = '';
   $('costsExtra').value = '';
   $('days').value = '';
   $('risk').value = '';
@@ -194,6 +240,7 @@ function calculate() {
   const buy = num('buy');
   const sell = num('sell');
   const platformId = $('platform').value || 'custom';
+  const customPlatform = platformId === 'custom' ? $('customPlatform').value.trim() : '';
   const feePercent = clamp(num('feePercent') / 100, 0, 1);
   const feeFixed = num('feeFixed');
   const feeAmount = round(sell * feePercent + feeFixed, 2);
@@ -261,7 +308,9 @@ function calculate() {
     product,
     buy,
     sell,
+    country: settings.country,
     platformId,
+    customPlatform,
     feePercent,
     feeFixed,
     feeAmount,
@@ -316,6 +365,7 @@ function calculate() {
   $('quality').textContent = hasEvidence ? `${quality}/100` : '–';
   $('margin').textContent = `${margin.toFixed(1)} %`;
   $('roi30').textContent = roiDefined ? `${roi30.toFixed(1)} %` : 'nicht definiert';
+  $('resultFollowup').hidden = !hasCoreValues;
 
   const basis = $('basisStatus');
   if (!hasCoreValues) {
@@ -363,6 +413,7 @@ function calculate() {
   renderBattle();
   renderMarkets(product);
   dinavoShowFactor({ buy, sell, costs, days });
+  applyCountryLanguage();
 }
 
 function renderCounter(hasCoreValues, hasEvidence) {
@@ -377,7 +428,7 @@ function renderCounter(hasCoreValues, hasEvidence) {
     warnings.push(['Ziel-ROI verfehlt', `ROI ${current.roi.toFixed(1)} % unter Ziel ${current.target.toFixed(0)} %.`]);
   }
   if (!hasEvidence) warnings.push(['Markt noch nicht geprüft', 'Vergleiche echte Preise, bevor du kaufst.']);
-  if (hasEvidence && current.quality < 45) warnings.push(['Datenbasis zu schwach', `Datenqualität ${current.quality}/100.`]);
+  if (hasEvidence && current.quality < 45) warnings.push(['Eingaben noch zu dünn', `Qualität deiner Angaben: ${current.quality}/100.`]);
   if (current.risk >= 4) warnings.push(['Risiko hoch', `Von dir angegeben: ${current.risk}/5.`]);
   if (hasEvidence && current.sold + current.active < 10) warnings.push(['Kleine Stichprobe', 'Weniger als 10 beobachtete Verkäufe und Angebote.']);
   if (!warnings.length) {
@@ -423,14 +474,29 @@ function renderBattle() {
 
 function renderMarkets(query) {
   const encoded = encodeURIComponent(query || '');
-  const links = [
-    ['eBay verkauft', `https://www.ebay.de/sch/i.html?_nkw=${encoded}&LH_Sold=1&LH_Complete=1`],
-    ['eBay aktiv', `https://www.ebay.de/sch/i.html?_nkw=${encoded}`],
-    ['Kleinanzeigen', `https://www.kleinanzeigen.de/s-suchanfrage.html?keywords=${encoded}`],
-    ['idealo', `https://www.idealo.de/preisvergleich/MainSearchProductCategory.html?q=${encoded}`],
-    ['Google Shopping', `https://www.google.com/search?tbm=shop&q=${encoded}`],
-    ['Amazon', `https://www.amazon.de/s?k=${encoded}`]
-  ];
+  const linksByCountry = {
+    DE: [
+      ['eBay verkauft', `https://www.ebay.de/sch/i.html?_nkw=${encoded}&LH_Sold=1&LH_Complete=1`],
+      ['eBay aktiv', `https://www.ebay.de/sch/i.html?_nkw=${encoded}`],
+      ['Kleinanzeigen', `https://www.kleinanzeigen.de/s-suchanfrage.html?keywords=${encoded}`],
+      ['idealo', `https://www.idealo.de/preisvergleich/MainSearchProductCategory.html?q=${encoded}`],
+      ['Google Shopping', `https://www.google.com/search?tbm=shop&q=${encoded}`],
+      ['Amazon', `https://www.amazon.de/s?k=${encoded}`]
+    ],
+    AT: [
+      ['willhaben', 'https://www.willhaben.at/iad/kaufen-und-verkaufen'],
+      ['Shpock', 'https://www.shpock.com/de-at'],
+      ['eBay Österreich', `https://www.ebay.at/sch/i.html?_nkw=${encoded}`],
+      ['Google Shopping', `https://www.google.at/search?tbm=shop&q=${encoded}`]
+    ],
+    CH: [
+      ['Ricardo', 'https://www.ricardo.ch/'],
+      ['tutti', 'https://www.tutti.ch/de'],
+      ['anibis', 'https://www.anibis.ch/de'],
+      ['Google Shopping', `https://www.google.ch/search?tbm=shop&q=${encoded}`]
+    ]
+  };
+  const links = linksByCountry[settings.country] || linksByCountry.DE;
   $('marketLinks').innerHTML = links.map(([label, href]) =>
     `<a class="market" rel="nofollow noopener noreferrer" target="_blank" href="${href}"><strong>${label}</strong><span>Originalquelle öffnen →</span></a>`
   ).join('');
@@ -438,9 +504,10 @@ function renderMarkets(query) {
 
 function renderWatch() {
   const watch = getWatch();
+  $('openDealCount').textContent = `${watch.length} offen`;
   $('watch').innerHTML = watch.length ? watch.map((deal, index) =>
-    `<div class="watch"><div class="watchTop"><div><strong>${esc(deal.product || 'Unbenannter Deal')}</strong><br>` +
-    `<small>${money(deal.buy)} → ${money(deal.sell)} · ${esc(platformLabel(deal.platformId))} · ${dealHasEvidence(deal) ? `Score ${deal.score}/100` : 'nur gerechnet'} · ${esc(deal.verdict || '')}</small>` +
+    `<div class="watch"><div class="watchTop"><div><span class="openBadge">OFFEN</span> <strong>${esc(deal.product || 'Unbenannter Deal')}</strong><br>` +
+    `<small>${money(deal.buy, deal.country)} → ${money(deal.sell, deal.country)} · ${esc(platformLabel(deal.platformId, deal.customPlatform))} · ${dealHasEvidence(deal) ? `Eingabe-Score ${deal.score}/100` : 'nur gerechnet'} · ${esc(deal.verdict || '')}</small>` +
     `</div><div class="actions"><button class="secondary" data-watch-action="load" data-index="${index}">Laden</button>` +
     `<button class="secondary" data-watch-action="remove" data-index="${index}">Entfernen</button></div></div></div>`
   ).join('') : '<p>Noch keine Deals gespeichert.</p>';
@@ -461,7 +528,9 @@ window.loadWatch = index => {
   $('product').value = deal.product || '';
   $('buy').value = deal.buy;
   $('sell').value = deal.sell;
+  applyCountry(deal.country || 'DE', deal.platformId);
   $('platform').value = deal.platformId;
+  $('customPlatform').value = deal.customPlatform || '';
   $('feePercent').value = round(deal.feePercent * 100, 2);
   $('feeFixed').value = deal.feeFixed;
   $('shipping').value = deal.shipping;
@@ -478,9 +547,9 @@ function renderForecasts() {
   const forecasts = getForecasts();
   $('forecastList').innerHTML = forecasts.length
     ? '<h3 class="historyHeading">Vorgemerkte Erwartungen</h3>' + forecasts.map((forecast, index) =>
-      `<div class="forecastCard"><strong>${esc(forecast.product || 'Unbenannter Deal')}</strong><br>` +
-      `<small>${esc(platformLabel(forecast.platformId))} · Verkauf ${money(forecast.sell)} · Gewinn ${money(forecast.profit)} · ` +
-      `${Number(forecast.days || 0)} Tage · ${dealHasEvidence(forecast) ? `Score ${forecast.score}/100` : 'nur gerechnet'}</small><div class="actions">` +
+      `<div class="forecastCard"><span class="openBadge">OFFEN</span> <strong>${esc(forecast.product || 'Unbenannter Deal')}</strong><br>` +
+      `<small>${esc(platformLabel(forecast.platformId, forecast.customPlatform))} · Verkauf ${money(forecast.sell, forecast.country)} · Gewinn ${money(forecast.profit, forecast.country)} · ` +
+      `${Number(forecast.days || 0)} Tage · ${dealHasEvidence(forecast) ? `Eingabe-Score ${forecast.score}/100` : 'nur gerechnet'}</small><div class="actions">` +
       `<button class="secondary" data-forecast-action="choose" data-index="${index}">Ergebnis erfassen</button>` +
       `<button class="secondary" data-forecast-action="remove" data-index="${index}">Entfernen</button></div></div>`
     ).join('')
@@ -515,15 +584,15 @@ function renderOutcomes() {
       const daysDifference = outcome.actualDays - outcome.expectedDays;
       const differenceClass = profitDifference >= 0 ? 'deltaPos' : 'deltaNeg';
       const actualLabel = outcome.sold
-        ? `Tatsächlich: ${money(outcome.actualProfit)} Gewinn`
-        : `Nicht verkauft: ${money(outcome.actualProfit)} Ergebnis`;
+        ? `Tatsächlich: ${money(outcome.actualProfit, outcome.country)} Gewinn`
+        : `Nicht verkauft: ${money(outcome.actualProfit, outcome.country)} Ergebnis`;
       const time = outcome.actualMinutes > 0
-        ? `<br>Aufwand: ${outcome.actualMinutes} Min. · Stundenlohn ${money(outcome.actualHourlyRate)}`
+        ? `<br>Aufwand: ${outcome.actualMinutes} Min. · Stundenlohn ${money(outcome.actualHourlyRate, outcome.country)}`
         : '';
       return `<div class="historyCard"><div class="historyTop"><div><strong>${esc(outcome.product || 'Deal')}</strong><br>` +
-        `<small>Erwartung: ${money(outcome.expectedProfit)} Gewinn · ${outcome.expectedDays} Tage<br>${actualLabel} · ${outcome.actualDays} Tage${time}` +
+        `<small>Erwartung: ${money(outcome.expectedProfit, outcome.country)} Gewinn · ${outcome.expectedDays} Tage<br>${actualLabel} · ${outcome.actualDays} Tage${time}` +
         `${outcome.note ? `<br>Notiz: ${esc(outcome.note)}` : ''}</small></div><div>` +
-        `<strong class="${differenceClass} moneyValue">Gewinn Δ ${profitDifference >= 0 ? '+' : ''}${eur(profitDifference)}</strong><br>` +
+        `<strong class="${differenceClass} moneyValue">Gewinn Δ ${profitDifference >= 0 ? '+' : ''}${eur(profitDifference, outcome.country)}</strong><br>` +
         `<small>Tage Δ ${daysDifference >= 0 ? '+' : ''}${daysDifference}</small></div></div></div>`;
     }).join('')
     : '<p>Noch keine tatsächlichen Ergebnisse gespeichert.</p>';
@@ -580,13 +649,33 @@ window.dinavoShowFactor = dinavoShowFactor;
 
 function renderSettings() {
   settings = STORE.getSettings();
+  $('country').value = settings.country;
+  populatePlatformSelect($('defaultPlatform'));
   $('defaultPlatform').value = settings.defaultPlatformId;
-  $('currency').value = settings.currency;
+  $('currencyDisplay').textContent = settings.currency === 'CHF' ? 'CHF · Schweizer Franken' : 'EUR · Euro';
   document.querySelectorAll('[data-currency-symbol]').forEach(element => {
     element.textContent = settings.currency === 'CHF' ? 'CHF' : '€';
   });
   $('profitYtdYear').textContent = settings.profitYtdYear;
   setMoney('profitYtd', settings.profitYtd);
+  applyCountryLanguage();
+}
+
+function renderDataSafety() {
+  const box = $('dataSafetyNotice');
+  const status = STORE.getBackupStatus();
+  const hasDeals = STORE.getDeals().length > 0;
+  const baseline = Math.max(status.lastBackupSaveCount, status.dismissedAtSaveCount);
+  const firstReminder = hasDeals && status.saveCount > 0 && !status.firstSaveExplained;
+  const recurringReminder = hasDeals && status.saveCount - baseline >= 5;
+  box.hidden = !(firstReminder || recurringReminder);
+  if (box.hidden) return;
+  $('dataSafetyTitle').textContent = firstReminder
+    ? 'Wichtig: Deine Deals liegen nur in diesem Browser'
+    : 'Zeit für ein neues Backup';
+  $('dataSafetyText').textContent = firstReminder
+    ? 'Browserdaten können gelöscht werden und wandern nicht automatisch auf ein anderes Gerät. Ein JSON-Backup schützt deine gemerkten Deals.'
+    : `Seit der letzten Erinnerung wurden ${status.saveCount - baseline} weitere Deals gespeichert. Lade eine aktuelle Sicherung herunter.`;
 }
 
 function renderStoredData() {
@@ -595,6 +684,7 @@ function renderStoredData() {
   renderOutcomes();
   renderFactors();
   renderSettings();
+  renderDataSafety();
 }
 
 function syncActualSaleState() {
@@ -621,6 +711,24 @@ function download(name, content, type) {
   link.download = name;
   link.click();
   setTimeout(() => URL.revokeObjectURL(url), 500);
+}
+
+function downloadBackup() {
+  download('dinavo-backup.json', JSON.stringify(STORE.exportData(), null, 2), 'application/json');
+  const status = STORE.recordBackupCreated();
+  $('backupStatus').textContent = `Backup erstellt: ${new Date(status.lastBackupAt).toLocaleString('de-DE')}.`;
+  renderDataSafety();
+}
+
+function saveCurrentDeal(messageTarget = 'actionStatus') {
+  if (!canSaveDeal()) return null;
+  const deal = STORE.addEstimate(current);
+  STORE.recordDealSaved();
+  renderStoredData();
+  $(messageTarget).textContent = messageTarget === 'outcomeHint'
+    ? `Erwartung lokal vorgemerkt: ${deal.name || 'Deal'}`
+    : 'Deal ist lokal gespeichert und als offenes Ergebnis vorgemerkt.';
+  return deal;
 }
 
 const safeText = value => {
@@ -673,6 +781,11 @@ $('platform').addEventListener('change', () => {
   applyPlatformProfile($('platform').value);
   calculate();
 });
+$('country').addEventListener('change', () => {
+  applyCountry($('country').value);
+  calculate();
+  $('settingsStatus').textContent = 'Markt, Währung und Plattformliste wurden gemeinsam umgestellt.';
+});
 $('actualSold').addEventListener('change', syncActualSaleState);
 
 $('saveRules').onclick = () => {
@@ -687,7 +800,6 @@ $('saveRules').onclick = () => {
 
 $('saveSettings').onclick = () => {
   settings = STORE.setSettings({
-    currency: $('currency').value,
     defaultPlatformId: $('defaultPlatform').value
   });
   renderSettings();
@@ -695,19 +807,15 @@ $('saveSettings').onclick = () => {
   $('settingsStatus').textContent = 'Einstellungen wurden nur auf diesem Gerät gespeichert.';
 };
 
-$('save').onclick = () => {
-  if (!canSaveDeal()) return;
-  STORE.addEstimate(current);
-  renderStoredData();
-  $('actionStatus').textContent = 'Deal wurde auf diesem Gerät gespeichert.';
-};
+$('save').onclick = () => saveCurrentDeal();
+$('saveForResult').onclick = () => saveCurrentDeal();
 
 $('copy').onclick = async () => {
   if (!current.hasCoreValues) {
     $('actionStatus').textContent = 'Bitte zuerst die drei Angaben ausfüllen.';
     return;
   }
-  const scoreText = current.hasEvidence ? `Score ${current.score}/100 · ` : 'Nur Rechencheck · ';
+  const scoreText = current.hasEvidence ? `Eingabe-Score ${current.score}/100 · ` : 'Nur Rechencheck · ';
   const roiText = current.roiDefined ? `${current.roi.toFixed(1)}%` : 'nicht definiert (0 € Einkauf)';
   const text = `DINAVO ${current.product || 'Deal'}: ${scoreText}${current.verdict} · Gewinn ${eur(current.profit)} · ROI ${roiText}`;
   try {
@@ -721,9 +829,11 @@ $('copy').onclick = async () => {
 $('share').onclick = async () => {
   const params = new URLSearchParams({
     product: current.product,
+    country: current.country,
     buy: current.buy,
     sell: current.sell,
     platformId: current.platformId,
+    customPlatform: current.customPlatform,
     feePercent: current.feePercent,
     feeFixed: current.feeFixed,
     shipping: current.shipping,
@@ -737,7 +847,7 @@ $('share').onclick = async () => {
     days: current.days
   });
   const url = `${location.origin}${location.pathname}#deal=${encodeURIComponent(params.toString())}`;
-  const scoreText = current.hasEvidence ? `Score ${current.score}/100 · ` : 'Nur Rechencheck · ';
+  const scoreText = current.hasEvidence ? `Eingabe-Score ${current.score}/100 · ` : 'Nur Rechencheck · ';
   const text = `DINAVO ${current.product || 'Deal'}: ${scoreText}${current.verdict}`;
   if (navigator.share) {
     try {
@@ -774,17 +884,19 @@ $('shareBeta').onclick = async () => {
   }
 };
 
-$('exportJson').onclick = () => download(
-  'dinavo-backup.json',
-  JSON.stringify(STORE.exportData(), null, 2),
-  'application/json'
-);
+$('exportJson').onclick = downloadBackup;
+$('backupNow').onclick = downloadBackup;
+$('backupLater').onclick = () => {
+  STORE.acknowledgeBackupReminder();
+  $('backupStatus').textContent = 'Backup-Erinnerung verschoben. Nach fünf weiteren gespeicherten Deals erscheint sie erneut.';
+  renderDataSafety();
+};
 
 $('exportCsv').onclick = () => {
   const rows = [
-    ['Produkt', 'Plattform', 'Einkauf', 'Verkauf', 'Gebühr', 'Versand', 'Weitere Kosten', 'Gesamtkosten', 'Score', 'Signal', 'ROI', 'Datenqualität'],
+    ['Produkt', 'Plattform', 'Einkauf', 'Verkauf', 'Gebühr', 'Versand', 'Weitere Kosten', 'Gesamtkosten', 'Eingabe-Score', 'Signal', 'ROI', 'Qualität der Angaben'],
     ...getWatch().map(deal => [
-      deal.product, platformLabel(deal.platformId), deal.buy, deal.sell, deal.feeAmount, deal.shipping,
+      deal.product, platformLabel(deal.platformId, deal.customPlatform), deal.buy, deal.sell, deal.feeAmount, deal.shipping,
       deal.costsExtra, deal.costs, dealHasEvidence(deal) ? deal.score : '', deal.verdict,
       deal.buy > 0 ? Number(deal.roi || 0).toFixed(1) : '', deal.quality
     ])
@@ -802,6 +914,7 @@ $('importFile').onchange = async event => {
     if (result.valid === false) throw new Error('Kein DINAVO-Backup');
     renderStoredData();
     calculate();
+    $('backupStatus').textContent = `Backup geprüft und geladen: ${result.imported} neue Deals.`;
   } catch (_) {
     alert('Backup konnte nicht gelesen werden.');
   } finally {
@@ -815,12 +928,7 @@ $('clearWatch').onclick = () => {
   renderStoredData();
 };
 
-$('saveForecast').onclick = () => {
-  if (!canSaveDeal()) return;
-  const forecast = STORE.addEstimate(current);
-  renderStoredData();
-  $('outcomeHint').textContent = `Erwartung lokal vorgemerkt: ${forecast.name || 'Deal'}`;
-};
+$('saveForecast').onclick = () => saveCurrentDeal('outcomeHint');
 
 $('saveOutcome').onclick = () => {
   const id = $('selectedForecast').value;
@@ -864,7 +972,7 @@ $('exportOutcomes').onclick = () => {
   const rows = [
     ['Produkt', 'Plattform', 'Verkauft', 'Erwarteter Verkauf', 'Tatsächlicher Verkauf', 'Erwarteter Gewinn', 'Tatsächlicher Gewinn', 'Erwartete Tage', 'Tatsächliche Tage', 'Minuten', 'Stundenlohn', 'Notiz'],
     ...getOutcomes().map(outcome => [
-      outcome.product, platformLabel(outcome.platformId), outcome.sold ? 'Ja' : 'Nein', outcome.expectedSell,
+      outcome.product, platformLabel(outcome.platformId, outcome.customPlatform), outcome.sold ? 'Ja' : 'Nein', outcome.expectedSell,
       outcome.actualSell, outcome.expectedProfit, outcome.actualProfit, outcome.expectedDays, outcome.actualDays,
       outcome.actualMinutes, Number(outcome.actualHourlyRate || 0).toFixed(2), outcome.note
     ])
@@ -894,15 +1002,16 @@ if (location.hash.startsWith('#deal=')) {
 }
 const incoming = shared;
 const sharedFields = [
-  'product', 'buy', 'sell', 'platformId', 'platform', 'feePercent', 'feeFixed', 'shipping',
+  'product', 'country', 'buy', 'sell', 'platformId', 'platform', 'customPlatform', 'feePercent', 'feeFixed', 'shipping',
   'costsExtra', 'cost', 'sold', 'active', 'comps', 'certainty', 'risk', 'target', 'days'
 ];
 const hasSharedDeal = sharedFields.some(key => incoming.has(key));
 
 if (hasSharedDeal) {
+  if (incoming.has('country')) applyCountry(incoming.get('country'));
   const incomingPlatform = incoming.get('platformId') || incoming.get('platform') || (incoming.has('cost') ? 'custom' : settings.defaultPlatformId);
   applyPlatformProfile(incomingPlatform);
-  ['product', 'buy', 'sell', 'feePercent', 'feeFixed', 'shipping', 'costsExtra', 'sold', 'active', 'comps', 'certainty', 'risk', 'target', 'days'].forEach(key => {
+  ['product', 'buy', 'sell', 'customPlatform', 'feePercent', 'feeFixed', 'shipping', 'costsExtra', 'sold', 'active', 'comps', 'certainty', 'risk', 'target', 'days'].forEach(key => {
     if (incoming.has(key) && $(key)) $(key).value = incoming.get(key);
   });
   if (incoming.has('feePercent')) {
@@ -910,8 +1019,6 @@ if (hasSharedDeal) {
     $('feePercent').value = sharedRate <= 1 ? round(sharedRate * 100, 2) : sharedRate;
   }
   if (!incoming.has('costsExtra') && incoming.has('cost')) $('costsExtra').value = incoming.get('cost');
-} else if (STORE.getDeals().length === 0) {
-  fillDemoDeal();
 } else {
   $('product').value = '';
   $('buy').value = '';

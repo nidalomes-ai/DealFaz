@@ -103,7 +103,9 @@ assert.match(privacy, /JSON-Backups und CSV-Dateien/, 'Privacy information must 
 assert.match(privacy, /Google \(Gmail\)/, 'Privacy information must identify the email provider');
 assert.match(privacy, /mail@datenschutzzentrum\.de/, 'Privacy information must identify the competent supervisory authority');
 assert.match(privacy, /§ 25 Abs\. 2 Nr\. 2 TDDDG/, 'The local privacy choice must be explained as a requested setting');
-assert.match(privacy, /Stand: 8\. September 2026/, 'Privacy information must expose its revision date');
+assert.match(privacy, /Stand: 9\. September 2026/, 'Privacy information must expose its revision date');
+assert.match(privacy, /revidierten Schweizer Datenschutzgesetzes \(DSG\)/, 'Privacy information must cover the Swiss market');
+assert.match(privacy, /Abständen von fünf weiteren gespeicherten Deals/, 'Privacy information must explain recurring local backup reminders');
 if (analyticsToken) {
   assert.match(privacy, /<h2>5\. Optionale Reichweitenmessung mit Cloudflare Web Analytics<\/h2>/, 'Analytics must be the published privacy section 5');
   assert.match(privacy, /Art\. 6 Abs\. 1 lit\. a DSGVO/, 'Analytics must be based on explicit consent');
@@ -179,7 +181,8 @@ assert.deepEqual(unlabelledControls, [], `Every visible input must have a label:
 
 for (const requiredId of [
   'platform', 'feePercent', 'feeFixed', 'feeAmount', 'shipping', 'costsExtra', 'costAmount',
-  'actualMinutes', 'defaultPlatform', 'currency', 'profitYtd', 'profitYtdYear',
+  'country', 'customPlatform', 'actualMinutes', 'defaultPlatform', 'currencyDisplay', 'profitYtd', 'profitYtdYear',
+  'saveForResult', 'resultFollowup', 'dataSafetyNotice', 'backupNow', 'backupLater', 'openDealCount',
   'profitMetricLink', 'roiMetricLink', 'maxBuyMetricLink', 'sellRateMetricLink'
 ]) {
   assert.ok(idMatches.includes(requiredId), `Required extended data field #${requiredId} must exist`);
@@ -259,7 +262,7 @@ for (const match of html.matchAll(/<([a-z][\w-]*)([^>]*\bid="([^"]+)"[^>]*)>/gi)
   elements.set(match[3], new FakeElement(match[3], match[1], match[2]));
 }
 elements.get('actualSold').value = 'true';
-elements.get('currency').value = 'EUR';
+elements.get('country').value = 'DE';
 
 const checkInputIds = [
   'product', 'buy', 'sell', 'cost', 'feePercent', 'feeFixed', 'shipping', 'costsExtra',
@@ -304,26 +307,26 @@ globalThis.window = {
 
 await import(`../app.js?frontend-regression=${Date.now()}`);
 
-assert.equal(elements.get('product').value, 'Beispiel: Nike Air Max 90, Gr. 43');
-assert.equal(elements.get('platform').value, 'ebay_gewerblich');
-assert.equal(Number(elements.get('feePercent').value), 12);
-assert.equal(Number(elements.get('cost').value), 19.24);
-assert.equal(elements.get('profit').textContent, '25,76 €');
-assert.equal(elements.get('roi').textContent, '57.2 %');
-assert.match(elements.get('resultCard').className, /\bis-(good|warn|bad)\b/, 'The result card must expose a visible state class');
-assert.equal(elements.get('resultCard').dataset.state, 'good');
-assert.equal(elements.get('profitMetricLink').href, '/reselling-rechner/');
-assert.equal(elements.get('roiMetricLink').href, '/roi-reselling/');
-
-elements.get('save').onclick();
-assert.equal(store.getDeals().length, 0, 'The untouched demo must never be stored as a real deal');
-
-await elements.get('product').dispatch('beforeinput');
-assert.equal(elements.get('product').value, '');
+assert.equal(elements.get('product').value, '', 'A new visitor must start with an empty real deal');
 assert.equal(elements.get('buy').value, '');
 assert.equal(elements.get('sell').value, '');
 assert.equal(elements.get('platform').value, 'ebay_privat');
+assert.equal(elements.get('feePercent').value, '', 'Platform selection must not inject a stale fee default');
 assert.equal(Number(elements.get('cost').value), 0);
+assert.equal(elements.get('profitMetricLink').href, '/reselling-rechner/');
+assert.equal(elements.get('roiMetricLink').href, '/roi-reselling/');
+elements.get('country').value = 'CH';
+await elements.get('country').dispatch('change');
+assert.equal(store.getSettings().country, 'CH');
+assert.equal(store.getSettings().currency, 'CHF');
+assert.match(elements.get('platform').innerHTML, /Ricardo/);
+assert.match(elements.get('platform').innerHTML, /tutti/);
+assert.equal(elements.get('currencyDisplay').textContent, 'CHF · Schweizer Franken');
+elements.get('country').value = 'DE';
+await elements.get('country').dispatch('change');
+
+elements.get('save').onclick();
+assert.equal(store.getDeals().length, 0, 'An incomplete deal must never be stored');
 
 await elements.get('exampleDeal').dispatch('click');
 assert.equal(elements.get('product').value, store.DEMO_DEAL.name, 'The example button must fill the configured product field');
@@ -331,6 +334,8 @@ assert.equal(Number(elements.get('buy').value), store.DEMO_DEAL.buy, 'The exampl
 assert.equal(Number(elements.get('sell').value), store.DEMO_DEAL.sell, 'The example button must fill the configured sell field');
 assert.equal(elements.get('platform').value, store.DEMO_DEAL.platformId, 'The example button must fill the configured platform field');
 assert.equal(elements.get('profit').textContent, '25,76 €', 'The example button must recalculate the visible result');
+assert.match(elements.get('resultCard').className, /\bis-(good|warn|bad)\b/, 'The result card must expose a visible state class');
+assert.equal(elements.get('resultCard').dataset.state, 'good');
 await elements.get('product').dispatch('beforeinput');
 
 elements.get('product').value = 'Kostenloser Schrank';
@@ -348,6 +353,9 @@ assert.doesNotMatch(clipboardText, /Score|\/100/, 'Copied checks without evidenc
 elements.get('save').onclick();
 assert.match(elements.get('watch').innerHTML, /nur gerechnet/);
 assert.doesNotMatch(elements.get('watch').innerHTML, /Score \d+\/100/, 'Stored checks without evidence must not expose a score');
+assert.equal(elements.get('dataSafetyNotice').hidden, false, 'The first saved deal must explain local-only storage');
+elements.get('backupLater').onclick();
+assert.equal(elements.get('dataSafetyNotice').hidden, true, 'The first reminder can be postponed without losing data');
 store.clearAllData();
 
 elements.get('product').value = 'Testschuh';
@@ -355,9 +363,12 @@ elements.get('buy').value = '50';
 elements.get('sell').value = '100';
 elements.get('platform').value = 'ebay_gewerblich';
 await elements.get('platform').dispatch('change');
-assert.equal(Number(elements.get('feePercent').value), 12);
-assert.equal(Number(elements.get('feeFixed').value), 0.45);
-assert.equal(Number(elements.get('shipping').value), 4.99);
+assert.equal(elements.get('feePercent').value, '');
+assert.equal(elements.get('feeFixed').value, '');
+assert.equal(elements.get('shipping').value, '');
+elements.get('feePercent').value = '12';
+elements.get('feeFixed').value = '0.45';
+elements.get('shipping').value = '4.99';
 
 elements.get('costsExtra').value = '3';
 await elements.get('costsExtra').dispatch('input');

@@ -1,6 +1,6 @@
 # DINAVO – Release-Gate
 
-Stand: 08.09.2026
+Stand: 10.09.2026
 
 Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäftsstart** und **spätere Monetarisierung**. `[x]` bedeutet technisch oder anhand des aktuellen Datenflusses geprüft; es ist keine pauschale anwaltliche Rechtsfreigabe.
 
@@ -91,15 +91,18 @@ Tatsächliche Indexierung und Social-Caches bleiben externe Beobachtungen.
 - [x] Profiltext und klare Gratis-/Datenschutzbotschaft vorbereitet
 - [x] keine Bots, Massen-DMs, Gewinnversprechen oder automatischen Veröffentlichungen
 - [x] erster DINAVO-Beitrag auf den konkret verbundenen Facebook- und LinkedIn-Konten veröffentlicht
-- [x] weitere aktive Beiträge auf DINAVO und die saubere Cloudflare-Hauptadresse umgestellt
+- [x] freigegebene Beiträge auf DINAVO und die saubere Cloudflare-Hauptadresse ausgerichtet
 - [x] Launch-Ziele auf Cloudflare
 - [x] Metricool-Regel: maximal 20 Veröffentlichungen pro Monat
 - [x] keine zusätzlichen Posts bei erreichtem Limit
 - [x] Legacy-Link-Weiterleitung vorhanden
 - [x] Firebase-Retirement-Konfiguration mit permanenter Weiterleitung vorbereitet
 - [x] Bots/Testaufrufe werden nicht als echte Reichweite dargestellt
+- [x] Eigenwerbung wird mit „Werbung für die eigene DINAVO-Beta“ gekennzeichnet
+- [x] KI-Personen benötigen sichtbare Fiktionskennzeichnung, Caption-Hinweis und Plattform-KI-Label
+- [x] fehlende Werbe-/KI-Kennzeichnung hält den Inhalt im Entwurfsstatus
 
-## 8. Amazon – 🟢 VORBEREITET / 🔒 NICHT MONETARISIERT
+## 8. Amazon – 🔒 AUSGENOMMEN / NICHT MONETARISIERT
 
 - [x] neutrale Amazon-Links ohne Affiliate-Tag
 - [x] spätere Kennzeichnungsregeln dokumentiert
@@ -107,7 +110,7 @@ Tatsächliche Indexierung und Social-Caches bleiben externe Beobachtungen.
 
 `⏸ später`: Website-Zuordnung/Partnerstatus prüfen und erst nach Gewerbe-/Steuergate Affiliate aktivieren.
 
-## 9. eBay – 🟢 VORBEREITET / ⏸ ACCEPTANCE AUSSTEHEND
+## 9. eBay – 🔒 AUSGENOMMEN / ACCEPTANCE AUSSTEHEND
 
 - [x] EPN-Bewerbungseingang dokumentiert
 - [x] offizielle Statusanfrage dokumentiert
@@ -149,7 +152,7 @@ Für einen technischen Beta-Test ist die vorsichtige Nutzung dokumentiert; eine 
 
 Bei Checkout, kostenpflichtigen Leistungen oder gehosteten Nutzerinhalten erfolgt vor Aktivierung eine neue BFSG-/DSA-/Verbraucherrechtsprüfung.
 
-## 13. Gewerbe – 🟢 AKTUELLE KOSTENLOSE BETA / 🔒 GESCHÄFTS-LAUNCH-GATE
+## 13. Gewerbe – 🔒 AUSGENOMMEN / GESCHÄFTS-LAUNCH-GATE
 
 - [x] zuständige Stelle/Verfahren vorbereitet
 - [x] Tätigkeitsbeschreibung vorbereitet
@@ -159,15 +162,15 @@ Bei Checkout, kostenpflichtigen Leistungen oder gehosteten Nutzerinhalten erfolg
 
 **Wichtig:** Erster Umsatz/erste Provision ist nicht automatisch der Beginn. Gewinnerzielungsabsicht und Dauerhaftigkeit können bereits vorher zu einem Gewerbe führen.
 
-## 14. Monetarisierung – 🔒 GESPERRT
+## 14. Monetarisierung – 🟢 SICHER DEAKTIVIERT
 
-Vor Entfernung von `MONETIZATION_DISABLED` müssen Gewerbe-/Steuergate, tatsächliche Partnerfreigaben, Affiliate-Kennzeichnung, Datenschutz für den echten Tracking-Datenfluss und die Marken-Risikoprüfung erneut kontrolliert werden. Anschließend müssen Quality, Live Health und Commercialization Guards erneut grün sein.
+`MONETIZATION_DISABLED` setzt die drei ausgenommenen Bereiche technisch in einen sicheren Zustand und ist kein zusätzlicher vierter Rotstatus. Vor seiner Entfernung müssen Gewerbe-/Steuergate, tatsächliche Partnerfreigaben, Affiliate-Kennzeichnung, Datenschutz für den echten Tracking-Datenfluss und die Marken-Risikoprüfung erneut kontrolliert werden. Anschließend müssen Quality, Live Health und Commercialization Guards erneut grün sein.
 
 ## Aktueller Freigabestatus
 
 **Lokaler Release-Kandidat: 🟢 veröffentlichbar ohne optionale Reichweitenmessung.**
 
-**Öffentliche Version: 🟢 öffentlicher Website-Commit veröffentlicht; verbundene Vercel-Bereitstellungen erfolgreich.**
+**Öffentliche Version: 🟢 Cloudflare-Hauptadresse und GitHub-Main auf denselben geprüften Stand ausgerichtet.**
 
 **Aktuelle kostenlose, nicht monetarisierte Beta: 🟢 freigegeben.**
 
@@ -175,4 +178,4 @@ Vor Entfernung von `MONETIZATION_DISABLED` müssen Gewerbe-/Steuergate, tatsäch
 
 **Markenname: 🟢 für die vorsichtige kostenlose Beta; ⏸ Neuprüfung vor Anmeldung oder größerer irreversibler Markeninvestition.**
 
-**Monetarisierung: 🔒 deaktiviert.**
+**Amazon-Affiliate, eBay EPN und Gewerbe: 🔒 ausdrücklich ausgenommen. Alle übrigen aktuellen Beta-Gates: 🟢.**

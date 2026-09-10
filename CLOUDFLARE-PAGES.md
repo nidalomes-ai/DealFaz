@@ -1,14 +1,14 @@
 # DINAVO – Cloudflare Hosting
 
-Stand: 08.09.2026
+Stand: 10.09.2026
 
-Der Dateiname bleibt aus Kompatibilitätsgründen bestehen. Cloudflare ist nach dem Produktionswechsel auf Vercel nur noch als dokumentierte Alt-/Fallback-Infrastruktur eingeordnet.
+Der Dateiname bleibt aus Kompatibilitätsgründen bestehen. Cloudflare Workers ist wieder die öffentliche Hauptinfrastruktur; damit hängt der aktuelle kostenlose Betrieb nicht von den Einschränkungen des Vercel-Hobby-Tarifs ab.
 
-## Aktueller Repository- und Fallback-Stand
+## Aktueller Repository- und Produktionsstand
 
 - Repository: `nidalomes-ai/DealFaz`
 - Produktionsbranch: `main`
-- aktuelle öffentliche kostenlose Beta: `https://dealfaz.vercel.app/`
+- aktuelle öffentliche kostenlose Beta: `https://dealfaz.dealfaz-social.workers.dev/`
 - sichtbare Marke seit 28.08.2026: `DINAVO`; Repository- und Hostnamen bleiben bis zum koordinierten technischen Cutover als Legacy-Bezeichnungen bestehen
 - statisches Frontend ohne erforderlichen Build-Schritt
 - keine geheimen Frontend-Umgebungsvariablen für den Kernbetrieb nötig
@@ -80,4 +80,4 @@ Vor dem Umschalten:
 7. PartnerNet-Webseite nur beim tatsächlichen kommerziellen Start passend aktualisieren.
 8. Quality, Live Health und Commercialization Guards erneut grün bekommen.
 
-Eine erfolgreiche Hosting-Migration allein hebt den Monetarisierungs-Lock nicht auf.
+Eine erfolgreiche Hosting-Migration allein hebt den Monetarisierungs-Lock nicht auf. Amazon, eBay-Partnerlinks und der geschäftliche Start bleiben ihre eigenen gesperrten Gates.

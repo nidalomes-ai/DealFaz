@@ -44,6 +44,8 @@ Diese Datei definiert feste Grenzen für neue Funktionen. Ziel ist, Produktentwi
 - Partnerprogramm-Regeln gehen vor technischen Abkürzungen: keine Linkverschleierung oder Weiterleitung, wenn das Programm direkte Partnerlinks verlangt.
 - Kostenpflichtige Funktionen erst aktivieren, wenn Betreiber-, Vertrags-, Steuer-, Datenschutz- und Zahlungsanforderungen geprüft sind.
 
+Amazon- und eBay-Affiliate-Funktionen sowie der geschäftliche Start bleiben bis zu ihren eigenen Freigaben ausdrücklich gesperrt. Neutrale, nutzerinitiierte Originalquellen sind davon getrennt.
+
 ## 6. Betreiber- und Pflichtinformationen
 
 - Impressum/Anbieterinformationen leicht erreichbar halten.
@@ -57,8 +59,24 @@ Diese Datei definiert feste Grenzen für neue Funktionen. Ziel ist, Produktentwi
 - DINAVO wird nicht als eingetragene Marke dargestellt, solange keine entsprechende Eintragung vorliegt.
 - Vor größerem öffentlichen oder kommerziellem Rollout ist eine Registerrecherche bei DPMA und – bei EU-Ausweitung – EUIPO durchzuführen und zu dokumentieren.
 - Ein fehlender Treffer in allgemeinen Suchmaschinen gilt nicht als Markenfreigabe.
+- Die vorsichtige kostenlose Beta darf DINAVO ohne „®“ als Arbeitsnamen verwenden. Eine Markenanmeldung, ein größeres Werbebudget oder eine schwer umkehrbare Markeninvestition bleibt bis zur professionellen Identitäts- und Ähnlichkeitsprüfung gesperrt.
 
-## 8. Release Gate für neue Funktionen
+## 8. Werbung, Social Media und KI-Medien
+
+- DINAVO-Eigenwerbung wird unmittelbar als „Werbung für die eigene DINAVO-Beta“ kenntlich gemacht.
+- Plattformschalter für kommerzielle Inhalte und KI-Inhalte werden verwendet, wenn sie verfügbar und einschlägig sind.
+- Authentisch wirkende synthetische Personen werden im Medium und in der Caption klar als KI-generiert und fiktiv gekennzeichnet.
+- Keine künstlich erzeugten Personen als echte Kunden, unabhängige Tester oder Zeugen darstellen.
+- Keine Stimm- oder Gesichtsimitate realer Personen ohne dokumentierte Einwilligung; keine erfundenen Bewertungen oder Resultate.
+- Es gelten zusätzlich alle Regeln in AI-ADVERTISING-GUARD.md.
+
+## 9. Hosting
+
+- Aktuelle Hauptadresse ist die Cloudflare-Workers-Adresse aus den Produktionsmetadaten.
+- Vercel Hobby ist nur ein nichtkommerzieller technischer Fallback und keine Freigabe für Affiliate, Anzeigen, Checkout oder sonstige geschäftliche Nutzung.
+- Vor einem kommerziellen Start müssen Tarif, Nutzungsbedingungen, Auftragsverarbeitung und Datenschutzhinweise des dann tatsächlich verwendeten Hosts erneut geprüft sein.
+
+## 10. Release Gate für neue Funktionen
 
 Eine neue Funktion darf erst live gehen, wenn alle zutreffenden Punkte mit **JA** beantwortet werden:
 
@@ -73,10 +91,11 @@ Eine neue Funktion darf erst live gehen, wenn alle zutreffenden Punkte mit **JA*
 9. Sind vor Monetarisierung Gewerbe-/Steuerstatus und Partnerprogrammfreigaben geklärt?
 10. Wurde bei Nutzung von DINAVO als Marke die notwendige Registerrecherche dokumentiert?
 11. Wurde die Funktion technisch getestet, bevor sie Production erreicht?
+12. Ist öffentliche DINAVO-Eigenwerbung eindeutig gekennzeichnet und sind bei KI-Medien die Regeln aus AI-ADVERTISING-GUARD.md erfüllt?
 
 Wenn ein Punkt **NEIN** oder ungeklärt ist, bleibt die Funktion Preview/Entwurf bzw. Monetarisierung deaktiviert.
 
-## 9. Aktuelle Produktlinie
+## 11. Aktuelle Produktlinie
 
 Die aktuelle sichere Kernlinie von DINAVO lautet:
 

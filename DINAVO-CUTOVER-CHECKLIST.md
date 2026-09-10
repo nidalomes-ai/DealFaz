@@ -1,8 +1,8 @@
 # DINAVO – verbindliche Launch- und Cutover-Checkliste
 
-Stand: 29.08.2026
+Stand: 10.09.2026
 
-**Status: ⏸ PAUSIERTER CUSTOM-DOMAIN-/MARKEN-CUTOVER.** Die offenen Punkte sind Zukunftsschritte und keine Gates der kostenlosen Beta. Die aktuelle kostenlose Beta bleibt grün; ein geschäftlicher Start ist bis zur Klärung von Gewerbebeginn/Gewerbeanmeldung gesperrt.
+**Status: 🟢 AKTUELLE CLOUDFLARE-BETA / ⏸ SPÄTERER CUSTOM-DOMAIN-/MARKEN-CUTOVER.** Die offenen Domain- und Markenpunkte sind Zukunftsschritte und keine Mängel der kostenlosen Beta. Amazon, eBay-Partnerlinks und der geschäftliche Start bleiben ausdrücklich gesperrt.
 
 ## 1. Sofort sichern
 

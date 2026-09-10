@@ -82,7 +82,7 @@ jobs:
           fi
           ! grep -Fq 'supabase.co/functions/v1' index.html impressum/index.html datenschutz/index.html nutzungsbedingungen/index.html app.js analytics.js _headers vercel.json
           ! grep -Eq '__DINAVO_PROJECT_EMAIL__|\[Projekt-Adresse eintragen\]' impressum/index.html
-          grep -Fq 'dealfaz.social@gmail.com' impressum/index.html
+          grep -Fq 'dinavo.social@gmail.com' impressum/index.html
           if grep -Fq 'wahrscheinlich menschlich' index.html impressum/index.html datenschutz/index.html nutzungsbedingungen/index.html; then
             echo 'Ambiguous human-visitor wording detected in live legal text.'
             exit 1
@@ -112,6 +112,8 @@ jobs:
           grep -Fq 'ausschließlich organische, unbezahlte Beiträge' ORGANIC-BETA-CAMPAIGN.md
           grep -Fq 'keine Affiliate- oder Partnerlinks' ORGANIC-BETA-CAMPAIGN.md
           grep -Fq 'Keine Gewinn- oder Verkaufsgarantie' ORGANIC-BETA-CAMPAIGN.md
+          grep -Fq 'Werbung für die eigene DINAVO-Beta' ORGANIC-BETA-CAMPAIGN.md
+          grep -Fq 'KI-generierte Person · fiktiv' AI-ADVERTISING-GUARD.md
           ! grep -Eq '([?&]|&amp;)tag=|dealfaz-21|supabase\.co/functions/v1' ORGANIC-BETA-CAMPAIGN.md social/*.svg
 
       - name: Indexing claims must stay conservative
@@ -120,7 +122,7 @@ jobs:
           set -euo pipefail
           test -f INDEXING-STATUS.md
           grep -Fq 'Indexierung, Positionen und Besucherzahlen werden nicht garantiert' INDEXING-STATUS.md
-          grep -Fq 'reale Indexierung der aktuellen Vercel-URLs' INDEXING-STATUS.md
+          grep -Fq 'reale Indexierung der aktuellen Cloudflare-URLs' INDEXING-STATUS.md
           grep -Fq 'Alte Hosts nicht erneut als primäre öffentliche URL bewerben' INDEXING-STATUS.md
 
       - name: Cutover must enforce legal notice
@@ -141,3 +143,4 @@ jobs:
             echo 'Affiliate monetization detected before commercialization gates are cleared.'
             exit 1
           fi
+          node scripts/legal-green-regression.mjs

@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://dealfaz.vercel.app/sitemap.xml
+Sitemap: https://dealfaz.dealfaz-social.workers.dev/sitemap.xml

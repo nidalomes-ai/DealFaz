@@ -1,10 +1,10 @@
 # DINAVO – aktueller Freigabestatus
 
-Stand: 09.09.2026
+Stand: 10.09.2026
 
 ## Kurzentscheidung
 
-Die überarbeitete kostenlose, nicht monetarisierte Beta ist veröffentlicht. GitHub `main` und die öffentliche Vercel-Seite enthalten denselben geprüften Stand. Beide verbundenen Vercel-Bereitstellungen meldeten Erfolg; der Live-Ablauf wurde anschließend vollständig durchgespielt.
+Die kostenlose, nicht monetarisierte Beta verwendet Cloudflare Workers als öffentliche Hauptadresse. Rechtstexte, Canonicals, Social-Ziele und automatische Live-Prüfungen sind auf denselben Host ausgerichtet. Vercel Hobby bleibt ausschließlich nichtkommerzieller technischer Fallback.
 
 ## Lokal vorbereitet – 🟢
 
@@ -21,34 +21,37 @@ Die überarbeitete kostenlose, nicht monetarisierte Beta ist veröffentlicht. Gi
 - feste Kostenwerte nur noch im ausdrücklich beschrifteten Beispiel-Deal; keine automatische Übernahme in echte Deals
 - Affiliate-Monetarisierung weiterhin durch `MONETIZATION_DISABLED` gesperrt
 - Cloudflare Web Analytics vollständig deaktiviert; ohne gültigen Token werden weder Controller, Einwilligungsdialog noch Analytics-Datenschutzabschnitt veröffentlicht
+- Anbieterangaben ohne pauschale Behauptung zum Gewerbestatus
+- Werbe- und KI-Medien-Gate mit sichtbarer Eigenwerbung-, Fiktions- und Plattformkennzeichnung
 
 ## Öffentlicher Release – 🟢
 
-- geprüfter Funktions-Commit: `fa80c1137d973f04c1f19c1179b00c67921b063b`
-- verbundene Vercel-Bereitstellungen: erfolgreich
+- Cloudflare-Hauptadresse mit vollständigem Live-Health-Check
 - Analytics, Consent-Oberfläche und Analytics-Datenschutzabschnitt: gemeinsam deaktiviert
 - öffentliche App-Icons in 180, 192 und 512 Pixeln enthalten
 - Rechner, Beispiel, Speichern, Backup-Hinweis, Ergebnis-Abgleich, Länderwechsel und Wissensseite live geprüft
 
 Für Firebase ist im Repository eine separate Hosting-Konfiguration vorbereitet. Der alte Host wird nicht mehr als DINAVO-Produktionsadresse beworben; seine spätere Stilllegung bleibt eine Aufräummaßnahme außerhalb des aktuellen Beta-Releases.
 
-## Spätere Geschäfts-Gates – 🔒
+## Prüfungen erst bei späterer Scope-Erweiterung – aktuelle Beta 🟢
 
-- Gewerbebeginn und erforderliche Gewerbeanmeldung vor dauerhaftem geschäftlichem Betrieb klären.
-- Markenähnlichkeitsprüfung vor Markenanmeldung, größerem Werbebudget oder schwer umkehrbaren Investitionen abschließen.
-- Partnerkonten, Steuern, Kennzeichnung und Tracking-Datenschutz vor Aktivierung von Affiliate-Links erneut prüfen.
+- Der gewerbliche Start bleibt eine der drei ausdrücklich gesperrten Ausnahmen; Gewerbebeginn und eine erforderliche Gewerbeanmeldung sind vorher zu klären.
+- Eine Markenanmeldung, ein größeres Werbebudget oder eine schwer umkehrbare Markeninvestition wären ein neuer, heute nicht freigegebener Umfang und lösen dann eine neue Ähnlichkeitsprüfung aus. Das ist kein vierter Mangel der aktuellen kostenlosen Beta.
+- Die spätere Aktivierung der beiden gesperrten Affiliate-Kanäle löst erneut Partnerkonto-, Steuer-, Kennzeichnungs- und Tracking-Datenschutzprüfungen aus.
 - Plattformgebühren und Versand werden nicht automatisch vorbelegt; Nutzer müssen die konkrete Kategorie und den tatsächlichen Tarif auf der verlinkten Originalseite kontrollieren.
 
 ## Adresse
 
-Die gewünschte Kurzadresse `dinavo.vercel.app` ist nicht verfügbar. Automatisch erzeugte DINAVO-Ersatzprojekte waren zugriffsgeschützt und wurden deshalb nicht als öffentliche Adresse beworben. Bis eine freie öffentliche DINAVO-Adresse oder eigene Domain eingerichtet werden kann, bleibt `https://dealfaz.vercel.app/` die stabile, getestete Hauptadresse. So entstehen keine toten Links.
+Bis eine freie öffentliche DINAVO-Adresse oder eigene Domain eingerichtet wird, bleibt `https://dealfaz.dealfaz-social.workers.dev/` die stabile Hauptadresse. Die technisch erreichbare Vercel-Adresse wird nicht als kommerzieller Produktionshost beworben.
 
 ## Freigabe
 
 - Lokaler technischer Release-Kandidat: 🟢
-- Öffentlicher DINAVO-Release: 🟢 GitHub und Vercel erfolgreich
+- Öffentlicher DINAVO-Release: 🟢 GitHub und Cloudflare
 - Alte Firebase-Seite: ⏸ nicht beworbener Legacy-Host; Stilllegung vorbereitet
-- Monetarisierung: 🔒 deaktiviert
-- Aktuelle kostenlose Beta-Gates: 🟢 ohne gelbe Punkte
+- Amazon-Affiliate: 🔒 ausdrücklich ausgenommen
+- eBay EPN: 🔒 ausdrücklich ausgenommen
+- Gewerblicher Start: 🔒 ausdrücklich ausgenommen
+- Aktuelle kostenlose Beta-Gates außerhalb dieser drei Ausnahmen: 🟢
 
 Diese interne Prüfung ist keine anwaltliche oder steuerliche Einzelfallberatung.

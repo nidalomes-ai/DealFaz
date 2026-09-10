@@ -1,6 +1,6 @@
 # DINAVO – Grüne Ersatzrouten
 
-Stand: 01.09.2026
+Stand: 10.09.2026
 
 Ziel: Jeder Punkt, der vor der Gewerbeanmeldung technisch, organisatorisch oder durch eine sichere kostenlose Ersatzroute gelöst werden kann, steht grün. Externe Freigaben werden dadurch **nicht vorgetäuscht**. Schritte, die erst beim tatsächlichen kommerziellen Start sinnvoll ausgeführt werden, stehen als `⏸ nach Gewerbe` und zählen nicht als aktueller gelber Punkt.
 
@@ -42,6 +42,9 @@ Ein physischer Hardware-Smoke-Test bleibt optionale Zusatzkontrolle.
 - bestehende Posts dürfen korrigiert werden, ohne neue Veröffentlichungsslots anzulegen
 - alte zukünftige Social-Ziele soweit möglich auf Cloudflare umgestellt
 - nicht editierbarer Legacy-Link wird über `dealfaz-launch` Version 38 auf Cloudflare weitergeleitet
+- jeder neue DINAVO-Werbebeitrag nennt „Werbung für die eigene DINAVO-Beta“
+- KI-Personen werden im Medium und in der Caption als KI-generiert und fiktiv gekennzeichnet
+- ungeprüfte oder nicht ausdrücklich freigegebene Inhalte bleiben Entwurf
 
 ## 5. Suchmaschinen / Indexierung
 
@@ -69,7 +72,7 @@ Tatsächliche Suchmaschinenaufnahme wird beobachtet und nicht künstlich erzwung
 
 ## 7. Amazon PartnerNet
 
-**Status: 🟢 GRÜN vorbereitet**
+**Status: 🔒 AUSGENOMMEN / NICHT AKTIV**
 
 - Teilnahmebestätigung vorhanden
 - neutrale Amazon-Originalquelle ohne Affiliate-Tag aktiv
@@ -81,7 +84,7 @@ Tatsächliche Suchmaschinenaufnahme wird beobachtet und nicht künstlich erzwung
 
 ## 8. eBay Partner Network
 
-**Status: 🟢 GRÜN vorbereitet**
+**Status: 🔒 AUSGENOMMEN / NICHT AKTIV**
 
 - Bewerbungseingang dokumentiert
 - neutrale eBay-Originalquelle ohne EPN-Tracking aktiv
@@ -114,7 +117,7 @@ Tatsächliche Suchmaschinenaufnahme wird beobachtet und nicht künstlich erzwung
 
 ## 11. Monetarisierung
 
-**Status: 🟢 GRÜN als Sicherheitszustand / 🔒 deaktiviert**
+**Status: 🟢 GRÜN als sicher deaktivierter Zustand**
 
 - `MONETIZATION_DISABLED` ist aktiv
 - keine Affiliate-Tags
@@ -125,7 +128,7 @@ Der sichere Zustand vor Gewerbe ist damit vollständig hergestellt.
 
 ## 12. Gewerbe
 
-**Status: 🟢 FÜR AKTUELLE KOSTENLOSE BETA / 🔒 VOR KOMMERZIELLEM START**
+**Status: 🔒 AUSGENOMMEN / VOR KOMMERZIELLEM START**
 
 - zuständige Stelle identifiziert
 - Verfahren und Tätigkeitsbeschreibung vorbereitet
@@ -139,6 +142,6 @@ Der sichere Zustand vor Gewerbe ist damit vollständig hergestellt.
 
 **Geschäftsstart:** 🔒 bis zur Gewerbeanmeldung beziehungsweise Klärung des tatsächlichen Betriebsbeginns gesperrt.
 
-**Technische Veröffentlichungsgates:** aktualisierten Cloudflare-Stand veröffentlichen und die alte Firebase-/PostHog-Seite mit der vorbereiteten permanenten Weiterleitung stilllegen.
+**Alle aktuellen Punkte außerhalb Amazon-Affiliate, eBay EPN und Gewerbe:** 🟢.
 
-Spätere Affiliate-, Steuer-, Marken- und Domain-Ausführungsschritte stehen `⏸`; sie werden nicht als bereits erteilte externe Freigaben dargestellt und sind keine Freigabe der jeweiligen externen Stelle.
+Spätere Affiliate-, Steuer-, Marken- und Domain-Ausführungsschritte werden nicht als bereits erteilte externe Freigaben dargestellt. Die alte Firebase-/PostHog-Seite bleibt eine getrennte Retirement-Aufräummaßnahme und wird nicht beworben.

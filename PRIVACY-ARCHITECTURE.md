@@ -1,14 +1,14 @@
 # DINAVO – Datenschutz-Architektur
 
-Stand: 08.09.2026
+Stand: 10.09.2026
 
 Dieses Dokument beschreibt die technische Datenschutz-Idee hinter DINAVO. Es ersetzt keine gesetzlich erforderliche Datenschutzerklärung.
 
 ## Öffentliche Beta
 
-Die aktuelle öffentliche Beta läuft über Vercel:
+Die aktuelle öffentliche Beta läuft über Cloudflare:
 
-`https://dealfaz.vercel.app/`
+`https://dealfaz.dealfaz-social.workers.dev/`
 
 Für die Kernnutzung ist kein DINAVO-Konto erforderlich.
 
@@ -20,15 +20,15 @@ Lokale Daten können verloren gehen, wenn Browser- oder Website-Daten gelöscht 
 
 ## Keine Marketing-Cookies durch DINAVO-Kernfunktionen
 
-Die aktuelle Beta setzt selbst keine Werbe- oder Cross-Site-Marketing-Cookies für den Kernablauf. Vercel und – bei Aufruf einer dort bereitgestellten Alt-/Alternativadresse – Cloudflare können technisch notwendige Verbindungs-, Sicherheits- und Protokolldaten zur Bereitstellung und Absicherung der Website verarbeiten.
+Die aktuelle Beta setzt selbst keine Werbe- oder Cross-Site-Marketing-Cookies für den Kernablauf. Cloudflare und – bei Aufruf einer dort bereitgestellten Alt-/Alternativadresse – Vercel können technisch notwendige Verbindungs-, Sicherheits- und Protokolldaten zur Bereitstellung und Absicherung der Website verarbeiten.
 
 ## Optionale Reichweitenmessung
 
 Cloudflare Web Analytics ist mit einer Einwilligungslogik vorbereitet. Ohne gültigen Token bleibt die Messung automatisch vollständig aus. Nach einer späteren Konfiguration wird der externe Beacon erst nach ausdrücklicher Einwilligung geladen. Eine Ablehnung lässt alle Rechnerfunktionen verfügbar.
 
-Die Cloudflare-Site muss dafür im manuellen JS-Snippet-Modus bleiben. Die automatische Beacon-Injektion ist nicht Teil der freigegebenen Architektur; `Cache-Control: no-transform` schützt die ausgelieferte Seite zusätzlich vor einer solchen HTML-Veränderung.
+Die Cloudflare-Site bleibt im manuellen JS-Snippet-Modus. Die automatische Beacon-Injektion ist nicht Teil der freigegebenen Architektur; `Cache-Control: no-transform` schützt die ausgelieferte Seite zusätzlich vor einer solchen HTML-Veränderung.
 
-Produktnamen, freie Deal-Texte, Einkaufs-/Verkaufspreise und Watchlistinhalte werden nicht als eigene Analytics-Ereignisse übertragen. Die Entscheidung wird lokal gespeichert und kann über die Datenschutz-Einstellungen geändert werden. Die öffentliche Datenschutzerklärung beschreibt die vorbereitete Integration einschließlich Rechtsgrundlage und Widerruf.
+Produktnamen, freie Deal-Texte, Einkaufs-/Verkaufspreise und Watchlistinhalte werden nicht als eigene Analytics-Ereignisse übertragen. Im aktuellen Release ist die Messung vollständig deaktiviert; die öffentliche Datenschutzerklärung beschreibt deshalb keine aktive Reichweitenmessung.
 
 ## Datenminimierung
 
@@ -50,7 +50,7 @@ JSON-Backups und CSV-Exporte werden lokal erzeugt. Importierte JSON-Dateien werd
 
 ## Alte Frontends
 
-Frühere Cloudflare-, GitHub-Pages- oder Supabase-Frontendlinks sind keine aktuelle öffentliche Hauptquelle mehr. Datenschutz- und Launch-Dokumente sollen ausschließlich den tatsächlichen Live-Host als aktuelle Beta ausweisen.
+Frühere Vercel-, Firebase-, GitHub-Pages- oder Supabase-Frontendlinks sind keine aktuelle öffentliche Hauptquelle mehr. Datenschutz- und Launch-Dokumente sollen ausschließlich den tatsächlichen Live-Host als aktuelle Beta ausweisen.
 
 ## Uploads und Fotos
 
@@ -60,4 +60,4 @@ Eine spätere Foto- oder Screenshot-Funktion darf nur Inhalte verarbeiten, die d
 
 Die tatsächliche Live-Beta enthält eigene Anbieter-, Datenschutz-, Haftungs- und Nutzungshinweise. Dieses Architektur-Dokument erklärt nur die technische Richtung.
 
-[Öffentliche DINAVO-Beta öffnen](https://dealfaz.vercel.app/?utm_source=github&utm_medium=referral&utm_campaign=privacy_architecture&utm_content=public_beta)
+[Öffentliche DINAVO-Beta öffnen](https://dealfaz.dealfaz-social.workers.dev/)

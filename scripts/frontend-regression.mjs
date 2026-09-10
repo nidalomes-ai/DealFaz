@@ -79,14 +79,14 @@ for (const [index, page] of knowledgePages.entries()) {
   assert.match(page, /<meta name="robots" content="index,follow">/, `${route} must stay publicly indexable`);
   assert.match(page, /<h1>[^<]+(?:<br>)?[^<]*<\/h1>/, `${route} must expose a visible primary heading`);
   assert.match(html, new RegExp(`href="${route.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`), `${route} must remain visible in homepage navigation`);
-  assert.match(sitemap, new RegExp(`<loc>https://dealfaz\\.vercel\\.app${route.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</loc>`), `${route} must remain in the public sitemap`);
+  assert.match(sitemap, new RegExp(`<loc>https://dealfaz\\.dealfaz-social\\.workers\\.dev${route.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</loc>`), `${route} must remain in the public sitemap`);
 }
 const publicMarkup = [html, ...knowledgePages, ...legalPages].join('\n');
 assert.doesNotMatch(publicMarkup, /<(?:s|del)(?:\s|>)/i, 'Public content must not contain struck-through posts or text');
 assert.doesNotMatch(css, /text-decoration(?:-line)?\s*:\s*line-through/i, 'Public styling must not strike through posts or text');
 for (const [index, page] of legalPages.entries()) {
   const route = `/${legalPagePaths[index].replace(/index\.html$/, '')}`;
-  assert.match(page, new RegExp(`<link rel="canonical" href="https://dealfaz\\.vercel\\.app${route}"`), `${route} must have its production canonical`);
+  assert.match(page, new RegExp(`<link rel="canonical" href="https://dealfaz\\.dealfaz-social\\.workers\\.dev${route}"`), `${route} must have its production canonical`);
   assert.match(page, /<h1>[^<]+<\/h1>/, `${route} must have one clear page heading`);
   assert.match(page, /href="\/impressum\/"/, `${route} must link to the imprint`);
   assert.match(page, /href="\/datenschutz\/"/, `${route} must link to privacy information`);
@@ -103,7 +103,7 @@ assert.match(privacy, /JSON-Backups und CSV-Dateien/, 'Privacy information must 
 assert.match(privacy, /Google \(Gmail\)/, 'Privacy information must identify the email provider');
 assert.match(privacy, /mail@datenschutzzentrum\.de/, 'Privacy information must identify the competent supervisory authority');
 assert.match(privacy, /§ 25 Abs\. 2 Nr\. 2 TDDDG/, 'The local privacy choice must be explained as a requested setting');
-assert.match(privacy, /Stand: 9\. September 2026/, 'Privacy information must expose its revision date');
+assert.match(privacy, /Stand: 10\. September 2026/, 'Privacy information must expose its revision date');
 assert.match(privacy, /revidierten Schweizer Datenschutzgesetzes \(DSG\)/, 'Privacy information must cover the Swiss market');
 assert.match(privacy, /Abständen von fünf weiteren gespeicherten Deals/, 'Privacy information must explain recurring local backup reminders');
 if (analyticsToken) {
@@ -160,7 +160,7 @@ const parsedFirebaseConfig = JSON.parse(firebaseConfig);
 assert.equal(parsedFirebaseConfig.hosting.public, 'firebase-retirement', 'Firebase must publish only the retirement surface');
 assert.deepEqual(parsedFirebaseConfig.hosting.redirects, [{
   source: '**',
-  destination: 'https://dealfaz.vercel.app/',
+  destination: 'https://dealfaz.dealfaz-social.workers.dev/',
   type: 301
 }], 'Firebase must permanently redirect every legacy route to DINAVO');
 assert.match(css, /@media\(max-width:680px\)\{[^}]*main\{/, 'A narrow-screen layout must exist');
@@ -404,7 +404,7 @@ assert.equal(elements.get('resultCard').dataset.state, 'warn');
 assert.equal(elements.get('verdict').textContent, 'Knapp');
 
 assert.doesNotMatch(legalPages[0], /__DINAVO_PROJECT_EMAIL__|\[Projekt-Adresse eintragen\]/i, 'The imprint must contain the confirmed project email, never a placeholder');
-assert.match(legalPages[0], /dealfaz\.social@gmail\.com/i, 'The imprint must contain the confirmed DealFaz project email');
+assert.match(legalPages[0], /dinavo\.social@gmail\.com/i, 'The imprint must contain the confirmed DINAVO project email');
 assert.match(legalPages[0], /href="mailto:[^"\s]+@[^"\s]+\.[^"\s]+"/, 'The imprint must contain a clickable project email');
 
 console.log('frontend regression: ok');

@@ -28,6 +28,7 @@ jobs:
           node scripts/analytics-release-gate.mjs
           node scripts/frontend-regression.mjs
           node scripts/organic-campaign-regression.mjs
+          node scripts/legal-green-regression.mjs
 
       - name: Required frontend and governance files
         run: |
@@ -44,6 +45,9 @@ jobs:
           test -f icon-512.png
           test -f social-card.png
           test -f ORGANIC-BETA-CAMPAIGN.md
+          test -f AI-ADVERTISING-GUARD.md
+          test -f SOCIAL-LIMIT-GUARD.md
+          test -f scripts/legal-green-regression.mjs
           test -f social/dinavo-feed.svg
           test -f social/dinavo-feed.png
           test -f social/dinavo-story.svg
@@ -73,7 +77,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          origin='https://dealfaz.vercel.app'
+          origin='https://dealfaz.dealfaz-social.workers.dev'
           grep -Fq "<link rel=\"canonical\" href=\"${origin}/\">" index.html
           grep -Fq "<meta property=\"og:url\" content=\"${origin}/\">" index.html
           grep -Fq "<meta property=\"og:image\" content=\"${origin}/social-card.png\">" index.html
@@ -88,7 +92,7 @@ jobs:
           for page in reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html impressum/index.html datenschutz/index.html nutzungsbedingungen/index.html; do
             grep -Fq "${origin}/" "$page"
           done
-          ! grep -Fn 'dealfaz.dealfaz-social.workers.dev' index.html robots.txt sitemap.xml reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html impressum/index.html datenschutz/index.html nutzungsbedingungen/index.html
+          ! grep -Fn 'dealfaz.vercel.app' index.html robots.txt sitemap.xml reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html impressum/index.html datenschutz/index.html nutzungsbedingungen/index.html
           ! grep -Fn 'Beim Aufruf verarbeitet Vercel' index.html
           ! grep -Fn 'nidalomes-ai.github.io/DealFaz' index.html robots.txt sitemap.xml README.md DATA-SOURCES.md PRIVACY-ARCHITECTURE.md manifest.webmanifest
           ! grep -Fn 'supabase.co/functions/v1' index.html reselling-rechner/index.html maximaler-einkaufspreis/index.html roi-reselling/index.html sell-through/index.html impressum/index.html datenschutz/index.html nutzungsbedingungen/index.html
@@ -138,14 +142,14 @@ jobs:
           ! grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' index.html
           grep -Fq 'Die Links enthalten keine Affiliate-Parameter' index.html
           grep -Fq 'keine Gewinn-, Preis-, Nachfrage- oder Verkaufsgarantie' DATA-SOURCES.md
-          grep -Fq 'Die aktuelle DINAVO-Adresse wird über Vercel bereitgestellt' datenschutz/index.html
+          grep -Fq 'Die aktuelle DINAVO-Adresse wird über Cloudflare bereitgestellt' datenschutz/index.html
           grep -Fq 'Fragment hinter dem Zeichen „#“' datenschutz/index.html
           grep -Fq 'Google (Gmail)' datenschutz/index.html
           ! grep -Fq 'iosghttnctdaociwltos.supabase.co' firebase.json netlify.toml render.yaml
           grep -Fq 'Eine im Einzelfall bestehende gesetzliche Pflicht bleibt unberührt' impressum/index.html
           grep -Eq 'href="mailto:[^"[:space:]]+@[^"[:space:]]+\.[^"[:space:]]+"' impressum/index.html
           ! grep -Eq '__DINAVO_PROJECT_EMAIL__|\[Projekt-Adresse eintragen\]' impressum/index.html
-          grep -Fq 'dealfaz.social@gmail.com' impressum/index.html
+          grep -Fq 'dinavo.social@gmail.com' impressum/index.html
 
       - name: SEO legal navigation checks
         shell: bash
@@ -243,11 +247,11 @@ jobs:
           grep -Fq 'X-Permitted-Cross-Domain-Policies' _headers
           grep -Fq 'Cache-Control: public, max-age=0, must-revalidate, no-transform' _headers
 
-      - name: Vercel production workflows are aligned
+      - name: Cloudflare production workflows are aligned
         shell: bash
         run: |
           set -euo pipefail
-          grep -Fq 'dealfaz.vercel.app' .github/workflows/live-health.yml
-          grep -Fq 'dealfaz.vercel.app' .github/workflows/indexnow-vercel.yml
-          ! grep -Fq 'dealfaz.dealfaz-social.workers.dev' .github/workflows/live-health.yml
-          ! grep -Fq 'dealfaz.dealfaz-social.workers.dev' .github/workflows/indexnow-vercel.yml
+          grep -Fq 'dealfaz.dealfaz-social.workers.dev' .github/workflows/live-health.yml
+          grep -Fq 'dealfaz.dealfaz-social.workers.dev' .github/workflows/indexnow-vercel.yml
+          ! grep -Fq 'dealfaz.vercel.app' .github/workflows/live-health.yml
+          ! grep -Fq 'dealfaz.vercel.app' .github/workflows/indexnow-vercel.yml

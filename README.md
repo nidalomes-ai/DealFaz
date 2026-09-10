@@ -4,9 +4,9 @@
 
 ## Öffentliche Hauptseite
 
-**https://dealfaz.vercel.app/**
+**https://dealfaz.dealfaz-social.workers.dev/**
 
-Die öffentliche Version läuft über HTTPS und benötigt kein Nutzerkonto. Die Adresse enthält während der technischen Übergangsphase noch den früheren Namen `dealfaz`; die sichtbare Marke und alle neuen Inhalte heißen **DINAVO**. Alte Links bleiben dadurch funktionsfähig, bis eine DINAVO-Domain erfolgreich registriert und gemeinsam umgestellt wurde.
+Die öffentliche Version läuft über Cloudflare und HTTPS und benötigt kein Nutzerkonto. Die Adresse enthält während der technischen Übergangsphase noch den früheren Namen `dealfaz`; die sichtbare Marke und alle neuen Inhalte heißen **DINAVO**. Alte Links bleiben dadurch funktionsfähig, bis eine DINAVO-Domain erfolgreich registriert und gemeinsam umgestellt wurde.
 
 ## Umbenennung
 
@@ -20,7 +20,7 @@ Die öffentliche Version läuft über HTTPS und benötigt kein Nutzerkonto. Die 
 - 60-Sekunden-Check für einen konkreten Deal
 - Euro und Schweizer Franken als lokale Rechenwährungen
 - DealScore 0–100
-- rechnerisches Signal `KAUFEN`, `VERHANDELN`, `LIEGEN LASSEN` oder `DATEN PRÜFEN`
+- rechnerische Ergebnisanzeige auf Basis der eingegebenen Zahlen; schwache Datengrundlagen werden sichtbar begrenzt
 - Gewinn, ROI, Marge und ROI pro 30 Tage
 - maximaler Einkaufspreis anhand des Ziel-ROI
 - Worst Case / realistisch / Best Case
@@ -43,22 +43,23 @@ Die öffentliche Version läuft über HTTPS und benötigt kein Nutzerkonto. Die 
 
 ## Wissensseiten
 
-- [Reselling-Rechner: Gewinn, ROI & Marge](https://dealfaz.vercel.app/reselling-rechner/)
-- [Maximalen Einkaufspreis berechnen](https://dealfaz.vercel.app/maximaler-einkaufspreis/)
-- [ROI beim Reselling verstehen](https://dealfaz.vercel.app/roi-reselling/)
-- [Sell-through verstehen](https://dealfaz.vercel.app/sell-through/)
+- [Reselling-Rechner: Gewinn, ROI & Marge](https://dealfaz.dealfaz-social.workers.dev/reselling-rechner/)
+- [Maximalen Einkaufspreis berechnen](https://dealfaz.dealfaz-social.workers.dev/maximaler-einkaufspreis/)
+- [ROI beim Reselling verstehen](https://dealfaz.dealfaz-social.workers.dev/roi-reselling/)
+- [Sell-through verstehen](https://dealfaz.dealfaz-social.workers.dev/sell-through/)
 
 ## Rechtliche Seiten
 
-- [Impressum](https://dealfaz.vercel.app/impressum/)
-- [Datenschutz](https://dealfaz.vercel.app/datenschutz/)
-- [Nutzungsbedingungen](https://dealfaz.vercel.app/nutzungsbedingungen/)
+- [Impressum](https://dealfaz.dealfaz-social.workers.dev/impressum/)
+- [Datenschutz](https://dealfaz.dealfaz-social.workers.dev/datenschutz/)
+- [Nutzungsbedingungen](https://dealfaz.dealfaz-social.workers.dev/nutzungsbedingungen/)
 
 ## Transparenz & Methodik
 
 - [`docs/DEALSCORE-METHODIK.md`](docs/DEALSCORE-METHODIK.md) – aktuelle Rechenlogik, Grenzen und Gegenproben
 - [`docs/DATENFLUSS-UND-DATENSCHUTZ.md`](docs/DATENFLUSS-UND-DATENSCHUTZ.md) – lokaler Datenfluss und Datenschutzprinzipien
 - [`LEGAL-GUARDRAILS.md`](LEGAL-GUARDRAILS.md) – feste Release-Grenzen für neue Funktionen
+- [`AI-ADVERTISING-GUARD.md`](AI-ADVERTISING-GUARD.md) – Pflichtregeln für Eigenwerbung, KI-Personen und Medienrechte
 
 ## Rechts- und Datenprinzipien
 

@@ -1,5 +1,7 @@
 DINAVO monetization is intentionally disabled.
 
+The current release scope explicitly excludes Amazon affiliate activation, eBay EPN activation, and the Gewerbe/business launch. Those three gates must remain locked.
+
 Do not activate affiliate tags, paid links, checkout, ads, subscriptions, or other revenue-producing features until ALL release gates are satisfied:
 
 1. Hosting terms permit commercial use.

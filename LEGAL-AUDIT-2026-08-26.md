@@ -1,12 +1,12 @@
 # DINAVO – Rechts- und Launch-Prüfung
 
-Stand: 07.09.2026
+Stand: 10.09.2026
 
 > Interne Arbeits- und Release-Prüfung. Sie dokumentiert den aktuell geprüften Sachverhalt und reduziert erkennbare Risiken, ersetzt aber keine individuelle Rechts- oder Steuerberatung und ist keine Garantie, dass kein Dritter Ansprüche erhebt.
 
 ## Ergebnis in einem Satz
 
-**Technisch ist DINAVO für die kostenlose Beta startbereit. Ein geschäftlicher öffentlicher Launch ist rechtlich jedoch erst dann als freigegeben zu behandeln, wenn der tatsächliche Gewerbebeginn geklärt und eine erforderliche Gewerbeanmeldung spätestens gleichzeitig mit diesem Beginn erfolgt ist.**
+**Die kostenlose, nicht monetarisierte DINAVO-Beta ist im aktuell geprüften Funktionsumfang freigegeben. Ausgenommen und technisch gesperrt bleiben Amazon-Affiliate, eBay EPN und der gewerbliche Start.**
 
 Affiliate-Monetarisierung bleibt bis dahin durch `MONETIZATION_DISABLED` gesperrt.
 
@@ -30,9 +30,9 @@ Live vorhanden:
 
 § 5 DDG verlangt für geschäftsmäßige, in der Regel gegen Entgelt angebotene digitale Dienste leicht erkennbare, unmittelbar erreichbare und ständig verfügbare Anbieterinformationen. Vor eigener Bezahlfunktion, Checkout oder Vertragsabschluss wird zusätzlich geprüft, ob für den dann konkreten Dienst ein weiterer schneller und unmittelbarer Kontaktweg bereitzustellen ist.
 
-## 3. Datenschutz / DSGVO – 🟢 LOKAL FÜR AKTUELLEN DATENFLUSS / 🔴 ÖFFENTLICHES UPDATE AUSSTEHEND
+## 3. Datenschutz / DSGVO – 🟢 AKTUELLER DATENFLUSS
 
-Die lokale Datenschutzerklärung wurde am 07.09.2026 an den aktuellen Datenfluss angepasst und enthält nun unter anderem:
+Die lokale Datenschutzerklärung wurde am 10.09.2026 an den aktuellen Datenfluss angepasst und enthält nun unter anderem:
 
 - Verantwortlicher und Kontakt
 - Zwecke und Rechtsgrundlagen
@@ -50,9 +50,9 @@ Die lokale Datenschutzerklärung wurde am 07.09.2026 an den aktuellen Datenfluss
 - Beschwerderecht beim ULD Schleswig-Holstein
 - Hinweis, dass der DealScore keine Art.-22-Entscheidung mit rechtlicher oder vergleichbar erheblicher Wirkung ist
 
-Die Hauptseite lädt neben der Rechnerlogik einen lokalen Consent-Controller aus `analytics.js`. Ohne gültigen Cloudflare-Token lädt dieser keine externe Ressource. Nach Konfiguration darf er den Cloudflare-Beacon ausschließlich nach ausdrücklicher Einwilligung laden; eine Ablehnung lässt den Rechner vollständig nutzbar.
+Die Hauptseite lädt ausschließlich die lokale Rechner- und Datenspeicherlogik. `analytics.js` wird nicht eingebunden, der Cloudflare-Token ist leer, und es werden keine Webanalyse-, Werbe- oder Affiliate-Trackingdienste geladen. Eine spätere Aktivierung bleibt an Einwilligung, Textupdate und erneute Prüfung gekoppelt.
 
-Die Cloudflare-Produktion zeigt bis zur Veröffentlichung noch eine ältere Datenschutzfassung. Zusätzlich ist die frühere Firebase-/DEALFAZ-Seite öffentlich erreichbar und lädt PostHog. Sie ist nicht Teil des freigegebenen DINAVO-Datenflusses und muss mit der vorbereiteten permanenten Weiterleitung separat stillgelegt werden.
+Die öffentliche Cloudflare-Fassung enthält den aktuellen Datenschutztext. Frühere Hosts sind keine freigegebene Hauptquelle; für Firebase ist ausschließlich eine permanente Retirement-Weiterleitung vorbereitet.
 
 ## 4. Local Storage / § 25 TDDDG – 🟢 AKTUELLER FUNKTIONSSTAND
 
@@ -67,11 +67,11 @@ Diese Inhalte werden im aktuellen Code nicht als Nutzerprofil an eine zentrale D
 
 **Aktuelle Produktentscheidung:** Cloudflare Web Analytics ist consent-first vorbereitet. Ohne Token bleibt die Abfrage verborgen und die Messung aus. Andere Analytics-, Affiliate-, AdTech- oder Tracking-Erweiterungen benötigen vor Aktivierung erneut eine TDDDG-/DSGVO-Prüfung.
 
-## 5. Hosting / Auftragsverarbeitung – 🟢 DOKUMENTIERT, VERTRAGSSTATUS REGELMÄSSIG PRÜFEN
+## 5. Hosting / Auftragsverarbeitung – 🟢 AKTUELLER BETA-BETRIEB
 
 Aktueller Hauptbetrieb: Cloudflare Workers.
 
-Die Datenschutzerklärung nennt Cloudflare als aktuellen Hosting-Empfänger und verlinkt dessen Datenschutzhinweise und Auftragsverarbeitungsbedingungen. Bei Anbieter-, Region-, Logging- oder Trackingwechsel werden Datenschutztext und Vertrags-/DPA-Status erneut kontrolliert.
+Die Datenschutzerklärung nennt Cloudflare als aktuellen Hosting-Empfänger und verlinkt dessen Datenschutzhinweise und Auftragsverarbeitungsbedingungen. Vercel wird nur als mögliche Alt-/Alternativadresse beschrieben. Vercel Hobby darf nicht als kommerzieller Produktionshost verwendet werden. Bei Anbieter-, Tarif-, Region-, Logging- oder Trackingwechsel werden Datenschutztext und Vertrags-/DPA-Status erneut kontrolliert.
 
 ## 6. Externe Marktplätze / fremde Inhalte – 🟢 AKTUELLER MODUS
 
@@ -126,6 +126,15 @@ Das BFSG erfasst unter anderem Dienstleistungen im elektronischen Geschäftsverk
 DINAVO schließt derzeit selbst keinen Verbrauchervertrag und hat keinen Checkout. Es wird daher keine pauschale Aussage „vollständig BFSG-zertifiziert“ gemacht. Mobile Bedienbarkeit, sichtbare Fokuszustände, Labels und große Touch-Ziele werden freiwillig weiter gepflegt.
 
 Vor eigener E-Commerce-/Checkout-Funktion oder enger auf einen Vertragsschluss gerichteten Diensten erfolgt eine neue BFSG-Prüfung.
+
+## 10a. Social Media, Eigenwerbung und KI-Inhalte – 🟢 DURCH VERÖFFENTLICHUNGSGATE
+
+- DINAVO-Eigenwerbung wird unmittelbar als Werbung für die eigene Beta bezeichnet.
+- Beiträge nutzen nur die saubere Hauptadresse ohne eigene Trackingparameter.
+- Plattformoptionen für kommerzielle Inhalte und KI-Inhalte werden verwendet, soweit sie verfügbar und einschlägig sind.
+- Authentisch wirkende KI-Personen müssen im Medium und in der Caption als KI-generiert und fiktiv erkennbar sein.
+- Reale Personen werden nicht ohne Einwilligung imitiert; erfundene Kundenstimmen, Verkäufe oder Gewinne sind verboten.
+- Fehlt eine Kennzeichnung, Rechtekette oder Freigabe, bleibt der Inhalt Entwurf.
 
 ## 11. Marken-/Namensrecht – 🟢 FÜR VORSICHTIGE KOSTENLOSE BETA / ⏸ NEUGATE VOR MARKENINVESTITION
 
@@ -185,6 +194,8 @@ CI soll weiterhin verhindern:
 - 🟢 BFSG: aktuelle Produktarchitektur ohne eigenen Verbrauchervertrag; Neugate bei E-Commerce
 - 🟢 Steuer-/Partner-Vorbereitung
 - 🟢 **Aktuelle kostenlose Beta – keine Affiliate-Links, Nutzerzahlungen oder eigenen Verkäufe**
+- 🟢 Eigenwerbung und KI-Medien durch Pflichtkennzeichnung und Draft-Sperre kontrolliert
+- 🟢 Cloudflare als Hauptadresse; Vercel Hobby nur nichtkommerzieller Fallback
 - 🔒 **Geschäftsstart – bis Klärung von Gewerbebeginn/Gewerbeanmeldung gesperrt**
 - 🟢 **Markenname für kostenlose Beta – Vorrecherche und Risikosteuerung dokumentiert; keine amtliche Kollisionsfreigabe behauptet**
 - ⏸ professionelle Ähnlichkeitsprüfung – vor Markenanmeldung oder größerer irreversibler Markeninvestition
@@ -196,6 +207,6 @@ CI soll weiterhin verhindern:
 
 **Aktuelle kostenlose, nicht monetarisierte Beta: GRÜN.**
 
-**Vollständiges rechtliches Geschäfts-GO: GESPERRT.** Zuerst Gewerbebeginn/Gewerbeanmeldung klären. Die professionelle Markenprüfung bleibt ein verpflichtendes Neu-Gate vor größerer kommerzieller Markeninvestition.
+**Alle aktuellen Beta-Punkte außerhalb der drei ausdrücklich ausgenommenen Gates: GRÜN.**
 
-**Monetarisierung: NEIN, bis die vorgesehenen Gates erfüllt sind.**
+**Amazon-Affiliate, eBay EPN und gewerblicher Start: GESPERRT.** Die professionelle Markenprüfung bleibt zusätzlich ein verpflichtendes Neu-Gate, sobald eine Markenanmeldung oder größere irreversible Markeninvestition konkret wird.

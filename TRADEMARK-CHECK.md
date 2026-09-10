@@ -1,6 +1,6 @@
 # DINAVO – dokumentierte Marken-Vorprüfung
 
-Stand: 01.09.2026
+Dokumentenstand: 10.09.2026 · dokumentierter Recherchestichtag: 01.09.2026
 
 ## Kurzurteil
 
@@ -41,7 +41,7 @@ Die endgültigen Begriffe müssen vor Anmeldung in der amtlichen Klassifikations
 |---|---|---|
 | Technische Entwicklung und interne Tests | Grün | DINAVO ohne `®` als Arbeitsname |
 | Kostenlose öffentliche Beta | Grün mit dokumentiertem Restrisiko | keine Exklusivitätsbehauptung |
-| Markenanmeldung oder größeres Werbebudget | Gesperrt | vorher professionelle Identitäts- und Ähnlichkeitsrecherche |
+| Markenanmeldung oder größeres Werbebudget | Zukünftiges Neugate, nicht aktueller Beta-Mangel | vorher professionelle Identitäts- und Ähnlichkeitsrecherche |
 | EU-/weltweite Exklusivität behaupten | Rot | dafür liegt keine belastbare Grundlage vor |
 
 ## Schutzschritte
@@ -54,4 +54,4 @@ Die endgültigen Begriffe müssen vor Anmeldung in der amtlichen Klassifikations
 
 ## Schlussfolgerung
 
-Für die kostenlose Beta ist DINAVO ein vertretbarer Arbeitsname, aber keine rechtlich garantierte oder weltweit freie Marke. Der technische Launch und eine spätere Markenanmeldung sind getrennte Freigaben.
+Für die kostenlose Beta ist DINAVO ein vertretbarer, kontrollierter Arbeitsname, aber keine rechtlich garantierte oder weltweit freie Marke. Dieser aktuelle Umfang steht grün. Der technische Beta-Launch und eine spätere Markenanmeldung sind getrennte Freigaben.

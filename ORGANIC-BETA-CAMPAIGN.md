@@ -1,6 +1,6 @@
 # DINAVO – kostenlose organische Beta-Kampagne
 
-Stand: 09.09.2026
+Stand: 10.09.2026
 
 Status: **aktiv – erster DINAVO-Beitrag auf Facebook und LinkedIn veröffentlicht; weitere Beiträge geplant**
 
@@ -9,7 +9,7 @@ Veröffentlichte DINAVO-Beiträge:
 - Facebook: https://facebook.com/122102831157445036/posts/122107501845445036
 - LinkedIn: https://linkedin.com/feed/update/urn:li:share:7500684328297717760
 
-Die aktive Planung verwendet ausschließlich DINAVO, die saubere Vercel-Hauptadresse ohne eigene Trackingparameter und den kostenlosen Metricool-Rahmen. Frühere DealFaz-Entwürfe bleiben inaktiv und werden nicht veröffentlicht.
+Die freigegebene Planung verwendet ausschließlich DINAVO, die saubere Cloudflare-Hauptadresse ohne eigene Trackingparameter und den kostenlosen Metricool-Rahmen. Frühere DealFaz-Entwürfe bleiben inaktiv und werden nicht veröffentlicht.
 
 Ziel der ersten sieben Tage: 20 echte Rechner-Tests und mindestens 5 verständliche Rückmeldungen. Es gibt kein Umsatz-, Reichweiten- oder Besucherzahlversprechen.
 
@@ -17,6 +17,7 @@ Ziel der ersten sieben Tage: 20 echte Rechner-Tests und mindestens 5 verständli
 
 - ausschließlich organische, unbezahlte Beiträge;
 - DINAVO klar als eigene kostenlose Beta bezeichnen;
+- DINAVO-Eigenwerbung unmittelbar mit „Werbung für die eigene DINAVO-Beta.“ kennzeichnen;
 - keine Affiliate- oder Partnerlinks, keine Provisionen und kein Checkout;
 - keine Gewinn-, Verkaufs-, Preis- oder Nachfragegarantie;
 - keine Aussage, DINAVO sei eine eingetragene oder weltweit freie Marke;
@@ -26,7 +27,7 @@ Ziel der ersten sieben Tage: 20 echte Rechner-Tests und mindestens 5 verständli
 
 Öffentliche Hauptadresse:
 
-> https://dealfaz.vercel.app/
+> https://dealfaz.dealfaz-social.workers.dev/
 
 ## Profile vorbereiten
 
@@ -36,13 +37,14 @@ Ziel der ersten sieben Tage: 20 echte Rechner-Tests und mindestens 5 verständli
 
 **Kurze Bio**
 
-> Reselling-Deals kostenlos prüfen  
-> Gewinn · ROI · Gebühren  
+> Reselling-Deals kostenlos prüfen
+> Gewinn · ROI · Gebühren
 > Beta · ohne Anmeldung
+> Impressum: dealfaz.dealfaz-social.workers.dev/impressum/
 
 **Link im Profil**
 
-> https://dealfaz.vercel.app/
+> https://dealfaz.dealfaz-social.workers.dev/
 
 Bestehende Handles wie `@dealfaz` dürfen vorerst als technische Legacy-Adresse bestehen bleiben. Ein öffentlicher Handle-Wechsel wird erst nach Verfügbarkeitsprüfung und ausdrücklicher Freigabe durchgeführt.
 
@@ -52,7 +54,7 @@ Bestehende Handles wie `@dealfaz` dürfen vorerst als technische Legacy-Adresse 
 2. Eine nachvollziehbare Beispielrechnung auf dem Bildschirm.
 3. Der Hinweis, dass alle Werte Annahmen sind.
 4. Genau eine CTA: `Kostenlos prüfen – Link im Profil.`
-5. Abschluss: `Eigene kostenlose Beta. Keine Gewinn- oder Verkaufsgarantie.`
+5. Abschluss: `Werbung für die eigene DINAVO-Beta. Keine Gewinn- oder Verkaufsgarantie.`
 
 ## Sieben fertige Beiträge
 
@@ -66,7 +68,7 @@ Bestehende Handles wie `@dealfaz` dürfen vorerst als technische Legacy-Adresse 
 
 **Caption:**
 
-> Einkauf und Verkauf allein reichen nicht. DINAVO zeigt Gewinn, ROI und Kosten in einer Rechnung. Eigene kostenlose Beta. Keine Gewinn- oder Verkaufsgarantie. #reselling #kleinanzeigen #flipping #dinavo
+> Werbung für die eigene DINAVO-Beta. Einkauf und Verkauf allein reichen nicht. DINAVO zeigt Gewinn, ROI und Kosten in einer Rechnung. Keine Gewinn- oder Verkaufsgarantie. #reselling #kleinanzeigen #flipping #dinavo
 
 ### Tag 2 – Plattformkosten ehrlich eintragen
 
@@ -78,7 +80,7 @@ Bestehende Handles wie `@dealfaz` dürfen vorerst als technische Legacy-Adresse 
 
 **Caption:**
 
-> Gebühren und Versand hängen von Land, Kategorie und Verkäuferstatus ab. Deshalb bleiben die Felder leer, bis du sie prüfst. Kostenlos testen – Link im Profil. #resellingtipps #ebay #vinted #dinavo
+> Werbung für die eigene DINAVO-Beta. Gebühren und Versand hängen von Land, Kategorie und Verkäuferstatus ab. Deshalb bleiben die Felder leer, bis du sie prüfst. Kostenlos testen – Link im Profil. Keine Gewinn- oder Verkaufsgarantie. #resellingtipps #ebay #vinted #dinavo
 
 ### Tag 3 – Weitere Kosten
 
@@ -90,7 +92,7 @@ Bestehende Handles wie `@dealfaz` dürfen vorerst als technische Legacy-Adresse 
 
 **Caption:**
 
-> Kleine Kosten sind auch Kosten. Kostenloser Beta-Rechner ohne Anmeldung. Keine Gewinn- oder Verkaufsgarantie. #resellingdeutschland #kosten #dinavo
+> Werbung für die eigene DINAVO-Beta. Kleine Kosten sind auch Kosten. Kostenloser Rechner ohne Anmeldung. Keine Gewinn- oder Verkaufsgarantie. #resellingdeutschland #kosten #dinavo
 
 ### Tag 4 – Gewinn ist nicht ROI
 
@@ -102,7 +104,7 @@ Bestehende Handles wie `@dealfaz` dürfen vorerst als technische Legacy-Adresse 
 
 **Caption:**
 
-> Gewinn und ROI beantworten zwei verschiedene Fragen. DINAVO erklärt beide direkt am Ergebnis. Kostenlos prüfen – Link im Profil. #roi #reselling #dinavo
+> Werbung für die eigene DINAVO-Beta. Gewinn und ROI beantworten zwei verschiedene Fragen. DINAVO erklärt beide direkt am Ergebnis. Kostenlos prüfen – Link im Profil. Keine Gewinn- oder Verkaufsgarantie. #roi #reselling #dinavo
 
 ### Tag 5 – Maximaler Einkaufspreis
 
@@ -114,7 +116,7 @@ Bestehende Handles wie `@dealfaz` dürfen vorerst als technische Legacy-Adresse 
 
 **Caption:**
 
-> Vor dem Kauf eine Grenze setzen. Die Rechnung ersetzt keine Marktprüfung. Kostenlos testen – Link im Profil. #dealcheck #resellingtipps #dinavo
+> Werbung für die eigene DINAVO-Beta. Vor dem Kauf eine Grenze setzen. Die Rechnung ersetzt keine Marktprüfung. Kostenlos testen – Link im Profil. Keine Gewinn- oder Verkaufsgarantie. #dealcheck #resellingtipps #dinavo
 
 ### Tag 6 – Daten bleiben im Browser
 
@@ -126,7 +128,7 @@ Bestehende Handles wie `@dealfaz` dürfen vorerst als technische Legacy-Adresse 
 
 **Caption:**
 
-> Kostenlos, ohne Anmeldung und ohne DINAVO-eigenes Werbetracking. Lokale Browserdaten gehen verloren, wenn du sie oder deinen Browser löschst. #privacy #resellingtool #dinavo
+> Werbung für die eigene DINAVO-Beta. Kostenlos, ohne Anmeldung und ohne DINAVO-eigenes Werbetracking. Lokale Browserdaten gehen verloren, wenn du sie oder deinen Browser löschst. Keine Gewinn- oder Verkaufsgarantie. #privacy #resellingtool #dinavo
 
 ### Tag 7 – Ehrliches Feedback
 
@@ -138,7 +140,7 @@ Bestehende Handles wie `@dealfaz` dürfen vorerst als technische Legacy-Adresse 
 
 **Caption:**
 
-> Ich suche echte Rückmeldungen, keine Schönfärberei. Was fehlt dir vor einer Kaufentscheidung? Eigene kostenlose Beta. Link im Profil. #buildinpublic #reselling #dinavo
+> Werbung für die eigene DINAVO-Beta. Ich suche echte Rückmeldungen, keine Schönfärberei. Was fehlt dir vor einer Kaufentscheidung? Link im Profil. Keine Gewinn- oder Verkaufsgarantie. #buildinpublic #reselling #dinavo
 
 ## Story-Abfolge für Tag 1
 
@@ -195,7 +197,11 @@ DINAVO startet gezielt mit **Retro-Games**. In dieser Nische sind Zustand, Zubeh
 - Plattform und Zielkonto stimmen.
 - Video und Caption zeigen DINAVO, nicht frühere Markennamen.
 - Nur die saubere Hauptadresse wird verlinkt.
+- Die Caption enthält gut sichtbar „Werbung für die eigene DINAVO-Beta.“
+- Das Profil führt über die Hauptadresse zum klar bezeichneten Impressum; ein zusätzlich möglicher Rechtslink zeigt direkt auf /impressum/.
 - Keine sensiblen Daten sind im Bildschirmvideo sichtbar.
 - Keine Affiliate-Parameter oder bezahlte Kooperation sind enthalten.
 - Beispielzahlen werden als Rechnung, nicht als echter Verdienst dargestellt.
+- Bei KI-Inhalten sind Plattformkennzeichnung und AI-ADVERTISING-GUARD.md erfüllt; eine authentisch wirkende KI-Person ist im Medium und in der Caption als fiktiv gekennzeichnet.
+- Nur selbst erstellte oder nachweislich lizenzierte Medien werden verwendet.
 - Der endgültige Beitrag wird erst nach ausdrücklicher Veröffentlichungsfreigabe abgesendet.

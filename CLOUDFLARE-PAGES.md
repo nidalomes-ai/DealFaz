@@ -1,6 +1,6 @@
 # DINAVO – Cloudflare Hosting
 
-Stand: 10.09.2026
+Stand: 12.09.2026
 
 Der Dateiname bleibt aus Kompatibilitätsgründen bestehen. Cloudflare Workers ist wieder die öffentliche Hauptinfrastruktur; damit hängt der aktuelle kostenlose Betrieb nicht von den Einschränkungen des Vercel-Hobby-Tarifs ab.
 
@@ -19,6 +19,7 @@ Der Dateiname bleibt aus Kompatibilitätsgründen bestehen. Cloudflare Workers i
 - `index.html`
 - `app.js`
 - `analytics.js`
+- `worker.js` als nicht öffentliches Laufzeitmodul für `/analytics-count`
 - `style.css`
 - `manifest.webmanifest`
 - `icon.svg`
@@ -49,6 +50,8 @@ Live Health prüft auf dem aktiven Cloudflare-Host unter anderem:
 - Monetarisierungs-/Share-/CSV-Sicherheitsregeln
 
 Die statische `_headers`-Datei bleibt zusätzlich als portable Hosting-Konfiguration für kompatible Fallback-Hosts erhalten.
+
+Der Browser sendet den leeren Seitenaufruf-Zählimpuls nur auf dem Produktionshost an `/analytics-count`. Der Cloudflare Worker verarbeitet diese Route vor statischen Assets, entfernt die Merkmale des ursprünglichen Requests und sendet nur ein anonymes Ereignis mit neuer Einmal-Kennung an PostHog EU. `worker.js` bleibt über `.assetsignore` vom öffentlichen Assetabruf ausgeschlossen.
 
 ## Aktueller Cutover ist abgeschlossen
 

@@ -1,6 +1,6 @@
 # DINAVO – Datenschutz-Architektur
 
-Stand: 10.09.2026
+Stand: 12.09.2026
 
 Dieses Dokument beschreibt die technische Datenschutz-Idee hinter DINAVO. Es ersetzt keine gesetzlich erforderliche Datenschutzerklärung.
 
@@ -22,11 +22,11 @@ Lokale Daten können verloren gehen, wenn Browser- oder Website-Daten gelöscht 
 
 Die aktuelle Beta setzt selbst keine Werbe- oder Cross-Site-Marketing-Cookies für den Kernablauf. Cloudflare und – bei Aufruf einer dort bereitgestellten Alt-/Alternativadresse – Vercel können technisch notwendige Verbindungs-, Sicherheits- und Protokolldaten zur Bereitstellung und Absicherung der Website verarbeiten.
 
-## Optionale Reichweitenmessung
+## Einfache Seitenaufrufzählung
 
-Die Besucherzählung sendet erst nach ausdrücklicher Einwilligung einen einzelnen Seitenaufruf direkt an PostHog EU. Ablehnung und Widerruf lassen alle Rechnerfunktionen verfügbar. Es wird kein externes Analytics-Skript geladen.
+Die Seitenaufrufzählung sendet einen leeren Aufruf ausschließlich an die eigene DINAVO-Adresse. Der Server erzeugt eine neue Einmal-Kennung und übermittelt nur den Zählimpuls an PostHog EU. Besucher-IP, Request-Header, Referrer, URL-Parameter und Fragmente werden nicht weitergeleitet. Eine Einwilligungsabfrage ist deshalb nicht Teil der Oberfläche.
 
-Produktnamen, freie Deal-Texte, Einkaufs-/Verkaufspreise und Watchlistinhalte werden nicht übertragen. Pro Aufruf wird eine neue Kennung verwendet, Personenprofile und Sitzungswiedergaben sind deaktiviert; geteilte `#deal=`-Links sind vollständig ausgeschlossen.
+Produktnamen, freie Deal-Texte, Einkaufs-/Verkaufspreise und Watchlistinhalte werden nicht übertragen. Personenprofile, wiedererkennbare Besucher, Klickmessung und Sitzungswiedergaben sind technisch ausgeschlossen.
 
 ## Datenminimierung
 

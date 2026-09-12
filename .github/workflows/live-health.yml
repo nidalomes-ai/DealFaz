@@ -119,10 +119,14 @@ jobs:
           printf '%s' "$js" | grep -Fq '/^[=+\-@\t\r]/.test(text)'
           ! printf '%s' "$analytics" | grep -Fq 'dealfaz-pixel'
           ! printf '%s' "$analytics" | grep -Fq 'supabase.co/functions/v1'
-          printf '%s' "$analytics" | grep -Fq "readConsent() !== 'granted'"
-          printf '%s' "$analytics" | grep -Fq 'https://eu.i.posthog.com/i/v0/e/'
-          printf '%s' "$analytics" | grep -Fq "'\$process_person_profile': false"
-          printf '%s' "$analytics" | grep -Fq 'dealfaz:v1:analytics-consent'
+          printf '%s' "$analytics" | grep -Fq "const COUNT_ENDPOINT = '/analytics-count'"
+          printf '%s' "$analytics" | grep -Fq "credentials: 'omit'"
+          ! printf '%s' "$analytics" | grep -Fiq 'posthog'
+          ! printf '%s' "$analytics" | grep -Eq 'localStorage|sessionStorage|location\.(hash|search|href)'
+          # Nur das Routing prüfen; ein POST würde selbst als Seitenaufruf zählen.
+          count_status=$(curl --retry 2 --retry-delay 2 -sS -o /dev/null -w '%{http_code}' \
+            https://dealfaz.dealfaz-social.workers.dev/analytics-count)
+          test "$count_status" = '405'
 
       - name: IndexNow key is present on production host
         id: indexnow

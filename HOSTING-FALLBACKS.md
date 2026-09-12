@@ -53,7 +53,7 @@ Nur nach erneuter Prüfung der dann geltenden Produktions-/Free-Tier-Bedingungen
 
 ### Supabase Edge Functions auf Free-Domain
 
-Nicht als Site-Hosting-Ersatz verwenden. Supabase bleibt Backend/Analytics/Legacy-Redirect-Infrastruktur. Die öffentliche Legacy-Funktion `dealfaz-launch` Version 38 leitet alte Social-/Weblinks auf die aktuelle Cloudflare-Produktion weiter.
+Nicht als Site-Hosting-Ersatz verwenden. Supabase bleibt nur Legacy-Redirect-Infrastruktur. Die öffentliche Legacy-Funktion `dealfaz-launch` Version 38 leitet alte Social-/Weblinks auf die aktuelle Cloudflare-Produktion weiter.
 
 ### GitHub Pages
 

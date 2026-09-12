@@ -1,6 +1,6 @@
 # DINAVO – Release-Gate
 
-Stand: 10.09.2026
+Stand: 12.09.2026
 
 Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäftsstart** und **spätere Monetarisierung**. `[x]` bedeutet technisch oder anhand des aktuellen Datenflusses geprüft; es ist keine pauschale anwaltliche Rechtsfreigabe.
 
@@ -35,12 +35,12 @@ Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäf
 - [x] Cloudflare-Hosting beschrieben
 - [x] lokale Datenschutzfassung beschreibt nur die tatsächlich verwendeten aktuellen und nutzerinitiierten Datenflüsse
 - [x] lokale Browser-Speicherung transparent erklärt
-- [x] PostHog-EU-Seitenaufrufe technisch nur nach ausdrücklicher Einwilligung aktiviert
-- [x] Datenschutz-Ziffer 5, widerspruchsfreier Text und Consent-Controller als ein optionales gemeinsames Release gekoppelt
-- [x] geteilter `#deal=`-Link bleibt selbst bei bestehender Einwilligung vollständig vom Beacon ausgeschlossen
-- [x] ohne öffentlichen Site-Token weder Analytics-Controller noch Analytics-Ziffer 5 veröffentlichen
-- [x] ohne Token keine Abfrage und keine externe Analytics-Anfrage
-- [x] automatische Cloudflare-Beacon-Injektion durch manuellen Modus plus `no-transform` ausgeschlossen
+- [x] anonyme Seitenaufrufzählung über leeren Same-Origin-Aufruf aktiviert
+- [x] Besuchermerkmale werden serverseitig nicht an PostHog weitergegeben; Personenprofile, IP-Speicherung und Geo-IP-Anreicherung deaktiviert
+- [x] Datenschutztext, Worker und dialogfreie Oberfläche als gemeinsames Release gekoppelt
+- [x] öffentlicher PostHog-Projekttoken erlaubt nur Ereignisannahme und keinen lesenden Zugriff auf Projektdaten
+- [x] Projekttoken bleibt aus browserseitigen Assets entfernt; nur der Cloudflare Worker sendet den anonymen Zählimpuls
+- [x] kein Cloudflare-Beacon im Quelltext; CSP und `no-transform` verhindern externe beziehungsweise nachträgliche Browser-Analytics
 - [x] keine Werbe-/Marketing-Cookies der aktuellen Hauptseite
 - [x] keine Gewinn-, Verkaufs-, Preis- oder Nachfragegarantie
 - [x] Verbraucherstreitbeilegungs-Hinweis vorhanden
@@ -168,7 +168,7 @@ Bei Checkout, kostenpflichtigen Leistungen oder gehosteten Nutzerinhalten erfolg
 
 ## Aktueller Freigabestatus
 
-**Lokaler Release-Kandidat: 🟢 veröffentlichbar mit optionaler, consent-first Reichweitenmessung.**
+**Lokaler Release-Kandidat: 🟢 veröffentlichbar mit anonymer Seitenaufrufzählung ohne Dialog.**
 
 **Öffentliche Version: 🟢 Cloudflare-Hauptadresse und GitHub-Main auf denselben geprüften Stand ausgerichtet.**
 

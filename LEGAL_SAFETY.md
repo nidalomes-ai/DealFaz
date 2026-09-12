@@ -2,7 +2,7 @@
 
 Diese Datei ist eine interne Freigabe-Checkliste für neue DINAVO-Funktionen. Sie ersetzt keine individuelle Rechtsberatung. Eine Funktion soll erst live gehen, wenn die relevanten Punkte geprüft sind.
 
-**Aktueller Stand 07.09.2026:** Die für die kostenlose, nicht monetarisierte Beta zutreffenden Punkte wurden im `RELEASE-CHECKLIST.md` geprüft und sind grün. Offene Kästchen in dieser Datei sind verpflichtende Neuprüfungen bei künftigen Funktionen. Gewerblicher Betrieb und Monetarisierung bleiben bis zur Klärung von Gewerbebeginn/Gewerbeanmeldung gesperrt.
+**Aktueller Stand 12.09.2026:** Die für die kostenlose, nicht monetarisierte Beta zutreffenden Punkte wurden im `RELEASE-CHECKLIST.md` geprüft und sind grün. Offene Kästchen in dieser Datei sind verpflichtende Neuprüfungen bei künftigen Funktionen. Gewerblicher Betrieb und Monetarisierung bleiben bis zur Klärung von Gewerbebeginn/Gewerbeanmeldung gesperrt.
 
 ## 1. Pflichtangaben vor öffentlichem geschäftsmäßigem Betrieb
 
@@ -23,13 +23,13 @@ Rechtsgrundlage zur Prüfung: § 25 TDDDG.
 
 ## 3. Analytics
 
-- [x] PostHog-EU-Seitenaufrufe datensparsam und ausschließlich nach ausdrücklicher Einwilligung aktiviert.
-- [x] Ohne gültigen Token keine Abfrage und keine externe Messung.
+- [x] Anonyme Seitenaufrufzählung ohne Dialog: leerer Same-Origin-Aufruf, Besuchermerkmale werden nicht an PostHog EU weitergegeben.
+- [x] Der öffentliche PostHog-Projekttoken erlaubt nur Ereignisannahme und keinen lesenden Zugriff auf Projektdaten.
 - [x] Keine Passwörter, E-Mail-Adressen, IBAN, Steuerdaten, exakte Formulareingaben oder hochgeladene Inhalte an Analytics übermitteln.
 - [x] Keine Produkt-Suchbegriffe, Dealpreise oder Watchlistinhalte als eigene Analytics-Ereignisse übermitteln.
-- [x] Ablehnung und späterer Widerruf über sichtbare Datenschutz-Einstellungen vorgesehen.
-- [x] Automatische Cloudflare-Injektion durch manuellen Snippet-Modus und `Cache-Control: no-transform` abgesichert.
-- [ ] Bot-/Preview-/Healthcheck-Aufrufe von menschlicher Nutzung trennen.
+- [x] Keine Analytics-Einwilligung oder -Auswahl im Browser speichern oder auslesen.
+- [x] Automatische Cloudflare-Injektion bleibt deaktiviert; `Cache-Control: no-transform` verhindert nachträgliche Skript-Injektion.
+- [x] Automatische Healthchecks erzeugen keinen Zählimpuls; die Kennzahl wird ausdrücklich nur als Seitenaufrufzahl, nicht als Zahl menschlicher Besucher bezeichnet.
 - [x] Hosting-/Infrastrukturverarbeitung in der Datenschutzerklärung berücksichtigt.
 
 ## 4. Marktdaten und Plattformen

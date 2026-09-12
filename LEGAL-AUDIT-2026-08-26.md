@@ -32,7 +32,7 @@ Live vorhanden:
 
 ## 3. Datenschutz / DSGVO – 🟢 AKTUELLER DATENFLUSS
 
-Die lokale Datenschutzerklärung wurde am 10.09.2026 an den aktuellen Datenfluss angepasst und enthält nun unter anderem:
+Die lokale Datenschutzerklärung wurde am 12.09.2026 an den aktuellen Datenfluss angepasst und enthält nun unter anderem:
 
 - Verantwortlicher und Kontakt
 - Zwecke und Rechtsgrundlagen
@@ -50,7 +50,7 @@ Die lokale Datenschutzerklärung wurde am 10.09.2026 an den aktuellen Datenfluss
 - Beschwerderecht beim ULD Schleswig-Holstein
 - Hinweis, dass der DealScore keine Art.-22-Entscheidung mit rechtlicher oder vergleichbar erheblicher Wirkung ist
 
-Die Hauptseite lädt neben der lokalen Rechnerlogik den lokalen Consent-Controller. Nur nach ausdrücklicher Zustimmung wird ein datensparsamer Seitenaufruf direkt an PostHog EU gesendet; Werbe- und Affiliate-Tracking bleiben deaktiviert. Stand aktualisiert am 12.09.2026.
+Die Hauptseite sendet einen leeren Same-Origin-Aufruf an den DINAVO-Worker. Dieser übermittelt nur eine serverseitige Einmal-Kennung und den festen Startseitenpfad an PostHog EU; Besuchermerkmale, Werbe- und Affiliate-Tracking bleiben ausgeschlossen. Stand aktualisiert am 12.09.2026.
 
 Die öffentliche Cloudflare-Fassung enthält den aktuellen Datenschutztext. Frühere Hosts sind keine freigegebene Hauptquelle; für Firebase ist ausschließlich eine permanente Retirement-Weiterleitung vorbereitet.
 
@@ -65,7 +65,7 @@ Die Hauptanwendung verwendet lokalen Browser-Speicher für vom Nutzer aktiv verw
 
 Diese Inhalte werden im aktuellen Code nicht als Nutzerprofil an eine zentrale DINAVO-Datenbank übertragen. § 25 Abs. 2 TDDDG sieht eine Ausnahme von der Einwilligungspflicht vor, wenn ein Endgerätezugriff unbedingt erforderlich ist, um einen vom Nutzer ausdrücklich gewünschten digitalen Dienst bereitzustellen.
 
-**Aktuelle Produktentscheidung:** Ein einzelner PostHog-EU-Seitenaufruf ist consent-first aktiviert. Andere Analytics-, Affiliate-, AdTech- oder Tracking-Erweiterungen benötigen vor Aktivierung erneut eine TDDDG-/DSGVO-Prüfung.
+**Aktuelle Produktentscheidung:** Eine anonyme Gesamtzählung der Seitenaufrufe ist ohne Dialog aktiviert. Andere Analytics-, Affiliate-, AdTech- oder Tracking-Erweiterungen benötigen vor Aktivierung erneut eine TDDDG-/DSGVO-Prüfung.
 
 ## 5. Hosting / Auftragsverarbeitung – 🟢 AKTUELLER BETA-BETRIEB
 

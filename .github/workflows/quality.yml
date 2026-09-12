@@ -25,6 +25,7 @@ jobs:
           node scripts/data-store-regression.mjs
           node scripts/data-store-migration-regression.mjs
           node scripts/analytics-regression.mjs
+          node scripts/analytics-worker-regression.mjs
           node scripts/analytics-release-gate.mjs
           node scripts/frontend-regression.mjs
           node scripts/organic-campaign-regression.mjs
@@ -36,6 +37,8 @@ jobs:
           test -f data-store.js
           test -f app.js
           test -f analytics.js
+          test -f worker.js
+          test -f scripts/analytics-worker-regression.mjs
           test -f scripts/analytics-release-gate.mjs
           test -f style.css
           test -f manifest.webmanifest
@@ -177,7 +180,7 @@ jobs:
             exit 1
           fi
 
-      - name: No hidden tracking
+      - name: Anonymous pageview counting only
         shell: bash
         run: |
           set -euo pipefail
@@ -185,12 +188,15 @@ jobs:
           ! grep -Fq 'data-cf-beacon' index.html
           ! grep -Fq 'dealfaz-pixel' index.html app.js analytics.js
           ! grep -Fq 'supabase.co/functions/v1' index.html app.js analytics.js _headers vercel.json
-          grep -Fq "readConsent() !== 'granted'" analytics.js
-          grep -Eq "const POSTHOG_PROJECT_TOKEN = 'phc_[A-Za-z0-9]{32,128}';" analytics.js
+          grep -Fq "const COUNT_ENDPOINT = '/analytics-count'" analytics.js
+          ! grep -Fiq 'posthog' analytics.js
+          ! grep -Eq 'localStorage|sessionStorage|location\.(hash|search|href)' analytics.js
           grep -Fq 'Cache-Control: public, max-age=0, must-revalidate, no-transform' _headers
           grep -Fq '<script src="/analytics.js" defer></script>' index.html
-          grep -Fq 'Optionale Reichweitenmessung mit PostHog EU</h2>' datenschutz/index.html
-          grep -Fq 'Art. 6 Abs. 1 lit. a DSGVO' datenschutz/index.html
+          ! grep -Eq 'analytics(Consent|Settings|Accept|Reject)|Besucherzählung erlauben' index.html
+          grep -Fq 'Einfache Seitenaufrufzählung ohne Einwilligungsabfrage</h2>' datenschutz/index.html
+          grep -Fq 'Art. 6 Abs. 1 lit. f DSGVO' datenschutz/index.html
+          node scripts/analytics-worker-regression.mjs
           node scripts/analytics-release-gate.mjs
 
       - name: CSV export injection hardening

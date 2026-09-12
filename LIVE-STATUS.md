@@ -1,6 +1,6 @@
 # DINAVO – aktueller Freigabestatus
 
-Stand: 10.09.2026
+Stand: 12.09.2026
 
 ## Kurzentscheidung
 
@@ -20,14 +20,14 @@ Die kostenlose, nicht monetarisierte Beta verwendet Cloudflare Workers als öffe
 - interne Dokumente und Projektdateien durch `.assetsignore` aus dem Cloudflare-Assetpaket ausgeschlossen
 - feste Kostenwerte nur noch im ausdrücklich beschrifteten Beispiel-Deal; keine automatische Übernahme in echte Deals
 - Affiliate-Monetarisierung weiterhin durch `MONETIZATION_DISABLED` gesperrt
-- Datensparsame PostHog-EU-Besucherzählung aktiviert; ein Seitenaufruf nur nach ausdrücklicher Zustimmung, ohne Personenprofile, Eingaben oder Sitzungsaufzeichnung
+- Anonyme Seitenaufrufzählung ohne Dialog aktiviert; keine Cookies, dauerhaften Besucherkennungen, Eingaben oder Sitzungsaufzeichnung
 - Anbieterangaben ohne pauschale Behauptung zum Gewerbestatus
 - Werbe- und KI-Medien-Gate mit sichtbarer Eigenwerbung-, Fiktions- und Plattformkennzeichnung
 
 ## Öffentlicher Release – 🟢
 
 - Cloudflare-Hauptadresse mit vollständigem Live-Health-Check
-- Analytics, Consent-Oberfläche und Analytics-Datenschutzabschnitt: gemeinsam consent-first aktiviert
+- Anonyme Seitenaufrufzählung und passender Datenschutzabschnitt gemeinsam aktiviert; keine Einwilligungsoberfläche
 - öffentliche App-Icons in 180, 192 und 512 Pixeln enthalten
 - Rechner, Beispiel, Speichern, Backup-Hinweis, Ergebnis-Abgleich, Länderwechsel und Wissensseite live geprüft
 

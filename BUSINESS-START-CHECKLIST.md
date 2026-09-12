@@ -94,14 +94,14 @@ Der Gewerbesteuerfreibetrag für natürliche Personen und Personengesellschaften
 
 ## 5. Datenschutz / Cookies – 🟢 FÜR AKTUELLEN DATENFLUSS, NEUPRÜFUNG BEI ÄNDERUNG
 
-- Cloudflare-Web-Analytics-Controller ist consent-first vorbereitet und lädt ohne gültigen Token keine externe Ressource
+- Anonyme Seitenaufrufzählung läuft über einen leeren Same-Origin-Aufruf; der Browser lädt keine externe Analytics-Ressource
 - Watchlist, Regeln, Erwartungen und Ergebnisse werden lokal im Browser gespeichert
 - keine DINAVO-Werbe-/Marketing-Cookies auf der aktuellen Hauptseite
 - Cloudflare-Hosting und eine mögliche Vercel-Alt-/Alternativadresse sind im Datenschutztext beschrieben; externe Legacy-Weiterleitungen sind kein Bestandteil der aktuellen Hauptseite
 - Art. 6 Abs. 1 lit. f DSGVO, Betroffenenrechte, Empfänger, Speicherkriterien und Beschwerderecht sind beschrieben
 - lokale ausdrücklich gewünschte Funktionen sind als § 25 Abs. 2 TDDDG-Prüfpunkt dokumentiert
 
-Die vorbereitete Cloudflare-Web-Analytics-Integration ist bereits auf ausdrückliche Einwilligung, Ablehnung und Widerruf ausgelegt. Andere Analytics-Systeme, Affiliate-Tracking, Nutzerkonten, Uploads, Zahlungen oder sonstige neue Endgerätezugriffe benötigen **vor** Aktivierung erneut eine Datenschutz-/Einwilligungsprüfung.
+Die aktuelle Zählung erfasst ausschließlich anonyme Seitenaufrufe ohne Besucherwiedererkennung. Andere Analytics-Systeme, Affiliate-Tracking, Nutzerkonten, Uploads, Zahlungen oder sonstige neue Endgerätezugriffe benötigen **vor** Aktivierung erneut eine Datenschutz-/Einwilligungsprüfung.
 
 ## 6. Impressum / DDG – 🟢 AKTUELLER BASISSTAND
 

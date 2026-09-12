@@ -44,7 +44,7 @@ Die aktuelle Produktlinie verfolgt den Grundsatz:
 
 ## Tracking
 
-Die aktuelle DINAVO-Oberfläche setzt keine Werbe- oder Marketing-Cookies ein. Nach ausdrücklicher Einwilligung wird ein datensparsamer Seitenaufruf an PostHog EU gesendet; Personenprofile, Sitzungswiedergaben und Eingabedaten bleiben ausgeschlossen. Andere Analytics- oder Tracking-Funktionen werden nicht ohne erneute technische und rechtliche Prüfung aktiviert.
+Die aktuelle DINAVO-Oberfläche setzt keine Werbe- oder Marketing-Cookies ein. Ein leerer Same-Origin-Aufruf wird serverseitig als Seitenaufruf gezählt; Besucher-IP, Header, Eingaben und wiedererkennbare Kennungen werden nicht an PostHog EU weitergegeben. Andere Analytics- oder Tracking-Funktionen werden nicht ohne erneute technische und rechtliche Prüfung aktiviert.
 
 ## Teilen
 

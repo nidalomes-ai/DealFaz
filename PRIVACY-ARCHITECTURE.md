@@ -24,11 +24,9 @@ Die aktuelle Beta setzt selbst keine Werbe- oder Cross-Site-Marketing-Cookies f�
 
 ## Optionale Reichweitenmessung
 
-Cloudflare Web Analytics ist mit einer Einwilligungslogik vorbereitet. Ohne gültigen Token bleibt die Messung automatisch vollständig aus. Nach einer späteren Konfiguration wird der externe Beacon erst nach ausdrücklicher Einwilligung geladen. Eine Ablehnung lässt alle Rechnerfunktionen verfügbar.
+Die Besucherzählung sendet erst nach ausdrücklicher Einwilligung einen einzelnen Seitenaufruf direkt an PostHog EU. Ablehnung und Widerruf lassen alle Rechnerfunktionen verfügbar. Es wird kein externes Analytics-Skript geladen.
 
-Die Cloudflare-Site bleibt im manuellen JS-Snippet-Modus. Die automatische Beacon-Injektion ist nicht Teil der freigegebenen Architektur; `Cache-Control: no-transform` schützt die ausgelieferte Seite zusätzlich vor einer solchen HTML-Veränderung.
-
-Produktnamen, freie Deal-Texte, Einkaufs-/Verkaufspreise und Watchlistinhalte werden nicht als eigene Analytics-Ereignisse übertragen. Im aktuellen Release ist die Messung vollständig deaktiviert; die öffentliche Datenschutzerklärung beschreibt deshalb keine aktive Reichweitenmessung.
+Produktnamen, freie Deal-Texte, Einkaufs-/Verkaufspreise und Watchlistinhalte werden nicht übertragen. Pro Aufruf wird eine neue Kennung verwendet, Personenprofile und Sitzungswiedergaben sind deaktiviert; geteilte `#deal=`-Links sind vollständig ausgeschlossen.
 
 ## Datenminimierung
 

@@ -50,7 +50,7 @@ Die lokale Datenschutzerklärung wurde am 10.09.2026 an den aktuellen Datenfluss
 - Beschwerderecht beim ULD Schleswig-Holstein
 - Hinweis, dass der DealScore keine Art.-22-Entscheidung mit rechtlicher oder vergleichbar erheblicher Wirkung ist
 
-Die Hauptseite lädt ausschließlich die lokale Rechner- und Datenspeicherlogik. `analytics.js` wird nicht eingebunden, der Cloudflare-Token ist leer, und es werden keine Webanalyse-, Werbe- oder Affiliate-Trackingdienste geladen. Eine spätere Aktivierung bleibt an Einwilligung, Textupdate und erneute Prüfung gekoppelt.
+Die Hauptseite lädt neben der lokalen Rechnerlogik den lokalen Consent-Controller. Nur nach ausdrücklicher Zustimmung wird ein datensparsamer Seitenaufruf direkt an PostHog EU gesendet; Werbe- und Affiliate-Tracking bleiben deaktiviert. Stand aktualisiert am 12.09.2026.
 
 Die öffentliche Cloudflare-Fassung enthält den aktuellen Datenschutztext. Frühere Hosts sind keine freigegebene Hauptquelle; für Firebase ist ausschließlich eine permanente Retirement-Weiterleitung vorbereitet.
 
@@ -65,7 +65,7 @@ Die Hauptanwendung verwendet lokalen Browser-Speicher für vom Nutzer aktiv verw
 
 Diese Inhalte werden im aktuellen Code nicht als Nutzerprofil an eine zentrale DINAVO-Datenbank übertragen. § 25 Abs. 2 TDDDG sieht eine Ausnahme von der Einwilligungspflicht vor, wenn ein Endgerätezugriff unbedingt erforderlich ist, um einen vom Nutzer ausdrücklich gewünschten digitalen Dienst bereitzustellen.
 
-**Aktuelle Produktentscheidung:** Cloudflare Web Analytics ist consent-first vorbereitet. Ohne Token bleibt die Abfrage verborgen und die Messung aus. Andere Analytics-, Affiliate-, AdTech- oder Tracking-Erweiterungen benötigen vor Aktivierung erneut eine TDDDG-/DSGVO-Prüfung.
+**Aktuelle Produktentscheidung:** Ein einzelner PostHog-EU-Seitenaufruf ist consent-first aktiviert. Andere Analytics-, Affiliate-, AdTech- oder Tracking-Erweiterungen benötigen vor Aktivierung erneut eine TDDDG-/DSGVO-Prüfung.
 
 ## 5. Hosting / Auftragsverarbeitung – 🟢 AKTUELLER BETA-BETRIEB
 

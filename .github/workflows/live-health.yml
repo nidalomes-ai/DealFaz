@@ -120,7 +120,8 @@ jobs:
           ! printf '%s' "$analytics" | grep -Fq 'dealfaz-pixel'
           ! printf '%s' "$analytics" | grep -Fq 'supabase.co/functions/v1'
           printf '%s' "$analytics" | grep -Fq "readConsent() !== 'granted'"
-          printf '%s' "$analytics" | grep -Fq 'https://static.cloudflareinsights.com/beacon.min.js'
+          printf '%s' "$analytics" | grep -Fq 'https://eu.i.posthog.com/i/v0/e/'
+          printf '%s' "$analytics" | grep -Fq "'\$process_person_profile': false"
           printf '%s' "$analytics" | grep -Fq 'dealfaz:v1:analytics-consent'
 
       - name: IndexNow key is present on production host

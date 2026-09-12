@@ -43,24 +43,16 @@ assert.match(
   /<details class="dnv-more">[\s\S]*?<summary>Genauer rechnen <span>optional<\/span><\/summary>[\s\S]*?id="sold"[\s\S]*?id="active"[\s\S]*?id="comps"[\s\S]*?id="certainty"[\s\S]*?id="risk"[\s\S]*?id="target"[\s\S]*?id="days"[\s\S]*?<\/details>/,
   'The optional market and target fields must remain in the second detail level'
 );
-assert.doesNotMatch(html, /static\.cloudflareinsights\.com|data-cf-beacon/, 'The external beacon must never load directly from HTML');
-const analyticsToken = analyticsSource.match(/const CLOUDFLARE_TOKEN = '([^']*)';/)?.[1];
-assert.notEqual(analyticsToken, undefined, 'Analytics must expose one explicit Cloudflare token setting');
-assert.ok(analyticsToken === '' || /^[A-Za-z0-9_-]{16,128}$/.test(analyticsToken), 'Analytics token must be empty or a valid public Cloudflare token');
-if (analyticsToken) {
-  assert.match(html, /<script src="\/analytics\.js" defer><\/script>/, 'The consent-first analytics controller must be loaded');
-  for (const id of ['analyticsConsent', 'analyticsSettings', 'analyticsAccept', 'analyticsReject']) {
-    assert.match(html, new RegExp(`id="${id}"`), `Analytics consent control #${id} must exist`);
-  }
-  assert.match(html, /id="analyticsAccept" class="secondary"/, 'Consent choices must have equal visual weight');
-  assert.match(html, /id="analyticsReject" class="secondary"/, 'Consent choices must have equal visual weight');
-} else {
-  assert.doesNotMatch(html, /<script src="\/analytics\.js" defer><\/script>/, 'An unconfigured analytics controller must not be published');
-  assert.doesNotMatch(html, /id="analytics(?:Consent|Settings|Accept|Reject)"/, 'Disabled analytics must not expose inert consent controls');
-}
+assert.doesNotMatch(html, /eu\.i\.posthog\.com|posthog\.capture/, 'Analytics must never run directly from HTML');
+assert.match(analyticsSource, /const POSTHOG_PROJECT_TOKEN = 'phc_[A-Za-z0-9]{32,128}';/, 'Analytics must expose a valid public PostHog token');
+assert.match(html, /<script src="\/analytics\.js" defer><\/script>/, 'The consent-first analytics controller must be loaded');
+for (const id of ['analyticsConsent', 'analyticsSettings', 'analyticsAccept', 'analyticsReject']) assert.match(html, new RegExp(`id="${id}"`));
+assert.match(html, /id="analyticsAccept" class="secondary"/, 'Consent choices must have equal visual weight');
+assert.match(html, /id="analyticsReject" class="secondary"/, 'Consent choices must have equal visual weight');
 assert.match(analyticsSource, /readConsent\(\) !== 'granted'/, 'The beacon must require explicit consent');
 assert.match(analyticsSource, /SENSITIVE_DEAL_NAVIGATION/, 'Shared deal fragments must be excluded from analytics');
-assert.match(analyticsSource, /https:\/\/static\.cloudflareinsights\.com\/beacon\.min\.js/, 'Only the official Cloudflare beacon may be loaded');
+assert.match(analyticsSource, /https:\/\/eu\.i\.posthog\.com\/i\/v0\/e\//, 'Only the PostHog EU endpoint may be used');
+assert.match(analyticsSource, /'\$process_person_profile': false/, 'Person profiles must be disabled');
 assert.match(analyticsSource, /dealfaz:v1:analytics-consent/, 'The consent decision must use the stable local namespace');
 assert.doesNotMatch(analyticsSource, /HIER_TOKEN_EINSETZEN/, 'A misleading active placeholder must not ship');
 assert.doesNotMatch(app, /onclick="/, 'Generated controls must comply with the script-src CSP');
@@ -103,19 +95,14 @@ assert.match(privacy, /JSON-Backups und CSV-Dateien/, 'Privacy information must 
 assert.match(privacy, /Google \(Gmail\)/, 'Privacy information must identify the email provider');
 assert.match(privacy, /mail@datenschutzzentrum\.de/, 'Privacy information must identify the competent supervisory authority');
 assert.match(privacy, /§ 25 Abs\. 2 Nr\. 2 TDDDG/, 'The local privacy choice must be explained as a requested setting');
-assert.match(privacy, /Stand: 10\. September 2026/, 'Privacy information must expose its revision date');
+assert.match(privacy, /Stand: 12\. September 2026/, 'Privacy information must expose its revision date');
 assert.match(privacy, /revidierten Schweizer Datenschutzgesetzes \(DSG\)/, 'Privacy information must cover the Swiss market');
 assert.match(privacy, /Abständen von fünf weiteren gespeicherten Deals/, 'Privacy information must explain recurring local backup reminders');
-if (analyticsToken) {
-  assert.match(privacy, /<h2>5\. Optionale Reichweitenmessung mit Cloudflare Web Analytics<\/h2>/, 'Analytics must be the published privacy section 5');
-  assert.match(privacy, /Art\. 6 Abs\. 1 lit\. a DSGVO/, 'Analytics must be based on explicit consent');
-  assert.match(privacy, /§ 25 Abs\. 1 TDDDG/, 'Analytics must disclose the end-device consent basis');
-  assert.match(privacy, /#deal=<\/code>-Fragment sind für den gesamten jeweiligen Dokumentaufruf von der Reichweitenmessung ausgeschlossen/, 'Privacy information must disclose the shared-deal analytics exclusion');
-  assert.match(privacy, /Datenschutz-Einstellungen/, 'Privacy information must explain withdrawal');
-} else {
-  assert.doesNotMatch(privacy, /Optionale Reichweitenmessung mit Cloudflare Web Analytics|aggregierte Web-Analytics-Daten|Analytics-Auswahl/, 'Disabled analytics must not be described as active');
-  assert.match(privacy, /<h2>5\. Deal teilen<\/h2>/, 'Privacy sections must remain consecutively numbered without analytics');
-}
+assert.match(privacy, /<h2 id="reichweitenmessung">4\. Optionale Reichweitenmessung mit PostHog EU<\/h2>/);
+assert.match(privacy, /Art\. 6 Abs\. 1 lit\. a DSGVO/);
+assert.match(privacy, /§ 25 Abs\. 1 TDDDG/);
+assert.match(privacy, /<code>#deal=<\/code>-Fragment sind vollständig von der Reichweitenmessung ausgeschlossen/);
+assert.match(privacy, /Datenschutz-Einstellungen/);
 assert.doesNotMatch(app, /new URLSearchParams\(location\.search\)/, 'Deal values must never be restored from request query parameters');
 assert.match(html, /id="profit"[^>]*data-amount/, 'Profit must be the stable-width primary amount');
 assert.match(html, /data-secondary>[\s\S]*?<div id="personalEstimate" data-factor hidden role="status"><\/div>/, 'The personal correction factor must sit directly below profit and ROI');
@@ -151,8 +138,8 @@ for (const [name, config] of [
 ]) {
   assert.doesNotMatch(config, /unsafe-inline/, `${name} CSP must not allow inline styles`);
   assert.match(config, new RegExp(`script-src[^;]*'sha256-${structuredDataHash.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}'`), `${name} CSP must allow only the exact structured-data block`);
-  assert.match(config, /script-src[^;]*https:\/\/static\.cloudflareinsights\.com/, `${name} CSP must allow the configured Cloudflare analytics script`);
-  assert.match(config, /connect-src[^;]*https:\/\/cloudflareinsights\.com/, `${name} CSP must allow the configured Cloudflare analytics endpoint`);
+  assert.doesNotMatch(config, /script-src[^;]*posthog/, `${name} CSP must not allow an external analytics script`);
+  assert.match(config, /connect-src[^;]*https:\/\/eu\.i\.posthog\.com/, `${name} CSP must allow the PostHog EU endpoint`);
   assert.match(config, /Cache-Control[\s\S]{0,120}public, max-age=0, must-revalidate, no-transform/, `${name} must block automatic HTML transformation`);
 }
 assert.match(headers, /Cache-Control: public, max-age=0, must-revalidate, no-transform/, 'Cloudflare responses must block automatic HTML injection');

@@ -20,14 +20,14 @@ Die kostenlose, nicht monetarisierte Beta verwendet Cloudflare Workers als öffe
 - interne Dokumente und Projektdateien durch `.assetsignore` aus dem Cloudflare-Assetpaket ausgeschlossen
 - feste Kostenwerte nur noch im ausdrücklich beschrifteten Beispiel-Deal; keine automatische Übernahme in echte Deals
 - Affiliate-Monetarisierung weiterhin durch `MONETIZATION_DISABLED` gesperrt
-- Cloudflare Web Analytics vollständig deaktiviert; ohne gültigen Token werden weder Controller, Einwilligungsdialog noch Analytics-Datenschutzabschnitt veröffentlicht
+- Datensparsame PostHog-EU-Besucherzählung aktiviert; ein Seitenaufruf nur nach ausdrücklicher Zustimmung, ohne Personenprofile, Eingaben oder Sitzungsaufzeichnung
 - Anbieterangaben ohne pauschale Behauptung zum Gewerbestatus
 - Werbe- und KI-Medien-Gate mit sichtbarer Eigenwerbung-, Fiktions- und Plattformkennzeichnung
 
 ## Öffentlicher Release – 🟢
 
 - Cloudflare-Hauptadresse mit vollständigem Live-Health-Check
-- Analytics, Consent-Oberfläche und Analytics-Datenschutzabschnitt: gemeinsam deaktiviert
+- Analytics, Consent-Oberfläche und Analytics-Datenschutzabschnitt: gemeinsam consent-first aktiviert
 - öffentliche App-Icons in 180, 192 und 512 Pixeln enthalten
 - Rechner, Beispiel, Speichern, Backup-Hinweis, Ergebnis-Abgleich, Länderwechsel und Wissensseite live geprüft
 

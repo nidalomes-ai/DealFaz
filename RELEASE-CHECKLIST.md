@@ -35,7 +35,7 @@ Diese Checkliste trennt **technische Beta-Bereitschaft**, **rechtlichen Geschäf
 - [x] Cloudflare-Hosting beschrieben
 - [x] lokale Datenschutzfassung beschreibt nur die tatsächlich verwendeten aktuellen und nutzerinitiierten Datenflüsse
 - [x] lokale Browser-Speicherung transparent erklärt
-- [x] Cloudflare Web Analytics technisch nur nach gültigem Token und ausdrücklicher Einwilligung vorbereitet
+- [x] PostHog-EU-Seitenaufrufe technisch nur nach ausdrücklicher Einwilligung aktiviert
 - [x] Datenschutz-Ziffer 5, widerspruchsfreier Text und Consent-Controller als ein optionales gemeinsames Release gekoppelt
 - [x] geteilter `#deal=`-Link bleibt selbst bei bestehender Einwilligung vollständig vom Beacon ausgeschlossen
 - [x] ohne öffentlichen Site-Token weder Analytics-Controller noch Analytics-Ziffer 5 veröffentlichen
@@ -168,7 +168,7 @@ Bei Checkout, kostenpflichtigen Leistungen oder gehosteten Nutzerinhalten erfolg
 
 ## Aktueller Freigabestatus
 
-**Lokaler Release-Kandidat: 🟢 veröffentlichbar ohne optionale Reichweitenmessung.**
+**Lokaler Release-Kandidat: 🟢 veröffentlichbar mit optionaler, consent-first Reichweitenmessung.**
 
 **Öffentliche Version: 🟢 Cloudflare-Hauptadresse und GitHub-Main auf denselben geprüften Stand ausgerichtet.**
 

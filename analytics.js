@@ -1,19 +1,16 @@
 (function () {
   'use strict';
 
-  // Öffentliche Cloudflare-Web-Analytics-Kennung aus „Manage Site“ einsetzen.
-  // Ohne gültigen Wert bleibt die gesamte Reichweitenmessung automatisch aus.
-  const CLOUDFLARE_TOKEN = '';
+  const POSTHOG_PROJECT_TOKEN = 'phc_rFgxJmxxvwc6zPwq393rpTSYTgJZDKGzsoeLYebFPNxd';
   const CONSENT_KEY = 'dealfaz:v1:analytics-consent';
-  const BEACON_URL = 'https://static.cloudflareinsights.com/beacon.min.js';
-  const TOKEN_PATTERN = /^[A-Za-z0-9_-]{16,128}$/;
-  // Cloudflares RUM-Daten enthalten die URL des Seitenaufrufs. Geteilte
-  // DINAVO-Deals tragen ihre Werte im Fragment und bleiben deshalb für den
-  // gesamten aktuellen Dokumentaufruf von der Messung ausgeschlossen.
+  const CAPTURE_URL = 'https://eu.i.posthog.com/i/v0/e/';
+  const TOKEN_PATTERN = /^phc_[A-Za-z0-9]{32,128}$/;
+  // Geteilte Deals enthalten Eingaben im Fragment und werden nie gemessen.
   const SENSITIVE_DEAL_NAVIGATION = location.hash.startsWith('#deal=');
   let sessionConsent = null;
+  let captured = false;
 
-  const configured = TOKEN_PATTERN.test(CLOUDFLARE_TOKEN);
+  const configured = TOKEN_PATTERN.test(POSTHOG_PROJECT_TOKEN);
   const consentPanel = document.getElementById('analyticsConsent');
   const settingsButton = document.getElementById('analyticsSettings');
   const acceptButton = document.getElementById('analyticsAccept');
@@ -23,54 +20,61 @@
     try {
       const value = localStorage.getItem(CONSENT_KEY);
       return value === 'granted' || value === 'denied' ? value : sessionConsent;
-    } catch (_) {
-      return sessionConsent;
-    }
+    } catch (_) { return sessionConsent; }
   }
 
   function writeConsent(value) {
     sessionConsent = value;
-    try {
-      localStorage.setItem(CONSENT_KEY, value);
-    } catch (_) {
-      // Ohne lokalen Speicher gilt die Entscheidung nur für diesen Seitenaufruf.
-    }
+    try { localStorage.setItem(CONSENT_KEY, value); } catch (_) {}
   }
 
   function showPanel() {
     if (!configured || !consentPanel) return;
     consentPanel.hidden = false;
-    acceptButton?.focus();
+    rejectButton?.focus();
   }
 
   function hidePanel() {
     if (consentPanel) consentPanel.hidden = true;
   }
 
-  function loadBeacon() {
-    if (!configured || SENSITIVE_DEAL_NAVIGATION || readConsent() !== 'granted') return false;
-    if (document.querySelector('script[data-dinavo-analytics]')) return true;
+  function ephemeralId() {
+    if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
+    return `page-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  }
 
-    const script = document.createElement('script');
-    script.src = BEACON_URL;
-    script.defer = true;
-    script.dataset.dinavoAnalytics = 'cloudflare';
-    script.dataset.cfBeacon = JSON.stringify({ token: CLOUDFLARE_TOKEN });
-    document.head.appendChild(script);
+  function capturePageview() {
+    if (!configured || captured || SENSITIVE_DEAL_NAVIGATION || readConsent() !== 'granted') return false;
+    captured = true;
+    fetch(CAPTURE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        api_key: POSTHOG_PROJECT_TOKEN,
+        event: '$pageview',
+        distinct_id: ephemeralId(),
+        properties: {
+          '$current_url': `${location.origin}${location.pathname}`,
+          '$pathname': location.pathname,
+          '$process_person_profile': false
+        }
+      }),
+      keepalive: true,
+      credentials: 'omit',
+      referrerPolicy: 'no-referrer'
+    }).catch(() => {});
     return true;
   }
 
   function grantConsent() {
     writeConsent('granted');
     hidePanel();
-    loadBeacon();
+    capturePageview();
   }
 
   function denyConsent() {
-    const beaconWasLoaded = Boolean(document.querySelector('script[data-dinavo-analytics]'));
     writeConsent('denied');
     hidePanel();
-    if (beaconWasLoaded) location.reload();
   }
 
   function init() {
@@ -79,22 +83,15 @@
       if (settingsButton) settingsButton.hidden = true;
       return;
     }
-
     if (settingsButton) settingsButton.hidden = false;
     acceptButton?.addEventListener('click', grantConsent);
     rejectButton?.addEventListener('click', denyConsent);
     settingsButton?.addEventListener('click', showPanel);
-
     const consent = readConsent();
-    if (consent === 'granted') loadBeacon();
+    if (consent === 'granted') capturePageview();
     else if (consent === null) showPanel();
   }
 
-  window.DINAVO_ANALYTICS = Object.freeze({
-    configured,
-    consent: readConsent,
-    openSettings: showPanel
-  });
-
+  window.DINAVO_ANALYTICS = Object.freeze({ configured, consent: readConsent, openSettings: showPanel });
   init();
 })();

@@ -69,17 +69,11 @@ jobs:
           ! grep -Fq 'Affiliate-Monetarisierung ist derzeit deaktiviert' index.html
           grep -Fq 'Die Links enthalten keine Affiliate-Parameter' index.html
           grep -Fq 'keine Affiliate- oder Trackingparameter von DINAVO' datenschutz/index.html
-          if grep -Eq "const CLOUDFLARE_TOKEN = '[A-Za-z0-9_-]{16,128}';" analytics.js; then
-            grep -Fq '<h2>5. Optionale Reichweitenmessung mit Cloudflare Web Analytics</h2>' datenschutz/index.html
-            grep -Fq '<script src="/analytics.js" defer></script>' index.html
-            grep -Fq 'Art. 6 Abs. 1 lit. a DSGVO' datenschutz/index.html
-            grep -Fq '§ 25 Abs. 1 TDDDG' datenschutz/index.html
-          else
-            ! grep -Fq 'Optionale Reichweitenmessung mit Cloudflare Web Analytics' datenschutz/index.html
-            ! grep -Fq '<script src="/analytics.js" defer></script>' index.html
-            ! grep -Fq 'Art. 6 Abs. 1 lit. a DSGVO' datenschutz/index.html
-            ! grep -Fq '§ 25 Abs. 1 TDDDG' datenschutz/index.html
-          fi
+          grep -Eq "const POSTHOG_PROJECT_TOKEN = 'phc_[A-Za-z0-9]{32,128}';" analytics.js
+          grep -Fq 'Optionale Reichweitenmessung mit PostHog EU</h2>' datenschutz/index.html
+          grep -Fq '<script src="/analytics.js" defer></script>' index.html
+          grep -Fq 'Art. 6 Abs. 1 lit. a DSGVO' datenschutz/index.html
+          grep -Fq '§ 25 Abs. 1 TDDDG' datenschutz/index.html
           ! grep -Fq 'supabase.co/functions/v1' index.html impressum/index.html datenschutz/index.html nutzungsbedingungen/index.html app.js analytics.js _headers vercel.json
           ! grep -Eq '__DINAVO_PROJECT_EMAIL__|\[Projekt-Adresse eintragen\]' impressum/index.html
           grep -Fq 'dinavo.social@gmail.com' impressum/index.html
@@ -93,14 +87,14 @@ jobs:
         run: |
           set -euo pipefail
           test -f ANALYTICS-MEASUREMENT.md
-          grep -Eq 'Datenschutz-Ziffer 5 sind als gemeinsames( optionales)? Release vorbereitet' ANALYTICS-MEASUREMENT.md
+          grep -Fq 'Status: aktiviert' ANALYTICS-MEASUREMENT.md
           test -f scripts/analytics-release-gate.mjs
           grep -Fq "readConsent() !== 'granted'" analytics.js
-          grep -Eq "const CLOUDFLARE_TOKEN = '([A-Za-z0-9_-]{16,128})?';" analytics.js
-          grep -Fq 'https://static.cloudflareinsights.com/beacon.min.js' analytics.js
-          grep -Fq 'Enable with JS Snippet installation' ANALYTICS-MEASUREMENT.md
+          grep -Eq "const POSTHOG_PROJECT_TOKEN = 'phc_[A-Za-z0-9]{32,128}';" analytics.js
+          grep -Fq 'https://eu.i.posthog.com/i/v0/e/' analytics.js
+          grep -Fq "'\$process_person_profile': false" analytics.js
           grep -Fq 'Cache-Control: public, max-age=0, must-revalidate, no-transform' _headers
-          grep -Fq 'kein PostHog, Google Analytics, Supabase-Pixel oder Affiliate-Tracking' ANALYTICS-MEASUREMENT.md
+          grep -Fq 'kein Google Analytics, Supabase-Pixel oder Affiliate-Tracking' ANALYTICS-MEASUREMENT.md
           grep -Fq 'keine eindeutigen Menschen' ANALYTICS-MEASUREMENT.md
           node scripts/analytics-release-gate.mjs
 

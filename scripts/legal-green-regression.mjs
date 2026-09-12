@@ -40,10 +40,10 @@ assert.match(imprint, /§ 36 VSBG/, 'The VSBG statement must be qualified to its
 assert.match(imprint, /Stand: 10\. September 2026/, 'The imprint revision date must be current');
 
 assert.match(privacy, /Die aktuelle DINAVO-Adresse wird über Cloudflare bereitgestellt/, 'Privacy information must identify the primary host');
-assert.match(privacy, /Keine Reichweitenmessung, Werbe-Cookies oder Affiliate-Verfolgung/, 'Inactive tracking must be stated explicitly');
-assert.match(privacy, /DINAVO-Anwendungscode lädt keine Webanalyse-, Werbe- oder Affiliate-Trackingdienste und setzt keine Cookies/, 'The current tracking-free data flow must be explicit');
-assert.match(privacy, /Stand: 10\. September 2026/, 'The privacy revision date must be current');
-assert.doesNotMatch(home, /<script src="\/analytics\.js"/, 'Analytics must remain unloaded while the privacy notice says it is inactive');
+assert.match(privacy, /Optionale Reichweitenmessung mit PostHog EU/, 'Consent-first analytics must be disclosed');
+assert.match(privacy, /keine Werbe-Cookies und verwendet keine Affiliate-Verfolgung/, 'Advertising and affiliate tracking must remain disabled');
+assert.match(privacy, /Stand: 12\. September 2026/, 'The privacy revision date must be current');
+assert.match(home, /<script src="\/analytics\.js"/, 'The consent controller must be loaded');
 
 assert.match(terms, /keine Partnerschaft, Empfehlung, Zertifizierung oder sonstige geschäftliche Verbindung/, 'Third-party marks must be used descriptively');
 assert.match(terms, /Bei leicht fahrlässiger Verletzung einer wesentlichen Pflicht/, 'The liability clause must preserve essential-obligation liability');

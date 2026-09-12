@@ -3,107 +3,71 @@ import vm from 'node:vm';
 import { readFile } from 'node:fs/promises';
 
 const source = await readFile(new URL('../analytics.js', import.meta.url), 'utf8');
-const token = '0123456789abcdef0123456789abcdef';
 
 function runScenario({ configured = true, stored = null, blockedStorage = false, hash = '' } = {}) {
   const elements = new Map();
-  let focused = null;
-  let reloads = 0;
-  const scripts = [];
+  const requests = [];
   const values = new Map(stored ? [['dealfaz:v1:analytics-consent', stored]] : []);
-
+  let focused = null;
   for (const id of ['analyticsConsent', 'analyticsSettings', 'analyticsAccept', 'analyticsReject']) {
     const listeners = new Map();
-    elements.set(id, {
-      hidden: true,
-      focus() { focused = id; },
-      addEventListener(type, listener) { listeners.set(type, listener); },
-      click() { listeners.get('click')?.(); }
-    });
+    elements.set(id, { hidden: true, focus() { focused = id; }, addEventListener(type, fn) { listeners.set(type, fn); }, click() { listeners.get('click')?.(); } });
   }
-
-  const document = {
-    getElementById(id) { return elements.get(id) || null; },
-    querySelector(selector) {
-      return selector === 'script[data-dinavo-analytics]' ? scripts[0] || null : null;
-    },
-    createElement(tag) {
-      assert.equal(tag, 'script');
-      return { dataset: {}, defer: false, src: '' };
-    },
-    head: { appendChild(script) { scripts.push(script); } }
-  };
-
   const localStorage = {
-    getItem(key) {
-      if (blockedStorage) throw new Error('blocked');
-      return values.get(key) ?? null;
-    },
-    setItem(key, value) {
-      if (blockedStorage) throw new Error('blocked');
-      values.set(key, String(value));
-    }
+    getItem(key) { if (blockedStorage) throw new Error('blocked'); return values.get(key) ?? null; },
+    setItem(key, value) { if (blockedStorage) throw new Error('blocked'); values.set(key, String(value)); }
   };
-
-  const scenarioSource = source.replace(
-    /const CLOUDFLARE_TOKEN = '[^']*';/,
-    `const CLOUDFLARE_TOKEN = '${configured ? token : ''}';`
-  );
+  const scenarioSource = source.replace(/const POSTHOG_PROJECT_TOKEN = '[^']*';/, `const POSTHOG_PROJECT_TOKEN = '${configured ? 'phc_abcdefghijklmnopqrstuvwxyz1234567890' : ''}';`);
   const window = {};
   vm.runInNewContext(scenarioSource, {
-    document,
+    document: { getElementById(id) { return elements.get(id) || null; } },
     localStorage,
-    location: { hash, reload() { reloads += 1; } },
-    window
-  });
-
-  return {
-    elements,
-    scripts,
-    values,
+    location: { hash, origin: 'https://example.test', pathname: '/', reload() {} },
     window,
-    get focused() { return focused; },
-    get reloads() { return reloads; }
-  };
+    globalThis: { crypto: { randomUUID: () => 'one-page-id' } },
+    fetch(url, options) { requests.push({ url, options }); return Promise.resolve({ ok: true }); },
+    Date,
+    Math
+  });
+  return { elements, requests, values, window, get focused() { return focused; } };
 }
 
 const inactive = runScenario({ configured: false });
-assert.equal(inactive.scripts.length, 0, 'A blank token must never load Cloudflare');
-assert.equal(inactive.elements.get('analyticsConsent').hidden, true, 'A blank token must hide the consent panel');
-assert.equal(inactive.elements.get('analyticsSettings').hidden, true, 'A blank token must hide analytics settings');
+assert.equal(inactive.requests.length, 0);
+assert.equal(inactive.elements.get('analyticsSettings').hidden, true);
 
 const undecided = runScenario();
-assert.equal(undecided.scripts.length, 0, 'No beacon may load before a decision');
-assert.equal(undecided.elements.get('analyticsConsent').hidden, false, 'An undecided visitor must see the consent panel');
-assert.equal(undecided.elements.get('analyticsSettings').hidden, false, 'Configured analytics must expose settings');
-assert.equal(undecided.focused, 'analyticsAccept', 'The opened consent panel must receive keyboard focus');
+assert.equal(undecided.requests.length, 0, 'No request may leave before consent');
+assert.equal(undecided.elements.get('analyticsConsent').hidden, false);
+assert.equal(undecided.focused, 'analyticsReject', 'The privacy-preserving choice receives focus');
 undecided.elements.get('analyticsAccept').click();
-assert.equal(undecided.scripts.length, 1, 'Explicit consent must load exactly one beacon');
-assert.equal(undecided.values.get('dealfaz:v1:analytics-consent'), 'granted', 'Consent must be stored locally');
-assert.equal(undecided.scripts[0].src, 'https://static.cloudflareinsights.com/beacon.min.js');
-assert.deepEqual(JSON.parse(undecided.scripts[0].dataset.cfBeacon), { token });
+assert.equal(undecided.requests.length, 1, 'Consent sends exactly one pageview');
+assert.equal(undecided.values.get('dealfaz:v1:analytics-consent'), 'granted');
+const request = undecided.requests[0];
+assert.equal(request.url, 'https://eu.i.posthog.com/i/v0/e/');
+assert.equal(request.options.credentials, 'omit');
+assert.equal(request.options.referrerPolicy, 'no-referrer');
+const body = JSON.parse(request.options.body);
+assert.equal(body.event, '$pageview');
+assert.equal(body.distinct_id, 'one-page-id');
+assert.deepEqual(body.properties, { '$current_url': 'https://example.test/', '$pathname': '/', '$process_person_profile': false });
 undecided.elements.get('analyticsAccept').click();
-assert.equal(undecided.scripts.length, 1, 'Repeated consent must not duplicate the beacon');
+assert.equal(undecided.requests.length, 1, 'A pageview cannot be duplicated');
 
-const denied = runScenario({ stored: 'denied' });
-assert.equal(denied.scripts.length, 0, 'A stored rejection must block the beacon');
-assert.equal(denied.elements.get('analyticsConsent').hidden, true, 'A stored decision must avoid repeated prompting');
-
-const sharedDeal = runScenario({ stored: 'granted', hash: '#deal=product%3DPrivater%2520Test' });
-assert.equal(sharedDeal.scripts.length, 0, 'A shared-deal navigation must never expose fragment values to the beacon');
-sharedDeal.elements.get('analyticsSettings').click();
-sharedDeal.elements.get('analyticsAccept').click();
-assert.equal(sharedDeal.scripts.length, 0, 'Repeated consent must not override the shared-deal privacy block');
+assert.equal(runScenario({ stored: 'denied' }).requests.length, 0, 'Stored rejection blocks analytics');
+const shared = runScenario({ stored: 'granted', hash: '#deal=private' });
+assert.equal(shared.requests.length, 0, 'Shared deal fragments are excluded');
+shared.elements.get('analyticsAccept').click();
+assert.equal(shared.requests.length, 0);
 
 const granted = runScenario({ stored: 'granted' });
-assert.equal(granted.scripts.length, 1, 'Stored consent may load one beacon');
+assert.equal(granted.requests.length, 1, 'Stored consent sends one pageview');
 granted.elements.get('analyticsSettings').click();
 granted.elements.get('analyticsReject').click();
-assert.equal(granted.values.get('dealfaz:v1:analytics-consent'), 'denied', 'Withdrawal must replace stored consent');
-assert.equal(granted.reloads, 1, 'Withdrawal after loading must stop future measurement via reload');
+assert.equal(granted.values.get('dealfaz:v1:analytics-consent'), 'denied');
 
-const blockedStorage = runScenario({ blockedStorage: true });
-blockedStorage.elements.get('analyticsAccept').click();
-assert.equal(blockedStorage.scripts.length, 1, 'A current-page decision must work when persistent storage is blocked');
+const blocked = runScenario({ blockedStorage: true });
+blocked.elements.get('analyticsAccept').click();
+assert.equal(blocked.requests.length, 1, 'Session-only consent still works');
 
 console.log('Analytics consent regression checks passed.');

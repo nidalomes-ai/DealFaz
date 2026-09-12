@@ -23,7 +23,7 @@ Rechtsgrundlage zur Prüfung: § 25 TDDDG.
 
 ## 3. Analytics
 
-- [x] Cloudflare Web Analytics datensparsam und ausschließlich nach ausdrücklicher Einwilligung vorbereitet.
+- [x] PostHog-EU-Seitenaufrufe datensparsam und ausschließlich nach ausdrücklicher Einwilligung aktiviert.
 - [x] Ohne gültigen Token keine Abfrage und keine externe Messung.
 - [x] Keine Passwörter, E-Mail-Adressen, IBAN, Steuerdaten, exakte Formulareingaben oder hochgeladene Inhalte an Analytics übermitteln.
 - [x] Keine Produkt-Suchbegriffe, Dealpreise oder Watchlistinhalte als eigene Analytics-Ereignisse übermitteln.

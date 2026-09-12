@@ -44,7 +44,7 @@ Die aktuelle Produktlinie verfolgt den Grundsatz:
 
 ## Tracking
 
-Die aktuelle DINAVO-Oberfläche setzt selbst keine Werbe- oder Marketing-Cookies ein. Cloudflare Web Analytics ist datensparsam und consent-first vorbereitet: ohne Token bleibt es aus, mit Token lädt es erst nach ausdrücklicher Einwilligung. Andere Analytics- oder Tracking-Funktionen werden nicht ohne erneute technische und rechtliche Prüfung aktiviert.
+Die aktuelle DINAVO-Oberfläche setzt keine Werbe- oder Marketing-Cookies ein. Nach ausdrücklicher Einwilligung wird ein datensparsamer Seitenaufruf an PostHog EU gesendet; Personenprofile, Sitzungswiedergaben und Eingabedaten bleiben ausgeschlossen. Andere Analytics- oder Tracking-Funktionen werden nicht ohne erneute technische und rechtliche Prüfung aktiviert.
 
 ## Teilen
 

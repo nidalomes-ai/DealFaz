@@ -105,6 +105,8 @@ assert.match(privacy, /weder die IP-Adresse noch Browserangaben des Besuchers/);
 assert.doesNotMatch(privacy, /Art\. 6 Abs\. 1 lit\. a DSGVO|Analytics-Auswahl|ausdrücklich zustimmst/);
 assert.doesNotMatch(app, /new URLSearchParams\(location\.search\)/, 'Deal values must never be restored from request query parameters');
 assert.match(html, /id="profit"[^>]*data-amount/, 'Profit must be the stable-width primary amount');
+assert.match(html, /id="verdictReason"[^>]*data-verdict-reason/, 'The verdict must include a plain-language reason');
+assert.match(html, /id="resultCosts"[^>]*class="[^"]*moneyValue/, 'Total costs must be visible beside profit and ROI');
 assert.match(html, /data-secondary>[\s\S]*?<div id="personalEstimate" data-factor hidden role="status"><\/div>/, 'The personal correction factor must sit directly below profit and ROI');
 assert.doesNotMatch(html, /id="factorPanel"[^>]*data-factor/, 'The history factor summary must not capture the primary factor selector');
 assert.match(app, /function dinavoShowFactor\(estimate\)/, 'The factor result renderer must exist');
@@ -170,7 +172,7 @@ for (const requiredId of [
   'platform', 'feePercent', 'feeFixed', 'feeAmount', 'shipping', 'costsExtra', 'costAmount',
   'country', 'customPlatform', 'actualMinutes', 'defaultPlatform', 'currencyDisplay', 'profitYtd', 'profitYtdYear',
   'saveForResult', 'openOutcomes', 'resultFollowup', 'dataSafetyNotice', 'backupNow', 'backupLater', 'openDealCount',
-  'profitMetricLink', 'roiMetricLink', 'maxBuyMetricLink', 'sellRateMetricLink'
+  'profitMetricLink', 'roiMetricLink', 'maxBuyMetricLink', 'sellRateMetricLink', 'verdictReason', 'resultCosts'
 ]) {
   assert.ok(idMatches.includes(requiredId), `Required extended data field #${requiredId} must exist`);
 }
@@ -321,6 +323,8 @@ assert.equal(Number(elements.get('buy').value), store.DEMO_DEAL.buy, 'The exampl
 assert.equal(Number(elements.get('sell').value), store.DEMO_DEAL.sell, 'The example button must fill the configured sell field');
 assert.equal(elements.get('platform').value, store.DEMO_DEAL.platformId, 'The example button must fill the configured platform field');
 assert.equal(elements.get('profit').textContent, '25,76 €', 'The example button must recalculate the visible result');
+assert.equal(elements.get('resultCosts').textContent, '19,24 €', 'The result must show all calculated costs');
+assert.match(elements.get('verdictReason').textContent, /Vergleichsdaten|ROI/, 'The result must explain its verdict');
 assert.match(elements.get('resultCard').className, /\bis-(good|warn|bad)\b/, 'The result card must expose a visible state class');
 assert.equal(elements.get('resultCard').dataset.state, 'good');
 await elements.get('product').dispatch('beforeinput');

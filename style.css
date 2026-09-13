@@ -232,6 +232,13 @@ button,.btn,a.btn{min-height:var(--tap);border-radius:10px;cursor:pointer}
   background:var(--surface);text-align:center;
 }
 [data-verdict]{font-size:clamp(1.3rem,6vw,1.8rem);font-weight:700;margin:0}
+.verdictReason{
+  max-width:54ch;margin:8px auto 0;color:var(--text);font-size:.96rem;
+  line-height:1.5;text-wrap:balance
+}
+[data-result][data-state=good] .verdictReason{color:#245c3d}
+[data-result][data-state=warn] .verdictReason{color:#76520a}
+[data-result][data-state=bad] .verdictReason{color:#8a3030}
 [data-amount]{font-size:clamp(2.4rem,12vw,3.6rem);line-height:1.05;display:block}
 [data-result][data-state=good]{border-color:var(--good);background:var(--good-bg)}
 [data-result][data-state=good] [data-verdict],

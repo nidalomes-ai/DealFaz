@@ -348,6 +348,7 @@ function calculate() {
   setMoney('shippingAmount', shipping);
   setMoney('extraAmount', costsExtra);
   setMoney('costAmount', costs);
+  setMoney('resultCosts', costs);
   const primaryMetricWriters = {
     profit: () => setMoney('profit', profit),
     roi: () => { $('roi').textContent = roiDefined ? `${roi.toFixed(1)} %` : 'nicht definiert'; }
@@ -388,6 +389,27 @@ function calculate() {
     $('summary').innerHTML = `${esc(product)} · Rechnerisch bleiben ${money(profit)} übrig.`;
   } else {
     $('summary').innerHTML = `${esc(product)} · Rechnerisch fehlen ${money(Math.abs(profit))}.`;
+  }
+
+  const verdictReason = $('verdictReason');
+  if (!hasCoreValues) {
+    verdictReason.textContent = 'Trage Artikel, Einkauf und Verkauf ein.';
+  } else if (profit <= 0) {
+    verdictReason.textContent = 'Nach Gebühren, Versand und weiteren Kosten bleibt kein Gewinn übrig.';
+  } else if (hasEvidence && quality < 45) {
+    verdictReason.textContent = 'Die Rechnung ist positiv, aber deine Vergleichsdaten reichen noch nicht für eine belastbare Einschätzung.';
+  } else if (hasEvidence && score >= 72) {
+    verdictReason.textContent = 'Gewinn und deine eingegebenen Vergleichsdaten ergeben einen starken Eingabe-Score.';
+  } else if (hasEvidence && score >= 45) {
+    verdictReason.textContent = 'Der Gewinn ist positiv, aber Risiko, Kapitaltempo oder Vergleichsdaten sprechen noch nicht klar dafür.';
+  } else if (hasEvidence) {
+    verdictReason.textContent = 'Der Gewinn ist positiv, doch deine übrigen Eingaben ergeben einen niedrigen Eingabe-Score.';
+  } else if (buy === 0) {
+    verdictReason.textContent = 'Ohne Einkaufspreis bleibt rechnerisch Gewinn; den Markt musst du noch prüfen.';
+  } else if (roi >= target) {
+    verdictReason.textContent = `Dein ROI von ${roi.toFixed(1)} % erreicht dein Ziel von ${target.toFixed(0)} %; der Markt ist noch nicht geprüft.`;
+  } else {
+    verdictReason.textContent = `Dein ROI von ${roi.toFixed(1)} % liegt unter deinem Ziel von ${target.toFixed(0)} %.`;
   }
 
   const gate = $('gate');

@@ -172,7 +172,8 @@ for (const requiredId of [
   'platform', 'feePercent', 'feeFixed', 'feeAmount', 'shipping', 'costsExtra', 'costAmount',
   'country', 'customPlatform', 'actualMinutes', 'defaultPlatform', 'currencyDisplay', 'profitYtd', 'profitYtdYear',
   'saveForResult', 'openOutcomes', 'resultFollowup', 'dataSafetyNotice', 'backupNow', 'backupLater', 'openDealCount',
-  'profitMetricLink', 'roiMetricLink', 'maxBuyMetricLink', 'sellRateMetricLink', 'verdictReason', 'resultCosts'
+  'profitMetricLink', 'roiMetricLink', 'maxBuyMetricLink', 'sellRateMetricLink', 'verdictReason', 'resultCosts',
+  'battleAHint'
 ]) {
   assert.ok(idMatches.includes(requiredId), `Required extended data field #${requiredId} must exist`);
 }
@@ -300,6 +301,8 @@ assert.equal(elements.get('product').value, '', 'A new visitor must start with a
 assert.equal(elements.get('buy').value, '');
 assert.equal(elements.get('sell').value, '');
 assert.equal(elements.get('platform').value, 'ebay_privat');
+assert.equal(elements.get('battleAHint').hidden, false, 'Deal A must explain where its values come from while empty');
+assert.equal(elements.get('battleWinner').textContent, 'Trage zuerst Deal A oben vollständig ein.');
 assert.equal(elements.get('feePercent').value, '', 'Platform selection must not inject a stale fee default');
 assert.equal(Number(elements.get('cost').value), 0);
 assert.equal(elements.get('profitMetricLink').href, '/reselling-rechner/');
@@ -325,6 +328,7 @@ assert.equal(elements.get('platform').value, store.DEMO_DEAL.platformId, 'The ex
 assert.equal(elements.get('profit').textContent, '25,76 €', 'The example button must recalculate the visible result');
 assert.equal(elements.get('resultCosts').textContent, '19,24 €', 'The result must show all calculated costs');
 assert.match(elements.get('verdictReason').textContent, /Vergleichsdaten|ROI/, 'The result must explain its verdict');
+assert.equal(elements.get('battleAHint').hidden, true, 'The Deal A hint must disappear once the source deal is complete');
 assert.match(elements.get('resultCard').className, /\bis-(good|warn|bad)\b/, 'The result card must expose a visible state class');
 assert.equal(elements.get('resultCard').dataset.state, 'good');
 await elements.get('product').dispatch('beforeinput');

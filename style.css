@@ -236,6 +236,7 @@ button,.btn,a.btn{min-height:var(--tap);border-radius:10px;cursor:pointer}
   max-width:54ch;margin:8px auto 0;color:var(--text);font-size:.96rem;
   line-height:1.5;text-wrap:balance
 }
+.battleHint{margin:.45rem 0 0;color:var(--muted);font-size:.9rem;line-height:1.45}
 [data-result][data-state=good] .verdictReason{color:#245c3d}
 [data-result][data-state=warn] .verdictReason{color:#76520a}
 [data-result][data-state=bad] .verdictReason{color:#8a3030}

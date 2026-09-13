@@ -462,7 +462,15 @@ function renderCounter(hasCoreValues, hasEvidence) {
 }
 
 function renderBattle() {
-  if (!current.hasCoreValues) return;
+  const hint = $('battleAHint');
+  hint.hidden = current.hasCoreValues;
+  if (!current.hasCoreValues) {
+    $('battleA').textContent = '–';
+    $('battleB').textContent = '–';
+    $('battleWinner').className = 'winner neutral';
+    $('battleWinner').textContent = 'Trage zuerst Deal A oben vollständig ein.';
+    return;
+  }
   const buy = num('bBuy');
   const sell = num('bSell');
   const costs = num('bCost');

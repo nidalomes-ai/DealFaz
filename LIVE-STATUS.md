@@ -1,6 +1,6 @@
 # DINAVO – aktueller Freigabestatus
 
-Stand: 12.09.2026
+Stand: 13.09.2026
 
 ## Kurzentscheidung
 

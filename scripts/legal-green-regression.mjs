@@ -42,7 +42,7 @@ assert.match(imprint, /Stand: 10\. September 2026/, 'The imprint revision date m
 assert.match(privacy, /Die aktuelle DINAVO-Adresse wird über Cloudflare bereitgestellt/, 'Privacy information must identify the primary host');
 assert.match(privacy, /Einfache Seitenaufrufzählung ohne Einwilligungsabfrage/, 'Anonymous pageview counting must be disclosed');
 assert.match(privacy, /keine Werbe-Cookies und verwendet keine Affiliate-Verfolgung/, 'Advertising and affiliate tracking must remain disabled');
-assert.match(privacy, /Stand: 12\. September 2026/, 'The privacy revision date must be current');
+assert.match(privacy, /Stand: 13\. September 2026/, 'The privacy revision date must be current');
 assert.match(home, /<script src="\/analytics\.js"/, 'The same-origin counter must be loaded');
 assert.doesNotMatch(home, /analytics(?:Consent|Settings|Accept|Reject)|Besucherzählung erlauben/, 'No analytics prompt may remain');
 

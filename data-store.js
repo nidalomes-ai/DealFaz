@@ -2,7 +2,7 @@
   'use strict';
 
   // ============================================================
-  // DEALFAZ / DINAVO – Zentrale Konfiguration
+  // DINAVO – Zentrale Konfiguration
   // Dieser Block steht bewusst vor der gesamten Speicher- und Rechenlogik.
   // ============================================================
 

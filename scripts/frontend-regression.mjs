@@ -70,6 +70,10 @@ for (const [index, page] of knowledgePages.entries()) {
   assert.match(sitemap, new RegExp(`<loc>https://dealfaz\\.dealfaz-social\\.workers\\.dev${route.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</loc>`), `${route} must remain in the public sitemap`);
 }
 const publicMarkup = [html, ...knowledgePages, ...legalPages].join('\n');
+const visiblePublicText = publicMarkup
+  .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
+  .replace(/<[^>]+>/g, ' ');
+assert.doesNotMatch(visiblePublicText, /dealfaz/i, 'The retired DealFaz name must not remain in visible website text');
 assert.doesNotMatch(publicMarkup, /<(?:s|del)(?:\s|>)/i, 'Public content must not contain struck-through posts or text');
 assert.doesNotMatch(css, /text-decoration(?:-line)?\s*:\s*line-through/i, 'Public styling must not strike through posts or text');
 for (const [index, page] of legalPages.entries()) {
@@ -91,7 +95,7 @@ assert.match(privacy, /JSON-Backups und CSV-Dateien/, 'Privacy information must 
 assert.match(privacy, /Google \(Gmail\)/, 'Privacy information must identify the email provider');
 assert.match(privacy, /mail@datenschutzzentrum\.de/, 'Privacy information must identify the competent supervisory authority');
 assert.match(privacy, /§ 25 Abs\. 2 Nr\. 2 TDDDG/, 'The local privacy choice must be explained as a requested setting');
-assert.match(privacy, /Stand: 12\. September 2026/, 'Privacy information must expose its revision date');
+assert.match(privacy, /Stand: 13\. September 2026/, 'Privacy information must expose its revision date');
 assert.match(privacy, /revidierten Schweizer Datenschutzgesetzes \(DSG\)/, 'Privacy information must cover the Swiss market');
 assert.match(privacy, /Abständen von fünf weiteren gespeicherten Deals/, 'Privacy information must explain recurring local backup reminders');
 assert.match(privacy, /<h2 id="reichweitenmessung">4\. Einfache Seitenaufrufzählung ohne Einwilligungsabfrage<\/h2>/);
